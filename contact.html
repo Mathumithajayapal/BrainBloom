@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrainBloom · Contact Us</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary: #FFB347;         /* orange – main */
+      --secondary: #FF8C42;        /* deeper orange – secondary */
+      --accent: #FFB347;           /* orange – unified */
+      --text: #1E2B3C;
+      --text-light: #2C3E50;
+      --text-inverse: #FFFFFF;
+      --bg: #FFFFFF;
+      --bg-light: #F4F7FC;
+      --border: #D9E2EC;
+      --shadow: 0 4px 12px rgba(255,180,71,0.08);
+      --shadow-lg: 0 20px 40px rgba(255,180,71,0.12);
+      --transition: all 0.4s ease;
+      --footer-bg: #FFFFFF;
+      --footer-text: #1E2B3C;
+      
+      /* testimonial & awards light mode specific (keep original) */
+      --awards-bg: linear-gradient(135deg, #fff3e0, #ffe0b2);
+      --testimonial-bg: #f4efe9;
+      --testimonial-box-bg: #efe4d6;
+      --testimonial-border: #222;
+      --testimonial-text: #222;
+      --testimonial-author-color: #555;
+      --circle-bg: #f3e8dc;
+      --tag-bg: #e8d3b7;
+      --quote-color: #cfc2b2;
+    }
+    .dark-mode {
+      --primary: #FFB347;
+      --secondary: #FF8C42;
+      --accent: #FFB347;
+      --text: #F0F3FA;
+      --text-light: #CAD5E2;
+     
+      --bg: #000000;              /* full black background */
+      --bg-light: #0A0A0A;         /* very dark grey for cards / menus */
+      --border: #262626;           /* dark border */
+      --footer-bg: #000000;        /* footer pure black */
+      --footer-text: #FFFFFF;
+      --shadow: 0 4px 12px rgba(255,180,71,0.03);
+      --shadow-lg: 0 20px 40px rgba(255,180,71,0.05);
+      
+      /* dark mode overrides for awards + testimonial */
+      --awards-bg: linear-gradient(135deg, #111111, #1a1a1a);
+      --testimonial-bg: #0a0a0a;           /* section background pure black feel */
+      --testimonial-box-bg: #1a1a1a;        /* actual testimonial card background – dark */
+      --testimonial-border: #FFB347;
+      --testimonial-text: #f0f0f0;
+      --testimonial-author-color: #cccccc;
+      --circle-bg: #2a2a2a;
+      --tag-bg: #2a2a2a;
+      --quote-color: #FFB347;
+    }
+    body {
+      font-family: 'Poppins', sans-serif; 
+      color: var(--text); 
+      background: var(--bg);
+      line-height: 1.6; 
+      min-height: 100vh; 
+      display: flex; 
+      flex-direction: column;
+      transition: 0.3s;
+    }
+    h1, h2, h3, h4, h5, h6, .logo-text, .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+    .dark-mode h1, .dark-mode h2, .dark-mode h3 {
+      color: #FFFFFF !important;
+    }
+
+    /* ----- exactly the same section title style as reference (index) ----- */
+    .section-title {
+      font-size: 2.8rem;          /* same as index .section-title */
+      text-align: center;
+      margin-bottom: 1rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+    }
+    .section-title span {
+      color: var(--accent);        /* orange span accent */
+    }
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.2rem;
+      color: var(--text-light);
+      max-width: 700px;
+      margin: 0 auto 4rem;
+    }
+
+    /* Header - navbar items perfectly centered on same line */
+    header {
+      background: var(--bg); 
+      box-shadow: var(--shadow); 
+      position: sticky; 
+      top: 0;
+      z-index: 1000; 
+    }
+    .navbar {
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;  /* ensures all children are vertically centered */
+      padding: 0.75rem 2rem; /* balanced padding */
+      max-width: 1400px; 
+      margin: 0 auto;
+      min-height: 80px; /* fixed height for consistency */
+    }
+    .logo { 
+      display: flex; 
+      align-items: center;  /* vertical center */
+      gap: 10px; 
+      text-decoration: none;
+      line-height: 1; /* remove extra line height */
+    }
+    .logo i { 
+      color: var(--accent); 
+      font-size: 30px; 
+      background: linear-gradient(135deg, #FFB347, #FF8C42);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+    .logo-text {
+      font-size: 26px; 
+      font-weight: 800;
+      background: linear-gradient(145deg, #FFB347, #FF8C42);
+      -webkit-background-clip: text; 
+      background-clip: text; 
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+    .nav-links { 
+      display: flex; 
+      list-style: none; 
+      gap: 0.5rem; 
+      align-items: center;  /* vertical center */
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links li {
+      display: flex;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none; 
+      color: var(--text); 
+      font-weight: 500;
+      padding: 8px 14px; 
+      border-radius: 30px; 
+      transition: var(--transition); 
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--accent); 
+      background: rgba(255,180,71,0.1);
+    }
+    /* dropdown */
+    .dropdown { 
+      position: relative; 
+      display: flex;
+      align-items: center;
+    }
+    .dropdown-menu {
+      position: absolute; 
+      top: 100%; 
+      left: 0; 
+      background: var(--bg-light);
+      list-style: none; 
+      padding: 15px 0; 
+      min-width: 200px; 
+      border-radius: 20px;
+      box-shadow: var(--shadow-lg); 
+      border: 1px solid var(--border); 
+      display: none; 
+      z-index: 1000;
+    }
+    .dropdown-menu a {
+      display: block; 
+      padding: 12px 20px; 
+      color: var(--text); 
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .dropdown-menu a:hover {
+      background: var(--primary); 
+      color: white; 
+      padding-left: 30px;
+    }
+    .dropdown:hover .dropdown-menu { 
+      display: block; 
+    }
+    .controls { 
+      display: flex; 
+      gap: 8px; 
+      align-items: center; 
+    }
+    .control-btn {
+      background: transparent; 
+      border: none; 
+      font-size: 18px; 
+      padding: 8px 10px;
+      cursor: pointer; 
+      color: var(--text); 
+      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .control-btn:hover { 
+      color: var(--accent); 
+      transform: scale(1.1); 
+    }
+    .hamburger {
+      display: none; 
+      background: none; 
+      border: 2px solid var(--border);
+      border-radius: 8px; 
+      font-size: 20px; 
+      cursor: pointer; 
+      padding: 8px 12px; 
+      color: var(--text);
+      align-items: center;
+      justify-content: center;
+    }
+    /* mobile menu adjustments (unchanged, but ensure inner links are centered) */
+    .mobile-nav-menu {
+      position: fixed; 
+      top: 0; 
+      right: -100%; 
+      width: 320px; 
+      height: 100vh;
+      background: var(--bg-light); 
+      z-index: 999; 
+      transition: right 0.4s;
+      padding: 90px 2rem 2rem; 
+      border-left: 3px solid var(--accent); 
+      overflow-y: auto;
+    }
+    .mobile-nav-menu.active { 
+      right: 0; 
+    }
+    .mobile-nav-menu .nav-links {
+      display: flex !important; 
+      flex-direction: column !important; 
+      gap: 0.5rem !important;
+      padding-bottom: 30px !important; 
+      list-style: none !important;
+      align-items: stretch !important;
+    }
+    .mobile-nav-menu .nav-links a {
+      display: block !important; 
+      padding: 15px 20px !important;
+      border: 2px solid var(--border) !important; 
+      border-radius: 30px !important;
+      background: var(--bg) !important; 
+      text-decoration: none !important;
+      color: var(--text) !important; 
+      font-weight: 600 !important; 
+      width: 100% !important;
+      text-align: left;
+    }
+    .mobile-nav-menu .nav-links a:hover {
+      background: var(--accent) !important; 
+      color: #db5507 !important;
+      border-color: var(--accent) !important;
+    }
+    .mobile-nav-menu .nav-links .home-sub-item {
+      padding-left: 40px !important; 
+      margin-top: -5px !important; 
+      margin-bottom: 5px !important;
+      border-color: var(--border) !important; 
+      background: var(--bg-light) !important; 
+      font-size: 0.9rem !important;
+    }
+    .mobile-overlay {
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%;
+      background: rgba(0,0,0,0.5); 
+      z-index: 998; 
+      display: none;
+    }
+    .mobile-overlay.active { 
+      display: block; 
+    }
+    .mobile-controls {
+      margin-top: 2rem; 
+      display: flex; 
+      flex-direction: column; 
+      gap: 1rem;
+    }
+    .mobile-controls .control-btn {
+      width: 100%; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      gap: 10px; 
+      border: 2px solid var(--border); 
+      border-radius: 30px;
+      padding: 12px; 
+      background: var(--bg);
+      font-size: 1rem;
+      cursor: pointer;
+      color: var(--text);
+      transition: var(--transition);
+    }
+    .mobile-controls .control-btn:hover {
+      background: var(--accent);
+      color: #ff6200;
+      border-color: var(--accent);
+    }
+    .nav-btn { 
+      padding: 8px 18px !important; 
+      border-radius: 50px !important; 
+      font-weight: 600; 
+    }
+    .login-btn { 
+      border: 2px solid var(--primary); 
+      color: var(--primary) !important; 
+    }
+    .login-btn:hover { 
+      background: var(--primary); 
+      color: rgb(249, 138, 3) !important; 
+    }
+    .signup-btn { 
+      background: var(--accent); 
+      color: #1E2B3C !important; 
+      border: 2px solid var(--accent);
+    }
+    .signup-btn:hover { 
+      background: #e09d3c; 
+    }
+
+    /* ===== CONTACT PAGE HERO BANNER ===== */
+    .contact-hero {
+      position: relative;
+      height: 60vh;
+      min-height: 500px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+    }
+
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg') center/cover;
+      opacity: 0.15;
+      z-index: 1;
+      animation: slowZoom 20s infinite alternate;
+    }
+
+    @keyframes slowZoom {
+      from { transform: scale(1); }
+      to { transform: scale(1.1); }
+    }
+
+    .contact-hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.3) 100%);
+      z-index: 2;
+    }
+
+    .contact-hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 900px;
+      padding: 0 2rem;
+    }
+
+    .contact-hero-content h1 {
+      font-size: 4.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      animation: fadeInUp 1s ease;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .contact-hero-content p {
+      font-size: 1.3rem;
+      opacity: 0.95;
+      margin-bottom: 2rem;
+      animation: fadeInUp 1s ease 0.2s both;
+    }
+
+    .hero-breadcrumb {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 1.1rem;
+      animation: fadeInUp 1s ease 0.4s both;
+    }
+
+    .hero-breadcrumb a {
+      color: white;
+      text-decoration: none;
+      opacity: 0.8;
+      transition: var(--transition);
+    }
+
+    .hero-breadcrumb a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    .hero-breadcrumb span {
+      color: rgba(255,255,255,0.6);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===== CONTACT SECTION ===== */
+    .contact-section {
+      padding: 5rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Contact Info Cards */
+    .contact-info-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-bottom: 5rem;
+    }
+
+    .info-card {
+      background: var(--bg-light);
+      padding: 2.5rem 2rem;
+      border-radius: 30px;
+      text-align: center;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .info-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+      transform-origin: left;
+    }
+
+    .info-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .info-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary);
+    }
+
+    .info-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2rem;
+      color: white;
+      transition: var(--transition);
+    }
+
+    .info-card:hover .info-icon {
+      transform: rotateY(180deg) scale(1.1);
+    }
+
+    .info-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .info-card p {
+      color: var(--text-light);
+      margin-bottom: 0.3rem;
+      font-size: 0.95rem;
+    }
+
+    .info-card .info-link {
+      display: inline-block;
+      margin-top: 1rem;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .info-card .info-link:hover {
+      color: var(--secondary);
+      transform: translateX(5px);
+    }
+
+    /* Contact Form & Map Section */
+    .contact-form-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 5rem;
+    }
+
+    .form-container {
+      background: var(--bg-light);
+      padding: 3rem;
+      border-radius: 40px;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .form-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+    }
+
+    .form-container h2 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .form-container p {
+      color: var(--text-light);
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      border: 2px solid var(--border);
+      border-radius: 15px;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 1rem;
+      transition: var(--transition);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(255,180,71,0.1);
+    }
+
+    .form-group label {
+      position: absolute;
+      left: 1rem;
+      top: -0.5rem;
+      background: var(--bg-light);
+      padding: 0 0.5rem;
+      font-size: 0.8rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1.2rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border: none;
+      border-radius: 15px;
+      color: #1E2B3C;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+      gap: 15px;
+    }
+
+    .map-container {
+      background: var(--bg-light);
+      border-radius: 40px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    .map-header {
+      padding: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .map-header h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .map-header p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    .map-header i {
+      color: var(--primary);
+      margin-right: 5px;
+    }
+
+    .map-frame {
+      width: 100%;
+      height: 350px;
+      background: #e9e9e9;
+      position: relative;
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .map-overlay {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: var(--bg);
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      border: 2px solid var(--primary);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .map-overlay i {
+      color: var(--primary);
+    }
+
+    /* Business Hours Section */
+    .hours-section {
+      background: linear-gradient(135deg, var(--bg-light), var(--bg));
+      border-radius: 50px;
+      padding: 4rem;
+      margin-bottom: 5rem;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hours-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,180,71,0.05) 0%, transparent 70%);
+      animation: rotate 30s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .hours-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hours-header h2 {
+      font-size: 2.5rem;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 1rem;
+    }
+
+    .hours-header h2 span {
+      color: var(--primary);
+    }
+
+    .hours-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hours-card {
+      background: var(--bg);
+      border-radius: 30px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .hours-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow);
+    }
+
+    .hours-card .day-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--bg-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.5rem;
+      color: var(--primary);
+      transition: var(--transition);
+    }
+
+    .hours-card:hover .day-icon {
+      background: var(--primary);
+      color: white;
+      transform: rotate(360deg);
+    }
+
+    .hours-card h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hours-card p {
+      color: var(--text-light);
+      font-weight: 600;
+    }
+
+    .hours-card .closed {
+      color: #ff4444;
+    }
+
+    .hours-note {
+      text-align: center;
+      margin-top: 2rem;
+      color: var(--text-light);
+      font-size: 0.95rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hours-note i {
+      color: var(--primary);
+      margin-right: 5px;
+    }
+
+    /* Social Connect Section */
+    .social-connect {
+      text-align: center;
+      padding: 3rem;
+      background: var(--bg-light);
+      border-radius: 50px;
+      border: 2px dashed var(--primary);
+    }
+
+    .social-connect h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .social-connect p {
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .social-links-large {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .social-link-large {
+      width: 60px;
+      height: 60px;
+      background: var(--bg);
+      border: 2px solid var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 1.5rem;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .social-link-large:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-5px) rotate(360deg);
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .contact-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .contact-form-section {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-hero-content h1 {
+        font-size: 3rem;
+      }
+      
+      .hours-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .contact-info-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .form-container {
+        padding: 2rem;
+      }
+      
+      .hours-section {
+        padding: 2rem;
+      }
+      
+      .contact-hero-content h1 {
+        font-size: 2.2rem;
+      }
+      
+      .contact-hero-content p {
+        font-size: 1rem;
+      }
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--footer-bg); 
+      color: var(--footer-text);
+      padding: 70px 0 40px; 
+      margin-top: auto;
+    }
+    .dark-mode .site-footer { 
+      background: #000000 !important; 
+    }
+    .footer-content { 
+      max-width: 1300px; 
+      margin: 0 auto; 
+      padding: 0 2rem; 
+    }
+    .footer-top {
+      display: grid; 
+      grid-template-columns: repeat(4, 1fr); 
+      gap: 50px; 
+      margin-bottom: 50px;
+    }
+    .footer-column h3 {
+      color: var(--accent); 
+      font-size: 1rem; 
+      font-weight: 700; 
+      margin-bottom: 25px;
+      text-transform: uppercase; 
+      letter-spacing: 2px; 
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--accent);
+    }
+    .footer-column ul { 
+      list-style: none; 
+    }
+    .footer-column li { 
+      margin-bottom: 12px; 
+    }
+    .footer-column a {
+      color: var(--footer-text); 
+      text-decoration: none; 
+      font-size: 0.95rem; 
+      transition: var(--transition);
+    }
+    .footer-column a:hover { 
+      color: var(--accent); 
+      transform: translateX(8px); 
+    }
+    .footer-middle {
+      padding: 35px 0; 
+      border-top: 1px solid var(--accent);
+      border-bottom: 1px solid var(--accent); 
+      margin-bottom: 35px;
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+    }
+    .footer-links { 
+      display: flex; 
+      gap: 35px; 
+    }
+    .footer-links a { 
+      color: var(--footer-text); 
+      text-decoration: none; 
+      font-size: 0.95rem; 
+    }
+    .footer-links a:hover { 
+      color: var(--accent); 
+    }
+    .footer-bottom { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+    }
+    .copyright { 
+      color: var(--footer-text); 
+      font-size: 0.9rem; 
+      opacity: 0.8; 
+    }
+
+    /* RTL */
+    [dir="rtl"] .dropdown-menu { 
+      left: auto; 
+      right: 0; 
+    }
+    [dir="rtl"] .footer-column a:hover { 
+      transform: translateX(-8px); 
+    }
+    [dir="rtl"] .mobile-nav-menu {
+      left: -100%; 
+      right: auto; 
+      border-left: none; 
+      border-right: 3px solid var(--accent);
+    }
+    [dir="rtl"] .mobile-nav-menu.active { 
+      left: 0; 
+    }
+    [dir="rtl"] .home-sub-item { 
+      padding-left: 20px !important; 
+      padding-right: 40px !important; 
+    }
+
+    /* Responsive */
+    @media (max-width: 1280px) {
+      .nav-links:not(.mobile-nav-menu .nav-links) { 
+        display: none !important; 
+      }
+      .hamburger { 
+        display: flex !important; 
+      }
+      .navbar {
+        min-height: 70px;
+      }
+    }
+    @media (min-width: 1281px) {
+      .nav-links:not(.mobile-nav-menu .nav-links) { 
+        display: flex !important; 
+      }
+      .hamburger { 
+        display: none !important; 
+      }
+    }
+    @media (max-width: 900px) {
+      .footer-top { 
+        grid-template-columns: repeat(2, 1fr); 
+      }
+      .footer-middle, .footer-bottom { 
+        flex-direction: column; 
+        gap: 20px; 
+        text-align: center; 
+      }
+    }
+    @media (max-width: 600px) {
+      .footer-top { 
+        grid-template-columns: 1fr; 
+      }
+      .navbar { 
+        padding: 0.5rem 1rem; 
+      }
+      .logo-text { 
+        font-size: 22px; 
+      }
+    }
+
+/* Push login & signup to right */
+.nav-links li:nth-last-child(3){
+  margin-left: 25px;
+}
+/* Add gap before Login (after Dashboard) */
+.nav-links li:nth-last-child(4){
+  margin-left: 50px;
+}
+.mobile-nav-menu .nav-links a.active {
+  background: var(--accent) !important;
+  color: #fff !important;
+  border-color: var(--accent) !important;
+}
+ .signup-btn { 
+      background: var(--accent); 
+      color: #f2f2f6 !important; 
+      border: 2px solid var(--accent);
+    }
+    .signup-btn:hover {
+      background: var(--accent); 
+      color: #f6960f !important; 
+      border: 2px solid var(--accent); 
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Mobile Overlay -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- Header - now perfectly aligned -->
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo">
+        <i class="fas fa-seedling"></i>
+        <span class="logo-text">BrainBloom</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <ul class="nav-links">
+        <li class="dropdown">
+          <a href="#" >Home <i class="fas fa-caret-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="index.html">Home 1</a></li>
+            <li><a href="home2.html">Home 2</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="service.html">Service</a></li>
+        <li><a href="art&craft.html">Art&Craft</a></li>
+        <li><a href="music.html">Music</a></li>
+         <li><a href="faq.html">Faq</a></li>
+        <li><a href="contact.html"class="active">Contact</a></li>
+        <li class="dropdown">
+          <a href="#">Dashboard <i class="fas fa-caret-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="user.html">User Dashboard</a></li>
+            <li><a href="admin.html">Admin Dashboard</a></li>
+          </ul>
+        </li>
+        <li><a href="login.html" class="nav-btn login-btn">Login</a></li>
+        <li><a href="signup.html" class="nav-btn signup-btn">SignUp</a></li>
+        <!-- Theme and RTL buttons -->
+        <li>
+          <button class="control-btn" id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+        </li>
+        <li>
+          <button class="control-btn" id="rtlToggle" title="Toggle RTL"><i class="fas fa-exchange-alt"></i></button>
+        </li>
+      </ul>
+
+      <!-- Controls - Only hamburger on mobile -->
+      <div class="controls">
+        <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu -->
+ <div class="mobile-nav-menu" id="mobileNavMenu">
+    <ul class="nav-links">
+      <li><a href="#"><i class="fas fa-caret-down"></i> Home</a></li>
+      <li><a href="index.html" class="home-sub-item">Home 1</a></li>
+      <li><a href="home2.html" class="home-sub-item">Home 2</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="service.html">Service</a></li>
+        <li><a href="art&craft.html">Art&Craft</a></li>
+        <li><a href="music.html">Music</a></li>
+         <li><a href="faq.html">Faq</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="#"><i class="fas fa-caret-down"></i> Dashboard</a></li>
+      <li><a href="user.html" class="home-sub-item">User Dashboard</a></li>
+      <li><a href="admin.html" class="home-sub-item">Admin Dashboard</a></li>
+      <li><a href="loginPage.html">Login</a></li>
+      <li><a href="register.html">SignUp</a></li>
+    </ul>
+    <div class="mobile-controls">
+      <button class="control-btn" id="mobileThemeToggle"><i class="fas fa-moon"></i><span>Dark Mode</span></button>
+      <button class="control-btn" id="mobileRtlToggle"><i class="fas fa-exchange-alt"></i><span>RTL</span></button>
+    </div>
+  </div>
+
+  <!-- CONTACT HERO BANNER (heading style updated) -->
+  <section class="contact-hero">
+    <div class="contact-hero-content">
+      <h1>Get In <span style="color: var(--accent);">Touch</span></h1>  <!-- orange span for reference style -->
+      <p>We'd love to hear from you. Reach out with any questions or thoughts.</p>
+      <div class="hero-breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Contact</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION (all headings use .section-title or Playfair + accent spans) -->
+  <section class="contact-section">
+    <!-- Contact Info Cards (headings inside cards already Playfair) -->
+    <div class="contact-info-grid">
+      <div class="info-card">
+        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <h3>Visit Us</h3>
+        <p>123 Learning Lane</p>
+        <p>Creative District</p>
+        <p>New York, NY 10001</p>
+        <a href="#" class="info-link">Get Directions <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+        <h3>Call Us</h3>
+        <p>+1 (555) 123-4567</p>
+        <p>+1 (555) 765-4321</p>
+        <p>Mon-Fri, 9am-6pm</p>
+        <a href="tel:+15551234567" class="info-link">Call Now <i class="fas fa-phone"></i></a>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon"><i class="fas fa-envelope"></i></div>
+        <h3>Email Us</h3>
+        <p>hello@brainbloom.com</p>
+        <p>support@brainbloom.com</p>
+        <p>careers@brainbloom.com</p>
+        <a href="mailto:hello@brainbloom.com" class="info-link">Send Email <i class="fas fa-envelope"></i></a>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon"><i class="fas fa-comment-dots"></i></div>
+        <h3>Live Chat</h3>
+        <p>Mon-Fri, 9am-8pm</p>
+        <p>Sat, 10am-4pm</p>
+        <p>Instant response</p>
+        <a href="#" class="info-link">Start Chat <i class="fas fa-comment"></i></a>
+      </div>
+    </div>
+
+    <!-- Contact Form & Map Section -->
+    <div class="contact-form-section">
+      <div class="form-container">
+        <h2>Send a <span style="color: var(--accent);">Message</span></h2>  <!-- span accent -->
+        <p>We'll get back to you within 24 hours</p>
+        
+        <form id="contactForm">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="John Doe" required>
+          </div>
+          
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="john@example.com" required>
+          </div>
+          
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+1 234 567 8900">
+          </div>
+          
+          <div class="form-group">
+            <label>Subject</label>
+            <select>
+              <option>General Inquiry</option>
+              <option>Program Information</option>
+              <option>Enrollment Questions</option>
+              <option>Billing Support</option>
+              <option>Other</option>
+            </select>
+          </div>
+          
+          <button type="submit" class="submit-btn">
+            <span>Send Message</span>
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+
+      <div class="map-container">
+        <div class="map-header">
+          <h3><i class="fas fa-map-pin"></i> Our <span style="color: var(--accent);">Location</span></h3>
+          <p>Visit our learning center in the heart of Creative District</p>
+        </div>
+        <div class="map-frame">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.91477038956!2d-74.11976317359227!3d40.697403441660984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1633015249872!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+          <div class="map-overlay">
+            <i class="fas fa-location-dot"></i>
+            <span>BrainBloom Center</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Business Hours Section (heading with span) -->
+    <div class="hours-section">
+      <div class="hours-header">
+        <h2><span>Business</span> Hours</h2>   <!-- span orange -->
+        <p>We're here when you need us</p>
+      </div>
+      
+      <div class="hours-grid">
+        <div class="hours-card">
+          <div class="day-icon"><i class="fas fa-calendar-day"></i></div>
+          <h4>Monday - Friday</h4>
+          <p>9:00 AM - 8:00 PM</p>
+        </div>
+        <div class="hours-card">
+          <div class="day-icon"><i class="fas fa-calendar-alt"></i></div>
+          <h4>Saturday</h4>
+          <p>10:00 AM - 4:00 PM</p>
+        </div>
+        <div class="hours-card">
+          <div class="day-icon"><i class="fas fa-calendar-check"></i></div>
+          <h4>Sunday</h4>
+          <p class="closed">Closed</p>
+        </div>
+        <div class="hours-card">
+          <div class="day-icon"><i class="fas fa-clock"></i></div>
+          <h4>Holidays</h4>
+          <p>10:00 AM - 2:00 PM</p>
+        </div>
+      </div>
+      
+      <div class="hours-note">
+        <i class="fas fa-star"></i> Special hours may apply during holidays. Follow us on social media for updates.
+      </div>
+    </div>
+
+    <!-- Social Connect Section (heading updated) -->
+    <div class="social-connect">
+      <h3>Connect With <span style="color: var(--accent);">Us</span></h3>
+      <p>Follow us on social media for updates, events, and learning tips</p>
+      <div class="social-links-large">
+        <a href="#" class="social-link-large"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-link-large"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-link-large"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link-large"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="social-link-large"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="social-link-large"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-top">
+        <div class="footer-column">
+          <a href="index.html" class="logo">
+            <i class="fas fa-seedling"></i>
+            <span class="logo-text">BrainBloom</span>
+          </a>
+          <p style="margin-top:30px">Where minds expand and ideas flourish. Join our community of curious learners.</p>
+        </div>
+        <div class="footer-column">
+          <h3>QuickLinks</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="service.html">Service</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="#">Learning Hub</a></li>
+            <li><a href="#">Workshops</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Social Links</h3>
+          <ul>
+            <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+            <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-middle">
+        <h3 style="color:#FFB347">BrainBloom</h3>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="copyright">© 2026 BrainBloom Enrichment. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // Mobile Menu Elements
+      const hamburger = document.getElementById('hamburger');
+      const overlay = document.getElementById('mobileOverlay');
+      const mobileMenu = document.getElementById('mobileNavMenu');
+      const body = document.body;
+
+      if (!hamburger || !overlay || !mobileMenu) return;
+
+      function toggleMobileMenu() {
+        const isActive = mobileMenu.classList.contains('active');
+        mobileMenu.classList.toggle('active');
+        overlay.classList.toggle('active');
+        body.style.overflow = isActive ? '' : 'hidden';
+        hamburger.innerHTML = isActive ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+      }
+
+      hamburger.addEventListener('click', toggleMobileMenu);
+      overlay.addEventListener('click', toggleMobileMenu);
+
+      document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
+        link.addEventListener('click', function(e) {
+          if (!this.querySelector('.fa-caret-down')) {
+            toggleMobileMenu();
+          }
+        });
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+          toggleMobileMenu();
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 1280 && mobileMenu.classList.contains('active')) {
+          toggleMobileMenu();
+        }
+      });
+
+      function toggleTheme() {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        
+        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => {
+          if (el) el.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        });
+        
+        const mobileSpan = document.querySelector('#mobileThemeToggle span');
+        if (mobileSpan) mobileSpan.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      }
+
+      function toggleRTL() {
+        const html = document.documentElement;
+        const isRTL = html.getAttribute('dir') === 'rtl';
+        html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
+        
+        const mobileSpan = document.querySelector('#mobileRtlToggle span');
+        if (mobileSpan) mobileSpan.textContent = isRTL ? 'RTL' : 'LTR';
+        
+        localStorage.setItem('direction', isRTL ? 'ltr' : 'rtl');
+      }
+
+      document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
+      document.getElementById('mobileThemeToggle')?.addEventListener('click', toggleTheme);
+      document.getElementById('rtlToggle')?.addEventListener('click', toggleRTL);
+      document.getElementById('mobileRtlToggle')?.addEventListener('click', toggleRTL);
+
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => {
+          if (el) el.className = 'fas fa-sun';
+        });
+        const mobileSpan = document.querySelector('#mobileThemeToggle span');
+        if (mobileSpan) mobileSpan.textContent = 'Light Mode';
+      }
+
+      if (localStorage.getItem('direction') === 'rtl') {
+        document.documentElement.setAttribute('dir', 'rtl');
+        const mobileSpan = document.querySelector('#mobileRtlToggle span');
+        if (mobileSpan) mobileSpan.textContent = 'LTR';
+      }
+
+      // Contact form submission
+      document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Thank you for reaching out! We will get back to you within 24 hours.');
+        this.reset();
+      });
+    })();
+    // Highlight active link automatically
+const currentPage = window.location.pathname.split("/").pop();
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  const linkPage = link.getAttribute("href");
+
+  if (linkPage === currentPage) {
+    link.classList.add("active");
+  }
+});
+  </script>
+</body>
+</html>

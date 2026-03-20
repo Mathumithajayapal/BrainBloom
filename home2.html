@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrainBloom · enrichment program</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
+
+  <style>
+    /* GLOBAL RESET – no margins/paddings that cause misalignment */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary: #FFB347;         /* orange – main */
+      --secondary: #FF8C42;        /* deeper orange – secondary */
+      --accent: #FFB347;           /* orange – unified */
+      --text: #1E2B3C;
+      --text-light: #2C3E50;
+      --text-inverse: #FFFFFF;
+      --bg: #FFFFFF;
+      --bg-light: #F4F7FC;
+      --border: #D9E2EC;
+      --shadow: 0 4px 12px rgba(255,180,71,0.08);
+      --shadow-lg: 0 20px 40px rgba(255,180,71,0.12);
+      --transition: all 0.4s ease;
+      --footer-bg: #FFFFFF;
+      --footer-text: #1E2B3C;
+      
+      /* testimonial & awards light mode specific */
+      --awards-bg: linear-gradient(135deg, #fff3e0, #ffe0b2);
+      --testimonial-bg: #f4efe9;
+      --testimonial-box-bg: #efe4d6;
+      --testimonial-border: #222;
+      --testimonial-text: #222;
+      --testimonial-author-color: #555;
+      --circle-bg: #f3e8dc;
+      --tag-bg: #e8d3b7;
+      --quote-color: #cfc2b2;
+      
+      /* card text colors for light mode */
+      --card-text-primary: #1E2B3C;
+      --card-text-secondary: #2C3E50;
+      --mentor-card-text: #555;
+    }
+    .dark-mode {
+      --primary: #FFB347;
+      --secondary: #FF8C42;
+      --accent: #FFB347;
+      --text: #F0F3FA;
+      --text-light: #E0E7F0;        /* lighter for better visibility */
+     
+      --bg: #000000;              
+      --bg-light: #1A1A1A;          /* lighter dark for cards */
+      --border: #444444;           
+      --footer-bg: #000000;        
+      --footer-text: #FFFFFF;
+      --shadow: 0 4px 12px rgba(255,180,71,0.03);
+      --shadow-lg: 0 20px 40px rgba(255,180,71,0.05);
+      
+      --awards-bg: linear-gradient(135deg, #111111, #1a1a1a);
+      --testimonial-bg: #0a0a0a;           
+      --testimonial-box-bg: #1a1a1a;        
+      --testimonial-border: #FFB347;
+      --testimonial-text: #f0f0f0;
+      --testimonial-author-color: #cccccc;
+      --circle-bg: #2a2a2a;
+      --tag-bg: #2a2a2a;
+      --quote-color: #FFB347;
+      
+      /* dark mode card text colors – all clearly visible */
+      --card-text-primary: #FFFFFF;
+      --card-text-secondary: #F0F3FA;
+      --mentor-card-text: #F0F0F0;
+    }
+    body {
+      font-family: 'Poppins', sans-serif; 
+      color: var(--text); 
+      background: var(--bg);
+      line-height: 1.6; 
+      min-height: 100vh; 
+      display: flex; 
+      flex-direction: column;
+      transition: 0.3s;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, h5, h6, .logo-text, .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+    .dark-mode h1, .dark-mode h2, .dark-mode h3 {
+      color: #FFFFFF !important;
+    }
+
+    /* Header - perfectly aligned */
+    header {
+      background: var(--bg); 
+      box-shadow: var(--shadow); 
+      position: sticky; 
+      top: 0;
+      z-index: 1000; 
+    }
+    .navbar {
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+      padding: 0.75rem 2rem;
+      max-width: 1400px; 
+      margin: 0 auto;
+      min-height: 80px;
+    }
+    .logo { 
+      display: flex; 
+      align-items: center;
+      gap: 10px; 
+      text-decoration: none;
+      line-height: 1;
+    }
+    .logo i { 
+      color: var(--accent); 
+      font-size: 30px; 
+      background: linear-gradient(135deg, #FFB347, #FF8C42);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+    .logo-text {
+      font-size: 26px; 
+      font-weight: 800;
+      background: linear-gradient(145deg, #FFB347, #FF8C42);
+      -webkit-background-clip: text; 
+      background-clip: text; 
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+    .nav-links { 
+      display: flex; 
+      list-style: none; 
+      gap: 0.5rem; 
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links li {
+      display: flex;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none; 
+      color: var(--text); 
+      font-weight: 500;
+      padding: 8px 14px; 
+      border-radius: 30px; 
+      transition: var(--transition); 
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--accent); 
+      background: rgba(255,180,71,0.1);
+    }
+    /* dropdown */
+    .dropdown { 
+      position: relative; 
+      display: flex;
+      align-items: center;
+    }
+    .dropdown-menu {
+      position: absolute; 
+      top: 100%; 
+      left: 0; 
+      background: var(--bg-light);
+      list-style: none; 
+      padding: 15px 0; 
+      min-width: 200px; 
+      border-radius: 20px;
+      box-shadow: var(--shadow-lg); 
+      border: 1px solid var(--border); 
+      display: none; 
+      z-index: 1000;
+    }
+    .dropdown-menu a {
+      display: block; 
+      padding: 12px 20px; 
+      color: var(--text); 
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .dropdown-menu a:hover {
+      background: var(--primary); 
+      color: white; 
+      padding-left: 30px;
+    }
+    .dropdown:hover .dropdown-menu { 
+      display: block; 
+    }
+    .controls { 
+      display: flex; 
+      gap: 8px; 
+      align-items: center; 
+    }
+    .control-btn {
+      background: transparent; 
+      border: none; 
+      font-size: 18px; 
+      padding: 8px 10px;
+      cursor: pointer; 
+      color: var(--text); 
+      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .control-btn:hover { 
+      color: var(--accent); 
+      transform: scale(1.1); 
+    }
+    .hamburger {
+      display: none; 
+      background: none; 
+      border: 2px solid var(--border);
+      border-radius: 8px; 
+      font-size: 20px; 
+      cursor: pointer; 
+      padding: 8px 12px; 
+      color: var(--text);
+      align-items: center;
+      justify-content: center;
+    }
+    /* mobile menu adjustments */
+    .mobile-nav-menu {
+      position: fixed; 
+      top: 0; 
+      right: -100%; 
+      width: 320px; 
+      height: 100vh;
+      background: var(--bg-light); 
+      z-index: 999; 
+      transition: right 0.4s;
+      padding: 90px 2rem 2rem; 
+      border-left: 3px solid var(--accent); 
+      overflow-y: auto;
+    }
+    .mobile-nav-menu.active { 
+      right: 0; 
+    }
+    .mobile-nav-menu .nav-links {
+      display: flex !important; 
+      flex-direction: column !important; 
+      gap: 0.5rem !important;
+      padding-bottom: 30px !important; 
+      list-style: none !important;
+      align-items: stretch !important;
+    }
+    .mobile-nav-menu .nav-links a {
+      display: block !important; 
+      padding: 15px 20px !important;
+      border: 2px solid var(--border) !important; 
+      border-radius: 30px !important;
+      background: var(--bg) !important; 
+      text-decoration: none !important;
+      color: var(--text) !important; 
+      font-weight: 600 !important; 
+      width: 100% !important;
+      text-align: left;
+    }
+    .mobile-nav-menu .nav-links a:hover {
+      background: var(--accent) !important; 
+      color: #db5507 !important;
+      border-color: var(--accent) !important;
+    }
+    .mobile-nav-menu .nav-links .home-sub-item {
+      padding-left: 40px !important; 
+      margin-top: -5px !important; 
+      margin-bottom: 5px !important;
+      border-color: var(--border) !important; 
+      background: var(--bg-light) !important; 
+      font-size: 0.9rem !important;
+    }
+    .mobile-overlay {
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%;
+      background: rgba(0,0,0,0.5); 
+      z-index: 998; 
+      display: none;
+    }
+    .mobile-overlay.active { 
+      display: block; 
+    }
+    .mobile-controls {
+      margin-top: 2rem; 
+      display: flex; 
+      flex-direction: column; 
+      gap: 1rem;
+    }
+    .mobile-controls .control-btn {
+      width: 100%; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      gap: 10px; 
+      border: 2px solid var(--border); 
+      border-radius: 30px;
+      padding: 12px; 
+      background: var(--bg);
+      font-size: 1rem;
+      cursor: pointer;
+      color: var(--text);
+      transition: var(--transition);
+    }
+    .mobile-controls .control-btn:hover {
+      background: var(--accent);
+      color: #ff6200;
+      border-color: var(--accent);
+    }
+    .nav-btn { 
+      padding: 8px 18px !important; 
+      border-radius: 50px !important; 
+      font-weight: 600; 
+    }
+    .login-btn { 
+      border: 2px solid var(--primary); 
+      color: var(--primary) !important; 
+    }
+    .login-btn:hover { 
+      background: var(--primary); 
+      color: rgb(249, 138, 3) !important; 
+    }
+    .signup-btn { 
+      background: var(--accent); 
+      color: #1E2B3C !important; 
+      border: 2px solid var(--accent);
+    }
+    .signup-btn:hover { 
+      background: #e09d3c; 
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--footer-bg); 
+      color: var(--footer-text);
+      padding: 70px 0 40px; 
+      margin-top: auto;
+    }
+    .dark-mode .site-footer { 
+      background: #000000 !important; 
+    }
+    .footer-content { 
+      max-width: 1300px; 
+      margin: 0 auto; 
+      padding: 0 2rem; 
+    }
+    .footer-top {
+      display: grid; 
+      grid-template-columns: repeat(4, 1fr); 
+      gap: 50px; 
+      margin-bottom: 50px;
+    }
+    .footer-column h3 {
+      color: var(--accent); 
+      font-size: 1rem; 
+      font-weight: 700; 
+      margin-bottom: 25px;
+      text-transform: uppercase; 
+      letter-spacing: 2px; 
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--accent);
+    }
+    .footer-column ul { 
+      list-style: none; 
+    }
+    .footer-column li { 
+      margin-bottom: 12px; 
+    }
+    .footer-column a {
+      color: var(--footer-text); 
+      text-decoration: none; 
+      font-size: 0.95rem; 
+      transition: var(--transition);
+    }
+    .footer-column a:hover { 
+      color: var(--accent); 
+      transform: translateX(8px); 
+    }
+    .footer-middle {
+      padding: 35px 0; 
+      border-top: 1px solid var(--accent);
+      border-bottom: 1px solid var(--accent); 
+      margin-bottom: 35px;
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+    }
+    .footer-links { 
+      display: flex; 
+      gap: 35px; 
+    }
+    .footer-links a { 
+      color: var(--footer-text); 
+      text-decoration: none; 
+      font-size: 0.95rem; 
+    }
+    .footer-links a:hover { 
+      color: var(--accent); 
+    }
+    .footer-bottom { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+    }
+    .copyright { 
+      color: var(--footer-text); 
+      font-size: 0.9rem; 
+      opacity: 0.8; 
+    }
+
+    /* RTL */
+    [dir="rtl"] .dropdown-menu { left: auto; right: 0; }
+    [dir="rtl"] .footer-column a:hover { transform: translateX(-8px); }
+    [dir="rtl"] .mobile-nav-menu { left: -100%; right: auto; border-left: none; border-right: 3px solid var(--accent); }
+    [dir="rtl"] .mobile-nav-menu.active { left: 0; }
+    [dir="rtl"] .home-sub-item { padding-left: 20px !important; padding-right: 40px !important; }
+
+    /* Responsive */
+    @media (max-width: 1280px) {
+      .nav-links:not(.mobile-nav-menu .nav-links) { display: none !important; }
+      .hamburger { display: flex !important; }
+      .navbar { min-height: 70px; }
+    }
+    @media (min-width: 1281px) {
+      .nav-links:not(.mobile-nav-menu .nav-links) { display: flex !important; }
+      .hamburger { display: none !important; }
+    }
+    @media (max-width: 900px) {
+      .footer-top { grid-template-columns: repeat(2, 1fr); }
+      .footer-middle, .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+    }
+    @media (max-width: 600px) {
+      .footer-top { grid-template-columns: 1fr; }
+      .navbar { padding: 0.5rem 1rem; }
+      .logo-text { font-size: 22px; }
+    }
+
+    /* Push login & signup to right */
+    .nav-links li:nth-last-child(3){ margin-left: 25px; }
+    .nav-links li:nth-last-child(4){ margin-left: 50px; }
+
+    /* ===== HERO - NO GAPS ===== */
+    .hero{
+      display:flex;
+      justify-content:center;
+      padding:0;
+      width:100%;
+    }
+    .hero-container{
+      width:100%;
+      height:650px;
+      display:flex;
+      border-radius:0;
+      overflow:hidden;
+    }
+    .hero-left{
+      width:45%;            
+      padding:60px 50px;
+      color:#fff;
+      position:relative;
+      background:linear-gradient(135deg,#ff7a18,#ffb347);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+    .hero-sub{
+      opacity:0.8;
+      margin-bottom:10px;
+      font-size:1rem;
+    }
+    .hero-left h1{
+      font-size:58px;
+      line-height:1.1;
+      letter-spacing:1px;
+      margin-bottom:20px;
+      font-family:'Playfair Display', serif;
+    }
+    .hero-desc{
+      font-size:15px;
+      line-height:1.6;
+      max-width:360px;
+      margin-bottom:35px;
+      opacity:0.9;
+    }
+    .hero-btn{
+      display:inline-block;
+      padding:12px 28px;
+      background:#fff;
+      color:#ff7a18;
+      border-radius:40px;
+      font-size:15px;
+      text-decoration:none;
+      font-weight:500;
+      width:fit-content;
+      transition:0.2s;
+      border:2px solid transparent;
+    }
+    .hero-btn:hover{
+      background:#ff7a18;
+      color:#fff;
+      border-color:#fff;
+    }
+    .hero-right{
+      width:55%;            
+      position:relative;
+      background:#333;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;      
+    }
+    .hero-right img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .top-buttons{
+      position:absolute;
+      top:20px;
+      right:20px;
+      display:flex;
+      gap:10px;
+      z-index:5;
+    }
+    .top-buttons button{
+      padding:8px 20px;
+      border:none;
+      border-radius:30px;
+      background:#fff;
+      cursor:pointer;
+      font-size:13px;
+      font-weight:500;
+      box-shadow:0 4px 8px rgba(0,0,0,0.1);
+      transition:0.2s;
+    }
+    .top-buttons button:hover{
+      background:#ffb347;
+      color:#000;
+    }
+    .dots{
+      position:absolute;
+      bottom:25px;
+      right:35px;
+      display:flex;
+      gap:10px;
+      z-index:5;
+    }
+    .dots span{
+      width:10px;
+      height:10px;
+      background:rgba(255,255,255,0.6);
+      border-radius:50%;
+      transition:0.2s;
+      cursor:pointer;
+    }
+    .dots .active{
+      background:#ff7a18;
+      transform:scale(1.2);
+    }
+    @media (max-width:1000px){
+      .hero-container{ flex-direction:column; height:auto; }
+      .hero-left, .hero-right{ width:100%; }
+      .hero-left{ padding:50px 30px; min-height:450px; }
+      .hero-right{ height:450px; }
+    }
+    @media (max-width:600px){
+      .hero-left h1{ font-size:42px; }
+    }
+
+    /* ===== ALL EXISTING SECTIONS – WITH DARK MODE TEXT FIXES ===== */
+    .discovery-section,
+    .events-section,
+    .newsletter-section,
+    .mentor-showcase,
+    .experience-section,
+    .hover-programs {
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      width: 100%;
+    }
+    
+    /* Discovery cards - dark mode text */
+    .discovery-section { margin: 5rem auto; text-align: center; }
+    .discovery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .discovery-card {
+      background: var(--bg-light);
+      padding: 2.5rem 2rem;
+      border-radius: 30px;
+      box-shadow: var(--shadow-lg);
+      transition: 0.3s;
+      border: 1px solid var(--border);
+    }
+    .discovery-card:hover { transform: translateY(-10px); border-color: var(--accent); }
+    .discovery-card i { font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem; }
+    .discovery-card h3 { 
+      font-size: 1.5rem; 
+      margin-bottom: 1rem; 
+      color: var(--card-text-primary);
+    }
+    .discovery-card p { 
+      color: var(--card-text-secondary);
+    }
+
+    /* Events section - dark mode text */
+    .events-section { margin: 5rem auto; }
+    .events-section h2 { 
+      font-size: 2.5rem; 
+      text-align: center; 
+      margin-bottom: 3rem; 
+      color: var(--text);
+    }
+    .events-section h2 span { color: var(--accent); }
+    .event-item {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      margin-bottom: 4rem;
+      background: var(--bg-light);
+      border-radius: 40px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+    }
+    .event-item:nth-child(even) { flex-direction: row-reverse; }
+    .event-date {
+      background: var(--accent);
+      color: #1E2B3C;
+      min-width: 120px;
+      height: 120px;
+      border-radius: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      box-shadow: 0 10px 20px rgba(255,180,71,0.3);
+    }
+    .event-date .day { font-size: 2.8rem; line-height: 1; font-family: 'Playfair Display', serif; }
+    .event-date .month { font-size: 1.1rem; text-transform: uppercase; }
+    .event-desc { flex: 1; }
+    .event-desc h3 { 
+      font-size: 1.8rem; 
+      margin-bottom: 0.5rem; 
+      color: var(--accent); 
+    }
+    .event-desc p { 
+      color: var(--card-text-secondary);
+      max-width: 600px; 
+    }
+    .event-tag {
+      display: inline-block;
+      background: var(--accent);
+      color: #1E2B3C;
+      padding: 0.4rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+
+    /* Newsletter section - already has light text on orange */
+    .newsletter-section {
+      margin: 5rem auto;
+      padding: 4rem 2rem;
+      background: linear-gradient(135deg, #ff7a18, #ffb347);
+      border-radius: 60px;
+      color: white;
+      text-align: center;
+    }
+    .newsletter-section h2 { font-size: 2.5rem; margin-bottom: 1rem; color: white; }
+    .newsletter-section p { margin-bottom: 2rem; opacity: 0.9; color: white; }
+    .newsletter-form {
+      display: flex;
+      max-width: 500px;
+      margin: 0 auto;
+      gap: 0.5rem;
+    }
+    .newsletter-form input {
+      flex: 1;
+      padding: 1rem 1.5rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      outline: none;
+    }
+    .newsletter-form button {
+      background: #1E2B3C;
+      color: white;
+      border: none;
+      padding: 0 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      border: 2px solid transparent;
+    }
+    .newsletter-form button:hover { background: white; color: #1E2B3C; border-color: #1E2B3C; }
+
+    /* mentor showcase – dark mode text fix */
+    .mentor-showcase { margin: 5rem auto; }
+    .mentor-row {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      margin: 60px auto;
+      max-width: 1100px;
+    }
+    .mentor-row.reverse { flex-direction: row-reverse; }
+    .mentor-image { flex: 1; }
+    .mentor-image img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 30px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    }
+    .mentor-card-glass {
+      flex: 1;
+      padding: 40px;
+      border-radius: 30px;
+      background: var(--bg-light);
+      backdrop-filter: blur(15px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    .mentor-card-glass h3 { 
+      font-size: 26px; 
+      margin-bottom: 10px; 
+      color: var(--card-text-primary);
+    }
+    .mentor-card-glass span { 
+      color: #ff7a18; 
+      font-weight: 600; 
+      display: block; 
+      margin-bottom: 15px; 
+    }
+    .mentor-card-glass p { 
+      color: var(--card-text-secondary);
+      line-height: 1.6; 
+    }
+    @media (max-width:768px){
+      .mentor-row, .mentor-row.reverse { flex-direction: column; text-align: center; }
+      .mentor-image img { height: 250px; }
+    }
+
+    /* experience section */
+    .experience-section { margin: 5rem auto; }
+    .experience-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+    .experience-image { flex: 1; }
+    .experience-image img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 30px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    }
+    .experience-content { flex: 1; }
+    .experience-content h2 { 
+      font-size: 36px; 
+      margin-bottom: 20px; 
+      color: var(--text);
+    }
+    .experience-content span { color: #ff7a18; }
+    .experience-content p { 
+      color: var(--card-text-secondary); 
+      margin-bottom: 20px; 
+      line-height: 1.6; 
+    }
+    .experience-points { list-style: none; padding: 0; margin-bottom: 25px; }
+    .experience-points li { 
+      margin-bottom: 10px; 
+      color: var(--card-text-secondary); 
+      display: flex; 
+      align-items: center; 
+      gap: 10px; 
+    }
+    .experience-points i { color: #ff7a18; }
+    .experience-btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background: #ff7a18;
+      color: #fff;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    .experience-btn:hover { background: #ffb347; color: #000; }
+    @media (max-width:900px){
+      .experience-container { flex-direction: column; text-align: center; }
+      .experience-image img { height: 300px; }
+      .experience-points li { justify-content: center; }
+    }
+
+    /* hover programs */
+    .hover-programs { margin: 5rem auto; text-align: center; }
+    .hover-programs h2 { 
+      font-size: 36px; 
+      margin-bottom: 10px; 
+      color: var(--text);
+    }
+    .hover-programs span { color: #ff7a18; }
+    .section-sub { 
+      color: var(--card-text-secondary); 
+      margin-bottom: 50px; 
+    }
+    .hover-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .hover-item {
+      position: relative;
+      border-radius: 25px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .hover-item img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+      transition: 0.4s;
+    }
+    .hover-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      opacity: 0;
+      transition: 0.4s;
+      color: #fff;
+    }
+    .hover-overlay h3 { font-size: 24px; margin-bottom: 10px; color: white; }
+    .hover-overlay p { font-size: 14px; opacity: 0.9; color: white; }
+    .hover-item:hover img { transform: scale(1.1); }
+    .hover-item:hover .hover-overlay { opacity: 1; }
+    @media (max-width:900px){ .hover-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width:600px){ .hover-grid { grid-template-columns: 1fr; } }
+
+    /* responsive for new sections */
+    @media (max-width: 1000px) {
+      .discovery-grid { grid-template-columns: repeat(2,1fr); }
+      .event-item { flex-direction: column !important; text-align: center; }
+      .event-date { margin: 0 auto; }
+    }
+    @media (max-width: 600px) {
+      .discovery-grid { grid-template-columns: 1fr; }
+      .newsletter-form { flex-direction: column; }
+    }
+    
+    /* Global section titles - dark mode compatible */
+    .section-title{
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      font-family: 'Playfair Display', serif;
+      color: var(--text);
+    }
+
+    .section-title span{
+      color: var(--accent);
+    }
+
+    .section-subtitle{
+      text-align: center;
+      color: var(--card-text-secondary);
+      margin-bottom: 3rem;
+    }
+    .mobile-nav-menu .nav-links a.active {
+  background: var(--accent) !important;
+  color: #fff !important;
+  border-color: var(--accent) !important;
+}
+.mobile-nav-menu .nav-links .home-sub-item {
+  padding-left: 20px !important;   /* reduce difference */
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  width: 100% !important;          /* force same width */
+}
+/* ===== TABLET RESPONSIVE FIX (768px – 1024px) ===== */
+@media (max-width: 1024px) {
+
+  /* Why Families Love Us → ONE BY ONE */
+  .discovery-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Explore Programs → ONE BY ONE */
+  .hover-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Make cards centered and clean */
+  .discovery-card,
+  .hover-item {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  transform: translateY(10px); /* smooth spacing */
+}
+ .signup-btn { 
+      background: var(--accent); 
+      color: #f2f2f6 !important; 
+      border: 2px solid var(--accent);
+    }
+    .signup-btn:hover {
+      background: var(--accent); 
+      color: #f6960f !important; 
+      border: 2px solid var(--accent); 
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Mobile Overlay -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo">
+        <i class="fas fa-seedling"></i>
+        <span class="logo-text">BrainBloom</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <ul class="nav-links">
+        <li class="dropdown">
+          <a href="#" class="active">Home <i class="fas fa-caret-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="index.html">Home 1</a></li>
+            <li><a href="home2.html">Home 2</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="service.html">Service</a></li>
+        <li><a href="art&craft.html">Art&Craft</a></li>
+        <li><a href="music.html">Music</a></li>
+         <li><a href="faq.html">Faq</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="dropdown">
+          <a href="#">Dashboard <i class="fas fa-caret-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="user.html">User Dashboard</a></li>
+            <li><a href="admin.html">Admin Dashboard</a></li>
+          </ul>
+        </li>
+        <li><a href="login.html" class="nav-btn login-btn">Login</a></li>
+        <li><a href="signup.html" class="nav-btn signup-btn">SignUp</a></li>
+        <!-- Theme and RTL buttons -->
+        <li>
+          <button class="control-btn" id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+        </li>
+        <li>
+          <button class="control-btn" id="rtlToggle" title="Toggle RTL"><i class="fas fa-exchange-alt"></i></button>
+        </li>
+      </ul>
+
+      <!-- Controls - Only hamburger on mobile -->
+      <div class="controls">
+        <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu -->
+ <div class="mobile-nav-menu" id="mobileNavMenu">
+    <ul class="nav-links">
+      <li><a href="#"><i class="fas fa-caret-down"></i> Home</a></li>
+      <li><a href="index.html" class="home-sub-item">Home 1</a></li>
+      <li><a href="home2.html" class="home-sub-item" class="active">Home 2</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="service.html">Service</a></li>
+        <li><a href="art&craft.html">Art&Craft</a></li>
+        <li><a href="music.html">Music</a></li>
+         <li><a href="faq.html">Faq</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      <li><a href="#"><i class="fas fa-caret-down"></i> Dashboard</a></li>
+      <li><a href="user.html" >User Dashboard</a></li>
+      <li><a href="admin.html" >Admin Dashboard</a></li>
+      <li><a href="loginPage.html">Login</a></li>
+      <li><a href="register.html">SignUp</a></li>
+    </ul>
+    <div class="mobile-controls">
+      <button class="control-btn" id="mobileThemeToggle"><i class="fas fa-moon"></i><span>Dark Mode</span></button>
+      <button class="control-btn" id="mobileRtlToggle"><i class="fas fa-exchange-alt"></i><span>RTL</span></button>
+    </div>
+  </div>
+
+  <!-- HERO BANNER – COMPLETELY UNCHANGED, NO GAPS -->
+  <section class="hero">
+    <div class="hero-container">
+     
+      <!-- LEFT CONTENT (orange gradient) -->
+      <div class="hero-left">
+        <p class="hero-sub">Welcome to BrainBloom</p>
+        <h1>ENRICHMENT<br>PROGRAM</h1>
+        <p class="hero-desc">
+          Where creativity meets confidence. Nurturing young minds through art, music, and discovery.
+        </p>
+        <a href="#" class="hero-btn">Explore Programs</a>
+      </div>
+
+      <!-- RIGHT IMAGE -->
+      <div class="hero-right">
+        <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=1200&auto=format&fit=crop" alt="Kids learning interior">
+        <div class="top-buttons">
+          <button>Welcome Back</button>
+          <button>Join BrainBloom</button>
+        </div>
+        <div class="dots">
+          <span class="active"></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALL SECTIONS – CONTENT UNCHANGED, ONLY ALIGNED -->
+  <section class="discovery-section">
+    <h2 class="section-title">Why families <span>love us</span></h2>
+<p class="section-subtitle">Unique programs that spark curiosity</p>
+   
+    <div class="discovery-grid">
+      <div class="discovery-card"><i class="fas fa-paint-brush"></i><h3>Art & Imagination</h3><p>From doodling to masterpieces, we nurture creative confidence.</p></div>
+      <div class="discovery-card"><i class="fas fa-music"></i><h3>Music & Rhythm</h3><p>Little maestros discover melody, beat, and self-expression.</p></div>
+      <div class="discovery-card"><i class="fas fa-robot"></i><h3>Future innovators</h3><p>Hands-on tech and problem‑solving for young minds.</p></div>
+    </div>
+  </section>
+
+  <section class="events-section">
+    <h2>Upcoming <span>events</span></h2>
+    <div class="event-item"><div class="event-date"><span class="day">15</span><span class="month">MAY</span></div><div class="event-desc"><h3>Creative studio open house</h3><p>Bring your child for a free trial – painting, clay, and collage. All materials included.</p><span class="event-tag">ages 4–9</span></div></div>
+    <div class="event-item"><div class="event-date"><span class="day">22</span><span class="month">MAY</span></div><div class="event-desc"><h3>Mini Mozart workshop</h3><p>Intro to rhythm, percussion, and playful singing. No experience needed.</p><span class="event-tag">ages 3–7</span></div></div>
+    <div class="event-item"><div class="event-date"><span class="day">05</span><span class="month">JUN</span></div><div class="event-desc"><h3>Parent‑child innovation lab</h3><p>Build a simple robot together and explore coding in pairs.</p><span class="event-tag">ages 6–12 + parent</span></div></div>
+  </section>
+
+  <!-- Mentor showcase -->
+  <section class="mentor-showcase">
+    <h2 class="section-title">Meet our <span>mentors</span></h2>
+<p class="section-subtitle">Passionate educators who make learning magical</p>
+    
+    <div class="mentor-row">
+      <div class="mentor-card-glass"><h3>Emma Rivera</h3><span>Art & Creativity</span><p>Helping children express imagination through color and storytelling.</p></div>
+      <div class="mentor-image"><img src="images\person (2).jpg" alt="mentor" onerror="this.src='https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=1200'"></div>
+    </div>
+    <div class="mentor-row reverse">
+      <div class="mentor-image"><img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=1200" alt="mentor"></div>
+      <div class="mentor-card-glass"><h3>James Chen</h3><span>Music & Movement</span><p>Building rhythm, energy, and confidence through music.</p></div>
+    </div>
+  </section>
+
+  <!-- Experience section -->
+  <section class="experience-section">
+    <div class="experience-container">
+      <div class="experience-image"><img src="https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=1200" alt="Kids learning"></div>
+      <div class="experience-content">
+        <h2>Learning beyond the <span>classroom</span></h2>
+        <p>At BrainBloom, we believe children learn best through exploration, creativity, and hands-on experiences. Our programs combine fun with real-world skills.</p>
+        <ul class="experience-points"><li><i class="fas fa-check-circle"></i> Interactive & activity-based learning</li><li><i class="fas fa-check-circle"></i> Confidence & personality development</li><li><i class="fas fa-check-circle"></i> Safe and inspiring environment</li></ul>
+        <a href="#" class="experience-btn">Join a Program</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hover programs -->
+  <section class="hover-programs">
+    <h2>Explore Our <span>Programs</span></h2>
+    <p class="section-sub">Creative, fun & skill-building activities</p>
+    <div class="hover-grid">
+      <div class="hover-item"><img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1200"><div class="hover-overlay"><h3>Art Studio</h3><p>Painting, sketching & imagination</p></div></div>
+      <div class="hover-item"><img src="https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=1200"><div class="hover-overlay"><h3>Music Class</h3><p>Rhythm, vocals & instruments</p></div></div>
+      <div class="hover-item"><img src="images\pexels-pixabay-301703.jpg"><div class="hover-overlay"><h3>STEM Lab</h3><p>Robotics & experiments</p></div></div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-top">
+        <div class="footer-column"><a href="index.html" class="logo"><i class="fas fa-seedling"></i><span class="logo-text">BrainBloom</span></a><p style="margin-top:30px">Where minds expand and ideas flourish. Join our community of curious learners.</p></div>
+        <div class="footer-column"><h3>QuickLinks</h3><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="service.html">Service</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer-column"><h3>Resources</h3><ul><li><a href="#">Learning Hub</a></li><li><a href="#">Workshops</a></li><li><a href="#">Blog</a></li></ul></div>
+        <div class="footer-column"><h3>Social Links</h3><ul><li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li><li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li><li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li></ul></div>
+      </div>
+      <div class="footer-middle"><h3 style="color:#FFB347">BrainBloom</h3><div class="footer-links"><a href="#">Privacy Policy</a><a href="#">Terms & Conditions</a></div></div>
+      <div class="footer-bottom"><div class="copyright">© 2026 BrainBloom Enrichment. All rights reserved.</div></div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const hamburger = document.getElementById('hamburger');
+      const overlay = document.getElementById('mobileOverlay');
+      const mobileMenu = document.getElementById('mobileNavMenu');
+      const body = document.body;
+      if (!hamburger || !overlay || !mobileMenu) return;
+      function toggleMobileMenu() {
+        const isActive = mobileMenu.classList.contains('active');
+        mobileMenu.classList.toggle('active');
+        overlay.classList.toggle('active');
+        body.style.overflow = isActive ? '' : 'hidden';
+        hamburger.innerHTML = isActive ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+      }
+      hamburger.addEventListener('click', toggleMobileMenu);
+      overlay.addEventListener('click', toggleMobileMenu);
+      document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
+        link.addEventListener('click', function(e) {
+          if (!this.querySelector('.fa-caret-down')) toggleMobileMenu();
+        });
+      });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && mobileMenu.classList.contains('active')) toggleMobileMenu(); });
+      window.addEventListener('resize', () => { if (window.innerWidth > 1280 && mobileMenu.classList.contains('active')) toggleMobileMenu(); });
+
+      function toggleTheme() {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => { if (el) el.className = isDark ? 'fas fa-sun' : 'fas fa-moon'; });
+        const mobileSpan = document.querySelector('#mobileThemeToggle span');
+        if (mobileSpan) mobileSpan.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      }
+      function toggleRTL() {
+        const html = document.documentElement;
+        const isRTL = html.getAttribute('dir') === 'rtl';
+        html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
+        const mobileSpan = document.querySelector('#mobileRtlToggle span');
+        if (mobileSpan) mobileSpan.textContent = isRTL ? 'RTL' : 'LTR';
+        localStorage.setItem('direction', isRTL ? 'ltr' : 'rtl');
+      }
+      document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
+      document.getElementById('mobileThemeToggle')?.addEventListener('click', toggleTheme);
+      document.getElementById('rtlToggle')?.addEventListener('click', toggleRTL);
+      document.getElementById('mobileRtlToggle')?.addEventListener('click', toggleRTL);
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => { if (el) el.className = 'fas fa-sun'; });
+        const mobileSpan = document.querySelector('#mobileThemeToggle span');
+        if (mobileSpan) mobileSpan.textContent = 'Light Mode';
+      }
+      if (localStorage.getItem('direction') === 'rtl') {
+        document.documentElement.setAttribute('dir', 'rtl');
+        const mobileSpan = document.querySelector('#mobileRtlToggle span');
+        if (mobileSpan) mobileSpan.textContent = 'LTR';
+      }
+    })();
+    // Highlight active link automatically
+const currentPage = window.location.pathname.split("/").pop();
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  const linkPage = link.getAttribute("href");
+
+  if (linkPage === currentPage) {
+    link.classList.add("active");
+  }
+});
+  </script>
+</body>
+</html>

@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrainBloom · full dashboard suite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #FFB347;         /* orange – main */
+      --secondary: #FF8C42;        /* deeper orange – secondary */
+      --accent: #FFB347;           /* orange – unified */
+      --text: #1E2B3C;
+      --text-light: #2C3E50;
+      --text-inverse: #FFFFFF;
+      --bg: #FFFFFF;
+      --bg-light: #F4F7FC;
+      --border: #D9E2EC;
+      --shadow: 0 4px 12px rgba(255,180,71,0.08);
+      --shadow-lg: 0 20px 40px rgba(255,180,71,0.12);
+      --card-bg: #FFFFFF;
+      /* SIDEBAR – light mode: white background, orange borders & accents */
+      --sidebar-bg: #FFFFFF;         
+      --sidebar-text: #1E2B3C;       
+      --sidebar-icon: #FFB347;       
+      --sidebar-border: rgba(255, 180, 71, 0.4); 
+    }
+
+    .dark-mode {
+      --primary: #FFB347;
+      --secondary: #FF8C42;
+      --accent: #FFB347;
+      --text: #F0F3FA;
+      --text-light: #CAD5E2;
+      --bg: #000000;
+      --bg-light: #0A0A0A;
+      --border: #262626;
+      --card-bg: #1A1A1A;
+      /* DARK MODE SIDEBAR – black with orange borders */
+      --sidebar-bg: #121212;         /* blackish background */
+      --sidebar-text: #F0F3FA;        /* light text for contrast */
+      --sidebar-icon: #FFB347;        /* orange icons stay */
+      --sidebar-border: #FFB347;      /* solid orange border for dark mode */
+      /* adjust shadow for dark background */
+      --shadow: 0 4px 12px rgba(255,180,71,0.15);
+      --shadow-lg: 0 20px 40px rgba(255,180,71,0.2);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .logo-text {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* DASHBOARD LAYOUT */
+    .dashboard {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* --- SIDEBAR (light: white, dark: black, borders always orange) --- */
+    .sidebar {
+      width: 280px;
+      background: var(--sidebar-bg);
+      color: var(--sidebar-text);
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      transition: transform 0.3s ease;
+      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.03);
+      z-index: 1000;
+      border-right: 2px solid var(--sidebar-border);
+    }
+
+    /* Responsive sidebar: hidden by default on all screens, shown when active */
+    @media (max-width: 1024px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+      .sidebar.active {
+        transform: translateX(0);
+      }
+    }
+
+    .sidebar .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 3rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 2px solid var(--sidebar-border);
+    }
+    .logo-area a {
+      text-decoration: none;
+    }
+
+     .sidebar .logo-icon {
+      color: var(--accent);
+      font-size: 30px;
+      background: linear-gradient(135deg, #FFB347, #FF8C42);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .sidebar .logo-text {
+      font-size: 26px;
+      font-weight: 800;
+      background: linear-gradient(145deg, #FFB347, #FF8C42);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.5px;
+      line-height: 1;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+
+    .sidebar .nav {
+      flex: 1;
+      list-style: none;
+    }
+
+    .sidebar .nav li {
+      margin-bottom: 6px;
+    }
+
+    .sidebar .nav a {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 18px;
+      border-radius: 16px;
+      color: var(--sidebar-text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.2s;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+
+    .sidebar .nav a i {
+      width: 24px;
+      font-size: 1.2rem;
+      color: var(--sidebar-icon);
+      transition: 0.2s;
+    }
+
+    .sidebar .nav a:hover {
+      background: rgba(255, 180, 71, 0.2);
+      border: 1px solid var(--sidebar-border);
+    }
+
+    .sidebar .nav .active a {
+      background: rgba(255, 180, 71, 0.25);
+      border: 1px solid var(--sidebar-border);
+      font-weight: 600;
+    }
+
+    .sidebar .nav .active a i {
+      color: var(--primary);
+    }
+
+    .sidebar .user-info {
+      margin-top: auto;
+      padding-top: 2rem;
+      border-top: 2px solid var(--sidebar-border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .sidebar .avatar {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .sidebar .user-details {
+      flex: 1;
+    }
+
+    .sidebar .user-name {
+      font-weight: 600;
+      color: var(--sidebar-text);
+    }
+
+    .sidebar .user-role {
+      font-size: 0.75rem;
+      opacity: 0.8;
+      color: var(--sidebar-text);
+    }
+
+    /* signup button inside sidebar */
+    .signup-btn {
+      margin-top: 12px;
+      width: 100%;
+      padding: 12px 0;
+      border-radius: 40px;
+      border: none;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #1E2B3C;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .signup-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* --- MOBILE OVERLAY --- */
+    .mobile-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+      display: none;
+      backdrop-filter: blur(2px);
+    }
+    .mobile-overlay.active {
+      display: block;
+    }
+
+    /* --- MAIN CONTENT --- */
+    .main-content {
+      flex: 1;
+      margin-left: 280px;
+      padding: 2rem 2.5rem;
+      transition: margin 0.3s;
+      width: 100%;
+    }
+
+    /* top bar */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      background: var(--card-bg);
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .page-title h1 {
+      font-size: 1.8rem;
+    }
+
+    .page-title span {
+      color: var(--accent);
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    /* hamburger icon always visible on all screens */
+    .hamburger-icon {
+      font-size: 1.8rem;
+      color: var(--accent);
+      cursor: pointer;
+      margin-right: 1rem;
+    }
+
+    /* unified toggle group */
+    .toggle-group {
+      display: flex;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      padding: 4px;
+    }
+
+    .toggle-btn {
+      background: transparent;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s;
+    }
+
+    .toggle-btn i {
+      color: var(--accent);
+      font-size: 1rem;
+    }
+
+    .toggle-btn.active {
+      background: var(--accent);
+      color: #1E2B3C;
+    }
+    .toggle-btn.active i {
+      color: #1E2B3C;
+    }
+
+    /* dashboard cards (unchanged) */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.8rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      padding: 1.8rem 1.5rem;
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent);
+    }
+
+    .stat-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 180, 71, 0.15);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: var(--accent);
+    }
+
+    .stat-info h3 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .stat-info p {
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    .progress-row {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 1.8rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .progress-card {
+      background: var(--card-bg);
+      border-radius: 30px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1.8rem;
+    }
+
+    .progress-header h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .progress-header a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .course-progress-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .course-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .progress-bar-bg {
+      height: 10px;
+      background: var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 20px;
+    }
+
+    .upcoming-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .upcoming-item:last-child {
+      border-bottom: none;
+    }
+
+    .upcoming-date {
+      background: rgba(255, 180, 71, 0.15);
+      border-radius: 16px;
+      min-width: 55px;
+      height: 55px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .upcoming-date .day {
+      font-size: 1.3rem;
+      line-height: 1;
+    }
+
+    .upcoming-date .month {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+    }
+
+    .upcoming-desc h4 {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .upcoming-desc p {
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-header h2 {
+      font-size: 1.6rem;
+    }
+
+    .section-header a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .program-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .program-card {
+      background: var(--card-bg);
+      border-radius: 30px;
+      padding: 1.8rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      transition: 0.3s;
+    }
+
+    .program-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .program-icon {
+      width: 55px;
+      height: 55px;
+      background: rgba(255, 180, 71, 0.15);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+
+    .program-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .program-meta {
+      display: flex;
+      gap: 15px;
+      margin: 1rem 0;
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    .program-meta i {
+      margin-right: 5px;
+      color: var(--accent);
+    }
+
+    .program-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.2rem;
+    }
+
+    .badge {
+      background: rgba(255, 180, 71, 0.15);
+      color: var(--accent);
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .btn-outline {
+      border: 2px solid var(--accent);
+      background: transparent;
+      color: var(--accent);
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: var(--accent);
+      color: #1E2B3C;
+    }
+
+    /* page visibility */
+    .page-section { display: block; }
+    .hidden-page { display: none; }
+
+    /* other pages elements */
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .mentor-chip {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      padding: 0.5rem 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-right: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+    .timeline-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .timeline-time {
+      min-width: 80px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .badge-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 1.5rem;
+    }
+    .badge-card {
+      background: var(--card-bg);
+      border-radius: 30px;
+      padding: 2rem;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+    .message-list {
+      background: var(--card-bg);
+      border-radius: 30px;
+    }
+    .message-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1.2rem;
+      border-bottom: 1px solid var(--border);
+      align-items: center;
+    }
+    .settings-form {
+      background: var(--card-bg);
+      border-radius: 30px;
+      padding: 2rem;
+      max-width: 600px;
+    }
+    .settings-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* --- RESPONSIVE FIXES (tablet & mobile) --- */
+    @media (max-width: 1024px) {
+      .main-content {
+        margin-left: 0;
+        padding: 1.5rem;
+      }
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .program-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .progress-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .main-content {
+        padding: 1rem;
+      }
+      .stats-grid,
+      .program-cards,
+      .programs-grid,
+      .badge-grid {
+        grid-template-columns: 1fr;
+      }
+      .top-bar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1rem;
+      }
+      .page-title h1 {
+        font-size: 1.5rem;
+        text-align: center;
+      }
+      .top-actions {
+        justify-content: center;
+      }
+      .toggle-group {
+        width: 100%;
+        justify-content: center;
+      }
+      .toggle-btn {
+        flex: 1;
+        justify-content: center;
+        padding: 8px 12px;
+      }
+      .progress-card {
+        padding: 1.5rem;
+      }
+      .upcoming-date {
+        min-width: 45px;
+        height: 45px;
+      }
+      .upcoming-date .day {
+        font-size: 1.1rem;
+      }
+    }
+
+    /* dark mode adjustments */
+    .dark-mode .sidebar {
+      background: var(--sidebar-bg);
+      border-right: 2px solid #FFB347;
+    }
+    .dark-mode .sidebar .logo-area,
+    .dark-mode .sidebar .user-info {
+      border-color: #FFB347;
+    }
+    .dark-mode .sidebar .nav a i {
+      color: #FFB347;
+    }
+    .dark-mode .sidebar .nav a:hover,
+    .dark-mode .sidebar .nav .active a {
+      background: rgba(255, 180, 71, 0.2);
+    }
+    .dark-mode .badge {
+      background: rgba(255, 180, 71, 0.2);
+    }
+    .dark-mode .stat-card,
+    .dark-mode .progress-card,
+    .dark-mode .program-card,
+    .dark-mode .top-bar {
+      background: var(--card-bg);
+    }
+    .signup-btn {
+  margin-top: 8px;
+  width: 100%;
+  padding: 8px 0;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #1E2B3C;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="logo-area">
+        <div class="logo-icon"><i class="fas fa-seedling"></i></div>
+        <a href="index.html"><span class="logo-text">BrainBloom</span></a>
+      </div>
+      <ul class="nav" id="navMenu">
+        <li data-page="dashboard" class="active"><a><i class="fas fa-th-large"></i> <span>Dashboard</span></a></li>
+        <li data-page="myprograms"><a><i class="fas fa-calendar-alt"></i> <span>My Programs</span></a></li>
+        <li data-page="schedule"><a><i class="fas fa-clock"></i> <span>Schedule</span></a></li>
+        <li data-page="achievements"><a><i class="fas fa-trophy"></i> <span>Achievements</span></a></li>
+        <li data-page="messages"><a><i class="fas fa-message"></i> <span>Messages</span></a></li>
+        <li data-page="settings"><a><i class="fas fa-gear"></i> <span>Settings</span></a></li>
+      </ul>
+    <div class="user-info">
+  <div class="avatar">JD</div>
+
+  <div class="user-details">
+    <div class="user-name">Jessica D.</div>
+    <div class="user-role">Premium member</div>
+
+    <!-- MOVE BUTTON HERE -->
+   <a href="signup.html"> <button class="signup-btn">Sign Up</button></a>
+  </div>
+</div>
+    </aside>
+
+    <!-- Mobile overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <!-- top bar with hamburger icon -->
+      <div class="top-bar">
+        <div style="display: flex; align-items: center;">
+          <i class="fas fa-bars hamburger-icon" id="hamburgerBtn"></i>
+          <div class="page-title" id="pageTitle">
+            <h1>Welcome back, <span>Jessica</span></h1>
+          </div>
+        </div>
+        <div class="top-actions">
+          <div class="toggle-group">
+            <button class="toggle-btn" id="themeToggleBtn"><i class="fas fa-moon"></i> <span>Dark</span></button>
+            <button class="toggle-btn" id="rtlToggleBtn"><i class="fas fa-exchange-alt"></i> <span>RTL</span></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- DASHBOARD PAGE -->
+      <div id="page-dashboard" class="page-section">
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-icon"><i class="fas fa-book-open"></i></div><div class="stat-info"><h3>6</h3><p>Active programs</p></div></div>
+          <div class="stat-card"><div class="stat-icon"><i class="fas fa-clock"></i></div><div class="stat-info"><h3>12</h3><p>Hours this week</p></div></div>
+          <div class="stat-card"><div class="stat-icon"><i class="fas fa-star"></i></div><div class="stat-info"><h3>8</h3><p>Certificates</p></div></div>
+          <div class="stat-card"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-info"><h3>240</h3><p>Community points</p></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-card">
+            <div class="progress-header"><h3>Current progress</h3><a href="#">View all</a></div>
+            <div class="course-progress-item"><div class="course-info"><span>Creative Studio</span> <span>75%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width:75%"></div></div></div>
+            <div class="course-progress-item"><div class="course-info"><span>Melody Makers</span> <span>45%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width:45%"></div></div></div>
+            <div class="course-progress-item"><div class="course-info"><span>Future Innovators</span> <span>90%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width:90%"></div></div></div>
+            <div class="course-progress-item"><div class="course-info"><span>Art & Imagination</span> <span>30%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width:30%"></div></div></div>
+          </div>
+          <div class="progress-card">
+            <div class="progress-header"><h3>Upcoming sessions</h3><a href="#">Calendar</a></div>
+            <div class="upcoming-item"><div class="upcoming-date"><span class="day">15</span><span class="month">MAY</span></div><div class="upcoming-desc"><h4>Creative Studio</h4><p>10:00 – 11:30 · with Emma R.</p></div></div>
+            <div class="upcoming-item"><div class="upcoming-date"><span class="day">18</span><span class="month">MAY</span></div><div class="upcoming-desc"><h4>Music & Rhythm</h4><p>14:00 – 15:30 · with James C.</p></div></div>
+            <div class="upcoming-item"><div class="upcoming-date"><span class="day">22</span><span class="month">MAY</span></div><div class="upcoming-desc"><h4>STEM lab</h4><p>16:00 – 17:30 · with Priya K.</p></div></div>
+          </div>
+        </div>
+        <div class="section-header"><h2>My <span>programs</span></h2><a href="#">Browse all <i class="fas fa-arrow-right"></i></a></div>
+        <div class="program-cards">
+          <div class="program-card"><div class="program-icon"><i class="fas fa-paint-brush"></i></div><h3>Creative Studio</h3><p style="color: var(--text-light); font-size:0.9rem;">Painting, collage, imagination</p><div class="program-meta"><span><i class="fas fa-user"></i> Emma R.</span><span><i class="fas fa-calendar"></i> Tue, Thu</span></div><div class="program-footer"><span class="badge">in progress</span><button class="btn-outline">continue</button></div></div>
+          <div class="program-card"><div class="program-icon"><i class="fas fa-music"></i></div><h3>Melody Makers</h3><p style="color: var(--text-light); font-size:0.9rem;">Voice, rhythm, instruments</p><div class="program-meta"><span><i class="fas fa-user"></i> James C.</span><span><i class="fas fa-calendar"></i> Mon, Wed</span></div><div class="program-footer"><span class="badge">in progress</span><button class="btn-outline">continue</button></div></div>
+          <div class="program-card"><div class="program-icon"><i class="fas fa-robot"></i></div><h3>Future Innovators</h3><p style="color: var(--text-light); font-size:0.9rem;">Robotics, coding, design</p><div class="program-meta"><span><i class="fas fa-user"></i> Priya K.</span><span><i class="fas fa-calendar"></i> Fri</span></div><div class="program-footer"><span class="badge">almost done</span><button class="btn-outline">review</button></div></div>
+        </div>
+        <div style="background: var(--card-bg); border-radius: 30px; padding: 2rem; border: 1px solid var(--border);"><h3 style="margin-bottom: 1.5rem;">Recent activity</h3><div style="display: flex; flex-direction: column; gap: 1rem;"><div style="display: flex; gap: 1rem; align-items: center;"><div style="width: 40px; height: 40px; background: rgba(255, 180, 71, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--accent);"><i class="fas fa-check"></i></div><div><strong>Completed lesson:</strong> Color theory · 2h ago</div></div><div style="display: flex; gap: 1rem; align-items: center;"><div style="width: 40px; height: 40px; background: rgba(255, 180, 71, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--accent);"><i class="fas fa-star"></i></div><div><strong>Earned badge:</strong> Creative mind · yesterday</div></div><div style="display: flex; gap: 1rem; align-items: center;"><div style="width: 40px; height: 40px; background: rgba(255, 180, 71, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--accent);"><i class="fas fa-calendar-check"></i></div><div><strong>Registered for:</strong> Summer workshop · 3 days ago</div></div></div></div>
+      </div>
+
+      <!-- other pages (hidden) -->
+      <div id="page-myprograms" class="page-section hidden-page">
+        <h2 style="margin-bottom: 1.5rem;">📚 All my programs</h2>
+        <div class="programs-grid">
+          <div class="program-card"><i class="fas fa-laptop-code program-icon"></i><h3>Web wizards</h3><p>HTML/CSS/JS · 70%</p><progress value="70" max="100" style="width:100%; height:8px; border-radius:20px;"></progress></div>
+          <div class="program-card"><i class="fas fa-camera program-icon"></i><h3>Photo club</h3><p>composition · 40%</p><progress value="40" max="100"></progress></div>
+          <div class="program-card"><i class="fas fa-dna program-icon"></i><h3>Young scientists</h3><p>STEM · 15%</p><progress value="15" max="100"></progress></div>
+          <div class="program-card"><i class="fas fa-palette program-icon"></i><h3>Watercolor</h3><p>techniques · 90%</p><progress value="90" max="100"></progress></div>
+        </div>
+        <div style="margin-top: 2rem;"><h3>👩‍🏫 Mentors</h3><div class="mentor-chip"><i class="fas fa-user-circle"></i> Emma R. · Creative</div><div class="mentor-chip"><i class="fas fa-user-circle"></i> James C. · Music</div><div class="mentor-chip"><i class="fas fa-user-circle"></i> Priya K. · STEM</div></div>
+      </div>
+      <div id="page-schedule" class="page-section hidden-page">
+        <h2>🗓️ Weekly schedule</h2>
+        <div style="background:var(--card-bg); border-radius:30px; padding:1.5rem; margin-top:1.5rem;">
+          <div class="timeline-item"><span class="timeline-time">Mon 10am</span><span>Melody Makers · James C.</span></div>
+          <div class="timeline-item"><span class="timeline-time">Tue 2pm</span><span>Creative Studio · Emma R.</span></div>
+          <div class="timeline-item"><span class="timeline-time">Wed 11am</span><span>Web wizards · TA session</span></div>
+          <div class="timeline-item"><span class="timeline-time">Thu 3pm</span><span>Young scientists · lab</span></div>
+          <div class="timeline-item"><span class="timeline-time">Fri 9am</span><span>Portfolio review</span></div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:2rem;">
+          <div class="progress-card"><i class="fas fa-bell"></i> <strong>Deadline:</strong> project due May 20</div>
+          <div class="progress-card"><i class="fas fa-clock"></i> <strong>Study hours:</strong> 8/12 this week</div>
+        </div>
+      </div>
+      <div id="page-achievements" class="page-section hidden-page">
+        <h2>🏆 Achievements</h2>
+        <div class="badge-grid" style="margin-top:1.5rem;">
+          <div class="badge-card"><div class="badge-icon">🔥</div><h3>7‑day streak</h3><p>logged in 7 days</p></div>
+          <div class="badge-card"><div class="badge-icon">🎨</div><h3>Creative mind</h3><p>5 projects done</p></div>
+          <div class="badge-card"><div class="badge-icon">🤝</div><h3>Collaborator</h3><p>3 group workshops</p></div>
+          <div class="badge-card"><div class="badge-icon">⚡</div><h3>Early bird</h3><p>5 morning sessions</p></div>
+        </div>
+        <div style="background:var(--card-bg); border-radius:30px; padding:1.5rem; margin-top:2rem;"><h3>🎯 Next: Innovator badge</h3><p>Finish Future Innovators</p></div>
+      </div>
+      <div id="page-messages" class="page-section hidden-page">
+        <h2>💬 Messages</h2>
+        <div class="message-list">
+          <div class="message-item"><i class="fas fa-user-circle fa-2x" style="color:var(--accent);"></i><div><strong>Emma R.</strong> Great progress! <span style="color:var(--text-light);">· 2h ago</span></div></div>
+          <div class="message-item"><i class="fas fa-user-circle fa-2x" style="color:var(--accent);"></i><div><strong>James C.</strong> Don't forget melody session. <span>· 5h ago</span></div></div>
+          <div class="message-item"><i class="fas fa-user-circle fa-2x" style="color:var(--accent);"></i><div><strong>Priya K.</strong> STEM notes shared. <span>· yesterday</span></div></div>
+        </div>
+      </div>
+      <div id="page-settings" class="page-section hidden-page">
+        <h2>⚙️ Settings</h2>
+        <div class="settings-form">
+          <div class="settings-row"><span>Email notifications</span> <input type="checkbox" checked></div>
+          <div class="settings-row"><span>Dark mode default</span> <span>(use toggle)</span></div>
+          <div class="settings-row"><span>Language</span> <select><option>English</option><option>Spanish</option></select></div>
+          <div class="settings-row"><span>Time zone</span> <span>EST</span></div>
+          <button class="btn-outline" style="margin-top:1.5rem;">Save</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (function() {
+      const themeBtn = document.getElementById('themeToggleBtn');
+      const rtlBtn = document.getElementById('rtlToggleBtn');
+      const html = document.documentElement;
+
+      // Theme toggle
+      function setTheme(isDark) {
+        if (isDark) {
+          document.body.classList.add('dark-mode');
+          themeBtn.innerHTML = '<i class="fas fa-sun"></i> <span>Light</span>';
+        } else {
+          document.body.classList.remove('dark-mode');
+          themeBtn.innerHTML = '<i class="fas fa-moon"></i> <span>Dark</span>';
+        }
+        localStorage.setItem('dashboardTheme', isDark ? 'dark' : 'light');
+      }
+      themeBtn.addEventListener('click', () => setTheme(!document.body.classList.contains('dark-mode')));
+      if (localStorage.getItem('dashboardTheme') === 'dark') setTheme(true); else setTheme(false);
+
+      // RTL toggle
+      function setRTL(isRTL) {
+        html.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+        rtlBtn.innerHTML = isRTL ? '<i class="fas fa-exchange-alt"></i> <span>LTR</span>' : '<i class="fas fa-exchange-alt"></i> <span>RTL</span>';
+        localStorage.setItem('dashboardDir', isRTL ? 'rtl' : 'ltr');
+      }
+      rtlBtn.addEventListener('click', () => setRTL(html.getAttribute('dir') !== 'rtl'));
+      if (localStorage.getItem('dashboardDir') === 'rtl') setRTL(true); else setRTL(false);
+
+      // Sidebar toggle
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('mobileOverlay');
+      const hamburger = document.getElementById('hamburgerBtn');
+
+      function toggleSidebar() {
+        sidebar.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+      }
+
+      hamburger.addEventListener('click', toggleSidebar);
+      overlay.addEventListener('click', toggleSidebar);
+
+      // Page navigation
+      const navItems = document.querySelectorAll('.sidebar .nav li');
+      const sections = {
+        dashboard: document.getElementById('page-dashboard'),
+        myprograms: document.getElementById('page-myprograms'),
+        schedule: document.getElementById('page-schedule'),
+        achievements: document.getElementById('page-achievements'),
+        messages: document.getElementById('page-messages'),
+        settings: document.getElementById('page-settings')
+      };
+      const pageTitle = document.querySelector('#pageTitle h1');
+
+      function showPage(pageId) {
+        Object.values(sections).forEach(s => s.classList.add('hidden-page'));
+        if (sections[pageId]) sections[pageId].classList.remove('hidden-page');
+        navItems.forEach(li => li.classList.remove('active'));
+        document.querySelector(`.sidebar .nav li[data-page="${pageId}"]`).classList.add('active');
+        const names = { dashboard:'Dashboard', myprograms:'My Programs', schedule:'Schedule', achievements:'Achievements', messages:'Messages', settings:'Settings' };
+        pageTitle.innerHTML = `Welcome back, <span>Jessica</span> · <span style="font-size:1rem;">${names[pageId]}</span>`;
+      }
+
+      navItems.forEach(li => {
+        li.addEventListener('click', (e) => {
+          e.preventDefault();
+          const page = li.dataset.page;
+          if (page) {
+            showPage(page);
+            if (window.innerWidth <= 1024) toggleSidebar();
+          }
+        });
+      });
+
+      showPage('dashboard');
+
+      // Close sidebar on resize above 1024px
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 1024) {
+          sidebar.classList.remove('active');
+          overlay.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrainBloom · Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
+
+  <style>
+    :root {
+      --primary: #FFB347;
+      --secondary: #FF8C42;
+      --accent: #FFB347;
+      --bg: #FFFFFF;
+      --input-bg: #F4F7FC;
+      --input-text: #1E2B3C;
+      --btn-bg: #FFB347;
+      --btn-text: #1E2B3C;
+      --card-bg: #FFFFFF;
+      --text-color: #1E2B3C;
+      --toggle-icon-color: #FFB347;
+      --shadow: 0 20px 40px rgba(255, 180, 71, 0.12);
+      --border-light: #E0E7F0;
+      --toggle-bg: rgba(255,255,255,0.8);
+    }
+    .dark-mode {
+      --primary: #FFB347;
+      --secondary: #FF8C42;
+      --accent: #FFB347;
+      --bg: #000000;
+      --input-bg: #1A1A1A;
+      --input-text: #EDF2F7;
+      --btn-bg: #FFB347;
+      --btn-text: #000000;
+      --card-bg: #0A0A0A;
+      --text-color: #FFFFFF;
+      --toggle-icon-color: #FFB347;
+      --shadow: 0 20px 40px rgba(255, 180, 71, 0.15);
+      --border-light: #262626;
+      --toggle-bg: #1A1A1A;
+    }
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+      font-family: 'Poppins', sans-serif; 
+    }
+
+    body, html {
+      height: 100%;
+      width: 100%;
+      background: var(--bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background 0.3s;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+    }
+
+    /* Background blobs – hidden in dark mode */
+    body::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: #FFB347;
+      border-radius: 50%;
+      top: -150px;
+      left: -150px;
+      opacity: 0.08;
+      filter: blur(100px);
+      z-index: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    body::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: #FF8C42;
+      border-radius: 50%;
+      bottom: -120px;
+      right: -120px;
+      opacity: 0.08;
+      filter: blur(100px);
+      z-index: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    .dark-mode::before,
+    .dark-mode::after {
+      opacity: 0;
+    }
+
+    /* Floating toggle buttons – top right corner */
+    .floating-toggles {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+      z-index: 100;
+    }
+
+    .toggle-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: var(--toggle-bg);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-light);
+      color: var(--toggle-icon-color);
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+    }
+    .toggle-btn:hover {
+      background: var(--primary);
+      color: #1E2B3C;
+      transform: scale(1.08);
+    }
+
+    /* main card – strictly NO scroll */
+    .login-card {
+      background: var(--card-bg);
+      padding: 32px 32px 36px;
+      border-radius: 36px;
+      width: min(400px, 94vw);       /* slightly narrower for login */
+      max-height: 98vh;
+      overflow: visible;
+      color: var(--text-color);
+      transition: background 0.3s, color 0.3s;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-light);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Card header: centered logo */
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 180, 71, 0.15);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      color: var(--primary);
+    }
+    .logo-text {
+      font-size: 26px;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      background: linear-gradient(135deg, #FFB347, #FF8C42);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .dark-mode .logo-text {
+      -webkit-text-fill-color: #FFB347;
+      background: none;
+      color: #FFB347;
+    }
+
+    h2 {
+      margin-bottom: 24px;
+      font-weight: 600;
+      color: var(--text-color);
+      font-size: 1.8rem;
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 18px;
+      margin-bottom: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--border-light);
+      background: var(--input-bg);
+      color: var(--input-text);
+      font-size: 15px;
+      transition: background 0.3s, color 0.3s;
+      outline: none;
+    }
+    input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(255, 180, 71, 0.2);
+    }
+    input::placeholder {
+      color: #999;
+    }
+    .dark-mode input::placeholder {
+      color: #aaa;
+    }
+
+    /* Forgot password & remember me row (optional) */
+    .login-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: -5px 0 20px 0;
+      font-size: 13px;
+    }
+    .remember {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-color);
+    }
+    .remember input {
+      width: 16px;
+      height: 16px;
+      margin: 0;
+      accent-color: var(--primary);
+    }
+    .forgot-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .forgot-link:hover {
+      text-decoration: underline;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 18px;
+      border: none;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      border: 1px solid transparent;
+      margin: 8px 0 20px;
+    }
+    .login-btn:hover {
+      background: #FF8C42;
+      color: #1E2B3C;
+    }
+
+    /* Social login */
+    .social-login {
+      margin: 16px 0 20px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+    .social-login button {
+      width: 50px;
+      height: 50px;
+      border-radius: 16px;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--input-bg);
+      color: var(--input-text);
+      border: 1px solid var(--border-light);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .social-login button:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .bottom-text {
+      font-size: 14px;
+      color: #888;
+      text-align: center;
+    }
+    .bottom-text a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .bottom-text a:hover {
+      text-decoration: underline;
+    }
+    .dark-mode .bottom-text {
+      color: #aaa;
+    }
+
+    /* RTL support */
+    [dir="rtl"] .floating-toggles {
+      right: auto;
+      left: 20px;
+    }
+    [dir="rtl"] .login-options {
+      flex-direction: row-reverse;
+    }
+    .logo-area a {
+  text-decoration: none;
+}
+
+.logo-area a:hover {
+  text-decoration: none;
+}
+ .signup-btn { 
+      background: var(--accent); 
+      color: #f2f2f6 !important; 
+      border: 2px solid var(--accent);
+    }
+    .signup-btn:hover {
+      background: var(--accent); 
+      color: #f6960f !important; 
+      border: 2px solid var(--accent); 
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Floating toggle buttons – top right corner -->
+  <div class="floating-toggles">
+    <button class="toggle-btn" id="themeToggle" title="Toggle dark mode">
+      <i class="fas fa-moon"></i>
+    </button>
+    <button class="toggle-btn" id="rtlToggle" title="Toggle RTL">
+      <i class="fas fa-exchange-alt"></i>
+    </button>
+  </div>
+
+  <div class="login-card">
+    <!-- Centered logo -->
+    <div class="card-header">
+      <div class="logo-area">
+        <div class="logo-icon"><i class="fas fa-seedling"></i></div>
+       <a href="index.html"> <span class="logo-text">BrainBloom</span></a>
+      </div>
+    </div>
+
+    <h2>Welcome back</h2>
+
+    <!-- Email field -->
+    <input type="email" placeholder="Email address" value="jessica@brainbloom.com">
+
+    <!-- Password field -->
+    <input type="password" placeholder="Password" value="••••••••">
+
+    <!-- Forgot password & remember me (optional but adds completeness) -->
+    <div class="login-options">
+      <label class="remember">
+        <input type="checkbox"> Remember me
+      </label>
+      <a href="#" class="forgot-link">Forgot password?</a>
+    </div>
+
+    <button class="login-btn" type="button">Sign In</button>
+
+    <!-- Social login (consistent with sign-up) -->
+    <div class="social-login">
+      <button type="button"><i class="fab fa-google"></i></button>
+      <button type="button"><i class="fab fa-facebook-f"></i></button>
+      <button type="button"><i class="fab fa-github"></i></button>
+    </div>
+
+    <div class="bottom-text">
+      Don't have an account? <a href="signup.html">Sign up</a>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const themeBtn = document.getElementById('themeToggle');
+      const rtlBtn = document.getElementById('rtlToggle');
+      const themeIcon = themeBtn.querySelector('i');
+
+      function toggleTheme() {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        localStorage.setItem('brainBloomTheme', isDark ? 'dark' : 'light');
+      }
+
+      function toggleRTL() {
+        const html = document.documentElement;
+        const isRTL = html.getAttribute('dir') === 'rtl';
+        html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
+        localStorage.setItem('brainBloomDir', isRTL ? 'ltr' : 'rtl');
+      }
+
+      themeBtn.addEventListener('click', toggleTheme);
+      rtlBtn.addEventListener('click', toggleRTL);
+
+      const savedTheme = localStorage.getItem('brainBloomTheme');
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeIcon.className = 'fas fa-sun';
+      } else {
+        document.body.classList.remove('dark-mode');
+        themeIcon.className = 'fas fa-moon';
+      }
+
+      const savedDir = localStorage.getItem('brainBloomDir');
+      if (savedDir === 'rtl') {
+        document.documentElement.setAttribute('dir', 'rtl');
+      } else {
+        document.documentElement.setAttribute('dir', 'ltr');
+      }
+    })();
+  </script>
+</body>
+</html>

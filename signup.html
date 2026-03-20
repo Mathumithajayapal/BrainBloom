@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrainBloom · Sign Up</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
+
+  <style>
+    :root {
+      --primary: #FFB347;
+      --secondary: #FF8C42;
+      --accent: #FFB347;
+      --bg: #FFFFFF;
+      --input-bg: #F4F7FC;
+      --input-text: #1E2B3C;
+      --btn-bg: #FFB347;
+      --btn-text: #1E2B3C;
+      --card-bg: #FFFFFF;
+      --text-color: #1E2B3C;
+      --toggle-icon-color: #FFB347;
+      --shadow: 0 20px 40px rgba(255, 180, 71, 0.12);
+      --border-light: #E0E7F0;
+      --toggle-bg: rgba(255,255,255,0.8);
+    }
+    .dark-mode {
+      --primary: #FFB347;
+      --secondary: #FF8C42;
+      --accent: #FFB347;
+      --bg: #000000;
+      --input-bg: #1A1A1A;
+      --input-text: #EDF2F7;
+      --btn-bg: #FFB347;
+      --btn-text: #000000;
+      --card-bg: #0A0A0A;
+      --text-color: #FFFFFF;
+      --toggle-icon-color: #FFB347;
+      --shadow: 0 20px 40px rgba(255, 180, 71, 0.15);
+      --border-light: #262626;
+      --toggle-bg: #1A1A1A;
+    }
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+      font-family: 'Poppins', sans-serif; 
+    }
+
+    body, html {
+      height: 100%;
+      width: 100%;
+      background: var(--bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background 0.3s;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;  /* NO SCROLLING — strictly hidden */
+    }
+
+    /* Background blobs – hidden in dark mode */
+    body::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: #FFB347;
+      border-radius: 50%;
+      top: -150px;
+      left: -150px;
+      opacity: 0.08;
+      filter: blur(100px);
+      z-index: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    body::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: #FF8C42;
+      border-radius: 50%;
+      bottom: -120px;
+      right: -120px;
+      opacity: 0.08;
+      filter: blur(100px);
+      z-index: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    .dark-mode::before,
+    .dark-mode::after {
+      opacity: 0;
+    }
+
+    /* Floating toggle buttons – top right corner */
+    .floating-toggles {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+      z-index: 100;
+    }
+
+    .toggle-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: var(--toggle-bg);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-light);
+      color: var(--toggle-icon-color);
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+    }
+    .toggle-btn:hover {
+      background: var(--primary);
+      color: #1E2B3C;
+      transform: scale(1.08);
+    }
+
+    /* main card – strictly NO scroll, all content visible */
+    .signup-card {
+      background: var(--card-bg);
+      padding: 28px 32px 32px;      /* fine-tuned padding */
+      border-radius: 36px;
+      width: min(440px, 94vw);       /* slightly narrower for perfect fit */
+      max-height: 98vh;              /* never exceeds viewport */
+      overflow: visible;             /* NO scrollbar inside card */
+      color: var(--text-color);
+      transition: background 0.3s, color 0.3s;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-light);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Card header: centered logo */
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;          /* reduced spacing */
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 180, 71, 0.15);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      color: var(--primary);
+    }
+    .logo-text {
+      font-size: 26px;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      background: linear-gradient(135deg, #FFB347, #FF8C42);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .dark-mode .logo-text {
+      -webkit-text-fill-color: #FFB347;
+      background: none;
+      color: #FFB347;
+    }
+
+    h2 {
+      margin-bottom: 16px;
+      font-weight: 600;
+      color: var(--text-color);
+      font-size: 1.7rem;
+      text-align: center;
+    }
+
+    /* all fields grouped tightly */
+    .name-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .name-row input {
+      flex: 1;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 16px;           /* slightly smaller padding */
+      margin-bottom: 12px;
+      border-radius: 18px;
+      border: 1px solid var(--border-light);
+      background: var(--input-bg);
+      color: var(--input-text);
+      font-size: 14px;
+      transition: background 0.3s, color 0.3s;
+      outline: none;
+    }
+    input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(255, 180, 71, 0.2);
+    }
+    input::placeholder {
+      color: #999;
+    }
+    .dark-mode input::placeholder {
+      color: #aaa;
+    }
+
+    .signup-btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 18px;
+      border: none;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+      border: 1px solid transparent;
+      margin: 8px 0 14px;          /* compact spacing */
+    }
+    .signup-btn:hover {
+      background: #FF8C42;
+      color: #1E2B3C;
+    }
+
+    /* Terms & Conditions — now added exactly as requested */
+    .terms {
+      margin: 0 0 16px 0;
+      font-size: 12.5px;
+      color: #888;
+      text-align: center;
+      line-height: 1.5;
+    }
+    .terms a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .terms a:hover {
+      text-decoration: underline;
+    }
+    .dark-mode .terms {
+      color: #aaa;
+    }
+
+    .social-login {
+      margin: 12px 0 14px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .social-login button {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--input-bg);
+      color: var(--input-text);
+      border: 1px solid var(--border-light);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .social-login button:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .bottom-text {
+      font-size: 13px;
+      color: #888;
+      text-align: center;
+    }
+    .bottom-text a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .bottom-text a:hover {
+      text-decoration: underline;
+    }
+    .dark-mode .bottom-text {
+      color: #aaa;
+    }
+
+    /* RTL support */
+    [dir="rtl"] .floating-toggles {
+      right: auto;
+      left: 20px;
+    }
+    .logo-area a {
+  text-decoration: none;
+}
+
+.logo-area a:hover {
+  text-decoration: none;
+}
+@media (max-width: 480px) {
+
+  .signup-card {
+    width: 92%;
+    padding: 20px 16px;
+    border-radius: 24px;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  input {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .signup-btn {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .logo-text {
+    font-size: 22px;
+  }
+
+  .logo-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 22px;
+  }
+
+  .floating-toggles {
+    top: 12px;
+    right: 12px;
+    gap: 6px;
+  }
+
+  .toggle-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+}
+  </style>
+</head>
+<body>
+  <!-- Floating toggle buttons – top right corner -->
+  <div class="floating-toggles">
+    <button class="toggle-btn" id="themeToggle" title="Toggle dark mode">
+      <i class="fas fa-moon"></i>
+    </button>
+    <button class="toggle-btn" id="rtlToggle" title="Toggle RTL">
+      <i class="fas fa-exchange-alt"></i>
+    </button>
+  </div>
+
+  <div class="signup-card">
+    <!-- Centered logo -->
+    <div class="card-header">
+      <div class="logo-area">
+        <div class="logo-icon"><i class="fas fa-seedling"></i></div>
+      <a href="index.html">  <span class="logo-text">BrainBloom</span></a>
+      </div>
+    </div>
+
+    <h2>Create account</h2>
+
+    <!-- Name row (single field) -->
+    <div class="name-row">
+      <input type="text" placeholder="Full Name">
+    </div>
+
+    <input type="email" placeholder="Email address">
+    <input type="password" placeholder="Password">
+    <input type="password" placeholder="Confirm password">
+
+    <!-- Terms & Conditions – strictly included -->
+    <div class="terms">
+      By joining you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+    </div>
+
+    <button class="signup-btn" type="button">Sign Up</button>
+
+    <!-- Social signup -->
+    <div class="social-login">
+      <button type="button"><i class="fab fa-google"></i></button>
+      <button type="button"><i class="fab fa-facebook-f"></i></button>
+      <button type="button"><i class="fab fa-github"></i></button>
+    </div>
+
+    <div class="bottom-text">
+      Already have an account? <a href="login.html">Sign in</a>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const themeBtn = document.getElementById('themeToggle');
+      const rtlBtn = document.getElementById('rtlToggle');
+      const themeIcon = themeBtn.querySelector('i');
+
+      function toggleTheme() {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        localStorage.setItem('brainBloomTheme', isDark ? 'dark' : 'light');
+      }
+
+      function toggleRTL() {
+        const html = document.documentElement;
+        const isRTL = html.getAttribute('dir') === 'rtl';
+        html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
+        localStorage.setItem('brainBloomDir', isRTL ? 'ltr' : 'rtl');
+      }
+
+      themeBtn.addEventListener('click', toggleTheme);
+      rtlBtn.addEventListener('click', toggleRTL);
+
+      const savedTheme = localStorage.getItem('brainBloomTheme');
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeIcon.className = 'fas fa-sun';
+      } else {
+        document.body.classList.remove('dark-mode');
+        themeIcon.className = 'fas fa-moon';
+      }
+
+      const savedDir = localStorage.getItem('brainBloomDir');
+      if (savedDir === 'rtl') {
+        document.documentElement.setAttribute('dir', 'rtl');
+      } else {
+        document.documentElement.setAttribute('dir', 'ltr');
+      }
+    })();
+  </script>
+</body>
+</html>
