@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BrainBloom · full admin suite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>BrainBloom · Admin Dashboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
-
   <style>
     * {
       margin: 0;
@@ -61,9 +56,7 @@
       overflow-x: hidden;
     }
 
-    h1,
-    h2,
-    h3 {
+    h1, h2, h3 {
       font-family: 'Playfair Display', serif;
     }
 
@@ -73,7 +66,7 @@
       position: relative;
     }
 
-    /* --- SIDEBAR (orange border) with mobile overlay --- */
+    /* --- SIDEBAR with EXACT LOGO STYLING from reference --- */
     .sidebar {
       width: 280px;
       background: var(--sidebar-bg);
@@ -89,22 +82,20 @@
       border-right: 3px solid var(--sidebar-border);
       z-index: 1000;
       transform: translateX(0);
-      /* visible by default on desktop */
     }
 
-    /* mobile & tablet sidebar hidden by default */
     @media (max-width: 1024px) {
       .sidebar {
         transform: translateX(-100%);
         width: 280px;
         box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
       }
-
       .sidebar.active {
         transform: translateX(0);
       }
     }
 
+    /* EXACT LOGO STYLES - matches reference file exactly */
     .sidebar .logo-area {
       display: flex;
       align-items: center;
@@ -116,6 +107,9 @@
 
     .sidebar .logo-area a {
       text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
     .sidebar .logo-icon {
@@ -141,6 +135,7 @@
       font-weight: 700;
     }
 
+    /* Navigation */
     .sidebar .nav {
       flex: 1;
       list-style: none;
@@ -195,6 +190,55 @@
       font-weight: 600;
     }
 
+    .user-details {
+      flex: 1;
+    }
+
+    .user-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .user-role {
+      font-size: 0.75rem;
+      opacity: 0.7;
+    }
+
+    /* Sign Up Button - exact styling from reference */
+    .signup-btn {
+      margin-top: 12px;
+      width: 100%;
+      padding: 10px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 179, 71, 0.4);
+      background: linear-gradient(135deg, #FFB347, #FF8C42);
+      color: #1E2B3C;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(255, 140, 66, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .signup-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(255, 140, 66, 0.3);
+    }
+
+    .signup-btn:active {
+      transform: scale(0.97);
+    }
+
+    .signup-btn i {
+      font-size: 0.85rem;
+    }
+
     /* --- MAIN CONTENT --- */
     .main-content {
       flex: 1;
@@ -204,7 +248,6 @@
       width: 100%;
     }
 
-    /* adjust margin when sidebar hidden on mobile/tablet */
     @media (max-width: 1024px) {
       .main-content {
         margin-left: 0;
@@ -226,8 +269,15 @@
       gap: 1rem;
     }
 
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
     .page-title h1 {
       font-size: 1.8rem;
+      font-family: 'Playfair Display', serif;
     }
 
     .page-title span {
@@ -235,6 +285,7 @@
       padding: 0.2rem 1rem;
       border-radius: 40px;
       margin-left: 0.5rem;
+      font-size: 0.9rem;
     }
 
     .top-actions {
@@ -270,12 +321,6 @@
       color: var(--accent);
     }
 
-    .toggle-btn.active {
-      background: var(--accent);
-      color: #1E2B3C;
-    }
-
-    /* hamburger button for mobile & tablet */
     .mobile-menu-btn {
       display: none;
       background: var(--card-bg);
@@ -302,7 +347,6 @@
       }
     }
 
-    /* overlay for mobile */
     .sidebar-overlay {
       display: none;
       position: fixed;
@@ -319,7 +363,7 @@
       display: block;
     }
 
-    /* --- page visibility --- */
+    /* Page visibility */
     .page-section {
       display: block;
     }
@@ -328,7 +372,7 @@
       display: none;
     }
 
-    /* --- shared components (used across pages) --- */
+    /* Shared Components */
     .stats-flex {
       display: flex;
       flex-wrap: wrap;
@@ -395,25 +439,6 @@
       box-shadow: var(--shadow);
     }
 
-    .badge-new {
-      background: rgba(255, 180, 71, 0.15);
-      color: var(--accent);
-      padding: 0.25rem 1rem;
-      border-radius: 50px;
-      font-size: 0.75rem;
-    }
-
-    .mentor-chip-round {
-      background: rgba(255, 180, 71, 0.05);
-      border-radius: 60px;
-      padding: 0.6rem 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border: 1px dashed var(--accent);
-    }
-
-    /* Core page unique styles */
     .dual-column {
       display: grid;
       grid-template-columns: 1.5fr 1fr;
@@ -462,7 +487,6 @@
       color: var(--accent);
     }
 
-    /* new sections for core page */
     .core-bottom-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -492,244 +516,95 @@
       color: #ef4444;
     }
 
-    /* --- FIXED RESPONSIVE BREAKPOINTS --- */
-    /* tablet adjustments */
-    @media (max-width: 1024px) and (min-width: 769px) {
-      .stats-flex {
-        gap: 1.5rem;
-      }
-
-      .circular-progress-card {
-        flex: 1 1 180px;
-        padding: 1.5rem 1rem;
-      }
-
-      .circular-chart {
-        width: 100px;
-        height: 100px;
-      }
-
-      .percent-text {
-        font-size: 1.4rem;
-      }
-
-      .dual-column,
-      .core-bottom-grid {
-        gap: 1.5rem;
-      }
-    }
-
-    /* mobile & small tablet */
-    @media (max-width: 768px) {
-
-      .dual-column,
-      .core-bottom-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-
-      .stats-flex {
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-
-      .top-bar {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 1rem;
-      }
-
-      .page-title h1 {
-        font-size: 1.5rem;
-        text-align: center;
-      }
-
-      .page-title span {
-        display: inline-block;
-        margin-top: 0.3rem;
-      }
-
-      .top-actions {
-        justify-content: center;
-      }
-
-      .toggle-group {
-        width: 100%;
-        justify-content: center;
-      }
-
-      .toggle-btn {
-        flex: 1;
-        justify-content: center;
-        padding: 8px 12px;
-      }
-
-      .circular-progress-card {
-        padding: 1.5rem;
-      }
-
-      .circular-chart {
-        width: 100px;
-        height: 100px;
-      }
-
-      .percent-text {
-        font-size: 1.5rem;
-      }
-
-      .graph-card {
-        padding: 1.5rem;
-      }
-
-      .bar-chart-row {
-        gap: 0.5rem;
-        height: 120px;
-      }
-
-      .bar-item {
-        width: 30px;
-      }
-
-      .metric-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.3rem;
-      }
-
-      .activity-feed .feed-item {
-        flex-wrap: wrap;
-      }
-
-      /* fix for programs page grid */
-      .programs-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .badge-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .mentor-chip-round {
-        width: 100%;
-        justify-content: center;
-      }
-    }
-
-    /* extra small devices */
-    @media (max-width: 480px) {
-      .main-content {
-        padding: 1rem;
-      }
-
-      .circular-progress-card {
-        padding: 1.2rem;
-      }
-
-      .circular-chart {
-        width: 80px;
-        height: 80px;
-      }
-
-      .percent-text {
-        font-size: 1.2rem;
-      }
-
-      .bar-item {
-        width: 25px;
-      }
-
-      .page-title h1 {
-        font-size: 1.3rem;
-      }
-    }
-
-    /* ensure sidebar nav links look good */
-    .sidebar .nav a span {
-      display: inline;
-    }
-
-    .signup-btn {
-      margin-top: 14px;
-      width: 100%;
-      padding: 14px 0;
+    .badge-new {
+      background: rgba(255, 180, 71, 0.15);
+      color: var(--accent);
+      padding: 0.25rem 1rem;
       border-radius: 50px;
-      border: none;
-      background: linear-gradient(135deg, #FFB347, #FF8C42);
-      color: #1E2B3C;
-      font-weight: 600;
-      font-size: 1rem;
-      letter-spacing: 0.5px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 6px 18px rgba(255, 140, 66, 0.25);
+      font-size: 0.75rem;
     }
 
-    .signup-btn:hover {
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 10px 25px rgba(255, 140, 66, 0.4);
-    }
-
-    .signup-btn:active {
-      transform: scale(0.98);
-    }
-
-    .signup-btn {
-      margin-top: 16px;
-      width: 100%;
-      padding: 12px 18px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 179, 71, 0.4);
-      background: linear-gradient(135deg, #FFB347, #FF8C42);
-      color: #1E2B3C;
-      font-weight: 600;
-      font-size: 0.95rem;
-      letter-spacing: 0.3px;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 12px rgba(255, 140, 66, 0.2);
+    .mentor-chip-round {
+      background: rgba(255, 180, 71, 0.05);
+      border-radius: 60px;
+      padding: 0.6rem 1.2rem;
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 8px;
-
+      gap: 10px;
+      border: 1px dashed var(--accent);
     }
 
-    /* hover */
-    .signup-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 18px rgba(255, 140, 66, 0.3);
+    /* Responsive */
+    @media (max-width: 1024px) and (min-width: 769px) {
+      .stats-flex { gap: 1.5rem; }
+      .circular-progress-card { flex: 1 1 180px; padding: 1.5rem 1rem; }
+      .circular-chart { width: 100px; height: 100px; }
+      .percent-text { font-size: 1.4rem; }
+      .dual-column, .core-bottom-grid { gap: 1.5rem; }
     }
 
-    /* click */
-    .signup-btn:active {
-      transform: scale(0.97);
+    @media (max-width: 768px) {
+      .dual-column, .core-bottom-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .stats-flex { flex-direction: column; gap: 1.5rem; }
+      .top-bar { flex-direction: column; align-items: stretch; padding: 1rem; }
+      .page-title h1 { font-size: 1.5rem; text-align: center; }
+      .top-actions { justify-content: center; }
+      .toggle-group { width: 100%; justify-content: center; }
+      .toggle-btn { flex: 1; justify-content: center; padding: 8px 12px; }
+      .circular-progress-card { padding: 1.5rem; }
+      .circular-chart { width: 100px; height: 100px; }
+      .percent-text { font-size: 1.5rem; }
+      .graph-card { padding: 1.5rem; }
+      .bar-chart-row { gap: 0.5rem; height: 120px; }
+      .bar-item { width: 30px; }
+      .metric-row { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
     }
 
-    /* optional icon style */
-    .signup-btn i {
-      font-size: 0.9rem;
+    @media (max-width: 480px) {
+      .main-content { padding: 1rem; }
+      .circular-progress-card { padding: 1.2rem; }
+      .circular-chart { width: 80px; height: 80px; }
+      .percent-text { font-size: 1.2rem; }
+      .bar-item { width: 25px; }
+      .page-title h1 { font-size: 1.3rem; }
     }
 
-    .avatar {
-      margin-top: -50px;
+    [dir="rtl"] .sidebar {
+      left: auto;
+      right: 0;
+      border-right: none;
+      border-left: 3px solid var(--sidebar-border);
     }
 
-    .user-details a {
-      text-decoration: none;
+    [dir="rtl"] .main-content {
+      margin-left: 0;
+      margin-right: 280px;
+    }
+
+    @media (max-width: 1024px) {
+      [dir="rtl"] .main-content {
+        margin-right: 0;
+      }
+      [dir="rtl"] .sidebar {
+        transform: translateX(100%);
+      }
+      [dir="rtl"] .sidebar.active {
+        transform: translateX(0);
+      }
     }
   </style>
 </head>
-
 <body>
   <div class="dashboard">
-    <!-- Sidebar Overlay (mobile) -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-    <!-- SIDEBAR with navigation -->
+    <!-- SIDEBAR with EXACT LOGO STYLING from reference -->
     <aside class="sidebar" id="sidebar">
       <div class="logo-area">
-        <div class="logo-icon"><i class="fas fa-chart-pie"></i></div>
-        <a href="index.html"><span class="logo-text">BrainBloom</span></a>
+        <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+          <div class="logo-icon"><i class="fas fa-seedling"></i></div>
+          <span class="logo-text">BrainBloom</span>
+        </a>
       </div>
       <ul class="nav" id="navMenu">
         <li data-page="core" class="active"><a><i class="fas fa-chart-line"></i><span>Core</span></a></li>
@@ -742,17 +617,15 @@
         <div class="avatar">AM</div>
         <div class="user-details">
           <div class="user-name">Alex M.</div>
-          <div class="user-role">admin</div> <a href="signup.html"><button class="signup-btn">
-              <i class="fas fa-user-plus"></i> Sign Up
-            </button></a>
+          <div class="user-role">admin</div>
+          <a href="signup.html"><button class="signup-btn"><i class="fas fa-user-plus"></i> Sign Up</button></a>
         </div>
       </div>
     </aside>
 
     <main class="main-content">
       <div class="top-bar">
-        <div style="display: flex; align-items: center; gap: 1rem;">
-          <!-- Hamburger button (visible on mobile & tablet) -->
+        <div class="top-bar-left">
           <div class="mobile-menu-btn" id="mobileMenuBtn">
             <i class="fas fa-bars"></i>
           </div>
@@ -768,44 +641,44 @@
         </div>
       </div>
 
-      <!-- ========== CORE PAGE (analytics with rounds & graphs) ========= -->
+      <!-- CORE PAGE -->
       <div id="page-core" class="page-section">
         <div class="stats-flex">
           <div class="circular-progress-card">
-            <div class="circular-chart" style="--percent:78;"><svg viewBox="0 0 120 120">
+            <div class="circular-chart" style="--percent:78;">
+              <svg viewBox="0 0 120 120">
                 <circle class="circle-bg" cx="60" cy="60" r="50" />
-                <circle class="circle-progress" cx="60" cy="60" r="50"
-                  style="stroke-dashoffset: calc(314 - (314*78)/100);" />
+                <circle class="circle-progress" cx="60" cy="60" r="50" style="stroke-dashoffset: calc(314 - (314*78)/100);" />
               </svg>
               <div class="percent-text">78%</div>
             </div>
             <h3>retention</h3>
           </div>
           <div class="circular-progress-card">
-            <div class="circular-chart" style="--percent:64;"><svg viewBox="0 0 120 120">
+            <div class="circular-chart" style="--percent:64;">
+              <svg viewBox="0 0 120 120">
                 <circle class="circle-bg" cx="60" cy="60" r="50" />
-                <circle class="circle-progress" cx="60" cy="60" r="50"
-                  style="stroke-dashoffset: calc(314 - (314*64)/100);" />
+                <circle class="circle-progress" cx="60" cy="60" r="50" style="stroke-dashoffset: calc(314 - (314*64)/100);" />
               </svg>
               <div class="percent-text">64%</div>
             </div>
             <h3>engagement</h3>
           </div>
           <div class="circular-progress-card">
-            <div class="circular-chart" style="--percent:92;"><svg viewBox="0 0 120 120">
+            <div class="circular-chart" style="--percent:92;">
+              <svg viewBox="0 0 120 120">
                 <circle class="circle-bg" cx="60" cy="60" r="50" />
-                <circle class="circle-progress" cx="60" cy="60" r="50"
-                  style="stroke-dashoffset: calc(314 - (314*92)/100);" />
+                <circle class="circle-progress" cx="60" cy="60" r="50" style="stroke-dashoffset: calc(314 - (314*92)/100);" />
               </svg>
               <div class="percent-text">92%</div>
             </div>
             <h3>mentor rating</h3>
           </div>
           <div class="circular-progress-card">
-            <div class="circular-chart" style="--percent:47;"><svg viewBox="0 0 120 120">
+            <div class="circular-chart" style="--percent:47;">
+              <svg viewBox="0 0 120 120">
                 <circle class="circle-bg" cx="60" cy="60" r="50" />
-                <circle class="circle-progress" cx="60" cy="60" r="50"
-                  style="stroke-dashoffset: calc(314 - (314*47)/100);" />
+                <circle class="circle-progress" cx="60" cy="60" r="50" style="stroke-dashoffset: calc(314 - (314*47)/100);" />
               </svg>
               <div class="percent-text">47%</div>
             </div>
@@ -816,31 +689,18 @@
           <div class="graph-card">
             <h3><i class="fas fa-chart-bar" style="color:var(--accent);"></i> weekly signups</h3>
             <div class="bar-chart-row">
-              <div class="bar-item">
-                <div class="bar" style="height:80px;"></div><span>M</span>
-              </div>
-              <div class="bar-item">
-                <div class="bar" style="height:110px;"></div><span>T</span>
-              </div>
-              <div class="bar-item">
-                <div class="bar" style="height:65px;"></div><span>W</span>
-              </div>
-              <div class="bar-item">
-                <div class="bar" style="height:95px;"></div><span>T</span>
-              </div>
-              <div class="bar-item">
-                <div class="bar" style="height:45px;"></div><span>F</span>
-              </div>
-              <div class="bar-item">
-                <div class="bar" style="height:70px;"></div><span>S</span>
-              </div>
+              <div class="bar-item"><div class="bar" style="height:80px;"></div><span>M</span></div>
+              <div class="bar-item"><div class="bar" style="height:110px;"></div><span>T</span></div>
+              <div class="bar-item"><div class="bar" style="height:65px;"></div><span>W</span></div>
+              <div class="bar-item"><div class="bar" style="height:95px;"></div><span>T</span></div>
+              <div class="bar-item"><div class="bar" style="height:45px;"></div><span>F</span></div>
+              <div class="bar-item"><div class="bar" style="height:70px;"></div><span>S</span></div>
             </div>
           </div>
           <div class="graph-card">
-            <h3><i class="fas fa-chart-line" style="color:var(--accent);"></i> traffic trend</h3><svg width="100%"
-              height="80" viewBox="0 0 280 80">
-              <polyline points="20,60 60,30 100,50 140,20 180,40 220,10 260,30" stroke="#FFB347" stroke-width="3"
-                fill="none" />
+            <h3><i class="fas fa-chart-line" style="color:var(--accent);"></i> traffic trend</h3>
+            <svg width="100%" height="80" viewBox="0 0 280 80">
+              <polyline points="20,60 60,30 100,50 140,20 180,40 220,10 260,30" stroke="#FFB347" stroke-width="3" fill="none" />
             </svg>
             <div class="activity-feed">
               <div class="feed-item">
@@ -850,215 +710,95 @@
             </div>
           </div>
         </div>
-
-        <!-- TWO NEW SECTIONS ADDED HERE (core topics) -->
         <div class="core-bottom-grid">
-          <!-- Section 1: Platform health metrics -->
           <div class="graph-card">
             <h3><i class="fas fa-heartbeat" style="color:var(--accent);"></i> platform health</h3>
             <div class="metric-list">
-              <div class="metric-row"><span>🟢 server uptime</span> <span><strong>99.9%</strong> <span
-                    class="trend-up">↑0.2%</span></span></div>
-              <div class="metric-row"><span>⚡ avg response time</span> <span><strong>187ms</strong> <span
-                    class="trend-down">↓12ms</span></span></div>
-              <div class="metric-row"><span>📊 api requests (today)</span> <span><strong>24.3k</strong> <span
-                    class="trend-up">↑8%</span></span></div>
-              <div class="metric-row"><span>⚠️ error rate</span> <span><strong>0.02%</strong> <span
-                    class="trend-down">↓0.01%</span></span></div>
+              <div class="metric-row"><span>🟢 server uptime</span> <span><strong>99.9%</strong> <span class="trend-up">↑0.2%</span></span></div>
+              <div class="metric-row"><span>⚡ avg response time</span> <span><strong>187ms</strong> <span class="trend-down">↓12ms</span></span></div>
+              <div class="metric-row"><span>📊 api requests (today)</span> <span><strong>24.3k</strong> <span class="trend-up">↑8%</span></span></div>
+              <div class="metric-row"><span>⚠️ error rate</span> <span><strong>0.02%</strong> <span class="trend-down">↓0.01%</span></span></div>
             </div>
           </div>
-
-          <!-- Section 2: Top performing programs (core topic) -->
           <div class="graph-card">
             <h3><i class="fas fa-trophy" style="color:var(--accent);"></i> top programs (by engagement)</h3>
             <div class="metric-list">
-              <div class="metric-row"><span>🎨 Creative Studio</span> <span><strong>98%</strong> <span
-                    class="trend-up">↑5%</span></span></div>
-              <div class="metric-row"><span>🎵 Melody Makers</span> <span><strong>87%</strong> <span
-                    class="trend-up">↑3%</span></span></div>
-              <div class="metric-row"><span>🤖 Future Innovators</span> <span><strong>92%</strong> <span
-                    class="trend-up">↑12%</span></span></div>
-              <div class="metric-row"><span>💻 Web wizards</span> <span><strong>76%</strong> <span
-                    class="trend-down">↓2%</span></span></div>
+              <div class="metric-row"><span>🎨 Creative Studio</span> <span><strong>98%</strong> <span class="trend-up">↑5%</span></span></div>
+              <div class="metric-row"><span>🎵 Melody Makers</span> <span><strong>87%</strong> <span class="trend-up">↑3%</span></span></div>
+              <div class="metric-row"><span>🤖 Future Innovators</span> <span><strong>92%</strong> <span class="trend-up">↑12%</span></span></div>
+              <div class="metric-row"><span>💻 Web wizards</span> <span><strong>76%</strong> <span class="trend-down">↓2%</span></span></div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- ========== USERS PAGE (unique) ========= -->
+      <!-- USERS PAGE -->
       <div id="page-users" class="page-section hidden-page">
         <h2 style="margin-bottom:1.5rem;"><i class="fas fa-users" style="color:var(--accent);"></i> user management</h2>
         <div class="stats-flex">
-          <div class="graph-card" style="flex:1; text-align:center;"><span
-              style="font-size:2.5rem; color:var(--accent);">2,451</span>
-            <p>total users</p>
-          </div>
-          <div class="graph-card" style="flex:1; text-align:center;"><span
-              style="font-size:2.5rem; color:var(--accent);">168</span>
-            <p>new (7d)</p>
-          </div>
-          <div class="graph-card" style="flex:1; text-align:center;"><span
-              style="font-size:2.5rem; color:var(--accent);">43</span>
-            <p>pending</p>
-          </div>
+          <div class="graph-card" style="flex:1; text-align:center;"><span style="font-size:2.5rem; color:var(--accent);">2,451</span><p>total users</p></div>
+          <div class="graph-card" style="flex:1; text-align:center;"><span style="font-size:2.5rem; color:var(--accent);">168</span><p>new (7d)</p></div>
+          <div class="graph-card" style="flex:1; text-align:center;"><span style="font-size:2.5rem; color:var(--accent);">43</span><p>pending</p></div>
         </div>
         <div class="graph-card">
           <h3>recent join requests</h3>
           <div style="display:flex; flex-direction:column; gap:0.8rem; margin-top:1rem;">
-            <div style="display:flex; justify-content:space-between;"><span><i class="fas fa-user"></i>
-                jessica.d@example.com</span> <span class="badge-new">review</span></div>
-            <div style="display:flex; justify-content:space-between;"><span><i class="fas fa-user-tie"></i> mike.t
-                (mentor)</span> <span class="badge-new">pending</span></div>
-            <div style="display:flex; justify-content:space-between;"><span><i class="fas fa-user-graduate"></i> sarah.c
-                (premium)</span> <span class="badge-new">approve</span></div>
+            <div style="display:flex; justify-content:space-between;"><span><i class="fas fa-user"></i> jessica.d@example.com</span> <span class="badge-new">review</span></div>
+            <div style="display:flex; justify-content:space-between;"><span><i class="fas fa-user-tie"></i> mike.t (mentor)</span> <span class="badge-new">pending</span></div>
+            <div style="display:flex; justify-content:space-between;"><span><i class="fas fa-user-graduate"></i> sarah.c (premium)</span> <span class="badge-new">approve</span></div>
           </div>
         </div>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.8rem; margin-top:1.8rem;">
-          <div class="graph-card">
-            <h4>roles</h4>
-            <div>👤 premium 34%</div>
-            <div>🧑‍🎓 free 58%</div>
-            <div>👩‍🏫 mentor 8%</div>
-          </div>
-          <div class="graph-card">
-            <h4>top countries</h4>
-            <div>🇺🇸 USA 42%</div>
-            <div>🇬🇧 UK 23%</div>
-            <div>🇨🇦 Canada 15%</div>
-          </div>
+          <div class="graph-card"><h4>roles</h4><div>👤 premium 34%</div><div>🧑‍🎓 free 58%</div><div>👩‍🏫 mentor 8%</div></div>
+          <div class="graph-card"><h4>top countries</h4><div>🇺🇸 USA 42%</div><div>🇬🇧 UK 23%</div><div>🇨🇦 Canada 15%</div></div>
         </div>
       </div>
 
-      <!-- ========== PROGRAMS PAGE (unique) ========= -->
+      <!-- PROGRAMS PAGE -->
       <div id="page-programs" class="page-section hidden-page">
-        <h2 style="margin-bottom:1.5rem;"><i class="fas fa-cubes" style="color:var(--accent);"></i> programs & content
-        </h2>
+        <h2 style="margin-bottom:1.5rem;"><i class="fas fa-cubes" style="color:var(--accent);"></i> programs & content</h2>
         <div class="stats-flex">
-          <div class="circular-progress-card">
-            <div class="circular-chart" style="--percent:84;"><svg viewBox="0 0 120 120">
-                <circle class="circle-bg" cx="60" cy="60" r="50" />
-                <circle class="circle-progress" cx="60" cy="60" r="50"
-                  style="stroke-dashoffset: calc(314 - (314*84)/100);" />
-              </svg>
-              <div class="percent-text">84%</div>
-            </div>
-            <h3>Creative</h3>
-            <p>134 enrolled</p>
-          </div>
-          <div class="circular-progress-card">
-            <div class="circular-chart" style="--percent:62;"><svg viewBox="0 0 120 120">
-                <circle class="circle-bg" cx="60" cy="60" r="50" />
-                <circle class="circle-progress" cx="60" cy="60" r="50"
-                  style="stroke-dashoffset: calc(314 - (314*62)/100);" />
-              </svg>
-              <div class="percent-text">62%</div>
-            </div>
-            <h3>Music</h3>
-            <p>98 enrolled</p>
-          </div>
-          <div class="circular-progress-card">
-            <div class="circular-chart" style="--percent:73;"><svg viewBox="0 0 120 120">
-                <circle class="circle-bg" cx="60" cy="60" r="50" />
-                <circle class="circle-progress" cx="60" cy="60" r="50"
-                  style="stroke-dashoffset: calc(314 - (314*73)/100);" />
-              </svg>
-              <div class="percent-text">73%</div>
-            </div>
-            <h3>STEM</h3>
-            <p>76 enrolled</p>
-          </div>
+          <div class="circular-progress-card"><div class="circular-chart" style="--percent:84;"><svg viewBox="0 0 120 120"><circle class="circle-bg" cx="60" cy="60" r="50" /><circle class="circle-progress" cx="60" cy="60" r="50" style="stroke-dashoffset: calc(314 - (314*84)/100);" /></svg><div class="percent-text">84%</div></div><h3>Creative</h3><p>134 enrolled</p></div>
+          <div class="circular-progress-card"><div class="circular-chart" style="--percent:62;"><svg viewBox="0 0 120 120"><circle class="circle-bg" cx="60" cy="60" r="50" /><circle class="circle-progress" cx="60" cy="60" r="50" style="stroke-dashoffset: calc(314 - (314*62)/100);" /></svg><div class="percent-text">62%</div></div><h3>Music</h3><p>98 enrolled</p></div>
+          <div class="circular-progress-card"><div class="circular-chart" style="--percent:73;"><svg viewBox="0 0 120 120"><circle class="circle-bg" cx="60" cy="60" r="50" /><circle class="circle-progress" cx="60" cy="60" r="50" style="stroke-dashoffset: calc(314 - (314*73)/100);" /></svg><div class="percent-text">73%</div></div><h3>STEM</h3><p>76 enrolled</p></div>
         </div>
-        <div class="graph-card">
-          <h3>active programs</h3>
-          <div style="display:flex; flex-wrap:wrap; gap:0.8rem; margin-top:1rem;">
-            <span class="mentor-chip-round">Creative Studio · Emma R.</span>
-            <span class="mentor-chip-round">Melody Makers · James C.</span>
-            <span class="mentor-chip-round">Future Innovators · Priya K.</span>
-            <span class="mentor-chip-round">Web wizards · TA team</span>
-          </div>
-        </div>
+        <div class="graph-card"><h3>active programs</h3><div style="display:flex; flex-wrap:wrap; gap:0.8rem; margin-top:1rem;"><span class="mentor-chip-round">Creative Studio · Emma R.</span><span class="mentor-chip-round">Melody Makers · James C.</span><span class="mentor-chip-round">Future Innovators · Priya K.</span><span class="mentor-chip-round">Web wizards · TA team</span></div></div>
       </div>
 
-      <!-- ========== FINANCE PAGE (unique) ========= -->
+      <!-- FINANCE PAGE -->
       <div id="page-finance" class="page-section hidden-page">
-        <h2 style="margin-bottom:1.5rem;"><i class="fas fa-credit-card" style="color:var(--accent);"></i> revenue &
-          subscriptions</h2>
+        <h2 style="margin-bottom:1.5rem;"><i class="fas fa-credit-card" style="color:var(--accent);"></i> revenue & subscriptions</h2>
         <div class="stats-flex">
-          <div class="graph-card" style="flex:1;"><span style="font-size:2rem; color:var(--accent);">$12.4k</span>
-            <p>MRR</p>
-          </div>
-          <div class="graph-card" style="flex:1;"><span style="font-size:2rem; color:var(--accent);">+18%</span>
-            <p>growth</p>
-          </div>
-          <div class="graph-card" style="flex:1;"><span style="font-size:2rem; color:var(--accent);">342</span>
-            <p>premium</p>
-          </div>
+          <div class="graph-card" style="flex:1;"><span style="font-size:2rem; color:var(--accent);">$12.4k</span><p>MRR</p></div>
+          <div class="graph-card" style="flex:1;"><span style="font-size:2rem; color:var(--accent);">+18%</span><p>growth</p></div>
+          <div class="graph-card" style="flex:1;"><span style="font-size:2rem; color:var(--accent);">342</span><p>premium</p></div>
         </div>
         <div class="dual-column">
-          <div class="graph-card">
-            <h4>subscription tiers</h4>
-            <div>🥇 premium 34%</div>
-            <div>🥈 plus 22%</div>
-            <div>🥉 free 44%</div>
-          </div>
-          <div class="graph-card">
-            <h4>recent transactions</h4>
-            <div>· Emma R. $29</div>
-            <div>· James C. $49</div>
-            <div>· Sarah C. $19</div>
-          </div>
+          <div class="graph-card"><h4>subscription tiers</h4><div>🥇 premium 34%</div><div>🥈 plus 22%</div><div>🥉 free 44%</div></div>
+          <div class="graph-card"><h4>recent transactions</h4><div>· Emma R. $29</div><div>· James C. $49</div><div>· Sarah C. $19</div></div>
         </div>
       </div>
 
-      <!-- ========== SECURITY PAGE (unique) ========= -->
+      <!-- SECURITY PAGE -->
       <div id="page-security" class="page-section hidden-page">
-        <h2 style="margin-bottom:1.5rem;"><i class="fas fa-shield" style="color:var(--accent);"></i> security & logs
-        </h2>
+        <h2 style="margin-bottom:1.5rem;"><i class="fas fa-shield" style="color:var(--accent);"></i> security & logs</h2>
         <div class="stats-flex">
-          <div class="graph-card" style="flex:1; text-align:center;"><span
-              style="font-size:2rem; color:var(--accent);">3</span>
-            <p>active sessions</p>
-          </div>
-          <div class="graph-card" style="flex:1; text-align:center;"><span
-              style="font-size:2rem; color:var(--accent);">12</span>
-            <p>admins</p>
-          </div>
-          <div class="graph-card" style="flex:1; text-align:center;"><span
-              style="font-size:2rem; color:var(--accent);">2</span>
-            <p>MFA enabled</p>
-          </div>
+          <div class="graph-card" style="flex:1; text-align:center;"><span style="font-size:2rem; color:var(--accent);">3</span><p>active sessions</p></div>
+          <div class="graph-card" style="flex:1; text-align:center;"><span style="font-size:2rem; color:var(--accent);">12</span><p>admins</p></div>
+          <div class="graph-card" style="flex:1; text-align:center;"><span style="font-size:2rem; color:var(--accent);">2</span><p>MFA enabled</p></div>
         </div>
-        <div class="graph-card">
-          <h3>recent login activity</h3>
-          <div class="activity-feed">
-            <div class="feed-item">
-              <div class="feed-icon"><i class="fas fa-sign-in-alt"></i></div>
-              <div>Alex M. · IP 192.168.1.1 · 2h ago</div>
-            </div>
-            <div class="feed-item">
-              <div class="feed-icon"><i class="fas fa-lock"></i></div>
-              <div>Failed attempt · 5h ago</div>
-            </div>
-          </div>
-        </div>
-        <div class="graph-card" style="margin-top:1.5rem;">
-          <h4>security settings</h4>
-          <div style="display:flex; justify-content:space-between; padding:0.5rem 0;"><span>🔒 two-factor auth</span>
-            <span class="badge-new">enabled</span></div>
-          <div style="display:flex; justify-content:space-between; padding:0.5rem 0;"><span>📋 session timeout</span>
-            <span>30 min</span></div>
-        </div>
+        <div class="graph-card"><h3>recent login activity</h3><div class="activity-feed"><div class="feed-item"><div class="feed-icon"><i class="fas fa-sign-in-alt"></i></div><div>Alex M. · IP 192.168.1.1 · 2h ago</div></div><div class="feed-item"><div class="feed-icon"><i class="fas fa-lock"></i></div><div>Failed attempt · 5h ago</div></div></div></div>
+        <div class="graph-card" style="margin-top:1.5rem;"><h4>security settings</h4><div style="display:flex; justify-content:space-between; padding:0.5rem 0;"><span>🔒 two-factor auth</span><span class="badge-new">enabled</span></div><div style="display:flex; justify-content:space-between; padding:0.5rem 0;"><span>📋 session timeout</span><span>30 min</span></div></div>
       </div>
     </main>
   </div>
 
   <script>
-    (function () {
+    (function() {
       const themeBtn = document.getElementById('themeToggleBtn');
       const rtlBtn = document.getElementById('rtlToggleBtn');
       const html = document.documentElement;
 
-      // theme
       function setTheme(isDark) {
         if (isDark) { document.body.classList.add('dark-mode'); themeBtn.innerHTML = '<i class="fas fa-sun"></i> <span>Light</span>'; }
         else { document.body.classList.remove('dark-mode'); themeBtn.innerHTML = '<i class="fas fa-moon"></i> <span>Dark</span>'; }
@@ -1067,7 +807,6 @@
       themeBtn.addEventListener('click', () => { setTheme(!document.body.classList.contains('dark-mode')); });
       if (localStorage.getItem('theme') === 'dark') setTheme(true); else setTheme(false);
 
-      // rtl
       function setRTL(isRTL) {
         html.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
         rtlBtn.innerHTML = isRTL ? '<i class="fas fa-exchange-alt"></i> <span>LTR</span>' : '<i class="fas fa-exchange-alt"></i> <span>RTL</span>';
@@ -1076,7 +815,6 @@
       rtlBtn.addEventListener('click', () => { setRTL(html.getAttribute('dir') !== 'rtl'); });
       if (localStorage.getItem('dir') === 'rtl') setRTL(true);
 
-      // page navigation
       const navItems = document.querySelectorAll('.sidebar .nav li');
       const sections = {
         core: document.getElementById('page-core'),
@@ -1096,28 +834,14 @@
         pageTitle.innerHTML = `${names[pageId]} <span>dashboard</span>`;
       }
 
-      // Mobile sidebar functionality
       const sidebar = document.getElementById('sidebar');
       const overlay = document.getElementById('sidebarOverlay');
       const menuBtn = document.getElementById('mobileMenuBtn');
 
-      function openSidebar() {
-        sidebar.classList.add('active');
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
+      function openSidebar() { sidebar.classList.add('active'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+      function closeSidebar() { sidebar.classList.remove('active'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
 
-      function closeSidebar() {
-        sidebar.classList.remove('active');
-        overlay.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-
-      menuBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        openSidebar();
-      });
-
+      menuBtn.addEventListener('click', (e) => { e.stopPropagation(); openSidebar(); });
       overlay.addEventListener('click', closeSidebar);
 
       navItems.forEach(li => {
@@ -1126,25 +850,14 @@
           const page = li.dataset.page;
           if (page) {
             showPage(page);
-            // On mobile/tablet, close sidebar after navigation
-            if (window.innerWidth <= 1024) {
-              closeSidebar();
-            }
+            if (window.innerWidth <= 1024) closeSidebar();
           }
         });
       });
 
-      // Close sidebar on window resize above 1024px
-      window.addEventListener('resize', () => {
-        if (window.innerWidth > 1024) {
-          closeSidebar();
-        }
-      });
-
-      // initial active page (core)
+      window.addEventListener('resize', () => { if (window.innerWidth > 1024) closeSidebar(); });
       showPage('core');
     })();
   </script>
 </body>
-
 </html>

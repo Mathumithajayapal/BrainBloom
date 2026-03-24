@@ -2,12 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>BrainBloom · Sign Up</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-      <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
-
   <style>
     :root {
       --primary: #FFB347;
@@ -24,6 +22,9 @@
       --shadow: 0 20px 40px rgba(255, 180, 71, 0.12);
       --border-light: #E0E7F0;
       --toggle-bg: rgba(255,255,255,0.8);
+      --error-color: #e74c3c;
+      --success-border: #27ae60;
+      --checkbox-bg: #FFFFFF;
     }
     .dark-mode {
       --primary: #FFB347;
@@ -40,6 +41,8 @@
       --shadow: 0 20px 40px rgba(255, 180, 71, 0.15);
       --border-light: #262626;
       --toggle-bg: #1A1A1A;
+      --error-color: #e67e22;
+      --checkbox-bg: #2a2a2a;
     }
     * { 
       margin: 0; 
@@ -61,7 +64,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      overflow: hidden;  /* NO SCROLLING — strictly hidden */
+      overflow: hidden;
     }
 
     /* Background blobs – hidden in dark mode */
@@ -135,11 +138,11 @@
     /* main card – strictly NO scroll, all content visible */
     .signup-card {
       background: var(--card-bg);
-      padding: 28px 32px 32px;      /* fine-tuned padding */
+      padding: 28px 32px 32px;
       border-radius: 36px;
-      width: min(440px, 94vw);       /* slightly narrower for perfect fit */
-      max-height: 98vh;              /* never exceeds viewport */
-      overflow: visible;             /* NO scrollbar inside card */
+      width: min(440px, 94vw);
+      max-height: 98vh;
+      overflow: visible;
       color: var(--text-color);
       transition: background 0.3s, color 0.3s;
       box-shadow: var(--shadow);
@@ -148,12 +151,11 @@
       z-index: 2;
     }
 
-    /* Card header: centered logo */
     .card-header {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 16px;          /* reduced spacing */
+      margin-bottom: 16px;
     }
 
     .logo-area {
@@ -161,17 +163,13 @@
       align-items: center;
       gap: 8px;
     }
-    .logo-icon {
-      width: 44px;
-      height: 44px;
-      background: rgba(255, 180, 71, 0.15);
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
-      color: var(--primary);
-    }
+   .logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: var(--primary);
+}
     .logo-text {
       font-size: 26px;
       font-weight: 700;
@@ -187,6 +185,9 @@
       background: none;
       color: #FFB347;
     }
+    .logo-area a {
+      text-decoration: none;
+    }
 
     h2 {
       margin-bottom: 16px;
@@ -196,7 +197,6 @@
       text-align: center;
     }
 
-    /* all fields grouped tightly */
     .name-row {
       display: flex;
       gap: 10px;
@@ -208,25 +208,134 @@
 
     input {
       width: 100%;
-      padding: 12px 16px;           /* slightly smaller padding */
+      padding: 12px 16px;
       margin-bottom: 12px;
       border-radius: 18px;
       border: 1px solid var(--border-light);
       background: var(--input-bg);
       color: var(--input-text);
       font-size: 14px;
-      transition: background 0.3s, color 0.3s;
+      transition: all 0.2s;
       outline: none;
     }
     input:focus {
       border-color: var(--primary);
       box-shadow: 0 0 0 3px rgba(255, 180, 71, 0.2);
     }
+    input.error-input {
+      border-color: var(--error-color);
+      background: rgba(231, 76, 60, 0.05);
+    }
     input::placeholder {
       color: #999;
     }
     .dark-mode input::placeholder {
       color: #aaa;
+    }
+
+    /* TERMS & CONDITIONS - STANDARD SQUARE CHECKBOX */
+    .terms-container {
+      margin: 8px 0 16px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+    }
+    
+    /* Standard square checkbox styling */
+    .terms-checkbox {
+      position: relative;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    
+    .terms-checkbox input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 20px;
+      width: 20px;
+      background-color: var(--checkbox-bg);
+      border: 2px solid var(--border-light);
+      border-radius: 5px;  /* SQUARE corners with slight radius */
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    
+    .terms-checkbox:hover input ~ .checkmark {
+      border-color: var(--primary);
+    }
+    
+    .terms-checkbox input:checked ~ .checkmark {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+    
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+    
+    .terms-checkbox input:checked ~ .checkmark:after {
+      display: block;
+    }
+    
+    /* Checkmark style for square checkbox */
+    .terms-checkbox .checkmark:after {
+      left: 6px;
+      top: 2px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      border-radius: 0;
+    }
+    
+    .terms-text {
+      font-size: 12.5px;
+      line-height: 1.45;
+      color: #888;
+      flex: 1;
+    }
+    .dark-mode .terms-text {
+      color: #aaa;
+    }
+    
+    .terms-text a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .terms-text a:hover {
+      text-decoration: underline;
+    }
+    
+    .terms-error {
+      color: var(--error-color);
+      font-size: 11px;
+      margin-top: -12px;
+      margin-bottom: 8px;
+      padding-left: 32px;
+      display: none;
+    }
+    
+    .terms-error.show {
+      display: block;
     }
 
     .signup-btn {
@@ -241,31 +350,15 @@
       cursor: pointer;
       transition: 0.3s;
       border: 1px solid transparent;
-      margin: 8px 0 14px;          /* compact spacing */
+      margin: 4px 0 14px;
     }
     .signup-btn:hover {
       background: #FF8C42;
       color: #1E2B3C;
+      transform: translateY(-1px);
     }
-
-    /* Terms & Conditions — now added exactly as requested */
-    .terms {
-      margin: 0 0 16px 0;
-      font-size: 12.5px;
-      color: #888;
-      text-align: center;
-      line-height: 1.5;
-    }
-    .terms a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .terms a:hover {
-      text-decoration: underline;
-    }
-    .dark-mode .terms {
-      color: #aaa;
+    .signup-btn:active {
+      transform: translateY(0);
     }
 
     .social-login {
@@ -316,61 +409,82 @@
       right: auto;
       left: 20px;
     }
-    .logo-area a {
-  text-decoration: none;
-}
-
-.logo-area a:hover {
-  text-decoration: none;
-}
-@media (max-width: 480px) {
-
-  .signup-card {
-    width: 92%;
-    padding: 20px 16px;
-    border-radius: 24px;
-  }
-
-  h2 {
-    font-size: 1.4rem;
-  }
-
-  input {
-    padding: 10px 12px;
-    font-size: 13px;
-  }
-
-  .signup-btn {
-    padding: 10px;
-    font-size: 14px;
-  }
-
-  .logo-text {
-    font-size: 22px;
-  }
-
-  .logo-icon {
-    width: 38px;
-    height: 38px;
-    font-size: 22px;
-  }
-
-  .floating-toggles {
-    top: 12px;
-    right: 12px;
-    gap: 6px;
-  }
-
-  .toggle-btn {
-    width: 38px;
-    height: 38px;
-    font-size: 16px;
-  }
-}
+    [dir="rtl"] .terms-container {
+      flex-direction: row-reverse;
+    }
+    [dir="rtl"] .terms-error {
+      padding-left: 0;
+      padding-right: 32px;
+      text-align: right;
+    }
+    
+    /* Small success message */
+    .toast-message {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) scale(0.9);
+      background: var(--primary);
+      color: #1E2B3C;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 14px;
+      opacity: 0;
+      transition: all 0.3s ease;
+      pointer-events: none;
+      z-index: 200;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      white-space: nowrap;
+    }
+    .toast-message.show {
+      opacity: 1;
+      transform: translateX(-50%) scale(1);
+    }
+    .dark-mode .toast-message {
+      background: #FFB347;
+      color: #000;
+    }
+    
+    @media (max-width: 480px) {
+      .signup-card {
+        width: 92%;
+        padding: 20px 16px;
+        border-radius: 24px;
+      }
+      h2 {
+        font-size: 1.4rem;
+      }
+      input {
+        padding: 10px 12px;
+        font-size: 13px;
+      }
+      .signup-btn {
+        padding: 10px;
+        font-size: 14px;
+      }
+      .logo-text {
+        font-size: 22px;
+      }
+      .logo-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 22px;
+      }
+      .terms-text {
+        font-size: 11px;
+      }
+      .toast-message {
+        white-space: normal;
+        text-align: center;
+        max-width: 90%;
+        font-size: 12px;
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- Floating toggle buttons – top right corner -->
+  <!-- Floating toggle buttons -->
   <div class="floating-toggles">
     <button class="toggle-btn" id="themeToggle" title="Toggle dark mode">
       <i class="fas fa-moon"></i>
@@ -385,63 +499,271 @@
     <div class="card-header">
       <div class="logo-area">
         <div class="logo-icon"><i class="fas fa-seedling"></i></div>
-      <a href="index.html">  <span class="logo-text">BrainBloom</span></a>
+        <a href="index.html"><span class="logo-text">BrainBloom</span></a>
       </div>
     </div>
 
     <h2>Create account</h2>
 
-    <!-- Name row (single field) -->
+    <!-- Full Name field -->
     <div class="name-row">
-      <input type="text" placeholder="Full Name">
+      <input type="text" id="fullName" placeholder="Full Name" autocomplete="name">
     </div>
 
-    <input type="email" placeholder="Email address">
-    <input type="password" placeholder="Password">
-    <input type="password" placeholder="Confirm password">
+    <input type="email" id="email" placeholder="Email address" autocomplete="email">
+    <input type="password" id="password" placeholder="Password" autocomplete="new-password">
+    <input type="password" id="confirmPassword" placeholder="Confirm password" autocomplete="off">
 
-    <!-- Terms & Conditions – strictly included -->
-    <div class="terms">
-      By joining you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+    <!-- TERMS & CONDITIONS - STANDARD SQUARE CHECKBOX -->
+    <div class="terms-container" id="termsContainer">
+      <label class="terms-checkbox">
+        <input type="checkbox" id="termsCheckbox">
+        <span class="checkmark"></span>
+      </label>
+      <div class="terms-text">
+        I agree to the <a href="#" id="termsLink">Terms of Service</a> and <a href="#" id="privacyLink">Privacy Policy</a>.
+      </div>
+    </div>
+    <div class="terms-error" id="termsError">
+      <i class="fas fa-exclamation-circle"></i> You must accept the Terms & Privacy Policy to continue
     </div>
 
-    <button class="signup-btn" type="button">Sign Up</button>
+    <button class="signup-btn" id="signupBtn" type="button">Sign Up</button>
 
     <!-- Social signup -->
     <div class="social-login">
-      <button type="button"><i class="fab fa-google"></i></button>
-      <button type="button"><i class="fab fa-facebook-f"></i></button>
-      <button type="button"><i class="fab fa-github"></i></button>
+      <button type="button" id="googleBtn"><i class="fab fa-google"></i></button>
+      <button type="button" id="facebookBtn"><i class="fab fa-facebook-f"></i></button>
+      <button type="button" id="githubBtn"><i class="fab fa-github"></i></button>
     </div>
 
     <div class="bottom-text">
       Already have an account? <a href="login.html">Sign in</a>
     </div>
   </div>
+  
+  <!-- Toast message for feedback -->
+  <div id="toastMessage" class="toast-message"></div>
 
   <script>
     (function() {
+      // DOM elements
       const themeBtn = document.getElementById('themeToggle');
       const rtlBtn = document.getElementById('rtlToggle');
       const themeIcon = themeBtn.querySelector('i');
-
+      const signupBtn = document.getElementById('signupBtn');
+      const termsCheckbox = document.getElementById('termsCheckbox');
+      const termsError = document.getElementById('termsError');
+      const termsContainer = document.getElementById('termsContainer');
+      
+      // Input fields
+      const fullNameInput = document.getElementById('fullName');
+      const emailInput = document.getElementById('email');
+      const passwordInput = document.getElementById('password');
+      const confirmInput = document.getElementById('confirmPassword');
+      
+      const toast = document.getElementById('toastMessage');
+      
+      function showToast(message, isError = false) {
+        toast.textContent = message;
+        toast.classList.add('show');
+        if (!isError) {
+          toast.style.background = '#27ae60';
+          toast.style.color = 'white';
+        } else {
+          toast.style.background = '#e74c3c';
+          toast.style.color = 'white';
+        }
+        setTimeout(() => {
+          toast.classList.remove('show');
+          setTimeout(() => {
+            toast.style.background = '';
+          }, 300);
+        }, 2800);
+      }
+      
+      // Reset error styling on inputs
+      function removeInputErrors() {
+        document.querySelectorAll('input').forEach(inp => inp.classList.remove('error-input'));
+      }
+      
+      function highlightField(field) {
+        field.classList.add('error-input');
+      }
+      
+      // Validate email format
+      function isValidEmail(email) {
+        const re = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
+        return re.test(email);
+      }
+      
+      // Main validation & signup logic
+      function handleSignup() {
+        let isValid = true;
+        removeInputErrors();
+        termsError.classList.remove('show');
+        
+        const fullName = fullNameInput.value.trim();
+        const email = emailInput.value.trim();
+        const password = passwordInput.value;
+        const confirm = confirmInput.value;
+        const termsAccepted = termsCheckbox.checked;
+        
+        // Validation
+        if (!fullName) {
+          highlightField(fullNameInput);
+          showToast('Please enter your full name', true);
+          isValid = false;
+          return;
+        }
+        if (fullName.length < 2) {
+          highlightField(fullNameInput);
+          showToast('Name must be at least 2 characters', true);
+          isValid = false;
+          return;
+        }
+        
+        if (!email) {
+          highlightField(emailInput);
+          showToast('Email address is required', true);
+          isValid = false;
+          return;
+        }
+        if (!isValidEmail(email)) {
+          highlightField(emailInput);
+          showToast('Please enter a valid email address', true);
+          isValid = false;
+          return;
+        }
+        
+        if (!password) {
+          highlightField(passwordInput);
+          showToast('Password cannot be empty', true);
+          isValid = false;
+          return;
+        }
+        if (password.length < 6) {
+          highlightField(passwordInput);
+          showToast('Password must be at least 6 characters', true);
+          isValid = false;
+          return;
+        }
+        
+        if (!confirm) {
+          highlightField(confirmInput);
+          showToast('Please confirm your password', true);
+          isValid = false;
+          return;
+        }
+        if (password !== confirm) {
+          highlightField(confirmInput);
+          highlightField(passwordInput);
+          showToast('Passwords do not match', true);
+          isValid = false;
+          return;
+        }
+        
+        // TERMS CHECKBOX validation - REQUIRED
+        if (!termsAccepted) {
+          termsError.classList.add('show');
+          termsContainer.style.animation = 'shake 0.4s ease';
+          setTimeout(() => { termsContainer.style.animation = ''; }, 500);
+          showToast('Please accept the Terms & Conditions to continue', true);
+          isValid = false;
+          return;
+        }
+        
+        if (isValid) {
+          // Store user data in localStorage (demo)
+          const userData = {
+            fullName: fullName,
+            email: email,
+            registeredAt: new Date().toISOString()
+          };
+          localStorage.setItem('brainBloomUser', JSON.stringify(userData));
+          
+          showToast('Account created successfully! 🎉 Welcome to BrainBloom', false);
+          
+          // Reset form after success
+          setTimeout(() => {
+            fullNameInput.value = '';
+            emailInput.value = '';
+            passwordInput.value = '';
+            confirmInput.value = '';
+            termsCheckbox.checked = false;
+            removeInputErrors();
+            // In production: window.location.href = 'dashboard.html';
+          }, 1500);
+        }
+      }
+      
+      // Theme Toggle
       function toggleTheme() {
         document.body.classList.toggle('dark-mode');
         const isDark = document.body.classList.contains('dark-mode');
         themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
         localStorage.setItem('brainBloomTheme', isDark ? 'dark' : 'light');
       }
-
+      
+      // RTL Toggle
       function toggleRTL() {
         const html = document.documentElement;
         const isRTL = html.getAttribute('dir') === 'rtl';
         html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
         localStorage.setItem('brainBloomDir', isRTL ? 'ltr' : 'rtl');
       }
-
+      
+      // Add event listeners
       themeBtn.addEventListener('click', toggleTheme);
       rtlBtn.addEventListener('click', toggleRTL);
-
+      signupBtn.addEventListener('click', handleSignup);
+      
+      // Enter key submission
+      const inputs = [fullNameInput, emailInput, passwordInput, confirmInput];
+      inputs.forEach(input => {
+        input.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            handleSignup();
+          }
+        });
+      });
+      
+      // Remove terms error when checkbox is clicked
+      termsCheckbox.addEventListener('change', () => {
+        if (termsCheckbox.checked) {
+          termsError.classList.remove('show');
+        }
+      });
+      
+      // Terms & policy links with informative popups
+      const termsLink = document.getElementById('termsLink');
+      const privacyLink = document.getElementById('privacyLink');
+      
+      function showInfoPopup(text) {
+        showToast(text, false);
+      }
+      
+      termsLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        showInfoPopup('📜 BrainBloom Terms of Service: By using our platform, you agree to respect intellectual property and community guidelines.');
+      });
+      
+      privacyLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        showInfoPopup('🔒 Privacy Policy: Your data is encrypted and never shared. We protect your privacy with industry standards.');
+      });
+      
+      // Social login demo
+      const googleBtn = document.getElementById('googleBtn');
+      const facebookBtn = document.getElementById('facebookBtn');
+      const githubBtn = document.getElementById('githubBtn');
+      
+      googleBtn.addEventListener('click', () => showToast('Google sign-in demo - Connect with Google OAuth', false));
+      facebookBtn.addEventListener('click', () => showToast('Facebook sign-in demo - Coming soon!', false));
+      githubBtn.addEventListener('click', () => showToast('GitHub authentication demo - Coming soon!', false));
+      
+      // Load saved preferences
       const savedTheme = localStorage.getItem('brainBloomTheme');
       if (savedTheme === 'dark') {
         document.body.classList.add('dark-mode');
@@ -450,13 +772,24 @@
         document.body.classList.remove('dark-mode');
         themeIcon.className = 'fas fa-moon';
       }
-
+      
       const savedDir = localStorage.getItem('brainBloomDir');
       if (savedDir === 'rtl') {
         document.documentElement.setAttribute('dir', 'rtl');
       } else {
         document.documentElement.setAttribute('dir', 'ltr');
       }
+      
+      // Add shake animation keyframes dynamically
+      const styleSheet = document.createElement("style");
+      styleSheet.textContent = `
+        @keyframes shake {
+          0%, 100% { transform: translateX(0); }
+          25% { transform: translateX(-5px); }
+          75% { transform: translateX(5px); }
+        }
+      `;
+      document.head.appendChild(styleSheet);
     })();
   </script>
 </body>
