@@ -8,15 +8,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
+  <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
 
   <style>
-    /* ----- global & variables (exactly like about page) ----- */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --primary: #FFB347;         /* orange – main */
-      --secondary: #FF8C42;        /* deeper orange */
-      --accent: #FFB347;           
+      --primary: #FFB347;
+      --secondary: #FF8C42;
+      --accent: #FFB347;
       --text: #1E2B3C;
       --text-light: #2C3E50;
       --bg: #FFFFFF;
@@ -61,7 +60,6 @@
       color: #FFFFFF !important;
     }
 
-    /* section titles exactly as reference */
     .section-title {
       font-size: 2.8rem;
       text-align: center;
@@ -80,7 +78,7 @@
       margin: 0 auto 4rem;
     }
 
-    /* ----- HEADER (identical to about page – edge to edge) ----- */
+    /* HEADER - clean navbar with proper spacing */
     header {
       background: var(--bg); 
       box-shadow: var(--shadow); 
@@ -93,7 +91,7 @@
       display: flex; 
       justify-content: space-between; 
       align-items: center;
-      padding: 0.75rem 4rem;      /* exactly as about page */
+      padding: 0.75rem 4rem;
       max-width: 100%; 
       margin: 0 auto;
       min-height: 80px;
@@ -146,13 +144,13 @@
       display: inline-flex;
       align-items: center;
       white-space: nowrap;
+      gap: 6px;
     }
     .nav-links a:hover,
     .nav-links a.active {
       color: var(--accent); 
       background: rgba(255,180,71,0.1);
     }
-    /* dropdown exactly like about */
     .dropdown { 
       position: relative; 
       display: flex;
@@ -164,25 +162,28 @@
       left: 0; 
       background: var(--bg-light);
       list-style: none; 
-      padding: 15px 0; 
-      min-width: 200px; 
+      padding: 12px 0; 
+      min-width: 210px; 
       border-radius: 20px;
-      box-shadow: var(--shadow-lg); 
+      box-shadow: 0 12px 28px rgba(0,0,0,0.15);
       border: 1px solid var(--border); 
       display: none; 
       z-index: 1000;
+      backdrop-filter: blur(4px);
     }
     .dropdown-menu a {
       display: block; 
-      padding: 12px 20px; 
+      padding: 10px 22px; 
       color: var(--text); 
       text-decoration: none;
       white-space: nowrap;
+      font-weight: 500;
+      gap: 0;
     }
     .dropdown-menu a:hover {
-      background: var(--primary); 
-      color: white; 
-      padding-left: 30px;
+      background: var(--accent); 
+      color: #1E2B3C; 
+      padding-left: 28px;
     }
     .dropdown:hover .dropdown-menu { 
       display: block; 
@@ -203,10 +204,24 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      border-radius: 40px;
     }
     .control-btn:hover { 
       color: var(--accent); 
-      transform: scale(1.1); 
+      transform: scale(1.05); 
+      background: rgba(255,180,71,0.1);
+    }
+    /* RTL text button style - replacing icon with proper text */
+    .rtl-text-btn {
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 14px;
+      letter-spacing: 0.5px;
+      gap: 6px;
+      min-width: 70px;
+    }
+    .rtl-text-btn i {
+      font-size: 0.9rem;
     }
     .hamburger {
       display: none; 
@@ -220,11 +235,23 @@
       align-items: center;
       justify-content: center;
     }
-    /* Push login & signup to right (Desktop only) */
-    header .nav-links li:nth-last-child(3) { margin-left: 25px; }
-    header .nav-links li:nth-last-child(4) { margin-left: 50px; }
+    /* Only login button - signup removed */
+    .nav-btn { 
+      padding: 8px 22px !important; 
+      border-radius: 50px !important; 
+      font-weight: 600; 
+    }
+    .login-btn { 
+      border: 2px solid var(--primary); 
+      color: var(--primary) !important; 
+      background: transparent;
+    }
+    .login-btn:hover { 
+      background: var(--primary); 
+      color: #1E2B3C !important; 
+    }
 
-    /* ----- MOBILE MENU (EXACT same overlay & panel as about page) ----- */
+    /* MOBILE MENU */
     .mobile-nav-menu {
       position: fixed; 
       top: 0; 
@@ -260,10 +287,11 @@
       font-weight: 600 !important; 
       width: 100% !important;
       text-align: left;
+      gap: 8px;
     }
     .mobile-nav-menu .nav-links a:hover {
       background: var(--accent) !important; 
-      color: #db5507 !important;
+      color: #1E2B3C !important;
       border-color: var(--accent) !important;
     }
     .mobile-nav-menu .nav-links .home-sub-item {
@@ -315,7 +343,7 @@
     }
     .mobile-controls .control-btn:hover {
       background: var(--accent);
-      color: #ff6200;
+      color: #1E2B3C;
       border-color: var(--accent);
     }
 
@@ -333,8 +361,11 @@
       padding-left: 20px !important; 
       padding-right: 40px !important; 
     }
+    [dir="rtl"] .bento-item .overlay {
+      text-align: right;
+    }
 
-    /* responsive breakpoints (same) */
+    /* responsive */
     @media (max-width: 1280px) {
       .navbar { padding: 0.75rem 2rem; }
       .nav-links:not(.mobile-nav-menu .nav-links) { display: none !important; }
@@ -345,7 +376,7 @@
       .hamburger { display: none !important; }
     }
 
-    /* ----- art & craft page specific styles (preserved) ----- */
+    /* art & craft page styles */
     .art-hero {
       height: 90vh;
       background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
@@ -397,17 +428,31 @@
       box-shadow: var(--shadow);
       font-family: 'Playfair Display', serif;
       text-align: center;
+      transition: var(--transition);
+      border: 1px solid var(--border);
     }
-   .feature-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
-}
+    .cat-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-lg);
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+    }
     .feature-card {
       background: var(--bg-light);
       border-radius: 20px;
       overflow: hidden;
       box-shadow: var(--shadow);
+      transition: var(--transition);
+      border: 1px solid var(--border);
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-lg);
     }
     .feature-card img {
       width: 100%;
@@ -426,9 +471,14 @@
       border-radius: 25px;
       overflow: hidden;
       backdrop-filter: blur(15px);
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
+      background: var(--bg-light);
+      border: 1px solid var(--border);
       box-shadow: var(--shadow-lg);
+      transition: var(--transition);
+    }
+    .glass-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--primary);
     }
     .glass-card img {
       width: 100%;
@@ -452,6 +502,11 @@
       text-decoration: none;
       color: #1E2B3C;
       font-weight: 600;
+      transition: var(--transition);
+    }
+    .glass-btn:hover {
+      transform: scale(1.05);
+      background: var(--secondary);
     }
     .bento-grid {
       display: grid;
@@ -492,6 +547,7 @@
     }
     .overlay h3 {
       font-size: 1.8rem;
+      color: white;
     }
     .bento-item:hover {
       transform: translateY(-10px) scale(1.02);
@@ -508,6 +564,7 @@
       background: var(--bg-light);
       border-radius: 60px;
       margin-bottom: 2rem;
+      border: 1px solid var(--border);
     }
     .art-cta h2 {
       font-size: 2.8rem;
@@ -521,8 +578,13 @@
       text-decoration: none;
       color: #1E2B3C;
       font-weight: 600;
+      transition: var(--transition);
     }
-    /* footer identical to about */
+    .cta-btn:hover {
+      transform: scale(1.05);
+      background: var(--secondary);
+    }
+    /* footer */
     .site-footer {
       background: var(--footer-bg); 
       color: var(--footer-text);
@@ -530,7 +592,6 @@
       margin-top: auto;
       width: 100%;
     }
-    .dark-mode .site-footer { background: #000000 !important; }
     .footer-content { 
       max-width: 1400px; 
       margin: 0 auto; 
@@ -565,7 +626,6 @@
     }
     .footer-middle {
       padding: 15px 0; 
-     
       margin-bottom: 35px;
       display: flex; 
       justify-content: space-between; 
@@ -582,173 +642,24 @@
       .category-grid, .feature-grid { grid-template-columns: 1fr 1fr; }
       .bento-grid { grid-template-columns: repeat(2,1fr); }
     }
-    @media (max-width: 600px) {
-      .footer-top { grid-template-columns: 1fr; }
+    @media (max-width: 768px) {
+      .section-title { font-size: 2rem; padding: 0 10px; }
+      .art-hero { height: 60vh; padding: 0 15px; }
+      .hero-content h1 { font-size: 2rem; }
       .category-grid, .feature-grid, .bento-grid { grid-template-columns: 1fr; }
-      .section-title { font-size: 2.2rem; }
+      .feature-card img { height: 250px; }
+      .bento-item, .bento-item.big, .bento-item.wide { grid-column: span 1 !important; grid-row: span 1 !important; height: 250px; }
+      .art-cta h2 { font-size: 2rem; }
+      .footer-content { padding: 0 1.5rem; text-align: left; }
+      .footer-top { text-align: left; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; text-align: left; }
+      .copyright { text-align: left; }
     }
-    /* ===== MOBILE PERFECT ALIGNMENT FIX ===== */
-@media (max-width: 768px) {
-
-  /* General spacing */
-  body {
-    text-align: center;
-  }
-
-  .section-title {
-    font-size: 2rem;
-    padding: 0 10px;
-  }
-
-  .section-subtitle {
-    font-size: 1rem;
-    padding: 0 15px;
-  }
-
-  /* HERO FIX */
-  .art-hero {
-    height: 60vh;
-    padding: 0 15px;
-  }
-
-  .hero-content h1 {
-    font-size: 2rem;
-    line-height: 1.3;
-  }
-
-  .hero-content p {
-    font-size: 1rem;
-    padding: 0 10px;
-  }
-
-  .hero-btn {
-    font-size: 0.9rem;
-    padding: 10px 20px;
-  }
-
-  /* CATEGORY GRID */
-  .category-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-
-  .cat-card {
-    font-size: 1.1rem;
-    padding: 20px;
-  }
-
-  /* FEATURE GRID */
-  .feature-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .feature-card img {
-    height: 250px;
-  }
-
-  /* GLASS SECTION */
-  .glass-card {
-    margin: 20px 10px;
-  }
-
-  .glass-content h3 {
-    font-size: 1.6rem;
-  }
-
-  /* BENTO GRID */
-  .bento-grid {
-    grid-template-columns: 1fr;
-    grid-auto-rows: auto;
-  }
-
-  .bento-item,
-  .bento-item.big,
-  .bento-item.wide {
-    grid-column: span 1 !important;
-    grid-row: span 1 !important;
-    height: 250px;
-  }
-
-  /* CTA */
-  .art-cta {
-    border-radius: 30px;
-    padding: 3rem 1.5rem;
-  }
-
-  .art-cta h2 {
-    font-size: 2rem;
-  }
-
-  /* FOOTER FIX */
-  .footer-content {
-    padding: 0 1.5rem;
-    text-align: center;
-  }
-
-  .footer-middle,
-  .footer-bottom {
-    flex-direction: column;
-    gap: 15px;
-  }
-}
- .signup-btn { 
-      background: var(--accent); 
-      color: #f2f2f6 !important; 
-      border: 2px solid var(--accent);
-    }
-    .signup-btn:hover {
-      background: var(--accent); 
-      color: #f6960f !important; 
-      border: 2px solid var(--accent); 
-    }
-/* ===== MOBILE FOOTER LEFT ALIGN FIX ===== */
-@media (max-width: 768px) {
-
-  .footer-content {
-    padding: 0 20px;
-    text-align: left;   /* 🔥 important */
-  }
-
-  .footer-top {
-    text-align: left;
-  }
-
-  .footer-column {
-    display: block;     /* remove flex center */
-    text-align: left;
-  }
-
-  .footer-column ul {
-    padding-left: 0;
-  }
-
-  .footer-column li {
-    text-align: left;
-  }
-
- 
-
-  .footer-links {
-    justify-content: flex-start;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-    align-items: flex-start;   /* 🔥 left */
-    text-align: left;
-  }
-
-  .copyright {
-    text-align: left;
-  }
-}
   </style>
 </head>
 <body>
-  <!-- mobile overlay -->
   <div class="mobile-overlay" id="mobileOverlay"></div>
 
-  <!-- header -->
   <header>
     <nav class="navbar">
       <a href="index.html" class="logo">
@@ -756,7 +667,6 @@
         <span class="logo-text">BrainBloom</span>
       </a>
 
-      <!-- desktop navigation -->
       <ul class="nav-links">
         <li class="dropdown">
           <a href="#">Home <i class="fas fa-caret-down"></i></a>
@@ -779,12 +689,11 @@
           </ul>
         </li>
         <li><a href="login.html" class="nav-btn login-btn">Login</a></li>
-        <li><a href="signup.html" class="nav-btn signup-btn">SignUp</a></li>
         <li>
           <button class="control-btn" id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
         </li>
         <li>
-          <button class="control-btn" id="rtlToggle" title="Toggle RTL"><i class="fas fa-exchange-alt"></i></button>
+          <button class="control-btn rtl-text-btn" id="rtlToggle" title="Toggle RTL"><span id="rtlButtonText">RTL</span></button>
         </li>
       </ul>
 
@@ -794,7 +703,6 @@
     </nav>
   </header>
 
-  <!-- mobile menu (identical structure as about page) -->
   <div class="mobile-nav-menu" id="mobileNavMenu">
     <ul class="nav-links">
       <li><a href="#"><i class="fas fa-caret-down"></i> Home</a></li>
@@ -810,15 +718,13 @@
       <li><a href="user.html">User</a></li>
       <li><a href="admin.html">Admin</a></li>
       <li><a href="login.html">Login</a></li>
-      <li><a href="signup.html">SignUp</a></li>
     </ul>
     <div class="mobile-controls">
       <button class="control-btn" id="mobileThemeToggle"><i class="fas fa-moon"></i><span>Dark Mode</span></button>
-      <button class="control-btn" id="mobileRtlToggle"><i class="fas fa-exchange-alt"></i><span>RTL</span></button>
+      <button class="control-btn rtl-text-btn" id="mobileRtlToggle"><i class="fas fa-language"></i><span id="mobileRtlButtonText">RTL Mode</span></button>
     </div>
   </div>
 
-  <!-- main content (art & craft) -->
   <main>
     <section class="art-hero">
       <div class="hero-content">
@@ -844,18 +750,17 @@
         <div class="feature-card">
           <img src="https://images.pexels.com/photos/1084406/pexels-photo-1084406.jpeg?auto=compress&cs=tinysrgb&w=600" alt="watercolor">
           <h3>Watercolor Basics</h3>
-          
         </div>
         <div class="feature-card">
-          <img src="images/pexels-shkrabaanthony-4442002.jpg" alt="collage">
+          <img src="images/pexels-shkrabaanthony-4442002.jpg" alt="collage" onerror="this.src='https://images.pexels.com/photos/4442002/pexels-photo-4442002.jpeg?auto=compress&cs=tinysrgb&w=600'">
           <h3>Creative Collage</h3>
         </div>
         <div class="feature-card">
           <img src="https://images.pexels.com/photos/6816531/pexels-photo-6816531.jpeg?auto=compress&cs=tinysrgb&w=600" alt="clay">
           <h3>Clay Modeling</h3>
         </div>
-         <div class="feature-card">
-          <img src="images\pexels-artempodrez-6941834.jpg" alt="clay">
+        <div class="feature-card">
+          <img src="images/pexels-artempodrez-6941834.jpg" alt="craft" onerror="this.src='https://images.pexels.com/photos/6941834/pexels-photo-6941834.jpeg?auto=compress&cs=tinysrgb&w=600'">
           <h3>Craft Modeling</h3>
         </div>
       </div>
@@ -864,7 +769,7 @@
     <section class="glass-section">
       <h2 class="section-title">Premium <span>Workshop</span></h2>
       <div class="glass-card">
-        <img src="images\pexels-cottonbro-3778078.jpg" alt="workshop">
+        <img src="images/pexels-cottonbro-3778078.jpg" alt="workshop" onerror="this.src='https://images.pexels.com/photos/3778078/pexels-photo-3778078.jpeg?auto=compress&cs=tinysrgb&w=600'">
         <div class="glass-content">
           <h3>Master Art Workshop</h3>
           <p>Advanced creative sessions with expert mentors and unique projects.</p>
@@ -878,19 +783,19 @@
       <p class="section-subtitle">Where imagination comes alive</p>
       <div class="bento-grid">
         <div class="bento-item big">
-          <img src="images\pexels-anna-nekrashevich-7144424.jpg" alt="masterpiece" onerror="this.src='https://images.pexels.com/photos/1998633/pexels-photo-1998633.jpeg?auto=compress&cs=tinysrgb&w=600'">
+          <img src="images/pexels-anna-nekrashevich-7144424.jpg" alt="masterpiece" onerror="this.src='https://images.pexels.com/photos/1998633/pexels-photo-1998633.jpeg?auto=compress&cs=tinysrgb&w=600'">
           <div class="overlay"><h3>Masterpiece Creation</h3></div>
         </div>
         <div class="bento-item">
-          <img src="images\pexels-anntarazevich-6146659.jpg" alt="sketch" onerror="this.src='https://images.pexels.com/photos/102127/pexels-photo-102127.jpeg?auto=compress&cs=tinysrgb&w=600'">
+          <img src="images/pexels-anntarazevich-6146659.jpg" alt="sketch" onerror="this.src='https://images.pexels.com/photos/102127/pexels-photo-102127.jpeg?auto=compress&cs=tinysrgb&w=600'">
           <div class="overlay"><h3>Sketch Art</h3></div>
         </div>
         <div class="bento-item">
-          <img src="images\pexels-artempodrez-6941091.jpg" alt="papercraft" onerror="this.src='https://images.pexels.com/photos/3750777/pexels-photo-3750777.jpeg?auto=compress&cs=tinysrgb&w=600'">
+          <img src="images/pexels-artempodrez-6941091.jpg" alt="papercraft" onerror="this.src='https://images.pexels.com/photos/3750777/pexels-photo-3750777.jpeg?auto=compress&cs=tinysrgb&w=600'">
           <div class="overlay"><h3>Paper Craft</h3></div>
         </div>
         <div class="bento-item wide">
-          <img src="images\pexels-pixabay-159644.jpg" alt="color painting" onerror="this.src='https://images.pexels.com/photos/1616403/pexels-photo-1616403.jpeg?auto=compress&cs=tinysrgb&w=600'">
+          <img src="images/pexels-pixabay-159644.jpg" alt="color painting" onerror="this.src='https://images.pexels.com/photos/1616403/pexels-photo-1616403.jpeg?auto=compress&cs=tinysrgb&w=600'">
           <div class="overlay"><h3>Color Painting</h3></div>
         </div>
       </div>
@@ -903,7 +808,6 @@
     </section>
   </main>
 
-  <!-- footer -->
   <footer class="site-footer">
     <div class="footer-content">
       <div class="footer-top">
@@ -923,7 +827,6 @@
     </div>
   </footer>
 
-  <!-- script (identical behavior) -->
   <script>
     (function() {
       const hamburger = document.getElementById('hamburger');
@@ -931,40 +834,29 @@
       const mobileMenu = document.getElementById('mobileNavMenu');
       const body = document.body;
 
-      if (!hamburger || !overlay || !mobileMenu) return;
-
-      function toggleMobileMenu() {
-        const isActive = mobileMenu.classList.contains('active');
-        mobileMenu.classList.toggle('active');
-        overlay.classList.toggle('active');
-        body.style.overflow = isActive ? '' : 'hidden';
-        hamburger.innerHTML = isActive ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+      if (hamburger && overlay && mobileMenu) {
+        function toggleMobileMenu() {
+          const isActive = mobileMenu.classList.contains('active');
+          mobileMenu.classList.toggle('active');
+          overlay.classList.toggle('active');
+          body.style.overflow = isActive ? '' : 'hidden';
+          hamburger.innerHTML = isActive ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+        }
+        hamburger.addEventListener('click', toggleMobileMenu);
+        overlay.addEventListener('click', toggleMobileMenu);
+        document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
+          link.addEventListener('click', function(e) {
+            if (!this.querySelector('.fa-caret-down')) toggleMobileMenu();
+          });
+        });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && mobileMenu.classList.contains('active')) toggleMobileMenu();
+        });
+        window.addEventListener('resize', () => {
+          if (window.innerWidth > 1280 && mobileMenu.classList.contains('active')) toggleMobileMenu();
+        });
       }
 
-      hamburger.addEventListener('click', toggleMobileMenu);
-      overlay.addEventListener('click', toggleMobileMenu);
-
-      document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
-        link.addEventListener('click', function(e) {
-          if (!this.querySelector('.fa-caret-down')) {
-            toggleMobileMenu();
-          }
-        });
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-          toggleMobileMenu();
-        }
-      });
-
-      window.addEventListener('resize', () => {
-        if (window.innerWidth > 1280 && mobileMenu.classList.contains('active')) {
-          toggleMobileMenu();
-        }
-      });
-
-      // theme & rtl
       function toggleTheme() {
         document.body.classList.toggle('dark-mode');
         const isDark = document.body.classList.contains('dark-mode');
@@ -979,10 +871,20 @@
       function toggleRTL() {
         const html = document.documentElement;
         const isRTL = html.getAttribute('dir') === 'rtl';
-        html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
-        const mobileSpan = document.querySelector('#mobileRtlToggle span');
-        if (mobileSpan) mobileSpan.textContent = isRTL ? 'RTL' : 'LTR';
-        localStorage.setItem('direction', isRTL ? 'ltr' : 'rtl');
+        const newDir = isRTL ? 'ltr' : 'rtl';
+        html.setAttribute('dir', newDir);
+        
+        const rtlButtonSpan = document.getElementById('rtlButtonText');
+        const mobileRtlSpan = document.getElementById('mobileRtlButtonText');
+        
+        if (rtlButtonSpan) {
+          rtlButtonSpan.textContent = newDir === 'rtl' ? 'LTR' : 'RTL';
+        }
+        if (mobileRtlSpan) {
+          mobileRtlSpan.textContent = newDir === 'rtl' ? 'Switch to LTR' : 'Switch to RTL';
+        }
+        
+        localStorage.setItem('direction', newDir);
       }
 
       document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
@@ -996,21 +898,26 @@
         const mobileSpan = document.querySelector('#mobileThemeToggle span');
         if (mobileSpan) mobileSpan.textContent = 'Light Mode';
       }
-
-      if (localStorage.getItem('direction') === 'rtl') {
+      
+      const savedDir = localStorage.getItem('direction');
+      if (savedDir === 'rtl') {
         document.documentElement.setAttribute('dir', 'rtl');
-        const mobileSpan = document.querySelector('#mobileRtlToggle span');
-        if (mobileSpan) mobileSpan.textContent = 'LTR';
+        const rtlButtonSpan = document.getElementById('rtlButtonText');
+        const mobileRtlSpan = document.getElementById('mobileRtlButtonText');
+        if (rtlButtonSpan) rtlButtonSpan.textContent = 'LTR';
+        if (mobileRtlSpan) mobileRtlSpan.textContent = 'Switch to LTR';
+      } else {
+        const rtlButtonSpan = document.getElementById('rtlButtonText');
+        const mobileRtlSpan = document.getElementById('mobileRtlButtonText');
+        if (rtlButtonSpan && !savedDir) rtlButtonSpan.textContent = 'RTL';
+        if (mobileRtlSpan && !savedDir) mobileRtlSpan.textContent = 'Switch to RTL';
       }
     })();
 
-    // auto highlight active page
     const currentPage = window.location.pathname.split("/").pop();
     document.querySelectorAll(".nav-links a").forEach(link => {
       const linkPage = link.getAttribute("href");
-      if (linkPage === currentPage) {
-        link.classList.add("active");
-      }
+      if (linkPage === currentPage) link.classList.add("active");
     });
   </script>
 </body>

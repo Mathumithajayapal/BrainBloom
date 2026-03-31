@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BrainBloom · enrichment program</title>
+  <title>BrainBloom · Enrichment Program</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -162,7 +162,7 @@
       display: inline-flex;
       align-items: center;
       white-space: nowrap;
-      gap: 6px; /* proper spacing between text and dropdown icons */
+      gap: 6px;
     }
     .nav-links a:hover,
     .nav-links a.active {
@@ -229,6 +229,18 @@
       color: var(--accent); 
       transform: scale(1.05); 
       background: rgba(255,180,71,0.1);
+    }
+    /* RTL text button style - replacing icon with proper text */
+    .rtl-text-btn {
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 14px;
+      letter-spacing: 0.5px;
+      gap: 6px;
+      min-width: 70px;
+    }
+    .rtl-text-btn i {
+      font-size: 0.9rem;
     }
     .hamburger {
       display: none; 
@@ -810,7 +822,7 @@
           <button class="control-btn" id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
         </li>
         <li>
-          <button class="control-btn" id="rtlToggle" title="Toggle RTL"><i class="fas fa-arrow-right-arrow-left"></i></button>
+          <button class="control-btn rtl-text-btn" id="rtlToggle" title="Toggle RTL"><i class="fas fa-language"></i> <span id="rtlButtonText">RTL</span></button>
         </li>
       </ul>
       <div class="controls">
@@ -838,7 +850,7 @@
     </ul>
     <div class="mobile-controls">
       <button class="control-btn" id="mobileThemeToggle"><i class="fas fa-moon"></i><span>Dark Mode</span></button>
-      <button class="control-btn" id="mobileRtlToggle"><i class="fas fa-arrow-right-arrow-left"></i><span>RTL</span></button>
+      <button class="control-btn rtl-text-btn" id="mobileRtlToggle"><i class="fas fa-language"></i><span id="mobileRtlButtonText">RTL Mode</span></button>
     </div>
   </div>
 
@@ -905,26 +917,47 @@
       function toggleRTL() {
         const html = document.documentElement;
         const isRTL = html.getAttribute('dir') === 'rtl';
-        html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
-        const mobileSpan = document.querySelector('#mobileRtlToggle span');
-        if (mobileSpan) mobileSpan.textContent = isRTL ? 'RTL' : 'LTR';
-        localStorage.setItem('direction', isRTL ? 'ltr' : 'rtl');
+        const newDir = isRTL ? 'ltr' : 'rtl';
+        html.setAttribute('dir', newDir);
+        
+        const rtlButtonSpan = document.getElementById('rtlButtonText');
+        const mobileRtlSpan = document.getElementById('mobileRtlButtonText');
+        
+        if (rtlButtonSpan) {
+          rtlButtonSpan.textContent = newDir === 'rtl' ? 'LTR' : 'RTL';
+        }
+        if (mobileRtlSpan) {
+          mobileRtlSpan.textContent = newDir === 'rtl' ? 'Switch to LTR' : 'Switch to RTL';
+        }
+        
+        localStorage.setItem('direction', newDir);
       }
       document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
       document.getElementById('mobileThemeToggle')?.addEventListener('click', toggleTheme);
       document.getElementById('rtlToggle')?.addEventListener('click', toggleRTL);
       document.getElementById('mobileRtlToggle')?.addEventListener('click', toggleRTL);
+      
       if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
         document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => { if (el) el.className = 'fas fa-sun'; });
         const span = document.querySelector('#mobileThemeToggle span');
         if(span) span.textContent = 'Light Mode';
       }
-      if (localStorage.getItem('direction') === 'rtl') {
+      
+      const savedDir = localStorage.getItem('direction');
+      if (savedDir === 'rtl') {
         document.documentElement.setAttribute('dir', 'rtl');
-        const mobileSpan = document.querySelector('#mobileRtlToggle span');
-        if (mobileSpan) mobileSpan.textContent = 'LTR';
+        const rtlButtonSpan = document.getElementById('rtlButtonText');
+        const mobileRtlSpan = document.getElementById('mobileRtlButtonText');
+        if (rtlButtonSpan) rtlButtonSpan.textContent = 'LTR';
+        if (mobileRtlSpan) mobileRtlSpan.textContent = 'Switch to LTR';
+      } else {
+        const rtlButtonSpan = document.getElementById('rtlButtonText');
+        const mobileRtlSpan = document.getElementById('mobileRtlButtonText');
+        if (rtlButtonSpan && !savedDir) rtlButtonSpan.textContent = 'RTL';
+        if (mobileRtlSpan && !savedDir) mobileRtlSpan.textContent = 'Switch to RTL';
       }
+      
       const currentPage = window.location.pathname.split("/").pop();
       document.querySelectorAll(".nav-links a").forEach(link => {
         const linkPage = link.getAttribute("href");

@@ -3,22 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BrainBloom · enrichment program</title>
+  <title>BrainBloom · Enrichment Program</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
+  <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --primary: #FFB347;         /* orange – main */
-      --secondary: #FF8C42;        /* deeper orange – secondary */
-      --accent: #FFB347;           /* orange – unified */
+      --primary: #FFB347;
+      --secondary: #FF8C42;
+      --accent: #FFB347;
       --text: #1E2B3C;
       --text-light: #2C3E50;
-      --text-inverse: #FFFFFF;
       --bg: #FFFFFF;
       --bg-light: #F4F7FC;
       --border: #D9E2EC;
@@ -27,17 +26,6 @@
       --transition: all 0.4s ease;
       --footer-bg: #FFFFFF;
       --footer-text: #1E2B3C;
-      
-      /* testimonial & awards light mode specific (keep original) */
-      --awards-bg: linear-gradient(135deg, #fff3e0, #ffe0b2);
-      --testimonial-bg: #f4efe9;
-      --testimonial-box-bg: #efe4d6;
-      --testimonial-border: #222;
-      --testimonial-text: #222;
-      --testimonial-author-color: #555;
-      --circle-bg: #f3e8dc;
-      --tag-bg: #e8d3b7;
-      --quote-color: #cfc2b2;
     }
     .dark-mode {
       --primary: #FFB347;
@@ -45,25 +33,13 @@
       --accent: #FFB347;
       --text: #F0F3FA;
       --text-light: #CAD5E2;
-     
-      --bg: #000000;              /* full black background */
-      --bg-light: #0A0A0A;         /* very dark grey for cards / menus */
-      --border: #262626;           /* dark border */
-      --footer-bg: #000000;        /* footer pure black */
+      --bg: #000000;
+      --bg-light: #0A0A0A;
+      --border: #262626;
+      --footer-bg: #000000;
       --footer-text: #FFFFFF;
       --shadow: 0 4px 12px rgba(255,180,71,0.03);
       --shadow-lg: 0 20px 40px rgba(255,180,71,0.05);
-      
-      /* dark mode overrides for awards + testimonial */
-      --awards-bg: linear-gradient(135deg, #111111, #1a1a1a);
-      --testimonial-bg: #0a0a0a;           /* section background pure black feel */
-      --testimonial-box-bg: #1a1a1a;        /* actual testimonial card background – dark */
-      --testimonial-border: #FFB347;
-      --testimonial-text: #f0f0f0;
-      --testimonial-author-color: #cccccc;
-      --circle-bg: #2a2a2a;
-      --tag-bg: #2a2a2a;
-      --quote-color: #FFB347;
     }
     body {
       font-family: 'Poppins', sans-serif; 
@@ -83,29 +59,30 @@
       color: #FFFFFF !important;
     }
 
-    /* Header - navbar items perfectly centered on same line */
+    /* HEADER - clean navbar with proper spacing, only login button */
     header {
       background: var(--bg); 
       box-shadow: var(--shadow); 
       position: sticky; 
       top: 0;
       z-index: 1000; 
+      width: 100%;
     }
     .navbar {
       display: flex; 
       justify-content: space-between; 
-      align-items: center;  /* ensures all children are vertically centered */
-      padding: 0.75rem 2rem; /* balanced padding */
-      max-width: 1400px; 
+      align-items: center;
+      padding: 0.75rem 4rem;
+      max-width: 100%; 
       margin: 0 auto;
-      min-height: 80px; /* fixed height for consistency */
+      min-height: 80px;
     }
     .logo { 
       display: flex; 
-      align-items: center;  /* vertical center */
+      align-items: center;
       gap: 10px; 
       text-decoration: none;
-      line-height: 1; /* remove extra line height */
+      line-height: 1;
     }
     .logo i { 
       color: var(--accent); 
@@ -130,7 +107,7 @@
       display: flex; 
       list-style: none; 
       gap: 0.5rem; 
-      align-items: center;  /* vertical center */
+      align-items: center;
       margin: 0;
       padding: 0;
     }
@@ -149,13 +126,13 @@
       display: inline-flex;
       align-items: center;
       white-space: nowrap;
+      gap: 6px;
     }
     .nav-links a:hover,
     .nav-links a.active {
       color: var(--accent); 
       background: rgba(255,180,71,0.1);
     }
-    /* dropdown */
     .dropdown { 
       position: relative; 
       display: flex;
@@ -167,25 +144,28 @@
       left: 0; 
       background: var(--bg-light);
       list-style: none; 
-      padding: 15px 0; 
-      min-width: 200px; 
+      padding: 12px 0; 
+      min-width: 210px; 
       border-radius: 20px;
-      box-shadow: var(--shadow-lg); 
+      box-shadow: 0 12px 28px rgba(0,0,0,0.15);
       border: 1px solid var(--border); 
       display: none; 
       z-index: 1000;
+      backdrop-filter: blur(4px);
     }
     .dropdown-menu a {
       display: block; 
-      padding: 12px 20px; 
+      padding: 10px 22px; 
       color: var(--text); 
       text-decoration: none;
       white-space: nowrap;
+      font-weight: 500;
+      gap: 0;
     }
     .dropdown-menu a:hover {
-      background: var(--primary); 
-      color: white; 
-      padding-left: 30px;
+      background: var(--accent); 
+      color: #1E2B3C; 
+      padding-left: 28px;
     }
     .dropdown:hover .dropdown-menu { 
       display: block; 
@@ -206,10 +186,24 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      border-radius: 40px;
     }
     .control-btn:hover { 
       color: var(--accent); 
-      transform: scale(1.1); 
+      transform: scale(1.05); 
+      background: rgba(255,180,71,0.1);
+    }
+    /* RTL text button style - replacing icon with proper text */
+    .rtl-text-btn {
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 14px;
+      letter-spacing: 0.5px;
+      gap: 6px;
+      min-width: 70px;
+    }
+    .rtl-text-btn i {
+      font-size: 0.9rem;
     }
     .hamburger {
       display: none; 
@@ -223,7 +217,23 @@
       align-items: center;
       justify-content: center;
     }
-    /* mobile menu adjustments (unchanged, but ensure inner links are centered) */
+    /* Only login button - signup removed */
+    .nav-btn { 
+      padding: 8px 22px !important; 
+      border-radius: 50px !important; 
+      font-weight: 600; 
+    }
+    .login-btn { 
+      border: 2px solid var(--primary); 
+      color: var(--primary) !important; 
+      background: transparent;
+    }
+    .login-btn:hover { 
+      background: var(--primary); 
+      color: #1E2B3C !important; 
+    }
+
+    /* MOBILE MENU */
     .mobile-nav-menu {
       position: fixed; 
       top: 0; 
@@ -259,10 +269,11 @@
       font-weight: 600 !important; 
       width: 100% !important;
       text-align: left;
+      gap: 8px;
     }
     .mobile-nav-menu .nav-links a:hover {
       background: var(--accent) !important; 
-      color: #db5507 !important;
+      color: #1E2B3C !important;
       border-color: var(--accent) !important;
     }
     .mobile-nav-menu .nav-links .home-sub-item {
@@ -272,6 +283,11 @@
       border-color: var(--border) !important; 
       background: var(--bg-light) !important; 
       font-size: 0.9rem !important;
+    }
+    .mobile-nav-menu .nav-links a.active {
+      background: var(--accent) !important;
+      color: #fff !important;
+      border-color: var(--accent) !important;
     }
     .mobile-overlay {
       position: fixed; 
@@ -309,37 +325,125 @@
     }
     .mobile-controls .control-btn:hover {
       background: var(--accent);
-      color: #ff6200;
+      color: #1E2B3C;
       border-color: var(--accent);
     }
-    .nav-btn { 
-      padding: 8px 18px !important; 
-      border-radius: 50px !important; 
-      font-weight: 600; 
+
+    /* RTL support */
+    [dir="rtl"] .dropdown-menu { left: auto; right: 0; }
+    [dir="rtl"] .footer-column a:hover { transform: translateX(-8px); }
+    [dir="rtl"] .mobile-nav-menu {
+      left: -100%; 
+      right: auto; 
+      border-left: none; 
+      border-right: 3px solid var(--accent);
     }
-    .login-btn { 
-      border: 2px solid var(--primary); 
-      color: var(--primary) !important; 
-    }
-    .login-btn:hover { 
-      background: var(--primary); 
-      color: rgb(249, 138, 3) !important; 
-    }
-    .signup-btn { 
-      background: var(--accent); 
-      color: #1E2B3C !important; 
-      border: 2px solid var(--accent);
-    }
-    .signup-btn:hover { 
-      background: #e09d3c; 
+    [dir="rtl"] .mobile-nav-menu.active { left: 0; }
+    [dir="rtl"] .home-sub-item { 
+      padding-left: 20px !important; 
+      padding-right: 40px !important; 
     }
 
-    /* ===== NEW SECTIONS ADDED (without changing header/footer) ===== */
-    .section-padding {
+    /* responsive */
+    @media (max-width: 1280px) {
+      .navbar { padding: 0.75rem 2rem; }
+      .nav-links:not(.mobile-nav-menu .nav-links) { display: none !important; }
+      .hamburger { display: flex !important; }
+    }
+    @media (min-width: 1281px) {
+      .nav-links:not(.mobile-nav-menu .nav-links) { display: flex !important; }
+      .hamburger { display: none !important; }
+    }
+
+    /* VIDEO HERO - CENTERED */
+    .video-hero {
+      position: relative;
+      height: 90vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.55);
+      z-index: 2;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      max-width: 1400px;
+      margin: auto;
+      padding: 0 4rem;
+      text-align: center;
+    }
+    .hero-left {
+      width: 100%;
+      color: #fff;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hero-left .subtitle {
+      font-size: 1rem;
+      letter-spacing: 3px;
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+    .hero-left h1 {
+      font-size: 70px;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .hero-left .special-color {
+      color: #fff;
+    }
+    .hero-left .special-color1 {
+      color: #FFB347;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #FFB347, #FF8C42);
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      transition: all 0.4s ease;
+      box-shadow: 0 8px 20px rgba(255, 140, 66, 0.3);
+    }
+    .btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(255, 140, 66, 0.4);
+    }
+    @media (max-width: 1000px) {
+      .hero-left h1 { font-size: 50px; }
+      .hero-content { padding: 0 2rem; }
+    }
+    @media (max-width: 600px) {
+      .hero-left h1 { font-size: 36px; }
+    }
+
+    /* Round features section */
+    .round-features-section {
       padding: 5rem 4rem;
       max-width: 1400px;
       margin: 0 auto;
-      width: 100%;
     }
     .section-title {
       font-size: 2.8rem;
@@ -358,68 +462,30 @@
       max-width: 700px;
       margin: 0 auto 4rem;
     }
-
-    /* Round features section (why choose brainbloom) */
-    .round-features-section {
-      padding: 5rem 4rem;
-      max-width: 1400px;
-      margin: 0 auto;
-      position: relative;
-      overflow: hidden;
+    .round-features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      justify-items: center;
     }
-    .round-features-section .section-title {
-      font-size: 2.8rem;
-      text-align: center;
-      margin-bottom: 1rem;
-      font-family: 'Playfair Display', serif;
-    }
-    .round-features-section .section-title span {
-      color: var(--accent);
-    }
-    .round-features-section .section-subtitle {
-      text-align: center;
-      font-size: 1.2rem;
-      color: var(--text-light);
-      max-width: 700px;
-      margin: 0 auto 4rem;
-    }
-  
     .round-feature-card {
       background: linear-gradient(145deg, var(--bg-light), var(--bg));
       border-radius: 50%;
       width: 100%;
+      max-width: 320px;
       aspect-ratio: 1/1;
       padding: 2.5rem;
       text-align: center;
       border: 3px solid var(--accent);
       transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow-lg);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
     }
-    .round-feature-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: radial-gradient(circle at 30% 30%, rgba(255,180,71,0.2), transparent 70%);
-      opacity: 0;
-      transition: opacity 0.5s;
-      z-index: 1;
-    }
-    .round-feature-card:hover::before {
-      opacity: 1;
-    }
     .round-feature-card:hover {
       transform: translateY(-10px) scale(1.05);
       box-shadow: 0 30px 40px rgba(255,140,66,0.3);
-      border-color: var(--secondary);
     }
     .round-feature-icon {
       width: 90px;
@@ -432,65 +498,22 @@
       margin: 0 auto 1.5rem;
       font-size: 2.5rem;
       color: white;
-      box-shadow: 0 15px 25px rgba(255,140,66,0.4);
       transition: var(--transition);
-      position: relative;
-      z-index: 2;
     }
     .round-feature-card:hover .round-feature-icon {
       transform: rotateY(180deg) scale(1.1);
-      background: linear-gradient(135deg, var(--secondary), var(--primary));
     }
     .round-feature-card h3 {
       font-size: 1.6rem;
       margin-bottom: 0.8rem;
-      font-family: 'Playfair Display', serif;
-      position: relative;
-      z-index: 2;
     }
     .round-feature-card p {
       color: var(--text-light);
       line-height: 1.6;
-      position: relative;
-      z-index: 2;
-      max-width: 250px;
-      margin: 0 auto;
       font-size: 0.95rem;
     }
-    .circle-bg {
-      position: absolute;
-      border-radius: 50%;
-      background: var(--primary);
-      z-index: 1;
-    }
-    .circle1 {
-      width: 300px;
-      height: 300px;
-      top: -100px;
-      left: -50px;
-      background: var(--primary);
-      opacity: 0.05;
-    }
-    .circle2 {
-      width: 250px;
-      height: 250px;
-      bottom: -50px;
-      right: -30px;
-      background: var(--secondary);
-      opacity: 0.05;
-    }
-    .circle3 {
-      width: 400px;
-      height: 400px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: var(--accent);
-      opacity: 0.02;
-      filter: blur(40px);
-    }
 
-    /* Programs modern - explore programs */
+    /* Programs modern */
     .programs-modern {
       padding: 5rem 4rem;
       max-width: 1400px;
@@ -505,19 +528,11 @@
       font-size: 2.8rem;
       font-family: 'Playfair Display', serif;
     }
-    .programs-modern .section-header span {
-      color: var(--accent);
+    .programs-wrap {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
     }
-    .programs-modern .section-header p {
-      color: var(--text-light);
-      margin-top: 10px;
-      font-size: 1.2rem;
-    }
-  .programs-wrap {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 👈 4 in one row */
-  gap: 20px;
-}
     .program-item {
       position: relative;
       overflow: hidden;
@@ -539,7 +554,7 @@
       left: 0;
       width: 100%;
       padding: 25px;
-      background: linear-gradient(to top, rgba(255, 140, 66, 0.4), rgba(0,0,0,0.5), transparent);
+      background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.3), transparent);
       color: #fff;
       transform: translateY(40%);
       transition: 0.4s;
@@ -549,14 +564,11 @@
     }
     .overlay h3 {
       margin-bottom: 8px;
+      color: white;
     }
     .overlay p {
       font-size: 14px;
       margin-bottom: 10px;
-    }
-    .overlay span {
-      font-size: 12px;
-      opacity: 0.8;
     }
 
     /* Journey section */
@@ -565,18 +577,6 @@
       max-width: 1400px;
       margin: 0 auto;
       width: 100%;
-    }
-    .journey-section .section-title {
-      font-size: 2.8rem;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-    .journey-section .section-subtitle {
-      text-align: center;
-      font-size: 1.2rem;
-      color: var(--text-light);
-      max-width: 700px;
-      margin: 0 auto 4rem;
     }
     .timeline {
       position: relative;
@@ -611,19 +611,14 @@
       border: 1px solid var(--border);
     }
 
-    /* Awards / achievements section - uses CSS variables */
+    /* Awards section */
     .awards-section {
       padding: 5rem 4rem;
       max-width: 1400px;
       margin: 2rem auto;
       width: 100%;
-      background: var(--awards-bg);
+      background: linear-gradient(135deg, var(--bg-light), var(--bg));
       border-radius: 60px;
-    }
-    .awards-section .section-title {
-      font-size: 2.8rem;
-      text-align: center;
-      margin-bottom: 2rem;
     }
     .awards-grid {
       display: grid;
@@ -632,7 +627,7 @@
       margin-top: 20px;
     }
     .award-card {
-      background: rgba(255,255,255,0.5);
+      background: rgba(255,255,255,0.1);
       backdrop-filter: blur(10px);
       padding: 40px;
       border-radius: 20px;
@@ -647,11 +642,11 @@
       color: var(--accent);
     }
 
-    /* About split (why brainbloom extra) - top/bottom 50px padding */
+    /* About split */
     .about-split {
       display: flex;
       gap: 50px;
-      padding: 50px 4rem;  /* top/bottom 50px, left/right 4rem */
+      padding: 5rem 4rem;
       max-width: 1400px;
       margin: 0 auto;
       width: 100%;
@@ -685,48 +680,31 @@
     .video-box i {
       font-size: 50px;
       color: white;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.6);
       padding: 20px;
       border-radius: 50%;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .video-box i:hover {
+      transform: scale(1.1);
+      background: var(--accent);
     }
 
-    /* HAPPY STORIES - now with full dark mode background fix */
+    /* Happy stories */
     .happy-stories {
       padding: 5rem 4rem;
       max-width: 1400px;
       margin: 0 auto;
       width: 100%;
-      background: var(--testimonial-bg); /* uses variable that turns black in dark */
+      background: var(--bg-light);
       border-radius: 60px;
-      transition: background 0.3s;
-    }
-    .happy-stories .section-header {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-    .happy-stories .section-header h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.8rem;
-      margin-bottom: 10px;
-    }
-    .happy-stories .section-header p {
-      color: var(--text-light);
-      font-size: 1.2rem;
     }
     .testimonial-box {
-      background: var(--testimonial-box-bg); /* now switches to dark grey/black */
-      border: 2px solid var(--testimonial-border);
+      background: var(--bg);
+      border: 2px solid var(--accent);
       border-radius: 30px;
       padding: 50px;
-      position: relative;
-      transition: background 0.3s, border-color 0.3s;
-    }
-    .quote {
-      position: absolute;
-      top: 30px;
-      left: 40px;
-      font-size: 80px;
-      color: var(--quote-color);
     }
     .testimonial-content {
       display: flex;
@@ -740,28 +718,16 @@
       font-family: 'Playfair Display', serif;
       font-size: 20px;
       line-height: 1.8;
-      color: var(--testimonial-text);
+      color: var(--text);
       margin-bottom: 40px;
-    }
-    .author {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-    .avatar {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: var(--circle-bg);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
     .author h4 {
       margin: 0;
-      color: var(--testimonial-text);
+      color: var(--text);
     }
     .author span {
       font-size: 14px;
-      color: var(--testimonial-author-color);
+      color: var(--text-light);
     }
     .right {
       width: 40%;
@@ -779,33 +745,30 @@
       width: 80px;
       height: 80px;
       border-radius: 50%;
-      background: var(--circle-bg);
+      background: var(--bg-light);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       font-weight: 600;
-      color: var(--testimonial-text);
+      color: var(--text);
     }
     .circle span {
       font-size: 12px;
-      color: var(--testimonial-author-color);
+      color: var(--text-light);
     }
     .tags {
       display: flex;
       gap: 10px;
       margin-bottom: 15px;
+      flex-wrap: wrap;
     }
     .tags span {
-      background: var(--tag-bg);
+      background: var(--bg-light);
       padding: 8px 15px;
       border-radius: 20px;
       font-size: 13px;
-      color: var(--testimonial-text);
-    }
-    .note {
-      font-size: 14px;
-      color: var(--testimonial-author-color);
+      color: var(--text);
     }
 
     /* Footer */
@@ -814,14 +777,12 @@
       color: var(--footer-text);
       padding: 70px 0 40px; 
       margin-top: auto;
-    }
-    .dark-mode .site-footer { 
-      background: #000000 !important; 
+      width: 100%;
     }
     .footer-content { 
-      max-width: 1300px; 
+      max-width: 1400px; 
       margin: 0 auto; 
-      padding: 0 2rem; 
+      padding: 0 4rem; 
     }
     .footer-top {
       display: grid; 
@@ -839,12 +800,8 @@
       padding-bottom: 12px;
       border-bottom: 2px solid var(--accent);
     }
-    .footer-column ul { 
-      list-style: none; 
-    }
-    .footer-column li { 
-      margin-bottom: 12px; 
-    }
+    .footer-column ul { list-style: none; }
+    .footer-column li { margin-bottom: 12px; }
     .footer-column a {
       color: var(--footer-text); 
       text-decoration: none; 
@@ -857,520 +814,52 @@
     }
     .footer-middle {
       padding: 15px 0; 
-      
       margin-bottom: 35px;
       display: flex; 
       justify-content: space-between; 
       align-items: center;
     }
-    .footer-links { 
-      display: flex; 
-      gap: 35px; 
-    }
-    .footer-links a { 
-      color: var(--footer-text); 
-      text-decoration: none; 
-      font-size: 0.95rem; 
-    }
-    .footer-links a:hover { 
-      color: var(--accent); 
-    }
-    .footer-bottom { 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-    }
-    .copyright { 
-      color: var(--footer-text); 
-      font-size: 0.9rem; 
-      opacity: 0.8; 
-    }
+    .footer-links { display: flex; gap: 35px; }
+    .footer-links a { color: var(--footer-text); text-decoration: none; font-size: 0.95rem; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+    .copyright { color: var(--footer-text); font-size: 0.9rem; opacity: 0.8; }
 
-    /* RTL */
-    [dir="rtl"] .dropdown-menu { 
-      left: auto; 
-      right: 0; 
-    }
-    [dir="rtl"] .footer-column a:hover { 
-      transform: translateX(-8px); 
-    }
-    [dir="rtl"] .mobile-nav-menu {
-      left: -100%; 
-      right: auto; 
-      border-left: none; 
-      border-right: 3px solid var(--accent);
-    }
-    [dir="rtl"] .mobile-nav-menu.active { 
-      left: 0; 
-    }
-    [dir="rtl"] .home-sub-item { 
-      padding-left: 20px !important; 
-      padding-right: 40px !important; 
-    }
-    [dir="rtl"] .furniture-left {
-      text-align: right;
-    }
-
-    /* Responsive */
-    @media (max-width: 1280px) {
-      .nav-links:not(.mobile-nav-menu .nav-links) { 
-        display: none !important; 
-      }
-      .hamburger { 
-        display: flex !important; 
-      }
-      .navbar {
-        min-height: 70px;
-      }
-    }
-    @media (min-width: 1281px) {
-      .nav-links:not(.mobile-nav-menu .nav-links) { 
-        display: flex !important; 
-      }
-      .hamburger { 
-        display: none !important; 
-      }
-    }
-  @media (max-width: 1200px) {
-  .features-grid,
-  .programs-grid,
-  .round-features-grid { 
-    grid-template-columns: repeat(2, 1fr); 
-  }
-
-  .programs-wrap {
-    grid-template-columns: repeat(2, 1fr); /* 👈 2x2 */
-  }
-
-  .awards-grid {
-    grid-template-columns: 1fr;
-  }
-}
-    @media (max-width: 1000px) {
-      .furniture-hero { 
-        flex-direction: column-reverse;
-        height: auto; 
-      }
-      .furniture-left, .furniture-right { 
-        width: 100%; 
-        padding: 60px 40px; 
-        min-height: 400px;
-      }
-      .furniture-right { 
-        min-height: 500px; 
-      }
-      .furniture-left h1 { 
-        font-size: 60px; 
-        text-align: center;
-      }
-      .furniture-left .subtitle {
-        text-align: center;
-      }
-      .furniture-left .btn {
-        margin: 0 auto;
-      }
+    @media (max-width: 1200px) {
+      .programs-wrap { grid-template-columns: repeat(2, 1fr); }
+      .round-features-grid { grid-template-columns: repeat(2, 1fr); }
+      .awards-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 900px) {
-      .footer-top { 
-        grid-template-columns: repeat(2, 1fr); 
-      }
-      .footer-middle, .footer-bottom { 
-        flex-direction: column; 
-        gap: 20px; 
-        text-align: center; 
-      }
-      .features-grid,
-      .programs-grid,
-      .round-features-grid,
-      .programs-wrap,
-      .awards-grid { grid-template-columns: 1fr; }
+      .round-features-grid { grid-template-columns: 1fr; }
       .about-split { flex-direction: column; }
       .about-left, .about-right { width: 100%; }
       .testimonial-content { flex-direction: column; }
       .left, .right { width: 100%; }
-      
-      /* Make round cards smaller but still round */
-      .round-feature-card {
-        max-width: 380px;
-        margin: 0 auto;
-        padding: 1.8rem;
+      .footer-top { grid-template-columns: repeat(2, 1fr); }
+      .footer-middle, .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+      .footer-content { padding: 0 2rem; }
+    }
+    @media (max-width: 768px) {
+      .programs-wrap { grid-template-columns: 1fr; }
+      .program-item { height: 300px; }
+      .round-features-section, .programs-modern, .journey-section, .awards-section, .about-split, .happy-stories {
+        padding: 3rem 1.5rem;
       }
-      .round-feature-icon {
-        width: 70px;
-        height: 70px;
-        font-size: 2rem;
-      }
-      .round-feature-card h3 {
-        font-size: 1.4rem;
-      }
-      .round-feature-card p {
-        font-size: 0.9rem;
-        max-width: 220px;
-      }
+      .round-feature-card { max-width: 280px; padding: 1.5rem; }
+      .round-feature-icon { width: 60px; height: 60px; font-size: 1.8rem; }
+      .round-feature-card h3 { font-size: 1.2rem; }
     }
     @media (max-width: 600px) {
-      .footer-top { 
-        grid-template-columns: 1fr; 
-      }
-      .navbar { 
-        padding: 0.5rem 1rem; 
-      }
-      .logo-text { 
-        font-size: 22px; 
-      }
-      .furniture-left h1 { 
-        font-size: 48px; 
-      }
-      .furniture-left { 
-        padding: 40px 20px; 
-      }
-      .furniture-right { 
-        min-height: 400px; 
-      }
-      .section-padding,
-      .round-features-section,
-      .programs-modern,
-      .journey-section,
-      .awards-section,
-      .about-split,
-      .happy-stories { 
-        padding: 3rem 1.5rem; 
-      }
-      .about-split {
-        padding: 50px 1.5rem;
-      }
-      
-      /* Even smaller on mobile */
-      .round-feature-card {
-        max-width: 280px;
-        padding: 1.5rem;
-      }
-      .round-feature-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
-      }
-      .round-feature-card h3 {
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
-      }
-      .round-feature-card p {
-        font-size: 0.8rem;
-        max-width: 200px;
-      }
+      .footer-top { grid-template-columns: 1fr; }
+      .navbar { padding: 0.5rem 1rem; }
+      .logo-text { font-size: 22px; }
     }
-    /* ===== VIDEO HERO ===== */
-.video-hero{
-  position:relative;
-  height:90vh;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-}
-
-/* VIDEO BACKGROUND */
-.hero-video{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  z-index:1;
-}
-
-/* DARK OVERLAY */
-.hero-overlay{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.5);
-  z-index:2;
-}
-
-/* CONTENT */
-.hero-content{
-  position:relative;
-  z-index:3;
-  width:100%;
-  max-width:1400px;
-  margin:auto;
-  padding:0 4rem;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-/* LEFT TEXT */
-.hero-left{
-  width:50%;
-  color:#fff;
-}
-
-.hero-left h1{
-  font-size:70px;
-  line-height:1.1;
-}
-
-.hero-left .special-color{
-  color:#fff;
-}
-
-.hero-left .special-color1{
-  color:#FFB347;
-}
-
-/* RIGHT IMAGE DESIGN */
-.hero-right{
-  width:40%;
-  position:relative;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-/* MAIN IMAGE */
-.image-box.main-img{
-  width:260px;
-  height:260px;
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:0 20px 40px rgba(0,0,0,0.4);
-}
-
-.image-box.main-img img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-/* SMALL FLOATING IMAGE */
-.image-box.small-img{
-  width:140px;
-  height:140px;
-  position:absolute;
-  bottom:-30px;
-  right:-30px;
-  border-radius:15px;
-  overflow:hidden;
-  border:5px solid #fff;
-  box-shadow:0 15px 30px rgba(0,0,0,0.3);
-}
-
-.image-box.small-img img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-/* BUTTON FIX */
-.hero-left .btn{
-  margin-top:20px;
-}
-
-/* RESPONSIVE */
-@media(max-width:1000px){
-  .hero-content{
-    flex-direction:column;
-    text-align:center;
-  }
-
-  .hero-left{
-    width:100%;
-  }
-
-  .hero-right{
-    margin-top:40px;
-    width:100%;
-  }
-
-  .hero-left h1{
-    font-size:50px;
-  }
-}
-/* Push login & signup to right (Desktop only) */
-header .nav-links li:nth-last-child(3){
-  margin-left: 25px;
-}
-/* Add gap before Login (after Dashboard) (Desktop only) */
-header .nav-links li:nth-last-child(4){
-  margin-left: 50px;
-}
-.mobile-nav-menu .nav-links a.active {
-  background: var(--accent) !important;
-  color: #fff !important;
-  border-color: var(--accent) !important;
-}
-@media (max-width: 1200px) {
-  .features-grid,
-  .programs-grid,
-  .round-features-grid { 
-    grid-template-columns: repeat(2, 1fr); 
-  }
-
-  .programs-wrap {
-    grid-template-columns: repeat(2, 1fr); /* 👈 2x2 */
-  }
-
-  .awards-grid {
-    grid-template-columns: 1fr;
-  }
-}
-.round-features-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns by default */
-  gap: 2rem;
-  justify-items: center; /* center cards */
-}
-
-/* Responsive: stack to 1 column and reduce size */
-@media (max-width: 900px) {
-  .round-features-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .round-feature-card {
-    max-width: 380px;
-    padding: 1.8rem;
-  }
-  
-  .round-feature-icon {
-    width: 70px;
-    height: 70px;
-    font-size: 2rem;
-  }
-  
-  .round-feature-card h3 {
-    font-size: 1.4rem;
-  }
-  
-  .round-feature-card p {
-    font-size: 0.9rem;
-    max-width: 220px;
-  }
-}
-
-@media (max-width: 600px) {
-  .round-feature-card {
-    max-width: 280px;
-    padding: 1.5rem;
-  }
-  
-  .round-feature-icon {
-    width: 60px;
-    height: 60px;
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-  }
-  
-  .round-feature-card h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .round-feature-card p {
-    font-size: 0.8rem;
-    max-width: 200px;
-  }
-}
-/* MOBILE: Show programs one by one */
-@media (max-width: 768px) {
-  .programs-wrap {
-    grid-template-columns: 1fr !important; /* 1 per row */
-  }
-
-  .program-item {
-    height: 300px; /* optional: smaller height for mobile */
-  }
-}
- .signup-btn { 
-      background: var(--accent); 
-      color: #f2f2f6 !important; 
-      border: 2px solid var(--accent);
-    }
-    .signup-btn:hover {
-      background: var(--accent); 
-      color: #f6960f !important; 
-      border: 2px solid var(--accent); 
-    }
-    .btn {
-  display: inline-block;
-  padding: 14px 32px;
-  border-radius: 50px;
-  background: linear-gradient(135deg, #FFB347, #FF8C42);
-  color: #fff;
-  font-weight: 600;
-  font-size: 15px;
-  text-decoration: none;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.4s ease;
-  box-shadow: 0 8px 20px rgba(255, 140, 66, 0.3);
-}
-
-/* Hover effect */
-.btn:hover {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 12px 30px rgba(255, 140, 66, 0.4);
-}
-
-/* Shine animation */
-.btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255,255,255,0.5),
-    transparent
-  );
-  transition: 0.6s;
-}
-
-.btn:hover::before {
-  left: 100%;
-}
-
-/* Arrow animation */
-.btn::after {
- 
-  margin-left: 8px;
-  transition: 0.3s;
-}
-
-.btn:hover::after {
-  margin-left: 14px;
-}
-/* === CENTERED HERO CONTENT MODIFICATION (only changed part) === */
-.hero-content {
-  justify-content: center !important;
-  text-align: center !important;
-}
-.hero-left {
-  width: 100% !important;
-  text-align: center !important;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.hero-right {
-  display: none !important;
-}
   </style>
 </head>
 <body>
-  <!-- Mobile Overlay -->
   <div class="mobile-overlay" id="mobileOverlay"></div>
 
-  <!-- Header -->
   <header>
     <nav class="navbar">
       <a href="index.html" class="logo">
@@ -1389,7 +878,7 @@ header .nav-links li:nth-last-child(4){
         <li><a href="service.html">Service</a></li>
         <li><a href="art&craft.html">Art&Craft</a></li>
         <li><a href="music.html">Music</a></li>
-         <li><a href="faq.html">Faq</a></li>
+        <li><a href="faq.html">Faq</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li class="dropdown">
           <a href="#">Dashboard <i class="fas fa-caret-down"></i></a>
@@ -1399,12 +888,11 @@ header .nav-links li:nth-last-child(4){
           </ul>
         </li>
         <li><a href="login.html" class="nav-btn login-btn">Login</a></li>
-        <li><a href="signup.html" class="nav-btn signup-btn">SignUp</a></li>
         <li>
           <button class="control-btn" id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
         </li>
         <li>
-          <button class="control-btn" id="rtlToggle" title="Toggle RTL"><i class="fas fa-exchange-alt"></i></button>
+          <button class="control-btn rtl-text-btn" id="rtlToggle" title="Toggle RTL"> <span id="rtlButtonText">RTL</span></button>
         </li>
       </ul>
       <div class="controls">
@@ -1413,33 +901,31 @@ header .nav-links li:nth-last-child(4){
     </nav>
   </header>
 
-  <!-- Mobile Menu -->
   <div class="mobile-nav-menu" id="mobileNavMenu">
     <ul class="nav-links">
       <li><a href="#"><i class="fas fa-caret-down"></i> Home</a></li>
-<li><a href="index.html" class="active">Home 1</a></li>      <li><a href="home2.html" class="home-sub-item">Home 2</a></li>
+      <li><a href="index.html" class="home-sub-item active">Home 1</a></li>
+      <li><a href="home2.html" class="home-sub-item">Home 2</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="service.html">Service</a></li>
-        <li><a href="art&craft.html">Art&Craft</a></li>
-        <li><a href="music.html">Music</a></li>
-         <li><a href="faq.html">Faq</a></li>
-        <li><a href="contact.html">Contact</a></li>
+      <li><a href="art&craft.html">Art&Craft</a></li>
+      <li><a href="music.html">Music</a></li>
+      <li><a href="faq.html">Faq</a></li>
+      <li><a href="contact.html">Contact</a></li>
       <li><a href="#"><i class="fas fa-caret-down"></i> Dashboard</a></li>
       <li><a href="user.html" class="home-sub-item">User Dashboard</a></li>
       <li><a href="admin.html" class="home-sub-item">Admin Dashboard</a></li>
       <li><a href="login.html">Login</a></li>
-      <li><a href="signup.html">SignUp</a></li>
     </ul>
     <div class="mobile-controls">
       <button class="control-btn" id="mobileThemeToggle"><i class="fas fa-moon"></i><span>Dark Mode</span></button>
-      <button class="control-btn" id="mobileRtlToggle"><i class="fas fa-exchange-alt"></i><span>RTL</span></button>
+      <button class="control-btn rtl-text-btn" id="mobileRtlToggle"><i class="fas fa-language"></i><span id="mobileRtlButtonText">RTL Mode</span></button>
     </div>
   </div>
 
-  <!-- VIDEO HERO SECTION - CENTERED (only content modification) -->
   <section class="video-hero">
     <video autoplay muted loop playsinline class="hero-video">
-      <source src="images\art video (2).mp4" type="video/mp4">
+      <source src="images/art video (2).mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -1452,225 +938,73 @@ header .nav-links li:nth-last-child(4){
         </h1>
         <a href="#" class="btn">Start Journey →</a>
       </div>
-      <div class="hero-right" style="display: none;"></div>
     </div>
   </section>
 
-  <!-- WHY CHOOSE BRAINBLOOM (Round features section) -->
   <div class="round-features-section">
-    <div class="circle-bg circle1"></div>
-    <div class="circle-bg circle2"></div>
-    <div class="circle-bg circle3"></div>
     <h2 class="section-title">Why choose <span>BrainBloom?</span></h2>
     <p class="section-subtitle">We create magical learning experiences that blend creativity with academic excellence.</p>
-    
     <div class="round-features-grid">
-      <div class="round-feature-card">
-        <div class="round-feature-icon"><i class="fas fa-brain"></i></div>
-        <h3> Curriculum</h3>
-        <p>Balancing academics with arts, music, and emotional intelligence.</p>
-      </div>
-      <div class="round-feature-card">
-        <div class="round-feature-icon"><i class="fas fa-users"></i></div>
-        <h3>Expert Mentors</h3>
-        <p>Balancing academics with arts, music, and emotional intelligence.</p>
-      </div>
-      <div class="round-feature-card">
-        <div class="round-feature-icon"><i class="fas fa-heart"></i></div>
-        <h3>Holistic Growth</h3>
-        <p>Balancing academics with arts, music, and emotional intelligence.</p>
-      </div>
+      <div class="round-feature-card"><div class="round-feature-icon"><i class="fas fa-brain"></i></div><h3>Smart Curriculum</h3><p>Balancing academics with arts, music, and emotional intelligence.</p></div>
+      <div class="round-feature-card"><div class="round-feature-icon"><i class="fas fa-users"></i></div><h3>Expert Mentors</h3><p>Passionate educators dedicated to each child's growth.</p></div>
+      <div class="round-feature-card"><div class="round-feature-icon"><i class="fas fa-heart"></i></div><h3>Holistic Growth</h3><p>Nurturing creativity, confidence, and life skills.</p></div>
     </div>
   </div>
 
-  <!-- EXPLORE PROGRAMS (programs modern) -->
   <section class="programs-modern">
-    <div class="section-header">
-      <h2>Explore <span>Programs</span></h2>
-      <p>Hands-on experiences designed to spark curiosity and creativity.</p>
-    </div>
+    <div class="section-header"><h2>Explore <span>Programs</span></h2><p>Hands-on experiences designed to spark curiosity and creativity.</p></div>
     <div class="programs-wrap">
-      <div class="program-item">
-        <img src="images\pexels-august-de-richelieu-4261786.jpg" alt="">
-        <div class="overlay">
-          <h3>Creative Studio</h3>
-          <p>Painting and artistic expression for young minds.</p>
-          <span>8–12 yrs • Weekly</span>
-        </div>
-      </div>
-      <div class="program-item">
-        <img src="images\pexels-yaroslav-shuraev-5608541.jpg" alt="">
-        <div class="overlay">
-          <h3>Melody Makers</h3>
-          <p>Music, rhythm, and vocal training for all levels.</p>
-          <span>6–15 yrs • Flexible</span>
-        </div>
-      </div>
-      <div class="program-item">
-        <img src="images\pexels-soldiervip-1374509.jpg" alt="">
-        <div class="overlay">
-          <h3>Future Innovators</h3>
-          <p>Robotics, coding, and real-world problem solving.</p>
-          <span>10–16 yrs • Weekends</span>
-        </div>
-      </div>
-       <div class="program-item">
-        <img src="images\pexels-vanessa-loring-7869442.jpg" alt="">
-        <div class="overlay">
-          <h3>Future Innovators</h3>
-          <p>Robotics, coding, and real-world problem solving.</p>
-          <span>10–16 yrs • Weekends</span>
-        </div>
-      </div>
+      <div class="program-item"><img src="images/pexels-august-de-richelieu-4261786.jpg" alt="Creative Studio" onerror="this.src='https://images.pexels.com/photos/4261786/pexels-photo-4261786.jpeg?auto=compress&cs=tinysrgb&w=600'"><div class="overlay"><h3>Creative Studio</h3><p>Painting and artistic expression for young minds.</p><span>8–12 yrs • Weekly</span></div></div>
+      <div class="program-item"><img src="images/pexels-yaroslav-shuraev-5608541.jpg" alt="Melody Makers" onerror="this.src='https://images.pexels.com/photos/5608541/pexels-photo-5608541.jpeg?auto=compress&cs=tinysrgb&w=600'"><div class="overlay"><h3>Melody Makers</h3><p>Music, rhythm, and vocal training for all levels.</p><span>6–15 yrs • Flexible</span></div></div>
+      <div class="program-item"><img src="images/pexels-soldiervip-1374509.jpg" alt="Future Innovators" onerror="this.src='https://images.pexels.com/photos/1374509/pexels-photo-1374509.jpeg?auto=compress&cs=tinysrgb&w=600'"><div class="overlay"><h3>Future Innovators</h3><p>Robotics, coding, and real-world problem solving.</p><span>10–16 yrs • Weekends</span></div></div>
+      <div class="program-item"><img src="images/pexels-vanessa-loring-7869442.jpg" alt="STEM Explorers" onerror="this.src='https://images.pexels.com/photos/7869442/pexels-photo-7869442.jpeg?auto=compress&cs=tinysrgb&w=600'"><div class="overlay"><h3>STEM Explorers</h3><p>Science experiments and hands-on discovery.</p><span>7–14 yrs • Weekly</span></div></div>
     </div>
   </section>
 
-  <!-- LEARNING JOURNEY (timeline) -->
   <section class="journey-section">
     <h2 class="section-title">Learning <span>Journey</span></h2>
     <p class="section-subtitle">A structured path designed to nurture every child step by step.</p>
     <div class="timeline">
-      <div class="timeline-item">
-        <div class="circle-dot"></div>
-        <div class="timeline-content">
-          <h3>Discover</h3>
-          <p>Children explore interests through fun activities.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="circle-dot"></div>
-        <div class="timeline-content">
-          <h3>Develop</h3>
-          <p>Structured programs build skills and confidence.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="circle-dot"></div>
-        <div class="timeline-content">
-          <h3>Master</h3>
-          <p>Advanced learning to unlock full potential.</p>
-        </div>
-      </div>
+      <div class="timeline-item"><div class="circle-dot"></div><div class="timeline-content"><h3>Discover</h3><p>Children explore interests through fun activities.</p></div></div>
+      <div class="timeline-item"><div class="circle-dot"></div><div class="timeline-content"><h3>Develop</h3><p>Structured programs build skills and confidence.</p></div></div>
+      <div class="timeline-item"><div class="circle-dot"></div><div class="timeline-content"><h3>Master</h3><p>Advanced learning to unlock full potential.</p></div></div>
     </div>
   </section>
 
-  <!-- OUR ACHIEVEMENTS (awards) -->
   <section class="awards-section">
     <h2 class="section-title">Our <span>Achievements</span></h2>
     <div class="awards-grid">
-      <div class="award-card">
-        <h3>500+</h3>
-        <p>Happy Students</p>
-      </div>
-      <div class="award-card">
-        <h3>20+</h3>
-        <p>Programs</p>
-      </div>
-      <div class="award-card">
-        <h3>10+</h3>
-        <p>Expert Mentors</p>
-      </div>
+      <div class="award-card"><h3>500+</h3><p>Happy Students</p></div>
+      <div class="award-card"><h3>20+</h3><p>Programs</p></div>
+      <div class="award-card"><h3>10+</h3><p>Expert Mentors</p></div>
     </div>
   </section>
 
-  <!-- WHY BRAINBLOOM (extra about split) -->
   <section class="about-split">
-    <div class="about-left">
-      <h2>Why BrainBloom?</h2>
-      <p>We blend creativity, technology, and emotional intelligence to create meaningful learning experiences for every child.</p>
-      <ul>
-        <li>✔ Hands-on learning</li>
-        <li>✔ Expert mentors</li>
-        <li>✔ Real-world skills</li>
-      </ul>
-    </div>
-    <div class="about-right">
-      <div class="video-box">
-        <i class="fas fa-play"></i>
-      </div>
-    </div>
+    <div class="about-left"><h2>Why BrainBloom?</h2><p>We blend creativity, technology, and emotional intelligence to create meaningful learning experiences for every child.</p><ul><li>✔ Hands-on learning</li><li>✔ Expert mentors</li><li>✔ Real-world skills</li></ul></div>
+    <div class="about-right"><div class="video-box" id="playVideoBtn"><i class="fas fa-play"></i></div></div>
   </section>
 
-  <!-- HAPPY STORIES (testimonial) -->
   <section class="happy-stories">
-    <div class="section-header">
-      <h2>Happy stories</h2>
-      <p>Real families, real transformations — hear what they have to say</p>
-    </div>
+    <div class="section-header"><h2>Happy stories</h2><p>Real families, real transformations — hear what they have to say</p></div>
     <div class="testimonial-box">
-      <div class="quote"></div>
       <div class="testimonial-content">
-        <div class="left">
-          <p class="text">The transformation in my daughter's confidence has been nothing short of magical. BrainBloom didn't just teach her art – it gave her wings.</p>
-          <div class="author">
-            <div>
-              <h4>Sarah Chen</h4>
-              <span>Parent of Mia, age 9 • Art program</span>
-            </div>
-          </div>
-        </div>
-        <div class="right">
-          <div class="stats">
-            <div class="circle">2<br><span>years</span></div>
-            <div class="circle">5<br><span>programs</span></div>
-          </div>
-          <div class="tags">
-            <span>Creative Studio</span>
-            <span>Melody Makers</span>
-          </div>
-          <p class="note">She's discovered talents we never knew she had!</p>
-        </div>
+        <div class="left"><p class="text">The transformation in my daughter's confidence has been nothing short of magical. BrainBloom didn't just teach her art – it gave her wings.</p><div class="author"><div><h4>Sarah Chen</h4><span>Parent of Mia, age 9 • Art program</span></div></div></div>
+        <div class="right"><div class="stats"><div class="circle">2<br><span>years</span></div><div class="circle">5<br><span>programs</span></div></div><div class="tags"><span>Creative Studio</span><span>Melody Makers</span></div><p class="note">She's discovered talents we never knew she had!</p></div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-content">
       <div class="footer-top">
-        <div class="footer-column">
-          <a href="index.html" class="logo">
-            <i class="fas fa-seedling"></i>
-            <span class="logo-text">BrainBloom</span>
-          </a>
-          <p style="margin-top:30px">Where minds expand and ideas flourish. Join our community of curious learners.</p>
-        </div>
-        <div class="footer-column">
-          <h3>QuickLinks</h3>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="service.html">Service</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-column">
-          <h3>Resources</h3>
-          <ul>
-            <li><a href="#">Learning Hub</a></li>
-            <li><a href="#">Workshops</a></li>
-            <li><a href="#">Blog</a></li>
-          </ul>
-        </div>
-        <div class="footer-column">
-          <h3>Social Links</h3>
-          <ul>
-            <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-            <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-            <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-          </ul>
-        </div>
+        <div class="footer-column"><a href="index.html" class="logo"><i class="fas fa-seedling"></i><span class="logo-text">BrainBloom</span></a><p style="margin-top:30px">Where minds expand and ideas flourish. Join our community of curious learners.</p></div>
+        <div class="footer-column"><h3>QuickLinks</h3><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="service.html">Service</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer-column"><h3>Resources</h3><ul><li><a href="#">Learning Hub</a></li><li><a href="#">Workshops</a></li><li><a href="#">Blog</a></li></ul></div>
+        <div class="footer-column"><h3>Social Links</h3><ul><li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li><li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li><li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li></ul></div>
       </div>
-      <div class="footer-middle">
-        <h3 style="color:#FFB347">BrainBloom</h3>
-        <div class="footer-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms & Conditions</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div class="copyright">© 2026 BrainBloom Enrichment. All rights reserved.</div>
-      </div>
+      <div class="footer-middle"><h3 style="color:#FFB347">BrainBloom</h3><div class="footer-links"><a href="#">Privacy Policy</a><a href="#">Terms & Conditions</a></div></div>
+      <div class="footer-bottom"><div class="copyright">© 2026 BrainBloom Enrichment. All rights reserved.</div></div>
     </div>
   </footer>
 
@@ -1696,14 +1030,20 @@ header .nav-links li:nth-last-child(4){
             if (!this.querySelector('.fa-caret-down')) toggleMobileMenu();
           });
         });
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && mobileMenu.classList.contains('active')) toggleMobileMenu(); });
-        window.addEventListener('resize', () => { if (window.innerWidth > 1280 && mobileMenu.classList.contains('active')) toggleMobileMenu(); });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && mobileMenu.classList.contains('active')) toggleMobileMenu();
+        });
+        window.addEventListener('resize', () => {
+          if (window.innerWidth > 1280 && mobileMenu.classList.contains('active')) toggleMobileMenu();
+        });
       }
 
       function toggleTheme() {
         document.body.classList.toggle('dark-mode');
         const isDark = document.body.classList.contains('dark-mode');
-        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => { if (el) el.className = isDark ? 'fas fa-sun' : 'fas fa-moon'; });
+        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => {
+          if (el) el.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        });
         const mobileSpan = document.querySelector('#mobileThemeToggle span');
         if (mobileSpan) mobileSpan.textContent = isDark ? 'Light Mode' : 'Dark Mode';
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
@@ -1712,10 +1052,20 @@ header .nav-links li:nth-last-child(4){
       function toggleRTL() {
         const html = document.documentElement;
         const isRTL = html.getAttribute('dir') === 'rtl';
-        html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
-        const mobileSpan = document.querySelector('#mobileRtlToggle span');
-        if (mobileSpan) mobileSpan.textContent = isRTL ? 'RTL' : 'LTR';
-        localStorage.setItem('direction', isRTL ? 'ltr' : 'rtl');
+        const newDir = isRTL ? 'ltr' : 'rtl';
+        html.setAttribute('dir', newDir);
+        
+        const rtlButtonSpan = document.getElementById('rtlButtonText');
+        const mobileRtlSpan = document.getElementById('mobileRtlButtonText');
+        
+        if (rtlButtonSpan) {
+          rtlButtonSpan.textContent = newDir === 'rtl' ? 'LTR' : 'RTL';
+        }
+        if (mobileRtlSpan) {
+          mobileRtlSpan.textContent = newDir === 'rtl' ? 'Switch to LTR' : 'Switch to RTL';
+        }
+        
+        localStorage.setItem('direction', newDir);
       }
 
       document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
@@ -1729,10 +1079,19 @@ header .nav-links li:nth-last-child(4){
         const mobileSpan = document.querySelector('#mobileThemeToggle span');
         if (mobileSpan) mobileSpan.textContent = 'Light Mode';
       }
-      if (localStorage.getItem('direction') === 'rtl') {
+      
+      const savedDir = localStorage.getItem('direction');
+      if (savedDir === 'rtl') {
         document.documentElement.setAttribute('dir', 'rtl');
-        const mobileSpan = document.querySelector('#mobileRtlToggle span');
-        if (mobileSpan) mobileSpan.textContent = 'LTR';
+        const rtlButtonSpan = document.getElementById('rtlButtonText');
+        const mobileRtlSpan = document.getElementById('mobileRtlButtonText');
+        if (rtlButtonSpan) rtlButtonSpan.textContent = 'LTR';
+        if (mobileRtlSpan) mobileRtlSpan.textContent = 'Switch to LTR';
+      } else {
+        const rtlButtonSpan = document.getElementById('rtlButtonText');
+        const mobileRtlSpan = document.getElementById('mobileRtlButtonText');
+        if (rtlButtonSpan && !savedDir) rtlButtonSpan.textContent = 'RTL';
+        if (mobileRtlSpan && !savedDir) mobileRtlSpan.textContent = 'Switch to RTL';
       }
     })();
 
@@ -1741,6 +1100,13 @@ header .nav-links li:nth-last-child(4){
       const linkPage = link.getAttribute("href");
       if (linkPage === currentPage) link.classList.add("active");
     });
+    
+    const playBtn = document.getElementById('playVideoBtn');
+    if (playBtn) {
+      playBtn.addEventListener('click', () => {
+        alert('🎵 Welcome to BrainBloom! Our video gallery will showcase inspiring moments of creativity and learning. Stay tuned for exciting content!');
+      });
+    }
   </script>
 </body>
 </html>

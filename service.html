@@ -8,17 +8,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
+  <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --primary: #FFB347;         /* orange – main */
-      --secondary: #FF8C42;        /* deeper orange – secondary */
-      --accent: #FFB347;           /* orange – unified */
+      --primary: #FFB347;
+      --secondary: #FF8C42;
+      --accent: #FFB347;
       --text: #1E2B3C;
       --text-light: #2C3E50;
-      --text-inverse: #FFFFFF;
       --bg: #FFFFFF;
       --bg-light: #F4F7FC;
       --border: #D9E2EC;
@@ -27,17 +26,6 @@
       --transition: all 0.4s ease;
       --footer-bg: #FFFFFF;
       --footer-text: #1E2B3C;
-      
-      /* testimonial & awards light mode specific (keep original) */
-      --awards-bg: linear-gradient(135deg, #fff3e0, #ffe0b2);
-      --testimonial-bg: #f4efe9;
-      --testimonial-box-bg: #efe4d6;
-      --testimonial-border: #222;
-      --testimonial-text: #222;
-      --testimonial-author-color: #555;
-      --circle-bg: #f3e8dc;
-      --tag-bg: #e8d3b7;
-      --quote-color: #cfc2b2;
     }
     .dark-mode {
       --primary: #FFB347;
@@ -45,25 +33,13 @@
       --accent: #FFB347;
       --text: #F0F3FA;
       --text-light: #CAD5E2;
-     
-      --bg: #000000;              /* full black background */
-      --bg-light: #0A0A0A;         /* very dark grey for cards / menus */
-      --border: #262626;           /* dark border */
-      --footer-bg: #000000;        /* footer pure black */
+      --bg: #000000;
+      --bg-light: #0A0A0A;
+      --border: #262626;
+      --footer-bg: #000000;
       --footer-text: #FFFFFF;
       --shadow: 0 4px 12px rgba(255,180,71,0.03);
       --shadow-lg: 0 20px 40px rgba(255,180,71,0.05);
-      
-      /* dark mode overrides for awards + testimonial */
-      --awards-bg: linear-gradient(135deg, #111111, #1a1a1a);
-      --testimonial-bg: #0a0a0a;           /* section background pure black feel */
-      --testimonial-box-bg: #1a1a1a;        /* actual testimonial card background – dark */
-      --testimonial-border: #FFB347;
-      --testimonial-text: #f0f0f0;
-      --testimonial-author-color: #cccccc;
-      --circle-bg: #2a2a2a;
-      --tag-bg: #2a2a2a;
-      --quote-color: #FFB347;
     }
     body {
       font-family: 'Poppins', sans-serif; 
@@ -83,16 +59,15 @@
       color: #FFFFFF !important;
     }
 
-    /* ----- exactly the same section title style as reference (index) ----- */
     .section-title {
-      font-size: 2.8rem;          /* same as index .section-title */
+      font-size: 2.8rem;
       text-align: center;
       margin-bottom: 1rem;
       font-family: 'Playfair Display', serif;
       font-weight: 400;
     }
     .section-title span {
-      color: var(--accent);        /* orange span accent */
+      color: var(--accent);
     }
     .section-subtitle {
       text-align: center;
@@ -102,29 +77,30 @@
       margin: 0 auto 4rem;
     }
 
-    /* Header - navbar items perfectly centered on same line */
+    /* HEADER - clean navbar with proper spacing, only login button */
     header {
       background: var(--bg); 
       box-shadow: var(--shadow); 
       position: sticky; 
       top: 0;
       z-index: 1000; 
+      width: 100%;
     }
     .navbar {
       display: flex; 
       justify-content: space-between; 
-      align-items: center;  /* ensures all children are vertically centered */
-      padding: 0.75rem 2rem; /* balanced padding */
-      max-width: 1400px; 
+      align-items: center;
+      padding: 0.75rem 4rem;
+      max-width: 100%; 
       margin: 0 auto;
-      min-height: 80px; /* fixed height for consistency */
+      min-height: 80px;
     }
     .logo { 
       display: flex; 
-      align-items: center;  /* vertical center */
+      align-items: center;
       gap: 10px; 
       text-decoration: none;
-      line-height: 1; /* remove extra line height */
+      line-height: 1;
     }
     .logo i { 
       color: var(--accent); 
@@ -149,7 +125,7 @@
       display: flex; 
       list-style: none; 
       gap: 0.5rem; 
-      align-items: center;  /* vertical center */
+      align-items: center;
       margin: 0;
       padding: 0;
     }
@@ -168,13 +144,13 @@
       display: inline-flex;
       align-items: center;
       white-space: nowrap;
+      gap: 6px;
     }
     .nav-links a:hover,
     .nav-links a.active {
       color: var(--accent); 
       background: rgba(255,180,71,0.1);
     }
-    /* dropdown */
     .dropdown { 
       position: relative; 
       display: flex;
@@ -186,25 +162,28 @@
       left: 0; 
       background: var(--bg-light);
       list-style: none; 
-      padding: 15px 0; 
-      min-width: 200px; 
+      padding: 12px 0; 
+      min-width: 210px; 
       border-radius: 20px;
-      box-shadow: var(--shadow-lg); 
+      box-shadow: 0 12px 28px rgba(0,0,0,0.15);
       border: 1px solid var(--border); 
       display: none; 
       z-index: 1000;
+      backdrop-filter: blur(4px);
     }
     .dropdown-menu a {
       display: block; 
-      padding: 12px 20px; 
+      padding: 10px 22px; 
       color: var(--text); 
       text-decoration: none;
       white-space: nowrap;
+      font-weight: 500;
+      gap: 0;
     }
     .dropdown-menu a:hover {
-      background: var(--primary); 
-      color: white; 
-      padding-left: 30px;
+      background: var(--accent); 
+      color: #1E2B3C; 
+      padding-left: 28px;
     }
     .dropdown:hover .dropdown-menu { 
       display: block; 
@@ -225,10 +204,24 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      border-radius: 40px;
     }
     .control-btn:hover { 
       color: var(--accent); 
-      transform: scale(1.1); 
+      transform: scale(1.05); 
+      background: rgba(255,180,71,0.1);
+    }
+    /* RTL text button style - replacing icon with proper text */
+    .rtl-text-btn {
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 14px;
+      letter-spacing: 0.5px;
+      gap: 6px;
+      min-width: 70px;
+    }
+    .rtl-text-btn i {
+      font-size: 0.9rem;
     }
     .hamburger {
       display: none; 
@@ -242,7 +235,23 @@
       align-items: center;
       justify-content: center;
     }
-    /* mobile menu adjustments (unchanged, but ensure inner links are centered) */
+    /* Only login button - signup removed */
+    .nav-btn { 
+      padding: 8px 22px !important; 
+      border-radius: 50px !important; 
+      font-weight: 600; 
+    }
+    .login-btn { 
+      border: 2px solid var(--primary); 
+      color: var(--primary) !important; 
+      background: transparent;
+    }
+    .login-btn:hover { 
+      background: var(--primary); 
+      color: #1E2B3C !important; 
+    }
+
+    /* MOBILE MENU */
     .mobile-nav-menu {
       position: fixed; 
       top: 0; 
@@ -278,10 +287,16 @@
       font-weight: 600 !important; 
       width: 100% !important;
       text-align: left;
+      gap: 8px;
     }
     .mobile-nav-menu .nav-links a:hover {
       background: var(--accent) !important; 
-      color: #db5507 !important;
+      color: #1E2B3C !important;
+      border-color: var(--accent) !important;
+    }
+    .mobile-nav-menu .nav-links a.active {
+      background: var(--accent) !important;
+      color: #fff !important;
       border-color: var(--accent) !important;
     }
     .mobile-nav-menu .nav-links .home-sub-item {
@@ -328,32 +343,48 @@
     }
     .mobile-controls .control-btn:hover {
       background: var(--accent);
-      color: #ff6200;
+      color: #1E2B3C;
       border-color: var(--accent);
     }
-    .nav-btn { 
-      padding: 8px 18px !important; 
-      border-radius: 50px !important; 
-      font-weight: 600; 
-    }
-    .login-btn { 
-      border: 2px solid var(--primary); 
-      color: var(--primary) !important; 
-    }
-    .login-btn:hover { 
-      background: var(--primary); 
-      color: rgb(249, 138, 3) !important; 
-    }
-    .signup-btn { 
-      background: var(--accent); 
-      color: #1E2B3C !important; 
-      border: 2px solid var(--accent);
-    }
-    .signup-btn:hover { 
-      background: #e09d3c; 
+    /* RTL text button for mobile */
+    .mobile-controls .rtl-text-btn {
+      font-weight: 600;
     }
 
-    /* ===== SERVICE PAGE HERO BANNER ===== */
+    /* RTL support */
+    [dir="rtl"] .dropdown-menu { left: auto; right: 0; }
+    [dir="rtl"] .footer-column a:hover { transform: translateX(-8px); }
+    [dir="rtl"] .mobile-nav-menu {
+      left: -100%; 
+      right: auto; 
+      border-left: none; 
+      border-right: 3px solid var(--accent);
+    }
+    [dir="rtl"] .mobile-nav-menu.active { left: 0; }
+    [dir="rtl"] .home-sub-item { 
+      padding-left: 20px !important; 
+      padding-right: 40px !important; 
+    }
+    [dir="rtl"] .service-link:hover {
+      transform: translateX(-5px);
+    }
+    [dir="rtl"] .service-features li i {
+      margin-left: 8px;
+      margin-right: 0;
+    }
+
+    /* responsive */
+    @media (max-width: 1280px) {
+      .navbar { padding: 0.75rem 2rem; }
+      .nav-links:not(.mobile-nav-menu .nav-links) { display: none !important; }
+      .hamburger { display: flex !important; }
+    }
+    @media (min-width: 1281px) {
+      .nav-links:not(.mobile-nav-menu .nav-links) { display: flex !important; }
+      .hamburger { display: none !important; }
+    }
+
+    /* SERVICE PAGE STYLES */
     .service-hero {
       position: relative;
       height: 90vh;
@@ -366,7 +397,6 @@
       color: white;
       overflow: hidden;
     }
-
     .service-hero::before {
       content: '';
       position: absolute;
@@ -379,12 +409,10 @@
       z-index: 1;
       animation: slowZoom 25s infinite alternate;
     }
-
     @keyframes slowZoom {
       from { transform: scale(1); }
       to { transform: scale(1.15); }
     }
-
     .service-hero::after {
       content: '';
       position: absolute;
@@ -395,84 +423,24 @@
       background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.4) 100%);
       z-index: 2;
     }
-
-    .floating-elements {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 3;
-    }
-
-    .float-item {
-      position: absolute;
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(5px);
-      border-radius: 30px;
-      padding: 1rem 2rem;
-      color: white;
-      font-weight: 600;
-      animation: floatAround 20s infinite ease-in-out;
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-
-    .float-item i {
-      margin-right: 8px;
-      color: var(--primary);
-    }
-
-    .float1 {
-      top: 20%;
-      left: 10%;
-      animation-delay: 0s;
-    }
-
-    .float2 {
-      top: 60%;
-      right: 15%;
-      animation-delay: 3s;
-    }
-
-    .float3 {
-      bottom: 20%;
-      left: 20%;
-      animation-delay: 6s;
-    }
-
-    .float4 {
-      top: 30%;
-      right: 25%;
-      animation-delay: 9s;
-    }
-
-    @keyframes floatAround {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      25% { transform: translate(20px, -20px) rotate(5deg); }
-      50% { transform: translate(-20px, 20px) rotate(-5deg); }
-      75% { transform: translate(10px, 10px) rotate(3deg); }
-    }
-
     .service-hero-content {
       position: relative;
       z-index: 4;
       max-width: 900px;
       padding: 0 2rem;
     }
-
     .service-hero-content h1 {
       font-size: 5rem;
       margin-bottom: 1rem;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
       animation: fadeInDown 1s ease;
-      font-family: 'Playfair Display', serif;
     }
-
     .service-hero-content p {
       font-size: 1.3rem;
       opacity: 0.95;
       margin-bottom: 2rem;
       animation: fadeInUp 1s ease 0.2s both;
     }
-
     .hero-breadcrumb {
       display: flex;
       justify-content: center;
@@ -480,23 +448,15 @@
       font-size: 1.1rem;
       animation: fadeInUp 1s ease 0.4s both;
     }
-
     .hero-breadcrumb a {
       color: white;
       text-decoration: none;
       opacity: 0.8;
-      transition: var(--transition);
     }
-
     .hero-breadcrumb a:hover {
       opacity: 1;
       text-decoration: underline;
     }
-
-    .hero-breadcrumb span {
-      color: rgba(255,255,255,0.6);
-    }
-
     .hero-stats {
       display: flex;
       justify-content: center;
@@ -504,184 +464,95 @@
       margin-top: 3rem;
       animation: fadeInUp 1s ease 0.6s both;
     }
-
-    .hero-stat-item {
-      text-align: center;
-    }
-
     .hero-stat-number {
       font-size: 2.5rem;
       font-weight: 800;
       color: white;
       line-height: 1;
       margin-bottom: 0.3rem;
-      font-family: 'Playfair Display', serif;
     }
-
-    .hero-stat-label {
-      font-size: 0.9rem;
-      opacity: 0.9;
-      letter-spacing: 1px;
-    }
-
     @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ===== SERVICES SECTION ===== */
     .services-section {
       padding: 5rem 2rem;
       max-width: 1400px;
       margin: 0 auto;
       width: 100%;
     }
-
     .section-header {
       text-align: center;
       margin-bottom: 4rem;
     }
-
     .section-header h2 {
       font-size: 3rem;
       font-family: 'Playfair Display', serif;
       margin-bottom: 1rem;
-      position: relative;
-      display: inline-block;
     }
-
     .section-header h2 span {
       color: var(--primary);
     }
-
-    .section-header h2::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      border-radius: 3px;
-    }
-
     .section-header p {
       color: var(--text-light);
       font-size: 1.2rem;
       max-width: 700px;
       margin: 1rem auto 0;
     }
-
-    /* 2x3 Grid for Service Cards */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
       margin-bottom: 4rem;
     }
-
-    /* Base Card Styles with Images */
     .service-card {
       background: var(--bg-light);
       border-radius: 30px;
       overflow: hidden;
       transition: var(--transition);
-      position: relative;
       border: 1px solid var(--border);
     }
-
     .service-card:hover {
       transform: translateY(-10px);
       box-shadow: var(--shadow-lg);
       border-color: var(--primary);
     }
-
     .card-image {
       width: 100%;
       height: 280px;
       overflow: hidden;
-      position: relative;
     }
-
     .card-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.6s ease;
     }
-
     .service-card:hover .card-image img {
       transform: scale(1.1);
     }
-
-    .image-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 100%);
-      z-index: 1;
-    }
-
     .card-content {
       padding: 2rem;
-      position: relative;
     }
-
-    .service-icon-small {
-      width: 50px;
-      height: 50px;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.3rem;
-      position: absolute;
-      top: -25px;
-      right: 2rem;
-      z-index: 3;
-      box-shadow: var(--shadow-lg);
-    }
-
     .service-card h3 {
       font-size: 1.6rem;
       margin-bottom: 0.8rem;
       font-family: 'Playfair Display', serif;
-      color: var(--text);
     }
-
     .service-card p {
       color: var(--text-light);
       margin-bottom: 1.2rem;
       line-height: 1.7;
     }
-
     .service-features {
       list-style: none;
       margin-bottom: 1.5rem;
     }
-
     .service-features li {
       margin-bottom: 0.5rem;
       display: flex;
@@ -689,12 +560,10 @@
       gap: 8px;
       font-size: 0.95rem;
     }
-
     .service-features li i {
       color: var(--primary);
       font-size: 0.9rem;
     }
-
     .service-link {
       display: inline-block;
       color: var(--primary);
@@ -702,48 +571,21 @@
       font-weight: 600;
       transition: var(--transition);
     }
-
     .service-link:hover {
       color: var(--secondary);
       transform: translateX(5px);
     }
 
-    /* Responsive */
     @media (max-width: 900px) {
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .service-hero-content h1 {
-        font-size: 3.5rem;
-      }
-      
-      .hero-stats {
-        flex-wrap: wrap;
-        gap: 1.5rem;
-      }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-hero-content h1 { font-size: 3.5rem; }
+      .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
     }
-
     @media (max-width: 600px) {
-      .service-hero-content h1 {
-        font-size: 2.5rem;
-      }
-      
-      .hero-stat-number {
-        font-size: 1.8rem;
-      }
-      
-      .section-header h2 {
-        font-size: 2.2rem;
-      }
-      
-      .float-item {
-        display: none;
-      }
-      
-      .card-image {
-        height: 180px;
-      }
+      .service-hero-content h1 { font-size: 2.5rem; }
+      .hero-stat-number { font-size: 1.8rem; }
+      .section-header h2 { font-size: 2.2rem; }
+      .card-image { height: 180px; }
     }
 
     /* Footer */
@@ -752,14 +594,12 @@
       color: var(--footer-text);
       padding: 70px 0 40px; 
       margin-top: auto;
-    }
-    .dark-mode .site-footer { 
-      background: #000000 !important; 
+      width: 100%;
     }
     .footer-content { 
-      max-width: 1300px; 
+      max-width: 1400px; 
       margin: 0 auto; 
-      padding: 0 2rem; 
+      padding: 0 4rem; 
     }
     .footer-top {
       display: grid; 
@@ -777,12 +617,8 @@
       padding-bottom: 12px;
       border-bottom: 2px solid var(--accent);
     }
-    .footer-column ul { 
-      list-style: none; 
-    }
-    .footer-column li { 
-      margin-bottom: 12px; 
-    }
+    .footer-column ul { list-style: none; }
+    .footer-column li { margin-bottom: 12px; }
     .footer-column a {
       color: var(--footer-text); 
       text-decoration: none; 
@@ -795,130 +631,31 @@
     }
     .footer-middle {
       padding: 15px 0; 
-      
       margin-bottom: 35px;
       display: flex; 
       justify-content: space-between; 
       align-items: center;
     }
-    .footer-links { 
-      display: flex; 
-      gap: 35px; 
-    }
-    .footer-links a { 
-      color: var(--footer-text); 
-      text-decoration: none; 
-      font-size: 0.95rem; 
-    }
-    .footer-links a:hover { 
-      color: var(--accent); 
-    }
-    .footer-bottom { 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-    }
-    .copyright { 
-      color: var(--footer-text); 
-      font-size: 0.9rem; 
-      opacity: 0.8; 
-    }
-
-    /* RTL */
-    [dir="rtl"] .dropdown-menu { 
-      left: auto; 
-      right: 0; 
-    }
-    [dir="rtl"] .footer-column a:hover { 
-      transform: translateX(-8px); 
-    }
-    [dir="rtl"] .mobile-nav-menu {
-      left: -100%; 
-      right: auto; 
-      border-left: none; 
-      border-right: 3px solid var(--accent);
-    }
-    [dir="rtl"] .mobile-nav-menu.active { 
-      left: 0; 
-    }
-    [dir="rtl"] .home-sub-item { 
-      padding-left: 20px !important; 
-      padding-right: 40px !important; 
-    }
-
-    /* Responsive */
-    @media (max-width: 1280px) {
-      .nav-links:not(.mobile-nav-menu .nav-links) { 
-        display: none !important; 
-      }
-      .hamburger { 
-        display: flex !important; 
-      }
-      .navbar {
-        min-height: 70px;
-      }
-    }
-    @media (min-width: 1281px) {
-      .nav-links:not(.mobile-nav-menu .nav-links) { 
-        display: flex !important; 
-      }
-      .hamburger { 
-        display: none !important; 
-      }
-    }
+    .footer-links { display: flex; gap: 35px; }
+    .footer-links a { color: var(--footer-text); text-decoration: none; font-size: 0.95rem; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+    .copyright { color: var(--footer-text); font-size: 0.9rem; opacity: 0.8; }
     @media (max-width: 900px) {
-      .footer-top { 
-        grid-template-columns: repeat(2, 1fr); 
-      }
-      .footer-middle, .footer-bottom { 
-        flex-direction: column; 
-        gap: 20px; 
-        text-align: center; 
-      }
+      .footer-top { grid-template-columns: repeat(2, 1fr); }
+      .footer-middle, .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+      .footer-content { padding: 0 2rem; }
     }
     @media (max-width: 600px) {
-      .footer-top { 
-        grid-template-columns: 1fr; 
-      }
-      .navbar { 
-        padding: 0.5rem 1rem; 
-      }
-      .logo-text { 
-        font-size: 22px; 
-      }
+      .footer-top { grid-template-columns: 1fr; }
+      .navbar { padding: 0.5rem 1rem; }
+      .logo-text { font-size: 22px; }
     }
-
-/* Push login & signup to right (Desktop only) */
-header .nav-links li:nth-last-child(3){
-  margin-left: 25px;
-}
-/* Add gap before Login (after Dashboard) (Desktop only) */
-header .nav-links li:nth-last-child(4){
-  margin-left: 50px;
-}
-.mobile-nav-menu .nav-links a.active {
-  background: var(--accent) !important;
-  color: #fff !important;
-  border-color: var(--accent) !important;
-}
- .signup-btn { 
-      background: var(--accent); 
-      color: #f2f2f6 !important; 
-      border: 2px solid var(--accent);
-    }
-    .signup-btn:hover {
-      background: var(--accent); 
-      color: #f6960f !important; 
-      border: 2px solid var(--accent); 
-    }
-
   </style>
 </head>
 <body>
-  <!-- Mobile Overlay -->
   <div class="mobile-overlay" id="mobileOverlay"></div>
 
-  <!-- Header -->
   <header>
     <nav class="navbar">
       <a href="index.html" class="logo">
@@ -926,7 +663,6 @@ header .nav-links li:nth-last-child(4){
         <span class="logo-text">BrainBloom</span>
       </a>
 
-      <!-- Desktop Navigation -->
       <ul class="nav-links">
         <li class="dropdown">
           <a href="#">Home <i class="fas fa-caret-down"></i></a>
@@ -939,7 +675,7 @@ header .nav-links li:nth-last-child(4){
         <li><a href="service.html" class="active">Service</a></li>
         <li><a href="art&craft.html">Art&Craft</a></li>
         <li><a href="music.html">Music</a></li>
-         <li><a href="faq.html">Faq</a></li>
+        <li><a href="faq.html">Faq</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li class="dropdown">
           <a href="#">Dashboard <i class="fas fa-caret-down"></i></a>
@@ -948,53 +684,47 @@ header .nav-links li:nth-last-child(4){
             <li><a href="admin.html">Admin Dashboard</a></li>
           </ul>
         </li>
+        <!-- Only Login button - SignUp removed -->
         <li><a href="login.html" class="nav-btn login-btn">Login</a></li>
-        <li><a href="signup.html" class="nav-btn signup-btn">SignUp</a></li>
-        <!-- Theme and RTL buttons -->
         <li>
           <button class="control-btn" id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
         </li>
         <li>
-          <button class="control-btn" id="rtlToggle" title="Toggle RTL"><i class="fas fa-exchange-alt"></i></button>
+          <button class="control-btn rtl-text-btn" id="rtlToggle" title="Toggle RTL"> <span id="rtlButtonText">RTL</span></button>
         </li>
       </ul>
 
-      <!-- Controls - Only hamburger on mobile -->
       <div class="controls">
         <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
       </div>
     </nav>
   </header>
 
-  <!-- Mobile Menu -->
- <div class="mobile-nav-menu" id="mobileNavMenu">
+  <div class="mobile-nav-menu" id="mobileNavMenu">
     <ul class="nav-links">
       <li><a href="#"><i class="fas fa-caret-down"></i> Home</a></li>
       <li><a href="index.html" class="home-sub-item">Home 1</a></li>
       <li><a href="home2.html" class="home-sub-item">Home 2</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="service.html" class="active">Service</a></li>
-        <li><a href="art&craft.html">Art&Craft</a></li>
-        <li><a href="music.html">Music</a></li>
-         <li><a href="faq.html">Faq</a></li>
-        <li><a href="contact.html">Contact</a></li>
+      <li><a href="art&craft.html">Art&Craft</a></li>
+      <li><a href="music.html">Music</a></li>
+      <li><a href="faq.html">Faq</a></li>
+      <li><a href="contact.html">Contact</a></li>
       <li><a href="#"><i class="fas fa-caret-down"></i> Dashboard</a></li>
       <li><a href="user.html" class="home-sub-item">User Dashboard</a></li>
       <li><a href="admin.html" class="home-sub-item">Admin Dashboard</a></li>
-      <li><a href="loginPage.html">Login</a></li>
-      <li><a href="register.html">SignUp</a></li>
+      <li><a href="login.html">Login</a></li>
     </ul>
     <div class="mobile-controls">
       <button class="control-btn" id="mobileThemeToggle"><i class="fas fa-moon"></i><span>Dark Mode</span></button>
-      <button class="control-btn" id="mobileRtlToggle"><i class="fas fa-exchange-alt"></i><span>RTL</span></button>
+      <button class="control-btn rtl-text-btn" id="mobileRtlToggle"><i class="fas fa-language"></i><span id="mobileRtlButtonText">RTL Mode</span></button>
     </div>
   </div>
 
-  <!-- SERVICE HERO BANNER (heading updated with orange span) -->
   <section class="service-hero">
-   
     <div class="service-hero-content">
-      <h1>Our <span >Services</span></h1>
+      <h1>Our <span style="color: #FFB347;">Services</span></h1>
       <p>Discover our unique range of enrichment programs designed to nurture young minds</p>
       <div class="hero-breadcrumb">
         <a href="index.html">Home</a>
@@ -1002,23 +732,13 @@ header .nav-links li:nth-last-child(4){
         <span>Services</span>
       </div>
       <div class="hero-stats">
-        <div class="hero-stat-item">
-          <div class="hero-stat-number">500+</div>
-          <div class="hero-stat-label">Students</div>
-        </div>
-        <div class="hero-stat-item">
-          <div class="hero-stat-number">20+</div>
-          <div class="hero-stat-label">Programs</div>
-        </div>
-        <div class="hero-stat-item">
-          <div class="hero-stat-number">15+</div>
-          <div class="hero-stat-label">Mentors</div>
-        </div>
+        <div class="hero-stat-item"><div class="hero-stat-number">500+</div><div class="hero-stat-label">Students</div></div>
+        <div class="hero-stat-item"><div class="hero-stat-number">20+</div><div class="hero-stat-label">Programs</div></div>
+        <div class="hero-stat-item"><div class="hero-stat-number">15+</div><div class="hero-stat-label">Mentors</div></div>
       </div>
     </div>
   </section>
 
-  <!-- SERVICES SECTION - 2x3 GRID WITH IMAGES (heading updated with span) -->
   <section class="services-section">
     <div class="section-header">
       <h2>What <span>We Offer</span></h2>
@@ -1026,236 +746,107 @@ header .nav-links li:nth-last-child(4){
     </div>
 
     <div class="services-grid">
-      <!-- Card 1 - Creative Arts -->
-      <div class="service-card service-card-1">
-        <div class="card-image">
-          <img src="images/pexels-august-de-richelieu-4261786.jpg" alt="Creative Arts">
-          <div class="image-overlay"></div>
-        </div>
-
-        <div class="card-content">
-          <h3>Creative Arts</h3>
-          <p>Unleash imagination through hands-on artistic exploration. Children express ideas, emotions, and creativity using different art forms.</p>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> Painting & Drawing</li>
-            <li><i class="fas fa-check"></i> Sculpture & Clay</li>
-            <li><i class="fas fa-check"></i> Digital Art</li>
-          </ul>
-          <a href="servicedetail.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-        </div>
+      <div class="service-card">
+        <div class="card-image"><img src="images/pexels-august-de-richelieu-4261786.jpg" alt="Creative Arts" onerror="this.src='https://images.pexels.com/photos/4261786/pexels-photo-4261786.jpeg?auto=compress&cs=tinysrgb&w=600'"></div>
+        <div class="card-content"><h3>Creative Arts</h3><p>Unleash imagination through hands-on artistic exploration.</p><ul class="service-features"><li><i class="fas fa-check"></i> Painting & Drawing</li><li><i class="fas fa-check"></i> Sculpture & Clay</li><li><i class="fas fa-check"></i> Digital Art</li></ul><a href="servicedetail.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a></div>
       </div>
-
-      <!-- Card 2 - Music Program -->
-      <div class="service-card service-card-2">
-        <div class="card-image">
-          <img src="images/pexels-yaroslav-shuraev-5608541.jpg" alt="Music Program">
-          <div class="image-overlay"></div>
-        </div>
-       
-        <div class="card-content">
-          <h3>Music Program</h3>
-          <p>Build rhythm, confidence, and discipline through music. Suitable for beginners to advanced learners..</p>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> Piano & Keyboard</li>
-            <li><i class="fas fa-check"></i> Guitar & Ukulele</li>
-            <li><i class="fas fa-check"></i> Vocal Training</li>
-          </ul>
-          <a href="servicedetail.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-        </div>
+      <div class="service-card">
+        <div class="card-image"><img src="images/pexels-yaroslav-shuraev-5608541.jpg" alt="Music Program" onerror="this.src='https://images.pexels.com/photos/5608541/pexels-photo-5608541.jpeg?auto=compress&cs=tinysrgb&w=600'"></div>
+        <div class="card-content"><h3>Music Program</h3><p>Build rhythm, confidence, and discipline through music.</p><ul class="service-features"><li><i class="fas fa-check"></i> Piano & Keyboard</li><li><i class="fas fa-check"></i> Guitar & Ukulele</li><li><i class="fas fa-check"></i> Vocal Training</li></ul><a href="servicedetail.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a></div>
       </div>
-
-      <!-- Card 3 - Brain Development -->
-      <div class="service-card service-card-3">
-        <div class="card-image">
-          <img src="images/pexels-soldiervip-1374509.jpg" alt="Brain Development">
-          <div class="image-overlay"></div>
-        </div>
-        
-        <div class="card-content">
-          <h3>Brain Development</h3>
-          <p>Enhance memory, focus, and logical thinking with structured cognitive activities designed for growing minds.</p>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> Robotics</li>
-            <li><i class="fas fa-check"></i> Coding</li>
-            <li><i class="fas fa-check"></i> Science Labs</li>
-          </ul>
-          <a href="servicedetail.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-        </div>
+      <div class="service-card">
+        <div class="card-image"><img src="images/pexels-soldiervip-1374509.jpg" alt="Brain Development" onerror="this.src='https://images.pexels.com/photos/1374509/pexels-photo-1374509.jpeg?auto=compress&cs=tinysrgb&w=600'"></div>
+        <div class="card-content"><h3>Brain Development</h3><p>Enhance memory, focus, and logical thinking.</p><ul class="service-features"><li><i class="fas fa-check"></i> Robotics</li><li><i class="fas fa-check"></i> Coding</li><li><i class="fas fa-check"></i> Science Labs</li></ul><a href="servicedetail.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a></div>
       </div>
-
-      <!-- Card 4 - STEM Learning -->
-      <div class="service-card service-card-4">
-        <div class="card-image">
-          <img src="images/pexels-rdne-6936380.jpg" alt="STEM Learning">
-          <div class="image-overlay"></div>
-        </div>
-        
-        <div class="card-content">
-          <h3>STEM Learning</h3>
-          <p>Prepare for the future with science and technology-based learning through fun and interactive sessions.</p>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> Coding Basics</li>
-            <li><i class="fas fa-check"></i> Robotics Activities</li>
-            <li><i class="fas fa-check"></i> Science Experiments</li>
-          </ul>
-          <a href="servicedetail.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-        </div>
+      <div class="service-card">
+        <div class="card-image"><img src="images/pexels-rdne-6936380.jpg" alt="STEM Learning" onerror="this.src='https://images.pexels.com/photos/6936380/pexels-photo-6936380.jpeg?auto=compress&cs=tinysrgb&w=600'"></div>
+        <div class="card-content"><h3>STEM Learning</h3><p>Prepare for the future with science and technology.</p><ul class="service-features"><li><i class="fas fa-check"></i> Coding Basics</li><li><i class="fas fa-check"></i> Robotics Activities</li><li><i class="fas fa-check"></i> Science Experiments</li></ul><a href="servicedetail.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a></div>
       </div>
-
-      <!-- Card 5 - Communication Skills -->
-      <div class="service-card service-card-5">
-        <div class="card-image">
-          <img src="images/pexels-rachel-claire-5490273.jpg" alt="Communication Skills">
-          <div class="image-overlay"></div>
-        </div>
-       
-        <div class="card-content">
-          <h3>Communication Skills</h3>
-          <p>Improve confidence in speaking, writing, and expressing ideas clearly in social and academic environments.</p>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> Public Speaking</li>
-            <li><i class="fas fa-check"></i> Storytelling</li>
-            <li><i class="fas fa-check"></i> Personality Development</li>
-          </ul>
-          <a href="servicedetail.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-        </div>
+      <div class="service-card">
+        <div class="card-image"><img src="images/pexels-rachel-claire-5490273.jpg" alt="Communication Skills" onerror="this.src='https://images.pexels.com/photos/5490273/pexels-photo-5490273.jpeg?auto=compress&cs=tinysrgb&w=600'"></div>
+        <div class="card-content"><h3>Communication Skills</h3><p>Improve confidence in speaking and expressing ideas.</p><ul class="service-features"><li><i class="fas fa-check"></i> Public Speaking</li><li><i class="fas fa-check"></i> Storytelling</li><li><i class="fas fa-check"></i> Personality Development</li></ul><a href="servicedetail.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a></div>
       </div>
-
-      <!-- Card 6 - Art & Craft -->
-      <div class="service-card service-card-6">
-        <div class="card-image">
-          <img src="images/pexels-pragyanbezbo-1720188.jpg" alt="Art & Craft">
-          <div class="image-overlay"></div>
-        </div>
-       
-        <div class="card-content">
-          <h3>Art & Craft</h3>
-          <p>Encourage creativity through fun DIY projects that develop fine motor skills and imagination.</p>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> Paper Crafts</li>
-            <li><i class="fas fa-check"></i> DIY Projects</li>
-            <li><i class="fas fa-check"></i> Creative Workshops</li>
-          </ul>
-          <a href="servicedetail.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-        </div>
+      <div class="service-card">
+        <div class="card-image"><img src="images/pexels-pragyanbezbo-1720188.jpg" alt="Art & Craft" onerror="this.src='https://images.pexels.com/photos/1720188/pexels-photo-1720188.jpeg?auto=compress&cs=tinysrgb&w=600'"></div>
+        <div class="card-content"><h3>Art & Craft</h3><p>Encourage creativity through fun DIY projects.</p><ul class="service-features"><li><i class="fas fa-check"></i> Paper Crafts</li><li><i class="fas fa-check"></i> DIY Projects</li><li><i class="fas fa-check"></i> Creative Workshops</li></ul><a href="servicedetail.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a></div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-content">
       <div class="footer-top">
-        <div class="footer-column">
-          <a href="index.html" class="logo">
-            <i class="fas fa-seedling"></i>
-            <span class="logo-text">BrainBloom</span>
-          </a>
-          <p style="margin-top:30px">Where minds expand and ideas flourish. Join our community of curious learners.</p>
-        </div>
-        <div class="footer-column">
-          <h3>QuickLinks</h3>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="service.html">Service</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-column">
-          <h3>Resources</h3>
-          <ul>
-            <li><a href="#">Learning Hub</a></li>
-            <li><a href="#">Workshops</a></li>
-            <li><a href="#">Blog</a></li>
-          </ul>
-        </div>
-        <div class="footer-column">
-          <h3>Social Links</h3>
-          <ul>
-            <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-            <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-            <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-          </ul>
-        </div>
+        <div class="footer-column"><a href="index.html" class="logo"><i class="fas fa-seedling"></i><span class="logo-text">BrainBloom</span></a><p style="margin-top:30px">Where minds expand and ideas flourish. Join our community of curious learners.</p></div>
+        <div class="footer-column"><h3>QuickLinks</h3><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="service.html">Service</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer-column"><h3>Resources</h3><ul><li><a href="#">Learning Hub</a></li><li><a href="#">Workshops</a></li><li><a href="#">Blog</a></li></ul></div>
+        <div class="footer-column"><h3>Social Links</h3><ul><li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li><li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li><li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li></ul></div>
       </div>
-      <div class="footer-middle">
-        <h3 style="color:#FFB347">BrainBloom</h3>
-        <div class="footer-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms & Conditions</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div class="copyright">© 2026 BrainBloom Enrichment. All rights reserved.</div>
-      </div>
+      <div class="footer-middle"><h3 style="color:#FFB347">BrainBloom</h3><div class="footer-links"><a href="#">Privacy Policy</a><a href="#">Terms & Conditions</a></div></div>
+      <div class="footer-bottom"><div class="copyright">© 2026 BrainBloom Enrichment. All rights reserved.</div></div>
     </div>
   </footer>
 
   <script>
     (function() {
-      // Mobile Menu Elements
       const hamburger = document.getElementById('hamburger');
       const overlay = document.getElementById('mobileOverlay');
       const mobileMenu = document.getElementById('mobileNavMenu');
       const body = document.body;
 
-      if (!hamburger || !overlay || !mobileMenu) return;
-
-      function toggleMobileMenu() {
-        const isActive = mobileMenu.classList.contains('active');
-        mobileMenu.classList.toggle('active');
-        overlay.classList.toggle('active');
-        body.style.overflow = isActive ? '' : 'hidden';
-        hamburger.innerHTML = isActive ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+      if (hamburger && overlay && mobileMenu) {
+        function toggleMobileMenu() {
+          const isActive = mobileMenu.classList.contains('active');
+          mobileMenu.classList.toggle('active');
+          overlay.classList.toggle('active');
+          body.style.overflow = isActive ? '' : 'hidden';
+          hamburger.innerHTML = isActive ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+        }
+        hamburger.addEventListener('click', toggleMobileMenu);
+        overlay.addEventListener('click', toggleMobileMenu);
+        document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
+          link.addEventListener('click', function(e) {
+            if (!this.querySelector('.fa-caret-down')) toggleMobileMenu();
+          });
+        });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && mobileMenu.classList.contains('active')) toggleMobileMenu();
+        });
+        window.addEventListener('resize', () => {
+          if (window.innerWidth > 1280 && mobileMenu.classList.contains('active')) toggleMobileMenu();
+        });
       }
 
-      hamburger.addEventListener('click', toggleMobileMenu);
-      overlay.addEventListener('click', toggleMobileMenu);
-
-      document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
-        link.addEventListener('click', function(e) {
-          if (!this.querySelector('.fa-caret-down')) {
-            toggleMobileMenu();
-          }
-        });
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-          toggleMobileMenu();
-        }
-      });
-
-      window.addEventListener('resize', () => {
-        if (window.innerWidth > 1280 && mobileMenu.classList.contains('active')) {
-          toggleMobileMenu();
-        }
-      });
-
+      // Theme toggle
       function toggleTheme() {
         document.body.classList.toggle('dark-mode');
         const isDark = document.body.classList.contains('dark-mode');
-        
         document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => {
           if (el) el.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
         });
-        
         const mobileSpan = document.querySelector('#mobileThemeToggle span');
         if (mobileSpan) mobileSpan.textContent = isDark ? 'Light Mode' : 'Dark Mode';
-        
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
       }
 
+      // RTL toggle with proper text labels (replaces icon-only)
       function toggleRTL() {
         const html = document.documentElement;
         const isRTL = html.getAttribute('dir') === 'rtl';
-        html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
+        const newDir = isRTL ? 'ltr' : 'rtl';
+        html.setAttribute('dir', newDir);
         
-        const mobileSpan = document.querySelector('#mobileRtlToggle span');
-        if (mobileSpan) mobileSpan.textContent = isRTL ? 'RTL' : 'LTR';
+        // Update both desktop and mobile button text
+        const rtlButtonSpan = document.getElementById('rtlButtonText');
+        const mobileRtlSpan = document.getElementById('mobileRtlButtonText');
         
-        localStorage.setItem('direction', isRTL ? 'ltr' : 'rtl');
+        if (rtlButtonSpan) {
+          rtlButtonSpan.textContent = newDir === 'rtl' ? 'LTR' : 'RTL';
+        }
+        if (mobileRtlSpan) {
+          mobileRtlSpan.textContent = newDir === 'rtl' ? 'Switch to LTR' : 'Switch to RTL';
+        }
+        
+        localStorage.setItem('direction', newDir);
       }
 
       document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
@@ -1263,31 +854,36 @@ header .nav-links li:nth-last-child(4){
       document.getElementById('rtlToggle')?.addEventListener('click', toggleRTL);
       document.getElementById('mobileRtlToggle')?.addEventListener('click', toggleRTL);
 
+      // Load saved theme
       if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
-        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => {
-          if (el) el.className = 'fas fa-sun';
-        });
+        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => { if (el) el.className = 'fas fa-sun'; });
         const mobileSpan = document.querySelector('#mobileThemeToggle span');
         if (mobileSpan) mobileSpan.textContent = 'Light Mode';
       }
-
-      if (localStorage.getItem('direction') === 'rtl') {
+      
+      // Load saved direction and update button text accordingly
+      const savedDir = localStorage.getItem('direction');
+      if (savedDir === 'rtl') {
         document.documentElement.setAttribute('dir', 'rtl');
-        const mobileSpan = document.querySelector('#mobileRtlToggle span');
-        if (mobileSpan) mobileSpan.textContent = 'LTR';
+        const rtlButtonSpan = document.getElementById('rtlButtonText');
+        const mobileRtlSpan = document.getElementById('mobileRtlButtonText');
+        if (rtlButtonSpan) rtlButtonSpan.textContent = 'LTR';
+        if (mobileRtlSpan) mobileRtlSpan.textContent = 'Switch to LTR';
+      } else {
+        // ensure default button text matches
+        const rtlButtonSpan = document.getElementById('rtlButtonText');
+        const mobileRtlSpan = document.getElementById('mobileRtlButtonText');
+        if (rtlButtonSpan && !savedDir) rtlButtonSpan.textContent = 'RTL';
+        if (mobileRtlSpan && !savedDir) mobileRtlSpan.textContent = 'Switch to RTL';
       }
     })();
-    // Highlight active link automatically
-const currentPage = window.location.pathname.split("/").pop();
 
-document.querySelectorAll(".nav-links a").forEach(link => {
-  const linkPage = link.getAttribute("href");
-
-  if (linkPage === currentPage) {
-    link.classList.add("active");
-  }
-});
+    const currentPage = window.location.pathname.split("/").pop();
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      const linkPage = link.getAttribute("href");
+      if (linkPage === currentPage) link.classList.add("active");
+    });
   </script>
 </body>
 </html>

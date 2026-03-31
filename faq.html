@@ -8,17 +8,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
+  <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --primary: #FFB347;         /* orange – main */
-      --secondary: #FF8C42;        /* deeper orange – secondary */
-      --accent: #FFB347;           /* orange – unified */
+      --primary: #FFB347;
+      --secondary: #FF8C42;
+      --accent: #FFB347;
       --text: #1E2B3C;
       --text-light: #2C3E50;
-      --text-inverse: #FFFFFF;
       --bg: #FFFFFF;
       --bg-light: #F4F7FC;
       --border: #D9E2EC;
@@ -27,17 +26,6 @@
       --transition: all 0.4s ease;
       --footer-bg: #FFFFFF;
       --footer-text: #1E2B3C;
-      
-      /* testimonial & awards light mode specific (keep original) */
-      --awards-bg: linear-gradient(135deg, #fff3e0, #ffe0b2);
-      --testimonial-bg: #f4efe9;
-      --testimonial-box-bg: #efe4d6;
-      --testimonial-border: #222;
-      --testimonial-text: #222;
-      --testimonial-author-color: #555;
-      --circle-bg: #f3e8dc;
-      --tag-bg: #e8d3b7;
-      --quote-color: #cfc2b2;
     }
     .dark-mode {
       --primary: #FFB347;
@@ -45,25 +33,13 @@
       --accent: #FFB347;
       --text: #F0F3FA;
       --text-light: #CAD5E2;
-     
-      --bg: #000000;              /* full black background */
-      --bg-light: #0A0A0A;         /* very dark grey for cards / menus */
-      --border: #262626;           /* dark border */
-      --footer-bg: #000000;        /* footer pure black */
+      --bg: #000000;
+      --bg-light: #0A0A0A;
+      --border: #262626;
+      --footer-bg: #000000;
       --footer-text: #FFFFFF;
       --shadow: 0 4px 12px rgba(255,180,71,0.03);
       --shadow-lg: 0 20px 40px rgba(255,180,71,0.05);
-      
-      /* dark mode overrides for awards + testimonial */
-      --awards-bg: linear-gradient(135deg, #111111, #1a1a1a);
-      --testimonial-bg: #0a0a0a;           /* section background pure black feel */
-      --testimonial-box-bg: #1a1a1a;        /* actual testimonial card background – dark */
-      --testimonial-border: #FFB347;
-      --testimonial-text: #f0f0f0;
-      --testimonial-author-color: #cccccc;
-      --circle-bg: #2a2a2a;
-      --tag-bg: #2a2a2a;
-      --quote-color: #FFB347;
     }
     body {
       font-family: 'Poppins', sans-serif; 
@@ -83,48 +59,41 @@
       color: #FFFFFF !important;
     }
 
-    /* ----- exactly the same section title style as reference (index) ----- */
     .section-title {
-      font-size: 2.8rem;          /* same as index .section-title */
+      font-size: 2.8rem;
       text-align: center;
       margin-bottom: 1rem;
       font-family: 'Playfair Display', serif;
       font-weight: 400;
     }
     .section-title span {
-      color: var(--accent);        /* orange span accent */
-    }
-    .section-subtitle {
-      text-align: center;
-      font-size: 1.2rem;
-      color: var(--text-light);
-      max-width: 700px;
-      margin: 0 auto 4rem;
+      color: var(--accent);
     }
 
-    /* Header - navbar items perfectly centered on same line */
+    /* HEADER - clean navbar with proper spacing, only login button */
     header {
       background: var(--bg); 
       box-shadow: var(--shadow); 
       position: sticky; 
       top: 0;
       z-index: 1000; 
+      width: 100%;
     }
     .navbar {
       display: flex; 
       justify-content: space-between; 
-      align-items: center;  /* ensures all children are vertically centered */
-      padding: 0.75rem 2rem; /* balanced padding */
-      max-width: 1400px; 
+      align-items: center;
+      padding: 0.75rem 4rem;
+      max-width: 100%; 
       margin: 0 auto;
-      min-height: 80px; /* fixed height for consistency */
+      min-height: 80px;
     }
     .logo { 
       display: flex; 
-      align-items: center;  /* vertical center */
+      align-items: center;
       gap: 10px; 
       text-decoration: none;
-      line-height: 1; /* remove extra line height */
+      line-height: 1;
     }
     .logo i { 
       color: var(--accent); 
@@ -149,7 +118,7 @@
       display: flex; 
       list-style: none; 
       gap: 0.5rem; 
-      align-items: center;  /* vertical center */
+      align-items: center;
       margin: 0;
       padding: 0;
     }
@@ -168,13 +137,13 @@
       display: inline-flex;
       align-items: center;
       white-space: nowrap;
+      gap: 6px;
     }
     .nav-links a:hover,
     .nav-links a.active {
       color: var(--accent); 
       background: rgba(255,180,71,0.1);
     }
-    /* dropdown */
     .dropdown { 
       position: relative; 
       display: flex;
@@ -186,25 +155,28 @@
       left: 0; 
       background: var(--bg-light);
       list-style: none; 
-      padding: 15px 0; 
-      min-width: 200px; 
+      padding: 12px 0; 
+      min-width: 210px; 
       border-radius: 20px;
-      box-shadow: var(--shadow-lg); 
+      box-shadow: 0 12px 28px rgba(0,0,0,0.15);
       border: 1px solid var(--border); 
       display: none; 
       z-index: 1000;
+      backdrop-filter: blur(4px);
     }
     .dropdown-menu a {
       display: block; 
-      padding: 12px 20px; 
+      padding: 10px 22px; 
       color: var(--text); 
       text-decoration: none;
       white-space: nowrap;
+      font-weight: 500;
+      gap: 0;
     }
     .dropdown-menu a:hover {
-      background: var(--primary); 
-      color: white; 
-      padding-left: 30px;
+      background: var(--accent); 
+      color: #1E2B3C; 
+      padding-left: 28px;
     }
     .dropdown:hover .dropdown-menu { 
       display: block; 
@@ -225,10 +197,24 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      border-radius: 40px;
     }
     .control-btn:hover { 
       color: var(--accent); 
-      transform: scale(1.1); 
+      transform: scale(1.05); 
+      background: rgba(255,180,71,0.1);
+    }
+    /* RTL text button style - replacing icon with proper text */
+    .rtl-text-btn {
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 14px;
+      letter-spacing: 0.5px;
+      gap: 6px;
+      min-width: 70px;
+    }
+    .rtl-text-btn i {
+      font-size: 0.9rem;
     }
     .hamburger {
       display: none; 
@@ -242,7 +228,23 @@
       align-items: center;
       justify-content: center;
     }
-    /* mobile menu adjustments (unchanged, but ensure inner links are centered) */
+    /* Only login button - signup removed */
+    .nav-btn { 
+      padding: 8px 22px !important; 
+      border-radius: 50px !important; 
+      font-weight: 600; 
+    }
+    .login-btn { 
+      border: 2px solid var(--primary); 
+      color: var(--primary) !important; 
+      background: transparent;
+    }
+    .login-btn:hover { 
+      background: var(--primary); 
+      color: #1E2B3C !important; 
+    }
+
+    /* MOBILE MENU */
     .mobile-nav-menu {
       position: fixed; 
       top: 0; 
@@ -278,10 +280,11 @@
       font-weight: 600 !important; 
       width: 100% !important;
       text-align: left;
+      gap: 8px;
     }
     .mobile-nav-menu .nav-links a:hover {
       background: var(--accent) !important; 
-      color: #db5507 !important;
+      color: #1E2B3C !important;
       border-color: var(--accent) !important;
     }
     .mobile-nav-menu .nav-links .home-sub-item {
@@ -291,6 +294,11 @@
       border-color: var(--border) !important; 
       background: var(--bg-light) !important; 
       font-size: 0.9rem !important;
+    }
+    .mobile-nav-menu .nav-links a.active {
+      background: var(--accent) !important;
+      color: #fff !important;
+      border-color: var(--accent) !important;
     }
     .mobile-overlay {
       position: fixed; 
@@ -328,32 +336,41 @@
     }
     .mobile-controls .control-btn:hover {
       background: var(--accent);
-      color: #ff6200;
+      color: #1E2B3C;
       border-color: var(--accent);
     }
-    .nav-btn { 
-      padding: 8px 18px !important; 
-      border-radius: 50px !important; 
-      font-weight: 600; 
+
+    /* RTL support */
+    [dir="rtl"] .dropdown-menu { left: auto; right: 0; }
+    [dir="rtl"] .footer-column a:hover { transform: translateX(-8px); }
+    [dir="rtl"] .mobile-nav-menu {
+      left: -100%; 
+      right: auto; 
+      border-left: none; 
+      border-right: 3px solid var(--accent);
     }
-    .login-btn { 
-      border: 2px solid var(--primary); 
-      color: var(--primary) !important; 
+    [dir="rtl"] .mobile-nav-menu.active { left: 0; }
+    [dir="rtl"] .home-sub-item { 
+      padding-left: 20px !important; 
+      padding-right: 40px !important; 
     }
-    .login-btn:hover { 
-      background: var(--primary); 
-      color: rgb(249, 138, 3) !important; 
-    }
-    .signup-btn { 
-      background: var(--accent); 
-      color: #1E2B3C !important; 
-      border: 2px solid var(--accent);
-    }
-    .signup-btn:hover { 
-      background: #e09d3c; 
+    [dir="rtl"] .faq-card .faq-question h3 {
+      padding-right: 0;
+      padding-left: 1rem;
     }
 
-    /* ===== HERO BANNER ===== */
+    /* responsive */
+    @media (max-width: 1280px) {
+      .navbar { padding: 0.75rem 2rem; }
+      .nav-links:not(.mobile-nav-menu .nav-links) { display: none !important; }
+      .hamburger { display: flex !important; }
+    }
+    @media (min-width: 1281px) {
+      .nav-links:not(.mobile-nav-menu .nav-links) { display: flex !important; }
+      .hamburger { display: none !important; }
+    }
+
+    /* FAQ PAGE STYLES */
     .faq-hero {
       position: relative;
       height: 90vh;
@@ -367,7 +384,6 @@
       overflow: hidden;
       margin-bottom: 2rem;
     }
-
     .faq-hero::before {
       content: '';
       position: absolute;
@@ -379,44 +395,26 @@
       opacity: 0.2;
       z-index: 1;
     }
-
-    .faq-hero::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
-      animation: rotate 20s linear infinite;
-      z-index: 2;
-    }
-
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
     .hero-content {
       position: relative;
       z-index: 3;
       max-width: 800px;
       padding: 0 2rem;
     }
-
     .hero-content h1 {
       font-size: 4rem;
       margin-bottom: 1rem;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
       font-family: 'Playfair Display', serif;
     }
-
+    .hero-content h1 span {
+      color: #FFB347;
+    }
     .hero-content p {
       font-size: 1.3rem;
       opacity: 0.95;
       margin-bottom: 2rem;
     }
-
     .hero-search {
       display: flex;
       max-width: 500px;
@@ -426,39 +424,34 @@
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
-
     .hero-search input {
       flex: 1;
       padding: 1rem 1.5rem;
       border: none;
       outline: none;
       font-size: 1rem;
+      background: white;
+      color: #1E2B3C;
     }
-
     .hero-search button {
       padding: 1rem 2rem;
-      background: var(--text);
+      background: #1E2B3C;
       color: white;
       border: none;
       cursor: pointer;
       transition: var(--transition);
       font-weight: 600;
     }
-
     .hero-search button:hover {
       background: var(--secondary);
     }
 
-    /* ===== FAQ SECTION ===== */
     .faq-section {
       padding: 3rem 2rem 5rem;
       max-width: 1200px;
       margin: 0 auto;
       width: 100%;
-      position: relative;
     }
-
-    /* FAQ Categories */
     .faq-categories {
       display: flex;
       justify-content: center;
@@ -466,7 +459,6 @@
       margin-bottom: 3rem;
       flex-wrap: wrap;
     }
-
     .category-btn {
       padding: 0.8rem 2rem;
       border: 2px solid var(--border);
@@ -478,7 +470,6 @@
       transition: var(--transition);
       font-size: 1rem;
     }
-
     .category-btn:hover,
     .category-btn.active {
       background: var(--primary);
@@ -487,12 +478,9 @@
       transform: translateY(-3px);
       box-shadow: var(--shadow);
     }
-
-    /* Category Sections */
     .faq-category-section {
       margin-bottom: 4rem;
     }
-
     .category-title {
       font-size: 2.2rem;
       font-family: 'Playfair Display', serif;
@@ -501,67 +489,31 @@
       padding-bottom: 1rem;
       border-bottom: 3px solid var(--primary);
       display: inline-block;
-      position: relative;
     }
-
-    .category-title::after {
-      content: '';
-      position: absolute;
-      bottom: -3px;
-      left: 0;
-      width: 50px;
-      height: 3px;
-      background: var(--secondary);
-    }
-
-    /* FAQ Grid */
     .faq-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
       margin-bottom: 2rem;
     }
-
-    /* FAQ Card */
     .faq-card {
       background: var(--bg-light);
       border-radius: 30px;
       padding: 2rem;
       border: 1px solid var(--border);
       transition: var(--transition);
-      position: relative;
-      overflow: hidden;
       cursor: pointer;
     }
-
     .faq-card:hover {
       transform: translateY(-5px);
       box-shadow: var(--shadow-lg);
       border-color: var(--primary);
     }
-
-    .faq-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 0;
-      background: linear-gradient(to bottom, var(--primary), var(--secondary));
-      transition: height 0.3s ease;
-    }
-
-    .faq-card:hover::before {
-      height: 100%;
-    }
-
     .faq-question {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 0;
     }
-
     .faq-question h3 {
       font-size: 1.3rem;
       font-family: 'Playfair Display', serif;
@@ -569,7 +521,6 @@
       margin: 0;
       padding-right: 1rem;
     }
-
     .faq-icon {
       width: 40px;
       height: 40px;
@@ -584,13 +535,11 @@
       transition: var(--transition);
       flex-shrink: 0;
     }
-
     .faq-card:hover .faq-icon {
       background: var(--primary);
       color: white;
       transform: rotate(90deg);
     }
-
     .faq-answer {
       max-height: 0;
       overflow: hidden;
@@ -598,19 +547,15 @@
       color: var(--text-light);
       line-height: 1.8;
     }
-
     .faq-card.active .faq-answer {
       max-height: 300px;
       margin-top: 1.5rem;
     }
-
     .faq-card.active .faq-icon {
       background: var(--primary);
       color: white;
       transform: rotate(45deg);
     }
-
-    /* FAQ Stats Section */
     .faq-stats {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -621,11 +566,9 @@
       border-radius: 50px;
       border: 1px solid var(--border);
     }
-
     .stat-item {
       text-align: center;
     }
-
     .stat-number {
       font-size: 2.5rem;
       font-weight: 800;
@@ -634,13 +577,10 @@
       line-height: 1;
       margin-bottom: 0.5rem;
     }
-
     .stat-label {
       color: var(--text-light);
       font-size: 0.95rem;
     }
-
-    /* FAQ Contact */
     .faq-contact {
       text-align: center;
       padding: 4rem;
@@ -649,13 +589,11 @@
       border: 2px dashed var(--primary);
       margin-top: 3rem;
     }
-
     .faq-contact h3 {
       font-size: 2rem;
       margin-bottom: 1rem;
       font-family: 'Playfair Display', serif;
     }
-
     .faq-contact p {
       color: var(--text-light);
       margin-bottom: 2rem;
@@ -663,14 +601,12 @@
       margin-left: auto;
       margin-right: auto;
     }
-
     .contact-buttons {
       display: flex;
       gap: 1rem;
       justify-content: center;
       flex-wrap: wrap;
     }
-
     .contact-btn {
       padding: 1rem 2.5rem;
       border-radius: 50px;
@@ -681,87 +617,46 @@
       align-items: center;
       gap: 10px;
     }
-
     .contact-btn.primary {
       background: var(--primary);
       color: #1E2B3C;
     }
-
     .contact-btn.secondary {
       border: 2px solid var(--primary);
       color: var(--text);
       background: transparent;
     }
-
     .contact-btn.secondary i {
       color: var(--primary);
-      font-size: 1rem;
     }
-
     .contact-btn:hover {
       transform: translateY(-3px);
       box-shadow: var(--shadow-lg);
     }
-
     .contact-btn.primary:hover {
       background: var(--secondary);
     }
-
     .contact-btn.secondary:hover {
       background: var(--primary);
       color: #1E2B3C;
     }
-
     .contact-btn.secondary:hover i {
       color: #1E2B3C;
     }
 
-    /* Responsive */
     @media (max-width: 900px) {
-      .faq-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .faq-stats {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      
-      .hero-content h1 {
-        font-size: 2.5rem;
-      }
+      .faq-grid { grid-template-columns: 1fr; }
+      .faq-stats { grid-template-columns: repeat(2, 1fr); }
+      .hero-content h1 { font-size: 2.5rem; }
     }
-
     @media (max-width: 600px) {
-      .faq-section {
-        padding: 3rem 1rem;
-      }
-      
-      .faq-stats {
-        grid-template-columns: 1fr;
-        padding: 2rem;
-      }
-      
-      .faq-contact {
-        padding: 2rem;
-      }
-      
-      .faq-contact h3 {
-        font-size: 1.5rem;
-      }
-      
-      .category-btn {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.9rem;
-      }
-      
-      .hero-search {
-        flex-direction: column;
-        border-radius: 20px;
-      }
-      
-      .hero-search button {
-        width: 100%;
-      }
+      .faq-section { padding: 3rem 1rem; }
+      .faq-stats { grid-template-columns: 1fr; padding: 2rem; }
+      .faq-contact { padding: 2rem; }
+      .faq-contact h3 { font-size: 1.5rem; }
+      .category-btn { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
+      .hero-search { flex-direction: column; border-radius: 20px; }
+      .hero-search button { width: 100%; }
     }
 
     /* Footer */
@@ -770,14 +665,12 @@
       color: var(--footer-text);
       padding: 70px 0 40px; 
       margin-top: auto;
-    }
-    .dark-mode .site-footer { 
-      background: #000000 !important; 
+      width: 100%;
     }
     .footer-content { 
-      max-width: 1300px; 
+      max-width: 1400px; 
       margin: 0 auto; 
-      padding: 0 2rem; 
+      padding: 0 4rem; 
     }
     .footer-top {
       display: grid; 
@@ -795,12 +688,8 @@
       padding-bottom: 12px;
       border-bottom: 2px solid var(--accent);
     }
-    .footer-column ul { 
-      list-style: none; 
-    }
-    .footer-column li { 
-      margin-bottom: 12px; 
-    }
+    .footer-column ul { list-style: none; }
+    .footer-column li { margin-bottom: 12px; }
     .footer-column a {
       color: var(--footer-text); 
       text-decoration: none; 
@@ -818,123 +707,26 @@
       justify-content: space-between; 
       align-items: center;
     }
-    .footer-links { 
-      display: flex; 
-      gap: 35px; 
-    }
-    .footer-links a { 
-      color: var(--footer-text); 
-      text-decoration: none; 
-      font-size: 0.95rem; 
-    }
-    .footer-links a:hover { 
-      color: var(--accent); 
-    }
-    .footer-bottom { 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-    }
-    .copyright { 
-      color: var(--footer-text); 
-      font-size: 0.9rem; 
-      opacity: 0.8; 
-    }
-
-    /* RTL */
-    [dir="rtl"] .dropdown-menu { 
-      left: auto; 
-      right: 0; 
-    }
-    [dir="rtl"] .footer-column a:hover { 
-      transform: translateX(-8px); 
-    }
-    [dir="rtl"] .mobile-nav-menu {
-      left: -100%; 
-      right: auto; 
-      border-left: none; 
-      border-right: 3px solid var(--accent);
-    }
-    [dir="rtl"] .mobile-nav-menu.active { 
-      left: 0; 
-    }
-    [dir="rtl"] .home-sub-item { 
-      padding-left: 20px !important; 
-      padding-right: 40px !important; 
-    }
-
-    /* Responsive */
-    @media (max-width: 1280px) {
-      .nav-links:not(.mobile-nav-menu .nav-links) { 
-        display: none !important; 
-      }
-      .hamburger { 
-        display: flex !important; 
-      }
-      .navbar {
-        min-height: 70px;
-      }
-    }
-    @media (min-width: 1281px) {
-      .nav-links:not(.mobile-nav-menu .nav-links) { 
-        display: flex !important; 
-      }
-      .hamburger { 
-        display: none !important; 
-      }
-    }
+    .footer-links { display: flex; gap: 35px; }
+    .footer-links a { color: var(--footer-text); text-decoration: none; font-size: 0.95rem; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+    .copyright { color: var(--footer-text); font-size: 0.9rem; opacity: 0.8; }
     @media (max-width: 900px) {
-      .footer-top { 
-        grid-template-columns: repeat(2, 1fr); 
-      }
-      .footer-middle, .footer-bottom { 
-        flex-direction: column; 
-        gap: 20px; 
-        text-align: center; 
-      }
+      .footer-top { grid-template-columns: repeat(2, 1fr); }
+      .footer-middle, .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+      .footer-content { padding: 0 2rem; }
     }
     @media (max-width: 600px) {
-      .footer-top { 
-        grid-template-columns: 1fr; 
-      }
-      .navbar { 
-        padding: 0.5rem 1rem; 
-      }
-      .logo-text { 
-        font-size: 22px; 
-      }
+      .footer-top { grid-template-columns: 1fr; }
+      .navbar { padding: 0.5rem 1rem; }
+      .logo-text { font-size: 22px; }
     }
-
-/* Push login & signup to right (Desktop only) */
-header .nav-links li:nth-last-child(3){
-  margin-left: 25px;
-}
-/* Add gap before Login (after Dashboard) (Desktop only) */
-header .nav-links li:nth-last-child(4){
-  margin-left: 50px;
-}.mobile-nav-menu .nav-links a.active {
-  background: var(--accent) !important;
-  color: #fff !important;
-  border-color: var(--accent) !important;
-}
- .signup-btn { 
-      background: var(--accent); 
-      color: #f2f2f6 !important; 
-      border: 2px solid var(--accent);
-    }
-    .signup-btn:hover {
-      background: var(--accent); 
-      color: #f6960f !important; 
-      border: 2px solid var(--accent); 
-    }
-
   </style>
 </head>
 <body>
-  <!-- Mobile Overlay -->
   <div class="mobile-overlay" id="mobileOverlay"></div>
 
-  <!-- Header - now perfectly aligned -->
   <header>
     <nav class="navbar">
       <a href="index.html" class="logo">
@@ -942,7 +734,6 @@ header .nav-links li:nth-last-child(4){
         <span class="logo-text">BrainBloom</span>
       </a>
 
-      <!-- Desktop Navigation -->
       <ul class="nav-links">
         <li class="dropdown">
           <a href="#">Home <i class="fas fa-caret-down"></i></a>
@@ -955,7 +746,7 @@ header .nav-links li:nth-last-child(4){
         <li><a href="service.html">Service</a></li>
         <li><a href="art&craft.html">Art&Craft</a></li>
         <li><a href="music.html">Music</a></li>
-         <li><a href="faq.html"class="active">Faq</a></li>
+        <li><a href="faq.html" class="active">Faq</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li class="dropdown">
           <a href="#">Dashboard <i class="fas fa-caret-down"></i></a>
@@ -965,51 +756,45 @@ header .nav-links li:nth-last-child(4){
           </ul>
         </li>
         <li><a href="login.html" class="nav-btn login-btn">Login</a></li>
-        <li><a href="signup.html" class="nav-btn signup-btn">SignUp</a></li>
-        <!-- Theme and RTL buttons -->
         <li>
           <button class="control-btn" id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
         </li>
         <li>
-          <button class="control-btn" id="rtlToggle" title="Toggle RTL"><i class="fas fa-exchange-alt"></i></button>
+          <button class="control-btn rtl-text-btn" id="rtlToggle" title="Toggle RTL"> <span id="rtlButtonText">RTL</span></button>
         </li>
       </ul>
 
-      <!-- Controls - Only hamburger on mobile -->
       <div class="controls">
         <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
       </div>
     </nav>
   </header>
 
-  <!-- Mobile Menu -->
- <div class="mobile-nav-menu" id="mobileNavMenu">
+  <div class="mobile-nav-menu" id="mobileNavMenu">
     <ul class="nav-links">
       <li><a href="#"><i class="fas fa-caret-down"></i> Home</a></li>
       <li><a href="index.html" class="home-sub-item">Home 1</a></li>
       <li><a href="home2.html" class="home-sub-item">Home 2</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="service.html">Service</a></li>
-        <li><a href="art&craft.html">Art&Craft</a></li>
-        <li><a href="music.html">Music</a></li>
-         <li><a href="faq.html"  class="active">Faq</a></li>
-        <li><a href="contact.html">Contact</a></li>
+      <li><a href="art&craft.html">Art&Craft</a></li>
+      <li><a href="music.html">Music</a></li>
+      <li><a href="faq.html" class="active">Faq</a></li>
+      <li><a href="contact.html">Contact</a></li>
       <li><a href="#"><i class="fas fa-caret-down"></i> Dashboard</a></li>
       <li><a href="user.html" class="home-sub-item">User Dashboard</a></li>
       <li><a href="admin.html" class="home-sub-item">Admin Dashboard</a></li>
-      <li><a href="loginPage.html">Login</a></li>
-      <li><a href="register.html">SignUp</a></li>
+      <li><a href="login.html">Login</a></li>
     </ul>
     <div class="mobile-controls">
       <button class="control-btn" id="mobileThemeToggle"><i class="fas fa-moon"></i><span>Dark Mode</span></button>
-      <button class="control-btn" id="mobileRtlToggle"><i class="fas fa-exchange-alt"></i><span>RTL</span></button>
+      <button class="control-btn rtl-text-btn" id="mobileRtlToggle"><i class="fas fa-language"></i><span id="mobileRtlButtonText">RTL Mode</span></button>
     </div>
   </div>
 
-  <!-- HERO BANNER (heading with orange accent) -->
   <section class="faq-hero">
     <div class="hero-content">
-      <h1>How can we <span >help</span> you?</h1>
+      <h1>How can we <span>help</span> you?</h1>
       <p>Find answers to all your questions about BrainBloom programs</p>
       <div class="hero-search">
         <input type="text" placeholder="Search your question..." id="faqSearch">
@@ -1018,9 +803,7 @@ header .nav-links li:nth-last-child(4){
     </div>
   </section>
 
-  <!-- FAQ SECTION -->
   <section class="faq-section">
-    <!-- FAQ Categories -->
     <div class="faq-categories">
       <button class="category-btn active" data-category="all">All Questions</button>
       <button class="category-btn" data-category="programs">Programs</button>
@@ -1029,351 +812,134 @@ header .nav-links li:nth-last-child(4){
       <button class="category-btn" data-category="schedules">Schedules</button>
     </div>
 
-    <!-- PROGRAMS SECTION (title updated with span) -->
     <div class="faq-category-section" data-category="programs">
       <h2 class="category-title"><span style="color: var(--accent);">📚 Programs</span></h2>
       <div class="faq-grid">
-        <!-- FAQ Card 1 -->
-        <div class="faq-card" data-category="programs">
-          <div class="faq-question">
-            <h3>What age groups do you cater to?</h3>
-            <div class="faq-icon"><i class="fas fa-plus"></i></div>
-          </div>
-          <div class="faq-answer">
-            <p>We offer programs for children aged 4-16 years, with age-appropriate curriculum designed for each developmental stage. From early learners to teenagers, we have something for everyone.</p>
-          </div>
-        </div>
-
-        <!-- FAQ Card 2 -->
-        <div class="faq-card" data-category="programs">
-          <div class="faq-question">
-            <h3>What is the class size?</h3>
-            <div class="faq-icon"><i class="fas fa-plus"></i></div>
-          </div>
-          <div class="faq-answer">
-            <p>We maintain small class sizes of 8-12 students to ensure personalized attention. Our student-to-teacher ratio is 6:1, allowing each child to receive the guidance they need.</p>
-          </div>
-        </div>
-
-        <!-- FAQ Card 3 -->
-        <div class="faq-card" data-category="programs">
-          <div class="faq-question">
-            <h3>What qualifications do your teachers have?</h3>
-            <div class="faq-icon"><i class="fas fa-plus"></i></div>
-          </div>
-          <div class="faq-answer">
-            <p>All our mentors are certified educators with minimum 5 years of experience in their respective fields. They undergo rigorous training in our unique teaching methodology.</p>
-          </div>
-        </div>
-
-        <!-- FAQ Card 4 -->
-        <div class="faq-card" data-category="programs">
-          <div class="faq-question">
-            <h3>What is the duration of each program?</h3>
-            <div class="faq-icon"><i class="fas fa-plus"></i></div>
-          </div>
-          <div class="faq-answer">
-            <p>Programs run for 8-12 weeks per term, with classes held once or twice weekly. Each session is 60-90 minutes depending on the age group and program type.</p>
-          </div>
-        </div>
+        <div class="faq-card"><div class="faq-question"><h3>What age groups do you cater to?</h3><div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>We offer programs for children aged 4-16 years, with age-appropriate curriculum designed for each developmental stage.</p></div></div>
+        <div class="faq-card"><div class="faq-question"><h3>What is the class size?</h3><div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>We maintain small class sizes of 8-12 students to ensure personalized attention.</p></div></div>
+        <div class="faq-card"><div class="faq-question"><h3>What qualifications do your teachers have?</h3><div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>All our mentors are certified educators with minimum 5 years of experience.</p></div></div>
+        <div class="faq-card"><div class="faq-question"><h3>What is the duration of each program?</h3><div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Programs run for 8-12 weeks per term, with classes held once or twice weekly.</p></div></div>
       </div>
     </div>
 
-    <!-- ENROLLMENT SECTION -->
     <div class="faq-category-section" data-category="enrollment">
       <h2 class="category-title"><span style="color: var(--accent);">📝 Enrollment</span></h2>
       <div class="faq-grid">
-        <!-- FAQ Card 5 -->
-        <div class="faq-card" data-category="enrollment">
-          <div class="faq-question">
-            <h3>How do I enroll my child?</h3>
-            <div class="faq-icon"><i class="fas fa-plus"></i></div>
-          </div>
-          <div class="faq-answer">
-            <p>Enrollment is easy! Simply click the SignUp button, fill out the registration form, choose your preferred programs, and complete the payment. You'll receive a confirmation email within 24 hours.</p>
-          </div>
-        </div>
-
-        <!-- FAQ Card 6 -->
-        <div class="faq-card" data-category="enrollment">
-          <div class="faq-question">
-            <h3>Are there any trial classes?</h3>
-            <div class="faq-icon"><i class="fas fa-plus"></i></div>
-          </div>
-          <div class="faq-answer">
-            <p>Yes! We offer a free trial class for first-time students. You can experience our teaching methodology and see if it's the right fit before committing to a full program.</p>
-          </div>
-        </div>
-
-        <!-- FAQ Card 7 -->
-        <div class="faq-card" data-category="enrollment">
-          <div class="faq-question">
-            <h3>When can I enroll?</h3>
-            <div class="faq-icon"><i class="fas fa-plus"></i></div>
-          </div>
-          <div class="faq-answer">
-            <p>Enrollment is open year-round! However, spots fill up quickly. We recommend enrolling at least 2 weeks before your desired start date to secure your spot.</p>
-          </div>
-        </div>
-
-        <!-- FAQ Card 8 -->
-        <div class="faq-card" data-category="enrollment">
-          <div class="faq-question">
-            <h3>Is there a waiting list?</h3>
-            <div class="faq-icon"><i class="fas fa-plus"></i></div>
-          </div>
-          <div class="faq-answer">
-            <p>Yes, for popular time slots we maintain a waiting list. You'll be notified as soon as a spot becomes available, typically within 1-2 weeks.</p>
-          </div>
-        </div>
+        <div class="faq-card"><div class="faq-question"><h3>How do I enroll my child?</h3><div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Simply click the SignUp button, fill out the registration form, choose your preferred programs, and complete the payment.</p></div></div>
+        <div class="faq-card"><div class="faq-question"><h3>Are there any trial classes?</h3><div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Yes! We offer a free trial class for first-time students.</p></div></div>
+        <div class="faq-card"><div class="faq-question"><h3>When can I enroll?</h3><div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Enrollment is open year-round! We recommend enrolling at least 2 weeks before your desired start date.</p></div></div>
+        <div class="faq-card"><div class="faq-question"><h3>Is there a waiting list?</h3><div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Yes, for popular time slots we maintain a waiting list.</p></div></div>
       </div>
     </div>
 
-    <!-- FEES SECTION -->
     <div class="faq-category-section" data-category="fees">
       <h2 class="category-title"><span style="color: var(--accent);">💰 Fees & Payments</span></h2>
       <div class="faq-grid">
-        <!-- FAQ Card 9 -->
-        <div class="faq-card" data-category="fees">
-          <div class="faq-question">
-            <h3>What is the fee structure?</h3>
-            <div class="faq-icon"><i class="fas fa-plus"></i></div>
-          </div>
-          <div class="faq-answer">
-            <p>Fees vary by program, starting from $199/month. Discounts available for siblings and annual payments. Contact us for detailed pricing information.</p>
-          </div>
-        </div>
-
-        <!-- FAQ Card 10 -->
-        <div class="faq-card" data-category="fees">
-          <div class="faq-question">
-            <h3>Do you offer refunds?</h3>
-            <div class="faq-icon"><i class="fas fa-plus"></i></div>
-          </div>
-          <div class="faq-answer">
-            <p>We offer a 100% money-back guarantee within the first 7 days of enrollment if you're not satisfied. For cancellations after that, we provide pro-rated refunds.</p>
-          </div>
-        </div>
-
-        <!-- FAQ Card 11 -->
-        <div class="faq-card" data-category="fees">
-          <div class="faq-question">
-            <h3>Are there any hidden costs?</h3>
-            <div class="faq-icon"><i class="fas fa-plus"></i></div>
-          </div>
-          <div class="faq-answer">
-            <p>No hidden costs! All learning materials, including workbooks, art supplies, and digital resources, are provided as part of the program fee.</p>
-          </div>
-        </div>
-
-        <!-- FAQ Card 12 -->
-        <div class="faq-card" data-category="fees">
-          <div class="faq-question">
-            <h3>Do you offer scholarships?</h3>
-            <div class="faq-icon"><i class="fas fa-plus"></i></div>
-          </div>
-          <div class="faq-answer">
-            <p>Yes, we have a limited number of merit-based scholarships. Contact our admissions team for application details and deadlines.</p>
-          </div>
-        </div>
+        <div class="faq-card"><div class="faq-question"><h3>What is the fee structure?</h3><div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Fees vary by program, starting from $199/month. Discounts available for siblings and annual payments.</p></div></div>
+        <div class="faq-card"><div class="faq-question"><h3>Do you offer refunds?</h3><div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>We offer a 100% money-back guarantee within the first 7 days of enrollment.</p></div></div>
+        <div class="faq-card"><div class="faq-question"><h3>Are there any hidden costs?</h3><div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>No hidden costs! All learning materials are provided as part of the program fee.</p></div></div>
+        <div class="faq-card"><div class="faq-question"><h3>Do you offer scholarships?</h3><div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Yes, we have a limited number of merit-based scholarships.</p></div></div>
       </div>
     </div>
 
-    <!-- SCHEDULES SECTION -->
     <div class="faq-category-section" data-category="schedules">
       <h2 class="category-title"><span style="color: var(--accent);">📅 Schedules</span></h2>
       <div class="faq-grid">
-        <!-- FAQ Card 13 -->
-        <div class="faq-card" data-category="schedules">
-          <div class="faq-question">
-            <h3>What are the class timings?</h3>
-            <div class="faq-icon"><i class="fas fa-plus"></i></div>
-          </div>
-          <div class="faq-answer">
-            <p>Classes run Monday-Friday from 3 PM - 7 PM, and weekends from 9 AM - 2 PM. Multiple time slots available for each program.</p>
-          </div>
-        </div>
-
-        <!-- FAQ Card 14 -->
-        <div class="faq-card" data-category="schedules">
-          <div class="faq-question">
-            <h3>Can I change my schedule?</h3>
-            <div class="faq-icon"><i class="fas fa-plus"></i></div>
-          </div>
-          <div class="faq-answer">
-            <p>Yes, schedule changes are allowed with 48 hours notice, subject to availability. Contact our support team for assistance.</p>
-          </div>
-        </div>
-
-        <!-- FAQ Card 15 -->
-        <div class="faq-card" data-category="schedules">
-          <div class="faq-question">
-            <h3>Do you have holiday programs?</h3>
-            <div class="faq-icon"><i class="fas fa-plus"></i></div>
-          </div>
-          <div class="faq-answer">
-            <p>Yes! We offer special holiday camps during school breaks - spring break, summer, and winter holidays. Check our events page for upcoming dates.</p>
-          </div>
-        </div>
-
-        <!-- FAQ Card 16 -->
-        <div class="faq-card" data-category="schedules">
-          <div class="faq-question">
-            <h3>What if we miss a class?</h3>
-            <div class="faq-icon"><i class="fas fa-plus"></i></div>
-          </div>
-          <div class="faq-answer">
-            <p>Make-up classes are available within the same term, subject to availability. Simply book a make-up session through your parent portal.</p>
-          </div>
-        </div>
+        <div class="faq-card"><div class="faq-question"><h3>What are the class timings?</h3><div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Classes run Monday-Friday from 3 PM - 7 PM, and weekends from 9 AM - 2 PM.</p></div></div>
+        <div class="faq-card"><div class="faq-question"><h3>Can I change my schedule?</h3><div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Yes, schedule changes are allowed with 48 hours notice, subject to availability.</p></div></div>
+        <div class="faq-card"><div class="faq-question"><h3>Do you have holiday programs?</h3><div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Yes! We offer special holiday camps during school breaks.</p></div></div>
+        <div class="faq-card"><div class="faq-question"><h3>What if we miss a class?</h3><div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-answer"><p>Make-up classes are available within the same term, subject to availability.</p></div></div>
       </div>
     </div>
 
-    <!-- FAQ Stats -->
     <div class="faq-stats">
-      <div class="stat-item">
-        <div class="stat-number">500+</div>
-        <div class="stat-label">Happy Students</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">20+</div>
-        <div class="stat-label">Expert Mentors</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">50+</div>
-        <div class="stat-label">Weekly Classes</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">98%</div>
-        <div class="stat-label">Satisfaction Rate</div>
-      </div>
+      <div class="stat-item"><div class="stat-number">500+</div><div class="stat-label">Happy Students</div></div>
+      <div class="stat-item"><div class="stat-number">20+</div><div class="stat-label">Expert Mentors</div></div>
+      <div class="stat-item"><div class="stat-number">50+</div><div class="stat-label">Weekly Classes</div></div>
+      <div class="stat-item"><div class="stat-number">98%</div><div class="stat-label">Satisfaction Rate</div></div>
     </div>
 
-    <!-- Still Have Questions - FIXED CALL ICON (fas fa-phone-alt) -->
     <div class="faq-contact">
       <h3>Still have <span style="color: var(--accent);">questions?</span></h3>
       <p>Can't find the answer you're looking for? Please chat with our friendly team.</p>
       <div class="contact-buttons">
-        <a href="contact.html" class="contact-btn primary"> Contact Us</a>
-        <a href="tel:+1234567890" class="contact-btn secondary"> Call Now</a>
+        <a href="contact.html" class="contact-btn primary"><i class="fas fa-envelope"></i> Contact Us</a>
+        <a href="tel:+1234567890" class="contact-btn secondary"><i class="fas fa-phone-alt"></i> Call Now</a>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-content">
       <div class="footer-top">
-        <div class="footer-column">
-          <a href="index.html" class="logo">
-            <i class="fas fa-seedling"></i>
-            <span class="logo-text">BrainBloom</span>
-          </a>
-          <p style="margin-top:30px">Where minds expand and ideas flourish. Join our community of curious learners.</p>
-        </div>
-        <div class="footer-column">
-          <h3>QuickLinks</h3>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="service.html">Service</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-column">
-          <h3>Resources</h3>
-          <ul>
-            <li><a href="#">Learning Hub</a></li>
-            <li><a href="#">Workshops</a></li>
-            <li><a href="#">Blog</a></li>
-          </ul>
-        </div>
-        <div class="footer-column">
-          <h3>Social Links</h3>
-          <ul>
-            <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-            <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-            <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-          </ul>
-        </div>
+        <div class="footer-column"><a href="index.html" class="logo"><i class="fas fa-seedling"></i><span class="logo-text">BrainBloom</span></a><p style="margin-top:30px">Where minds expand and ideas flourish. Join our community of curious learners.</p></div>
+        <div class="footer-column"><h3>QuickLinks</h3><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="service.html">Service</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer-column"><h3>Resources</h3><ul><li><a href="#">Learning Hub</a></li><li><a href="#">Workshops</a></li><li><a href="#">Blog</a></li></ul></div>
+        <div class="footer-column"><h3>Social Links</h3><ul><li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li><li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li><li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li></ul></div>
       </div>
-      <div class="footer-middle">
-        <h3 style="color:#FFB347"> BrainBloom</h3>
-        <div class="footer-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms & Conditions</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div class="copyright">© 2026 BrainBloom Enrichment. All rights reserved.</div>
-      </div>
+      <div class="footer-middle"><h3 style="color:#FFB347">BrainBloom</h3><div class="footer-links"><a href="#">Privacy Policy</a><a href="#">Terms & Conditions</a></div></div>
+      <div class="footer-bottom"><div class="copyright">© 2026 BrainBloom Enrichment. All rights reserved.</div></div>
     </div>
   </footer>
 
   <script>
     (function() {
-      // Mobile Menu Elements
       const hamburger = document.getElementById('hamburger');
       const overlay = document.getElementById('mobileOverlay');
       const mobileMenu = document.getElementById('mobileNavMenu');
       const body = document.body;
 
-      if (!hamburger || !overlay || !mobileMenu) return;
-
-      function toggleMobileMenu() {
-        const isActive = mobileMenu.classList.contains('active');
-        mobileMenu.classList.toggle('active');
-        overlay.classList.toggle('active');
-        body.style.overflow = isActive ? '' : 'hidden';
-        hamburger.innerHTML = isActive ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
-      }
-
-      hamburger.addEventListener('click', toggleMobileMenu);
-      overlay.addEventListener('click', toggleMobileMenu);
-
-      document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
-        link.addEventListener('click', function(e) {
-          if (!this.querySelector('.fa-caret-down')) {
-            toggleMobileMenu();
-          }
+      if (hamburger && overlay && mobileMenu) {
+        function toggleMobileMenu() {
+          const isActive = mobileMenu.classList.contains('active');
+          mobileMenu.classList.toggle('active');
+          overlay.classList.toggle('active');
+          body.style.overflow = isActive ? '' : 'hidden';
+          hamburger.innerHTML = isActive ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+        }
+        hamburger.addEventListener('click', toggleMobileMenu);
+        overlay.addEventListener('click', toggleMobileMenu);
+        document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
+          link.addEventListener('click', function(e) {
+            if (!this.querySelector('.fa-caret-down')) toggleMobileMenu();
+          });
         });
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-          toggleMobileMenu();
-        }
-      });
-
-      window.addEventListener('resize', () => {
-        if (window.innerWidth > 1280 && mobileMenu.classList.contains('active')) {
-          toggleMobileMenu();
-        }
-      });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && mobileMenu.classList.contains('active')) toggleMobileMenu();
+        });
+        window.addEventListener('resize', () => {
+          if (window.innerWidth > 1280 && mobileMenu.classList.contains('active')) toggleMobileMenu();
+        });
+      }
 
       function toggleTheme() {
         document.body.classList.toggle('dark-mode');
         const isDark = document.body.classList.contains('dark-mode');
-        
         document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => {
           if (el) el.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
         });
-        
         const mobileSpan = document.querySelector('#mobileThemeToggle span');
         if (mobileSpan) mobileSpan.textContent = isDark ? 'Light Mode' : 'Dark Mode';
-        
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
       }
 
       function toggleRTL() {
         const html = document.documentElement;
         const isRTL = html.getAttribute('dir') === 'rtl';
-        html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
+        const newDir = isRTL ? 'ltr' : 'rtl';
+        html.setAttribute('dir', newDir);
         
-        const mobileSpan = document.querySelector('#mobileRtlToggle span');
-        if (mobileSpan) mobileSpan.textContent = isRTL ? 'RTL' : 'LTR';
+        const rtlButtonSpan = document.getElementById('rtlButtonText');
+        const mobileRtlSpan = document.getElementById('mobileRtlButtonText');
         
-        localStorage.setItem('direction', isRTL ? 'ltr' : 'rtl');
+        if (rtlButtonSpan) {
+          rtlButtonSpan.textContent = newDir === 'rtl' ? 'LTR' : 'RTL';
+        }
+        if (mobileRtlSpan) {
+          mobileRtlSpan.textContent = newDir === 'rtl' ? 'Switch to LTR' : 'Switch to RTL';
+        }
+        
+        localStorage.setItem('direction', newDir);
       }
 
       document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
@@ -1383,63 +949,49 @@ header .nav-links li:nth-last-child(4){
 
       if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
-        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => {
-          if (el) el.className = 'fas fa-sun';
-        });
+        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => { if (el) el.className = 'fas fa-sun'; });
         const mobileSpan = document.querySelector('#mobileThemeToggle span');
         if (mobileSpan) mobileSpan.textContent = 'Light Mode';
       }
-
-      if (localStorage.getItem('direction') === 'rtl') {
+      
+      const savedDir = localStorage.getItem('direction');
+      if (savedDir === 'rtl') {
         document.documentElement.setAttribute('dir', 'rtl');
-        const mobileSpan = document.querySelector('#mobileRtlToggle span');
-        if (mobileSpan) mobileSpan.textContent = 'LTR';
+        const rtlButtonSpan = document.getElementById('rtlButtonText');
+        const mobileRtlSpan = document.getElementById('mobileRtlButtonText');
+        if (rtlButtonSpan) rtlButtonSpan.textContent = 'LTR';
+        if (mobileRtlSpan) mobileRtlSpan.textContent = 'Switch to LTR';
+      } else {
+        const rtlButtonSpan = document.getElementById('rtlButtonText');
+        const mobileRtlSpan = document.getElementById('mobileRtlButtonText');
+        if (rtlButtonSpan && !savedDir) rtlButtonSpan.textContent = 'RTL';
+        if (mobileRtlSpan && !savedDir) mobileRtlSpan.textContent = 'Switch to RTL';
       }
 
-      // FAQ Accordion functionality - click on card toggles answer
+      // FAQ Accordion
       document.querySelectorAll('.faq-card').forEach(card => {
         card.addEventListener('click', function(e) {
-          // Don't toggle if clicking on a button inside
           if (e.target.closest('.category-btn')) return;
-          
-          // Close all other cards
           document.querySelectorAll('.faq-card').forEach(otherCard => {
-            if (otherCard !== this) {
-              otherCard.classList.remove('active');
-            }
+            if (otherCard !== this) otherCard.classList.remove('active');
           });
-          
-          // Toggle current card
           this.classList.toggle('active');
         });
       });
 
-      // Category filter functionality
+      // Category filter
       const categoryBtns = document.querySelectorAll('.category-btn');
       const categorySections = document.querySelectorAll('.faq-category-section');
-      
       categoryBtns.forEach(btn => {
         btn.addEventListener('click', function() {
-          // Remove active class from all buttons
           categoryBtns.forEach(b => b.classList.remove('active'));
-          // Add active class to clicked button
           this.classList.add('active');
-          
           const category = this.getAttribute('data-category');
-          
           if (category === 'all') {
-            // Show all sections
-            categorySections.forEach(section => {
-              section.style.display = 'block';
-            });
+            categorySections.forEach(section => section.style.display = 'block');
           } else {
-            // Hide all sections, then show selected
             categorySections.forEach(section => {
-              if (section.getAttribute('data-category') === category) {
-                section.style.display = 'block';
-              } else {
-                section.style.display = 'none';
-              }
+              section.style.display = section.getAttribute('data-category') === category ? 'block' : 'none';
             });
           }
         });
@@ -1448,79 +1000,45 @@ header .nav-links li:nth-last-child(4){
       // Search functionality
       const searchInput = document.getElementById('faqSearch');
       const searchBtn = document.getElementById('searchBtn');
-      
       function performSearch() {
         const searchTerm = searchInput.value.toLowerCase().trim();
         const allCards = document.querySelectorAll('.faq-card');
-        
         if (searchTerm === '') {
-          // Reset - show all cards in their sections
-          allCards.forEach(card => {
-            card.style.display = 'flex';
-            card.style.flexDirection = 'column';
-          });
-          // Show all sections
-          categorySections.forEach(section => {
-            section.style.display = 'block';
-          });
-          // Reset category buttons
+          allCards.forEach(card => { card.style.display = 'flex'; card.style.flexDirection = 'column'; });
+          categorySections.forEach(section => section.style.display = 'block');
           categoryBtns.forEach(b => b.classList.remove('active'));
           document.querySelector('[data-category="all"]').classList.add('active');
           return;
         }
-        
-        // Search through cards
-        let hasVisibleCard = false;
-        
+        let hasVisible = false;
         allCards.forEach(card => {
           const question = card.querySelector('h3').textContent.toLowerCase();
-          const answer = card.querySelector('p').textContent.toLowerCase();
-          
+          const answer = card.querySelector('.faq-answer p')?.textContent.toLowerCase() || '';
           if (question.includes(searchTerm) || answer.includes(searchTerm)) {
             card.style.display = 'flex';
             card.style.flexDirection = 'column';
-            hasVisibleCard = true;
+            hasVisible = true;
           } else {
             card.style.display = 'none';
           }
         });
-        
-        // Show only sections that have visible cards
         categorySections.forEach(section => {
           const cardsInSection = section.querySelectorAll('.faq-card');
           let hasVisibleInSection = false;
-          
-          cardsInSection.forEach(card => {
-            if (card.style.display !== 'none') {
-              hasVisibleInSection = true;
-            }
-          });
-          
+          cardsInSection.forEach(card => { if (card.style.display !== 'none') hasVisibleInSection = true; });
           section.style.display = hasVisibleInSection ? 'block' : 'none';
         });
-        
-        if (!hasVisibleCard) {
-          alert('No questions found matching your search. Try different keywords!');
-        }
+        if (!hasVisible) alert('No questions found. Try different keywords!');
       }
-      
       searchBtn.addEventListener('click', performSearch);
-      searchInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-          performSearch();
-        }
-      });
+      searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') performSearch(); });
     })();
-    // Highlight active link automatically
-const currentPage = window.location.pathname.split("/").pop();
 
-document.querySelectorAll(".nav-links a").forEach(link => {
-  const linkPage = link.getAttribute("href");
-
-  if (linkPage === currentPage) {
-    link.classList.add("active");
-  }
-});
+    const currentPage = window.location.pathname.split("/").pop();
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      const linkPage = link.getAttribute("href");
+      if (linkPage === currentPage) link.classList.add("active");
+    });
   </script>
 </body>
 </html>
