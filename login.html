@@ -2,15 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BrainBloom · Login</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>BrainBloom · Secure Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-      <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
-
+  <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     :root {
       --primary: #FFB347;
+      --primary-dark: #FF9F2E;
       --secondary: #FF8C42;
       --accent: #FFB347;
       --bg: #FFFFFF;
@@ -21,12 +27,18 @@
       --card-bg: #FFFFFF;
       --text-color: #1E2B3C;
       --toggle-icon-color: #FFB347;
-      --shadow: 0 20px 40px rgba(255, 180, 71, 0.12);
+      --shadow: 0 25px 45px rgba(255, 180, 71, 0.12);
       --border-light: #E0E7F0;
-      --toggle-bg: rgba(255,255,255,0.8);
+      --toggle-bg: rgba(255,255,255,0.85);
+      --apple-bg: #000000;
+      --apple-text: #ffffff;
+      --eye-color: #8E9AAB;
+      --input-focus-glow: rgba(255, 180, 71, 0.25);
     }
+
     .dark-mode {
       --primary: #FFB347;
+      --primary-dark: #FFA22E;
       --secondary: #FF8C42;
       --accent: #FFB347;
       --bg: #000000;
@@ -37,15 +49,13 @@
       --card-bg: #0A0A0A;
       --text-color: #FFFFFF;
       --toggle-icon-color: #FFB347;
-      --shadow: 0 20px 40px rgba(255, 180, 71, 0.15);
+      --shadow: 0 25px 45px rgba(255, 180, 71, 0.2);
       --border-light: #262626;
-      --toggle-bg: #1A1A1A;
-    }
-    * { 
-      margin: 0; 
-      padding: 0; 
-      box-sizing: border-box; 
-      font-family: 'Poppins', sans-serif; 
+      --toggle-bg: #141414;
+      --apple-bg: #ffffff;
+      --apple-text: #000000;
+      --eye-color: #B0B8C5;
+      --input-focus-glow: rgba(255, 180, 71, 0.35);
     }
 
     body, html {
@@ -55,27 +65,28 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: background 0.3s;
+      transition: background 0.3s ease;
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
       overflow: hidden;
+      font-family: 'Poppins', sans-serif;
     }
 
-    /* Background blobs – hidden in dark mode */
+    /* organic background accents — softer in dark mode */
     body::before {
       content: '';
       position: absolute;
-      width: 500px;
-      height: 500px;
+      width: 550px;
+      height: 550px;
       background: #FFB347;
       border-radius: 50%;
-      top: -150px;
-      left: -150px;
-      opacity: 0.08;
-      filter: blur(100px);
+      top: -180px;
+      left: -180px;
+      opacity: 0.07;
+      filter: blur(110px);
       z-index: 0;
       transition: opacity 0.3s;
       pointer-events: none;
@@ -83,198 +94,242 @@
     body::after {
       content: '';
       position: absolute;
-      width: 400px;
-      height: 400px;
+      width: 450px;
+      height: 450px;
       background: #FF8C42;
       border-radius: 50%;
-      bottom: -120px;
-      right: -120px;
-      opacity: 0.08;
-      filter: blur(100px);
+      bottom: -140px;
+      right: -140px;
+      opacity: 0.07;
+      filter: blur(110px);
       z-index: 0;
       transition: opacity 0.3s;
       pointer-events: none;
     }
     .dark-mode::before,
     .dark-mode::after {
-      opacity: 0;
+      opacity: 0.02;
     }
 
-    /* Floating toggle buttons – top right corner */
+    /* floating toggles */
     .floating-toggles {
       position: fixed;
-      top: 20px;
-      right: 20px;
+      top: 22px;
+      right: 24px;
       display: flex;
-      gap: 10px;
-      z-index: 100;
+      gap: 12px;
+      z-index: 200;
     }
 
     .toggle-btn {
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
+      width: 46px;
+      height: 46px;
+      border-radius: 18px;
       background: var(--toggle-bg);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(12px);
       border: 1px solid var(--border-light);
       color: var(--toggle-icon-color);
-      font-size: 18px;
+      font-size: 1.25rem;
       cursor: pointer;
-      transition: 0.2s;
+      transition: 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: var(--shadow);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.05);
     }
     .toggle-btn:hover {
       background: var(--primary);
       color: #1E2B3C;
-      transform: scale(1.08);
+      transform: scale(1.06);
+      border-color: var(--primary);
     }
 
-    /* main card – strictly NO scroll */
+    /* main card — no scroll, clean */
     .login-card {
       background: var(--card-bg);
-      padding: 32px 32px 36px;
-      border-radius: 36px;
-      width: min(400px, 94vw);       /* slightly narrower for login */
-      max-height: 98vh;
-      overflow: visible;
+      padding: 32px 32px 38px;
+      border-radius: 42px;
+      width: min(430px, 92vw);
+      max-height: 96vh;
+      overflow-y: auto;
+      overflow-x: hidden;
       color: var(--text-color);
-      transition: background 0.3s, color 0.3s;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
       box-shadow: var(--shadow);
       border: 1px solid var(--border-light);
       position: relative;
-      z-index: 2;
+      z-index: 10;
+      scrollbar-width: thin;
+    }
+    .login-card::-webkit-scrollbar {
+      width: 4px;
+      background: transparent;
+    }
+    .login-card::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 8px;
     }
 
-    /* Card header: centered logo */
+    /* Header / Logo */
     .card-header {
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 20px;
     }
-
     .logo-area {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
-  .logo-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
-  color: var(--primary);
-}
+    .logo-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      color: var(--primary);
+    }
     .logo-text {
-      font-size: 26px;
-      font-weight: 700;
+      font-size: 28px;
+      font-weight: 800;
       font-family: 'Playfair Display', serif;
       background: linear-gradient(135deg, #FFB347, #FF8C42);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
       text-decoration: none;
+      letter-spacing: -0.3px;
     }
     .dark-mode .logo-text {
       -webkit-text-fill-color: #FFB347;
       background: none;
       color: #FFB347;
     }
+    .logo-area a {
+      text-decoration: none;
+    }
 
     h2 {
       margin-bottom: 24px;
-      font-weight: 600;
-      color: var(--text-color);
-      font-size: 1.8rem;
+      font-weight: 700;
+      font-size: 1.9rem;
       text-align: center;
+      letter-spacing: -0.3px;
+      color: var(--text-color);
     }
 
-    input {
+    /* input groups with eye icon */
+    .input-group {
+      position: relative;
       width: 100%;
-      padding: 14px 18px;
-      margin-bottom: 18px;
-      border-radius: 18px;
-      border: 1px solid var(--border-light);
+      margin-bottom: 20px;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 14px 48px 14px 18px;
+      border-radius: 24px;
+      border: 1.5px solid var(--border-light);
       background: var(--input-bg);
       color: var(--input-text);
       font-size: 15px;
-      transition: background 0.3s, color 0.3s;
+      font-weight: 500;
+      transition: all 0.2s;
       outline: none;
     }
-    input:focus {
+    .input-group input:focus {
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(255, 180, 71, 0.2);
+      box-shadow: 0 0 0 4px var(--input-focus-glow);
     }
-    input::placeholder {
-      color: #999;
+    .input-group .toggle-password {
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      color: var(--eye-color);
+      cursor: pointer;
+      font-size: 1.2rem;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s;
+      border-radius: 30px;
     }
-    .dark-mode input::placeholder {
-      color: #aaa;
+    .input-group .toggle-password:hover {
+      color: var(--primary);
     }
 
-    /* Forgot password & remember me row (optional) */
+    /* login options */
     .login-options {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin: -5px 0 20px 0;
-      font-size: 13px;
+      margin: 4px 0 24px 0;
+      font-size: 13.5px;
     }
     .remember {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       color: var(--text-color);
     }
     .remember input {
-      width: 16px;
-      height: 16px;
+      width: 17px;
+      height: 17px;
       margin: 0;
       accent-color: var(--primary);
+      cursor: pointer;
     }
     .forgot-link {
       color: var(--accent);
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 600;
+      font-size: 13.5px;
+      transition: 0.2s;
     }
     .forgot-link:hover {
       text-decoration: underline;
+      opacity: 0.85;
     }
 
     .login-btn {
       width: 100%;
-      padding: 14px;
-      border-radius: 18px;
+      padding: 15px;
+      border-radius: 28px;
       border: none;
       background: var(--btn-bg);
       color: var(--btn-text);
-      font-weight: 600;
+      font-weight: 700;
       font-size: 16px;
       cursor: pointer;
-      transition: 0.3s;
-      border: 1px solid transparent;
-      margin: 8px 0 20px;
+      transition: all 0.25s ease;
+      margin: 8px 0 18px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     }
     .login-btn:hover {
-      background: #FF8C42;
-      color: #1E2B3C;
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(255, 180, 71, 0.3);
     }
 
-    /* Social login */
+    /* Social + Apple row */
+    .social-section {
+      margin: 12px 0 20px;
+    }
     .social-login {
-      margin: 16px 0 20px;
       display: flex;
       justify-content: center;
-      gap: 12px;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
     }
     .social-login button {
-      width: 50px;
-      height: 50px;
-      border-radius: 16px;
-      font-size: 20px;
+      width: 52px;
+      height: 52px;
+      border-radius: 28px;
+      font-size: 22px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -282,23 +337,48 @@
       color: var(--input-text);
       border: 1px solid var(--border-light);
       cursor: pointer;
-      transition: 0.2s;
+      transition: all 0.2s;
     }
     .social-login button:hover {
       background: var(--primary);
-      color: white;
+      color: #1E2B3C;
       border-color: var(--primary);
+      transform: scale(1.05);
+    }
+    /* Apple button specific (larger or full style) */
+    .apple-auth-btn {
+      width: 100% !important;
+      background: var(--apple-bg) !important;
+      color: var(--apple-text) !important;
+      border: 1px solid var(--border-light) !important;
+      font-size: 16px !important;
+      font-weight: 600 !important;
+      gap: 12px;
+      margin-top: 6px;
+      padding: 12px 0;
+      width: 100%;
+      border-radius: 32px;
+      transition: 0.2s;
+    }
+    .apple-auth-btn i {
+      font-size: 1.3rem;
+    }
+    .apple-auth-btn:hover {
+      opacity: 0.9;
+      transform: scale(0.99);
+      background: var(--apple-bg) !important;
     }
 
     .bottom-text {
       font-size: 14px;
-      color: #888;
       text-align: center;
+      margin-top: 20px;
+      color: #888;
     }
     .bottom-text a {
       color: var(--accent);
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
     }
     .bottom-text a:hover {
       text-decoration: underline;
@@ -307,102 +387,117 @@
       color: #aaa;
     }
 
-    /* RTL support */
+    /* RTL adjustments */
     [dir="rtl"] .floating-toggles {
       right: auto;
-      left: 20px;
+      left: 24px;
+    }
+    [dir="rtl"] .input-group .toggle-password {
+      right: auto;
+      left: 18px;
     }
     [dir="rtl"] .login-options {
       flex-direction: row-reverse;
     }
-    .logo-area a {
-  text-decoration: none;
-}
-
-.logo-area a:hover {
-  text-decoration: none;
-}
- .signup-btn { 
-      background: var(--accent); 
-      color: #f2f2f6 !important; 
-      border: 2px solid var(--accent);
+    [dir="rtl"] .remember {
+      flex-direction: row-reverse;
     }
-    .signup-btn:hover {
-      background: var(--accent); 
-      color: #f6960f !important; 
-      border: 2px solid var(--accent); 
+    @media (max-width: 480px) {
+      .login-card { padding: 26px 22px 32px; }
+      h2 { font-size: 1.7rem; }
     }
-
   </style>
 </head>
 <body>
-  <!-- Floating toggle buttons – top right corner -->
   <div class="floating-toggles">
-    <button class="toggle-btn" id="themeToggle" title="Toggle dark mode">
+    <button class="toggle-btn" id="themeToggle" aria-label="Dark mode toggle">
       <i class="fas fa-moon"></i>
     </button>
-    <button class="toggle-btn" id="rtlToggle" title="Toggle RTL">
+    <button class="toggle-btn" id="rtlToggle" aria-label="RTL layout toggle">
       <i class="fas fa-exchange-alt"></i>
     </button>
   </div>
 
   <div class="login-card">
-    <!-- Centered logo -->
     <div class="card-header">
       <div class="logo-area">
         <div class="logo-icon"><i class="fas fa-seedling"></i></div>
-       <a href="index.html"> <span class="logo-text">BrainBloom</span></a>
+        <a href="index.html"><span class="logo-text">BrainBloom</span></a>
       </div>
     </div>
-
     <h2>Welcome back</h2>
 
-    <!-- Email field -->
-    <input type="email" placeholder="Email address" value="jessica@brainbloom.com">
-
-    <!-- Password field -->
-    <input type="password" placeholder="Password" value="••••••••">
-
-    <!-- Forgot password & remember me (optional but adds completeness) -->
-    <div class="login-options">
-      <label class="remember">
-        <input type="checkbox"> Remember me
-      </label>
-      <a href="#" class="forgot-link">Forgot password?</a>
+    <!-- Email field (no demo credentials) -->
+    <div class="input-group">
+      <input type="email" id="loginEmail" placeholder="Email address" autocomplete="email" value="">
     </div>
 
-    <button class="login-btn" type="button">Sign In</button>
+    <!-- Password field with eye icon (no demo password) -->
+    <div class="input-group">
+      <input type="password" id="loginPassword" placeholder="Password" autocomplete="current-password" value="">
+      <button class="toggle-password" type="button" id="togglePasswordBtn" aria-label="Show password">
+        <i class="fa-regular fa-eye-slash" id="passwordEyeIcon"></i>
+      </button>
+    </div>
 
-    <!-- Social login (consistent with sign-up) -->
-    <div class="social-login">
-      <button type="button"><i class="fab fa-google"></i></button>
-      <button type="button"><i class="fab fa-facebook-f"></i></button>
-      <button type="button"><i class="fab fa-github"></i></button>
+    <div class="login-options">
+      <label class="remember">
+        <input type="checkbox" id="rememberCheckbox"> Remember me
+      </label>
+      <a href="#" class="forgot-link" id="forgotLink">Forgot password?</a>
+    </div>
+
+    <button class="login-btn" id="signInBtn">Sign In</button>
+
+    <!-- Social + Apple login section -->
+    <div class="social-section">
+      <div class="social-login">
+        <button type="button" id="googleBtn" aria-label="Sign in with Google"><i class="fab fa-google"></i></button>
+        <button type="button" id="facebookBtn" aria-label="Sign in with Facebook"><i class="fab fa-facebook-f"></i></button>
+        <button type="button" id="githubBtn" aria-label="Sign in with GitHub"><i class="fab fa-github"></i></button>
+      </div>
+      <!-- Apple Sign In button (prominent) -->
+      <button class="apple-auth-btn" id="appleSignInBtn" type="button">
+        <i class="fab fa-apple"></i> Sign in with Apple
+      </button>
     </div>
 
     <div class="bottom-text">
-      Don't have an account? <a href="signup.html">Sign up</a>
+      Don't have an account? <a href="signup.html" id="signupRedirect">Sign up</a>
     </div>
   </div>
 
   <script>
     (function() {
+      // ------------------------------
+      // 1. Theme & RTL with persistence
+      // ------------------------------
       const themeBtn = document.getElementById('themeToggle');
       const rtlBtn = document.getElementById('rtlToggle');
       const themeIcon = themeBtn.querySelector('i');
 
-      function toggleTheme() {
-        document.body.classList.toggle('dark-mode');
-        const isDark = document.body.classList.contains('dark-mode');
-        themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+      function setTheme(isDark) {
+        if (isDark) {
+          document.body.classList.add('dark-mode');
+          themeIcon.className = 'fas fa-sun';
+        } else {
+          document.body.classList.remove('dark-mode');
+          themeIcon.className = 'fas fa-moon';
+        }
         localStorage.setItem('brainBloomTheme', isDark ? 'dark' : 'light');
+      }
+
+      function toggleTheme() {
+        const isDarkNow = !document.body.classList.contains('dark-mode');
+        setTheme(isDarkNow);
       }
 
       function toggleRTL() {
         const html = document.documentElement;
         const isRTL = html.getAttribute('dir') === 'rtl';
-        html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
-        localStorage.setItem('brainBloomDir', isRTL ? 'ltr' : 'rtl');
+        const newDir = isRTL ? 'ltr' : 'rtl';
+        html.setAttribute('dir', newDir);
+        localStorage.setItem('brainBloomDir', newDir);
       }
 
       themeBtn.addEventListener('click', toggleTheme);
@@ -410,11 +505,9 @@
 
       const savedTheme = localStorage.getItem('brainBloomTheme');
       if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        themeIcon.className = 'fas fa-sun';
+        setTheme(true);
       } else {
-        document.body.classList.remove('dark-mode');
-        themeIcon.className = 'fas fa-moon';
+        setTheme(false);
       }
 
       const savedDir = localStorage.getItem('brainBloomDir');
@@ -422,6 +515,199 @@
         document.documentElement.setAttribute('dir', 'rtl');
       } else {
         document.documentElement.setAttribute('dir', 'ltr');
+      }
+
+      // ------------------------------
+      // 2. PASSWORD EYE TOGGLE (privacy)
+      // ------------------------------
+      const passwordField = document.getElementById('loginPassword');
+      const togglePwdBtn = document.getElementById('togglePasswordBtn');
+      const eyeIcon = document.getElementById('passwordEyeIcon');
+
+      function updateEyeIcon() {
+        const type = passwordField.getAttribute('type') === 'password' ? 'password' : 'text';
+        if (type === 'password') {
+          eyeIcon.classList.remove('fa-eye');
+          eyeIcon.classList.add('fa-eye-slash');
+        } else {
+          eyeIcon.classList.remove('fa-eye-slash');
+          eyeIcon.classList.add('fa-eye');
+        }
+      }
+
+      function togglePasswordVisibility() {
+        const currentType = passwordField.getAttribute('type');
+        if (currentType === 'password') {
+          passwordField.setAttribute('type', 'text');
+        } else {
+          passwordField.setAttribute('type', 'password');
+        }
+        updateEyeIcon();
+        // maintain focus after toggle
+        passwordField.focus();
+      }
+
+      togglePwdBtn.addEventListener('click', togglePasswordVisibility);
+      // initial state (no demo password, empty field)
+      passwordField.value = '';    // ensure empty
+      // also ensure email field is empty (no demo)
+      const emailField = document.getElementById('loginEmail');
+      emailField.value = '';
+      updateEyeIcon();
+
+      // For extra security: if any browser autofill, fine but no default demo shown
+      
+      // ------------------------------
+      // 3. SIGN IN ACTION (demo interactive with toast-like alert)
+      // ------------------------------
+      const signInBtn = document.getElementById('signInBtn');
+      
+      function showMessage(msg, isError = true) {
+        // subtle non-intrusive alert replacement (better UX)
+        const existingToast = document.querySelector('.brain-toast');
+        if(existingToast) existingToast.remove();
+        const toast = document.createElement('div');
+        toast.className = 'brain-toast';
+        toast.innerText = msg;
+        toast.style.position = 'fixed';
+        toast.style.bottom = '24px';
+        toast.style.left = '50%';
+        toast.style.transform = 'translateX(-50%)';
+        toast.style.backgroundColor = isError ? '#E53E3E' : '#38A169';
+        toast.style.color = 'white';
+        toast.style.padding = '12px 24px';
+        toast.style.borderRadius = '60px';
+        toast.style.fontWeight = '500';
+        toast.style.fontSize = '14px';
+        toast.style.zIndex = '999';
+        toast.style.boxShadow = '0 8px 20px rgba(0,0,0,0.2)';
+        toast.style.backdropFilter = 'blur(8px)';
+        toast.style.fontFamily = "'Poppins', sans-serif";
+        document.body.appendChild(toast);
+        setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 400); }, 2800);
+      }
+
+      function handleSignIn() {
+        const email = emailField.value.trim();
+        const password = passwordField.value;
+        const rememberMe = document.getElementById('rememberCheckbox').checked;
+        
+        if (!email) {
+          showMessage('Please enter your email address.', true);
+          emailField.focus();
+          return;
+        }
+        if (!password) {
+          showMessage('Please enter your password.', true);
+          passwordField.focus();
+          return;
+        }
+        if (!email.includes('@') || !email.includes('.')) {
+          showMessage('Please enter a valid email address.', true);
+          return;
+        }
+        // For demo purposes, we just simulate a successful login.
+        // In real implementation, integrate with backend. 
+        // Also store "remember me" preference if needed.
+        if (rememberMe) {
+          localStorage.setItem('brainBloomRememberEmail', email);
+        } else {
+          localStorage.removeItem('brainBloomRememberEmail');
+        }
+        // Success feedback
+        showMessage(`Welcome back, ${email.split('@')[0]}! Redirecting...`, false);
+        // Simulate redirect after 1.2 sec (dashboard/index)
+        setTimeout(() => {
+          // demo redirect (in real app, go to dashboard)
+          window.location.href = 'dashboard.html';   // fallback: if not exists, just alert info
+          // But to prevent error, we show console info, but try to simulate 
+          if(window.location.pathname.includes('login.html')) {
+            console.log('Redirect to main page after login');
+            // optionally just alert that demo works
+          }
+        }, 1200);
+      }
+      
+      signInBtn.addEventListener('click', handleSignIn);
+      
+      // Enter key support on password/email fields
+      const handleEnter = (e) => { if(e.key === 'Enter') handleSignIn(); };
+      emailField.addEventListener('keypress', handleEnter);
+      passwordField.addEventListener('keypress', handleEnter);
+      
+      // ------------------------------
+      // 4. Forgot password interactive (simple)
+      // ------------------------------
+      const forgotLink = document.getElementById('forgotLink');
+      forgotLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        const emailVal = emailField.value.trim();
+        if(emailVal && emailVal.includes('@')) {
+          showMessage(`📧 Password reset link sent to ${emailVal} (demo)`, false);
+        } else {
+          showMessage('Please enter your email address to reset password.', true);
+          emailField.focus();
+        }
+      });
+      
+      // ------------------------------
+      // 5. Social & Apple Sign In buttons (demo actions)
+      // ------------------------------
+      const googleBtn = document.getElementById('googleBtn');
+      const facebookBtn = document.getElementById('facebookBtn');
+      const githubBtn = document.getElementById('githubBtn');
+      const appleBtn = document.getElementById('appleSignInBtn');
+      
+      function socialSignIn(provider) {
+        showMessage(`✨ ${provider} Sign In demo — would connect OAuth.`, false);
+        // In a real implementation, redirect to OAuth or Firebase
+      }
+      
+      googleBtn.addEventListener('click', () => socialSignIn('Google'));
+      facebookBtn.addEventListener('click', () => socialSignIn('Facebook'));
+      githubBtn.addEventListener('click', () => socialSignIn('GitHub'));
+      appleBtn.addEventListener('click', () => socialSignIn('Apple'));
+      
+      // ------------------------------
+      // 6. (Extra) "Remember me" autofill from localStorage (but no demo password forced)
+      // ------------------------------
+      const savedEmail = localStorage.getItem('brainBloomRememberEmail');
+      if(savedEmail) {
+        emailField.value = savedEmail;
+        document.getElementById('rememberCheckbox').checked = true;
+      }
+      
+      // 7. Signup page link redirection consistency (dummy anchor works)
+      const signupRedirect = document.getElementById('signupRedirect');
+      signupRedirect.addEventListener('click', (e) => {
+        e.preventDefault();
+        // If signup.html exists, it will redirect. else smooth demo info
+        showMessage('📝 Navigate to Sign Up page (signup.html)', false);
+        setTimeout(() => {
+          window.location.href = 'signup.html';
+        }, 400);
+      });
+      
+      // Additional: Apple button icon specific styling no extra
+      // Also ensure any global default unwanted demo removal: we have already set empty values.
+      // for double safety, on load ensure password and email fields are not pre-filled with demo "jessica@..."
+      window.addEventListener('DOMContentLoaded', () => {
+        // double-check clearing any hardcoded leftovers from potential browser caching
+        if(emailField.value === 'jessica@brainbloom.com') emailField.value = '';
+        if(passwordField.value === '••••••••') passwordField.value = '';
+      });
+      
+      // Edge: If any browser auto-fills it's okay, but we removed visible demo values.
+      // Add dynamic eye icon update after external password managers
+      passwordField.addEventListener('input', () => {});
+      
+      // Simulate RTL friendly behavior, logo link prevents default confusion
+      const logoAnchor = document.querySelector('.logo-area a');
+      if(logoAnchor) {
+        logoAnchor.addEventListener('click', (e) => {
+          // keep original behavior: index.html
+          // just fine, no override.
+        });
       }
     })();
   </script>

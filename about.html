@@ -2,13 +2,13 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>BrainBloom · About us</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
+  <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
 
   <style>
     body {
@@ -16,9 +16,9 @@
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --primary: #FFB347;         /* orange – main */
-      --secondary: #FF8C42;        /* deeper orange – secondary */
-      --accent: #FFB347;           /* orange – unified */
+      --primary: #FFB347;
+      --secondary: #FF8C42;
+      --accent: #FFB347;
       --text: #1E2B3C;
       --text-light: #2C3E50;
       --text-inverse: #FFFFFF;
@@ -37,10 +37,10 @@
       --accent: #FFB347;
       --text: #F0F3FA;
       --text-light: #CAD5E2;
-      --bg: #000000;              /* full black background */
-      --bg-light: #0A0A0A;         /* very dark grey for cards / menus */
-      --border: #262626;           /* dark border */
-      --footer-bg: #000000;        /* footer pure black */
+      --bg: #000000;
+      --bg-light: #0A0A0A;
+      --border: #262626;
+      --footer-bg: #000000;
       --footer-text: #FFFFFF;
       --shadow: 0 4px 12px rgba(255,180,71,0.03);
       --shadow-lg: 0 20px 40px rgba(255,180,71,0.05);
@@ -63,16 +63,15 @@
       color: #FFFFFF !important;
     }
 
-    /* ----- exactly the same section title style as reference (index) ----- */
     .section-title {
-      font-size: 2.8rem;          /* same as index .section-title */
+      font-size: 2.8rem;
       text-align: center;
       margin-bottom: 1rem;
       font-family: 'Playfair Display', serif;
       font-weight: 400;
     }
     .section-title span {
-      color: var(--accent);        /* orange span accent */
+      color: var(--accent);
     }
     .section-subtitle {
       text-align: center;
@@ -82,7 +81,7 @@
       margin: 0 auto 4rem;
     }
 
-    /* Header - navbar items perfectly centered on same line */
+    /* Header - clean navbar with proper spacing */
     header {
       background: var(--bg); 
       box-shadow: var(--shadow); 
@@ -94,18 +93,18 @@
     .navbar {
       display: flex; 
       justify-content: space-between; 
-      align-items: center;  /* ensures all children are vertically centered */
-      padding: 0.75rem 4rem; /* increased padding for better spacing */
-      max-width: 100%; /* changed from 1400px to 100% for edge-to-edge */
+      align-items: center;
+      padding: 0.75rem 4rem;
+      max-width: 100%;
       margin: 0 auto;
-      min-height: 80px; /* fixed height for consistency */
+      min-height: 80px;
     }
     .logo { 
       display: flex; 
-      align-items: center;  /* vertical center */
+      align-items: center;
       gap: 10px; 
       text-decoration: none;
-      line-height: 1; /* remove extra line height */
+      line-height: 1;
     }
     .logo i { 
       color: var(--accent); 
@@ -130,7 +129,7 @@
       display: flex; 
       list-style: none; 
       gap: 0.5rem; 
-      align-items: center;  /* vertical center */
+      align-items: center;
       margin: 0;
       padding: 0;
     }
@@ -149,13 +148,14 @@
       display: inline-flex;
       align-items: center;
       white-space: nowrap;
+      gap: 6px; /* proper spacing between text and dropdown icons */
     }
     .nav-links a:hover,
     .nav-links a.active {
       color: var(--accent); 
       background: rgba(255,180,71,0.1);
     }
-    /* dropdown */
+    /* clean dropdown */
     .dropdown { 
       position: relative; 
       display: flex;
@@ -167,25 +167,28 @@
       left: 0; 
       background: var(--bg-light);
       list-style: none; 
-      padding: 15px 0; 
-      min-width: 200px; 
+      padding: 12px 0; 
+      min-width: 210px; 
       border-radius: 20px;
-      box-shadow: var(--shadow-lg); 
+      box-shadow: 0 12px 28px rgba(0,0,0,0.15);
       border: 1px solid var(--border); 
       display: none; 
       z-index: 1000;
+      backdrop-filter: blur(4px);
     }
     .dropdown-menu a {
       display: block; 
-      padding: 12px 20px; 
+      padding: 10px 22px; 
       color: var(--text); 
       text-decoration: none;
       white-space: nowrap;
+      font-weight: 500;
+      gap: 0;
     }
     .dropdown-menu a:hover {
-      background: var(--primary); 
-      color: white; 
-      padding-left: 30px;
+      background: var(--accent); 
+      color: #1E2B3C; 
+      padding-left: 28px;
     }
     .dropdown:hover .dropdown-menu { 
       display: block; 
@@ -206,10 +209,12 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      border-radius: 40px;
     }
     .control-btn:hover { 
       color: var(--accent); 
-      transform: scale(1.1); 
+      transform: scale(1.05); 
+      background: rgba(255,180,71,0.1);
     }
     .hamburger {
       display: none; 
@@ -223,7 +228,7 @@
       align-items: center;
       justify-content: center;
     }
-    /* mobile menu adjustments (unchanged, but ensure inner links are centered) */
+    /* mobile menu */
     .mobile-nav-menu {
       position: fixed; 
       top: 0; 
@@ -259,10 +264,11 @@
       font-weight: 600 !important; 
       width: 100% !important;
       text-align: left;
+      gap: 8px;
     }
     .mobile-nav-menu .nav-links a:hover {
       background: var(--accent) !important; 
-      color: #db5507 !important;
+      color: #1E2B3C !important;
       border-color: var(--accent) !important;
     }
     .mobile-nav-menu .nav-links .home-sub-item {
@@ -309,31 +315,23 @@
     }
     .mobile-controls .control-btn:hover {
       background: var(--accent);
-      color: #ff6200;
+      color: #1E2B3C;
       border-color: var(--accent);
     }
+    /* only login button (no signup) */
     .nav-btn { 
-      padding: 8px 18px !important; 
+      padding: 8px 22px !important; 
       border-radius: 50px !important; 
       font-weight: 600; 
     }
     .login-btn { 
       border: 2px solid var(--primary); 
       color: var(--primary) !important; 
+      background: transparent;
     }
     .login-btn:hover { 
       background: var(--primary); 
-      color: rgb(249, 138, 3) !important; 
-    }
-    .signup-btn { 
-      background: var(--accent); 
-      color: #f2f2f6 !important; 
-      border: 2px solid var(--accent);
-    }
-    .signup-btn:hover {
-      background: var(--accent); 
-      color: #f6960f !important; 
-      border: 2px solid var(--accent); 
+      color: #1E2B3C !important; 
     }
 
     /* Footer */
@@ -385,9 +383,8 @@
       transform: translateX(8px); 
     }
     .footer-middle {
-      padding: 35px 0; 
-      border-top: 1px solid var(--accent);
-      border-bottom: 1px solid var(--accent); 
+      padding: 15px 0; 
+     
       margin-bottom: 35px;
       display: flex; 
       justify-content: space-between; 
@@ -486,38 +483,22 @@
       }
     }
 
-    /* Push login & signup to right (Desktop only) */
-    header .nav-links li:nth-last-child(3){
-      margin-left: 25px;
-    }
-    /* Add gap before Login (after Dashboard) (Desktop only) */
-    header .nav-links li:nth-last-child(4){
-      margin-left: 50px;
-    }
-
-    /* ===== PROFESSIONAL ABOUT PAGE WITH FULL BACKGROUND IMAGE ===== */
+    /* ===== PROFESSIONAL ABOUT PAGE ===== */
     .about-professional {
       width: 100%;
       margin: 0;
       padding: 0;
     }
 
-    /* Section 1: Executive Hero with Full Background Image - Edge to Edge */
+    /* Executive Hero with Full Background Image */
     .executive-hero {
       position: relative;
-      width: 100vw;
+      width: 100%;
       min-height: 90vh;
       display: flex;
       align-items: center;
-      margin: 0;
-      left: 50%;
-      right: 50%;
-      margin-left: -50vw;
-      margin-right: -50vw;
       overflow: hidden;
-      isolation: isolate;
     }
-
     .hero-background {
       position: absolute;
       top: 0;
@@ -526,7 +507,6 @@
       height: 100%;
       z-index: -2;
     }
-
     .hero-background img {
       width: 100%;
       height: 100%;
@@ -534,7 +514,6 @@
       object-position: center;
       display: block;
     }
-
     .hero-overlay {
       position: absolute;
       top: 0;
@@ -544,23 +523,20 @@
       background: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.85) 100%);
       z-index: -1;
     }
-
     .hero-container {
       width: 100%;
       max-width: 1400px;
       margin: 0 auto;
-      padding: 4rem;
+      padding: 3rem 2rem;
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
       gap: 3rem;
       align-items: center;
       color: white;
     }
-
     .hero-content {
       padding-right: 2rem;
     }
-
     .hero-tag {
       color: var(--accent);
       text-transform: uppercase;
@@ -574,7 +550,6 @@
       border-radius: 30px;
       backdrop-filter: blur(5px);
     }
-
     .hero-content h1 {
       font-size: 4.2rem;
       line-height: 1.1;
@@ -583,13 +558,11 @@
       font-family: 'Playfair Display', serif;
       font-weight: 700;
     }
-
     .hero-content h1 span {
       color: var(--accent);
       display: block;
       font-style: italic;
     }
-
     .hero-description {
       font-size: 1.2rem;
       color: rgba(255,255,255,0.9);
@@ -597,13 +570,12 @@
       line-height: 1.8;
       max-width: 600px;
     }
-
     .hero-stats {
       display: flex;
       gap: 2rem;
       margin-top: 2rem;
+      flex-wrap: wrap;
     }
-
     .stat-item {
       background: rgba(255,255,255,0.1);
       backdrop-filter: blur(10px);
@@ -612,7 +584,6 @@
       border: 1px solid rgba(255,180,71,0.3);
       min-width: 120px;
     }
-
     .stat-item .number {
       font-size: 2rem;
       font-weight: 700;
@@ -620,21 +591,11 @@
       font-family: 'Playfair Display', serif;
       line-height: 1;
     }
-
-    .stat-item .label {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: rgba(255,255,255,0.8);
-    }
-
-    /* 4 Icon Boxes on Right */
     .icon-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
     }
-
     .icon-box {
       background: rgba(255,255,255,0.1);
       backdrop-filter: blur(10px);
@@ -645,41 +606,26 @@
       transition: var(--transition);
       cursor: pointer;
     }
-
     .icon-box:hover {
       transform: translateY(-10px);
       background: rgba(255,180,71,0.2);
       border-color: var(--accent);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
     }
-
     .icon-box i {
       font-size: 3rem;
       color: var(--accent);
       margin-bottom: 1rem;
     }
-
     .icon-box h3 {
       font-size: 1.2rem;
       margin-bottom: 0.5rem;
       color: white;
-      font-family: 'Playfair Display', serif;
     }
-
-    .icon-box p {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.4;
-    }
-
-    /* ----- all other sections (story, mission, why, timeline, facts, team) ----- */
     .container {
       max-width: 1200px;
       margin: auto;
       padding: 4rem 2rem;
     }
-
-    /* STORY */
     .about-story {
       background: var(--bg-light);
     }
@@ -689,17 +635,10 @@
       gap: 3rem;
       align-items: center;
     }
-    .story-text h2 {
-      font-size: 2.8rem;      /* exactly .section-title size */
-      font-family: 'Playfair Display', serif;
-      margin-bottom: 1rem;
-    }
     .story-image img {
       width: 100%;
       border-radius: 20px;
     }
-
-    /* MISSION VISION */
     .mission-vision {
       background: var(--bg);
     }
@@ -723,13 +662,6 @@
       color: var(--accent);
       margin-bottom: 1rem;
     }
-    .mv-box h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;        /* matching heading style */
-      margin-bottom: 0.5rem;
-    }
-
-    /* WHY CHOOSE (advanced) */
     .why-advanced {
       padding: 5rem 2rem;
       background: var(--bg-light);
@@ -751,21 +683,6 @@
       cursor: pointer;
       border: 1px solid var(--border);
     }
-    .why-card::before {
-      content: "";
-      position: absolute;
-      top: var(--y);
-      left: var(--x);
-      width: 0;
-      height: 0;
-      background: radial-gradient(circle, rgba(255,180,71,0.4) 0%, transparent 60%);
-      transform: translate(-50%, -50%);
-      transition: width 0.2s, height 0.2s;
-    }
-    .why-card:hover::before {
-      width: 300px;
-      height: 300px;
-    }
     .why-card:hover {
       transform: translateY(-12px) scale(1.03);
       border-color: var(--accent);
@@ -775,13 +692,6 @@
       color: var(--accent);
       margin-bottom: 1rem;
     }
-    .why-card h3 {
-      margin-bottom: 0.5rem;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-    }
-
-    /* TIMELINE */
     .timeline-section {
       padding: 5rem 2rem;
       background: var(--bg);
@@ -816,8 +726,6 @@
       opacity: 1;
       transform: translateX(0);
     }
-
-    /* FUN FACTS */
     .fun-facts {
       padding: 5rem 2rem;
       text-align: center;
@@ -844,8 +752,6 @@
       font-weight: 700;
       font-family: 'Playfair Display', serif;
     }
-
-    /* TEAM */
     .team-unique {
       padding: 6rem 2rem;
       background: var(--bg);
@@ -858,12 +764,11 @@
       margin-top: 3rem;
     }
     .team-card {
-      position: relative;
       border-radius: 30px;
       overflow: hidden;
-      cursor: pointer;
       transition: 0.4s;
       box-shadow: var(--shadow-lg);
+      background: var(--bg-light);
     }
     .team-img img {
       width: 100%;
@@ -873,37 +778,32 @@
       transition: 0.5s;
     }
     .team-content {
-      position: absolute;
-      bottom: -100%;
-      left: 0;
-      width: 100%;
-      padding: 2rem;
-      background: rgba(0,0,0,0.7);
-      backdrop-filter: blur(10px);
-      color: white;
+      padding: 1.5rem;
+      background: var(--bg-light);
       text-align: center;
-      transition: 0.5s;
+    }
+    .team-card:hover {
+      transform: translateY(-8px);
     }
     .team-card:hover .team-img img {
-      transform: scale(1.1);
-    }
-    .team-card:hover .team-content {
-      bottom: 0;
+      transform: scale(1.05);
     }
     .team-content h3 {
       margin-bottom: 5px;
       font-size: 1.3rem;
-      font-family: 'Playfair Display', serif;
+      color: var(--text);
     }
     .team-content span {
       color: var(--accent);
       font-size: 0.9rem;
+      display: block;
+      margin-bottom: 0.5rem;
     }
     .team-social {
       display: flex;
       justify-content: center;
       gap: 10px;
-      margin-top: 10px;
+      margin-top: 12px;
     }
     .team-social i {
       background: var(--accent);
@@ -912,140 +812,49 @@
       border-radius: 50%;
       font-size: 0.8rem;
       transition: 0.3s;
+      cursor: pointer;
     }
     .team-social i:hover {
       transform: scale(1.2);
     }
-
     @media (max-width: 900px) {
-      .story-content,
-      .mv-grid,
-      .why-container,
-      .facts-container,
-      .team-container {
+      .story-content, .mv-grid, .why-container, .facts-container, .team-container {
         grid-template-columns: 1fr;
       }
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+      .icon-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .team-img img {
+        height: 280px;
+      }
     }
-    .mobile-nav-menu .nav-links a.active {
-  background: var(--accent) !important;
-  color: #fff !important;
-  border-color: var(--accent) !important;
-}
-/* FIX HERO RESPONSIVENESS */
-.executive-hero {
-  position: relative;
-  width: 100%;
-  min-height: 90vh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
-
-/* remove this ❌ */
-/*
-left: 50%;
-right: 50%;
-margin-left: -50vw;
-margin-right: -50vw;
-width: 100vw;
-*/
-
-.hero-container {
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 3rem 2rem;
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 3rem;
-  align-items: center;
-  color: white;
-}
-
-/* ✅ MOBILE FIX */
-@media (max-width: 900px) {
-  .hero-container {
-    grid-template-columns: 1fr; /* stack */
-    text-align: center;
-    padding: 2rem 1.5rem;
-  }
-
-  .hero-content {
-    padding-right: 0;
-  }
-
-  .hero-content h1 {
-    font-size: 2.2rem; /* reduce size */
-    line-height: 1.3;
-  }
-
-  .hero-description {
-    font-size: 1rem;
-    margin: 1rem auto;
-  }
-
-  .hero-stats {
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .stat-item {
-    min-width: 100px;
-    padding: 0.8rem 1rem;
-  }
-
-  .icon-grid {
-    grid-template-columns: 1fr 1fr; /* still 2 cols but neat */
-    gap: 1rem;
-    margin-top: 1.5rem;
-  }
-
-  .icon-box {
-    padding: 1.5rem 1rem;
-  }
-
-  .icon-box i {
-    font-size: 2rem;
-  }
-
-  .icon-box h3 {
-    font-size: 1rem;
-  }
-
-  .icon-box p {
-    font-size: 0.8rem;
-  }
-}
-
-/* EXTRA SMALL DEVICES */
-@media (max-width: 480px) {
-  .hero-content h1 {
-    font-size: 1.8rem;
-  }
-
-  .icon-grid {
-    grid-template-columns: 1fr; /* stack icons */
-  }
-}
+    @media (max-width: 600px) {
+      .hero-content h1 { font-size: 1.8rem; }
+      .icon-grid { grid-template-columns: 1fr; }
+      .section-title { font-size: 2rem; }
+    }
   </style>
 </head>
 <body>
-  <!-- Mobile Overlay -->
   <div class="mobile-overlay" id="mobileOverlay"></div>
 
-  <!-- Header - edge to edge -->
   <header>
     <nav class="navbar">
       <a href="index.html" class="logo">
         <i class="fas fa-seedling"></i>
         <span class="logo-text">BrainBloom</span>
       </a>
-
-      <!-- Desktop Navigation -->
+      <!-- Desktop Navigation: only Login button (SignUp removed), clean dropdown spacing -->
       <ul class="nav-links">
         <li class="dropdown">
-          <a href="#" >Home <i class="fas fa-caret-down"></i></a>
+          <a href="#">Home <i class="fas fa-caret-down"></i></a>
           <ul class="dropdown-menu">
             <li><a href="index.html">Home 1</a></li>
             <li><a href="home2.html">Home 2</a></li>
@@ -1064,23 +873,18 @@ width: 100vw;
             <li><a href="admin.html">Admin Dashboard</a></li>
           </ul>
         </li>
+        <!-- Only Login button, SignUp removed as requested -->
         <li><a href="login.html" class="nav-btn login-btn">Login</a></li>
-        <li><a href="signup.html" class="nav-btn signup-btn">SignUp</a></li>
-        <li>
-          <button class="control-btn" id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
-        </li>
-        <li>
-          <button class="control-btn" id="rtlToggle" title="Toggle RTL"><i class="fas fa-exchange-alt"></i></button>
-        </li>
+        <li><button class="control-btn" id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button></li>
+        <li><button class="control-btn" id="rtlToggle" title="Toggle RTL"><i class="fas fa-arrow-right-arrow-left"></i></button></li>
       </ul>
-
       <div class="controls">
         <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
       </div>
     </nav>
   </header>
 
-  <!-- Mobile Menu -->
+  <!-- Mobile Menu (mirroring changes) -->
   <div class="mobile-nav-menu" id="mobileNavMenu">
     <ul class="nav-links">
       <li><a href="#"><i class="fas fa-caret-down"></i> Home</a></li>
@@ -1096,344 +900,114 @@ width: 100vw;
       <li><a href="user.html">User</a></li>
       <li><a href="admin.html">Admin</a></li>
       <li><a href="login.html">Login</a></li>
-      <li><a href="signup.html">SignUp</a></li>
     </ul>
     <div class="mobile-controls">
       <button class="control-btn" id="mobileThemeToggle"><i class="fas fa-moon"></i><span>Dark Mode</span></button>
-      <button class="control-btn" id="mobileRtlToggle"><i class="fas fa-exchange-alt"></i><span>RTL</span></button>
+      <button class="control-btn" id="mobileRtlToggle"><i class="fas fa-arrow-right-arrow-left"></i><span>RTL</span></button>
     </div>
   </div>
 
-  <!-- MAIN CONTENT – all sections preserved, only headings updated to reference style -->
   <main class="about-professional">
-    <!-- Executive Hero with full background image -->
     <section class="executive-hero">
       <div class="hero-background">
-        <img src="images/pexels-rachel-claire-5490273.jpg" alt="Students learning together">
+        <img src="images/pexels-rachel-claire-5490273.jpg" alt="Students learning together" onerror="this.src='https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200'">
       </div>
       <div class="hero-overlay"></div>
-      
       <div class="hero-container">
         <div class="hero-content">
           <div class="hero-tag">EST. 2012</div>
           <h1>Shaping tomorrow's<br><span>innovators today</span></h1>
-          <p class="hero-description">BrainBloom is a premium enrichment program where academic excellence meets creative exploration. We provide a structured yet inspiring environment for young minds to thrive.</p>
+          <p class="hero-description">BrainBloom is a premium enrichment program where academic excellence meets creative exploration.</p>
           <div class="hero-stats">
-            <div class="stat-item">
-              <div class="number">15+</div>
-              <div class="label">Years of Excellence</div>
-            </div>
-            <div class="stat-item">
-              <div class="number">8k</div>
-              <div class="label">Students</div>
-            </div>
-            <div class="stat-item">
-              <div class="number">50+</div>
-              <div class="label">Programs</div>
-            </div>
+            <div class="stat-item"><div class="number">15+</div><div class="label">Years</div></div>
+            <div class="stat-item"><div class="number">8k</div><div class="label">Students</div></div>
+            <div class="stat-item"><div class="number">50+</div><div class="label">Programs</div></div>
           </div>
         </div>
         <div class="icon-grid">
-          <div class="icon-box">
-            <i class="fas fa-brain"></i>
-            <h3>Critical Thinking</h3>
-            <p>Problem-solving skills that last a lifetime</p>
-          </div>
-          <div class="icon-box">
-            <i class="fas fa-paint-brush"></i>
-            <h3>Creative Arts</h3>
-            <p>Express ideas through multiple mediums</p>
-          </div>
-          <div class="icon-box">
-            <i class="fas fa-music"></i>
-            <h3>Music Mastery</h3>
-            <p>Develop rhythm, discipline & confidence</p>
-          </div>
-          <div class="icon-box">
-            <i class="fas fa-code"></i>
-            <h3>STEM Skills</h3>
-            <p>Future-ready technology education</p>
-          </div>
+          <div class="icon-box"><i class="fas fa-brain"></i><h3>Critical Thinking</h3><p>Problem-solving skills</p></div>
+          <div class="icon-box"><i class="fas fa-paint-brush"></i><h3>Creative Arts</h3><p>Express ideas</p></div>
+          <div class="icon-box"><i class="fas fa-music"></i><h3>Music Mastery</h3><p>Rhythm & confidence</p></div>
+          <div class="icon-box"><i class="fas fa-code"></i><h3>STEM Skills</h3><p>Future-ready tech</p></div>
         </div>
       </div>
     </section>
 
-    <!-- Story section (heading updated) -->
-    <section class="about-story">
-      <div class="container">
-        <div class="story-content">
-          <div class="story-text">
-            <h2 class="section-title">Our <span>Story</span></h2>
-            <p>BrainBloom started with a simple vision — to create a space where children can explore, think, and grow beyond textbooks. Over the years, we have built a nurturing environment that blends creativity, academics, and life skills.</p>
-            <p>Today, we stand as a trusted enrichment hub helping young minds unlock their true potential through structured and engaging programs.</p>
-          </div>
-          <div class="story-image">
-            <img src="images/pexels-max-fischer-5211478.jpg" alt="Our story">
-          </div>
-        </div>
-      </div>
-    </section>
+    <section class="about-story"><div class="container"><div class="story-content"><div class="story-text"><h2 class="section-title">Our <span>Story</span></h2><p>BrainBloom started with a simple vision — to create a space where children can explore, think, and grow beyond textbooks. Over the years, we have built a nurturing environment that blends creativity, academics, and life skills.</p></div><div class="story-image"><img src="images/pexels-max-fischer-5211478.jpg" alt="story" onerror="this.src='https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200'"></div></div></div></section>
 
-    <!-- Mission Vision (headings with span) -->
-    <section class="mission-vision">
-      <div class="container">
-        <div class="mv-grid">
-          <div class="mv-box">
-            <i class="fas fa-bullseye"></i>
-            <h3 class="section-title" style="font-size:2rem; margin-bottom:0.5rem;">Our <span>Mission</span></h3>
-            <p>To empower children with knowledge, creativity, and confidence through engaging and innovative learning experiences.</p>
-          </div>
-          <div class="mv-box">
-            <i class="fas fa-eye"></i>
-            <h3 class="section-title" style="font-size:2rem; margin-bottom:0.5rem;">Our <span>Vision</span></h3>
-            <p>To become a global leader in holistic child development and future-ready education.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section class="mission-vision"><div class="container"><div class="mv-grid"><div class="mv-box"><i class="fas fa-bullseye"></i><h3 class="section-title" style="font-size:2rem;">Our <span>Mission</span></h3><p>To empower children with knowledge, creativity, and confidence through engaging learning experiences.</p></div><div class="mv-box"><i class="fas fa-eye"></i><h3 class="section-title" style="font-size:2rem;">Our <span>Vision</span></h3><p>To become a global leader in holistic child development.</p></div></div></div></section>
 
-    <!-- Why Choose (heading with span) -->
-    <section class="why-advanced">
-      <h2 class="section-title">Why Choose <span>BrainBloom</span></h2>
-      <div class="why-container" id="whyContainer">
-        <div class="why-card">
-          <i class="fas fa-user-graduate"></i>
-          <h3>Expert Mentors</h3>
-          <p>Highly trained educators guiding every child personally.</p>
-        </div>
-        <div class="why-card">
-          <i class="fas fa-lightbulb"></i>
-          <h3>Creative Learning</h3>
-          <p>Interactive and fun-based teaching methods.</p>
-        </div>
-        <div class="why-card">
-          <i class="fas fa-globe"></i>
-          <h3>Holistic Growth</h3>
-          <p>Focus on academics, creativity, and life skills.</p>
-        </div>
-        <div class="why-card">
-          <i class="fas fa-heart"></i>
-          <h3>Safe Environment</h3>
-          <p>Supportive and child-friendly atmosphere.</p>
-        </div>
-      </div>
-    </section>
+    <section class="why-advanced"><h2 class="section-title">Why Choose <span>BrainBloom</span></h2><div class="why-container" id="whyContainer"><div class="why-card"><i class="fas fa-user-graduate"></i><h3>Expert Mentors</h3><p>Highly trained educators</p></div><div class="why-card"><i class="fas fa-lightbulb"></i><h3>Creative Learning</h3><p>Interactive teaching</p></div><div class="why-card"><i class="fas fa-globe"></i><h3>Holistic Growth</h3><p>Academics & life skills</p></div><div class="why-card"><i class="fas fa-heart"></i><h3>Safe Environment</h3><p>Child-friendly atmosphere</p></div></div></section>
 
-    <!-- Timeline -->
-    <section class="timeline-section">
-      <h2 class="section-title">Our <span>Journey</span></h2>
-      <div class="timeline">
-        <div class="timeline-item">2012 – BrainBloom Started</div>
-        <div class="timeline-item">2015 – 1,000+ Students</div>
-        <div class="timeline-item">2018 – Expanded Programs</div>
-        <div class="timeline-item">2022 – Digital Learning</div>
-        <div class="timeline-item">2026 – 8K+ Students</div>
-      </div>
-    </section>
+    <section class="timeline-section"><h2 class="section-title">Our <span>Journey</span></h2><div class="timeline"><div class="timeline-item">2012 – BrainBloom Started</div><div class="timeline-item">2015 – 1,000+ Students</div><div class="timeline-item">2018 – Expanded Programs</div><div class="timeline-item">2022 – Digital Learning</div><div class="timeline-item">2026 – 8K+ Students</div></div></section>
 
-    <!-- Fun facts -->
-    <section class="fun-facts">
-      <h2 class="section-title">Our Impact <span>in Numbers</span></h2>
-      <div class="facts-container">
-        <div class="fact-box">
-          <h3 class="counter" data-target="8000">8k</h3>
-          <p>Students Enrolled</p>
-        </div>
-        <div class="fact-box">
-          <h3 class="counter" data-target="50">50+</h3>
-          <p>Programs Offered</p>
-        </div>
-        <div class="fact-box">
-          <h3 class="counter" data-target="120">120</h3>
-          <p>Expert Mentors</p>
-        </div>
-        <div class="fact-box">
-          <h3 class="counter" data-target="15">15</h3>
-          <p>Years Experience</p>
-        </div>
-      </div>
-    </section>
+    <section class="fun-facts"><h2 class="section-title">Our Impact <span>in Numbers</span></h2><div class="facts-container"><div class="fact-box"><h3 class="counter" data-target="8000">8k+</h3><p>Students</p></div><div class="fact-box"><h3 class="counter" data-target="50">50+</h3><p>Programs</p></div><div class="fact-box"><h3 class="counter" data-target="120">120+</h3><p>Mentors</p></div><div class="fact-box"><h3 class="counter" data-target="15">15</h3><p>Years</p></div></div></section>
 
-    <!-- Team -->
-    <section class="team-unique">
-      <h2 class="section-title">Meet <span>Our Team</span></h2>
-      <div class="team-container">
-        <div class="team-card">
-          <div class="team-img"><img src="images/person (1).jpg" alt=""></div>
-          <div class="team-content">
-            <h3>Dr. Sarah Johnson</h3>
-            <span>Academic Director</span>
-            <p>15+ years of experience shaping young minds.</p>
-            <div class="team-social"><i class="fab fa-linkedin"></i><i class="fab fa-twitter"></i></div>
-          </div>
-        </div>
-        <div class="team-card">
-          <div class="team-img"><img src="images/person (2).jpg" alt=""></div>
-          <div class="team-content">
-            <h3>Michael Lee</h3>
-            <span>Creative Head</span>
-            <p>Bringing imagination into every learning journey.</p>
-            <div class="team-social"><i class="fab fa-instagram"></i><i class="fab fa-dribbble"></i></div>
-          </div>
-        </div>
-        <div class="team-card">
-          <div class="team-img"><img src="images/person (3).jpg" alt=""></div>
-          <div class="team-content">
-            <h3>Anita Sharma</h3>
-            <span>STEM Specialist</span>
-            <p>Passionate about future-ready tech education.</p>
-            <div class="team-social"><i class="fab fa-github"></i><i class="fab fa-linkedin"></i></div>
-          </div>
-        </div>
-        <div class="team-card">
-          <div class="team-img"><img src="images/person (4).jpg" alt=""></div>
-          <div class="team-content">
-            <h3>David Kim</h3>
-            <span>Music Mentor</span>
-            <p>Helping kids find rhythm and confidence.</p>
-            <div class="team-social"><i class="fab fa-youtube"></i><i class="fab fa-facebook"></i></div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section class="team-unique"><h2 class="section-title">Meet <span>Our Team</span></h2><div class="team-container"><div class="team-card"><div class="team-img"><img src="images/person (1).jpg" alt="Sarah" onerror="this.src='https://randomuser.me/api/portraits/women/68.jpg'"></div><div class="team-content"><h3>Dr. Sarah Johnson</h3><span>Academic Director</span><div class="team-social"><i class="fab fa-linkedin"></i><i class="fab fa-twitter"></i></div></div></div><div class="team-card"><div class="team-img"><img src="images/person (2).jpg" alt="Michael" onerror="this.src='https://randomuser.me/api/portraits/men/32.jpg'"></div><div class="team-content"><h3>Michael Lee</h3><span>Creative Head</span><div class="team-social"><i class="fab fa-instagram"></i><i class="fab fa-dribbble"></i></div></div></div><div class="team-card"><div class="team-img"><img src="images/person (3).jpg" alt="Anita" onerror="this.src='https://randomuser.me/api/portraits/women/44.jpg'"></div><div class="team-content"><h3>Anita Sharma</h3><span>STEM Specialist</span><div class="team-social"><i class="fab fa-github"></i><i class="fab fa-linkedin"></i></div></div></div><div class="team-card"><div class="team-img"><img src="images/person (4).jpg" alt="David" onerror="this.src='https://randomuser.me/api/portraits/men/75.jpg'"></div><div class="team-content"><h3>David Kim</h3><span>Music Mentor</span><div class="team-social"><i class="fab fa-youtube"></i><i class="fab fa-facebook"></i></div></div></div></div></section>
   </main>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-content">
-      <div class="footer-top">
-        <div class="footer-column">
-          <a href="index.html" class="logo"><i class="fas fa-seedling"></i><span class="logo-text">BrainBloom</span></a>
-          <p style="margin-top:30px">Where minds expand and ideas flourish. Join our community of curious learners.</p>
-        </div>
-        <div class="footer-column"><h3>QuickLinks</h3><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="service.html">Service</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-        <div class="footer-column"><h3>Resources</h3><ul><li><a href="#">Learning Hub</a></li><li><a href="#">Workshops</a></li><li><a href="#">Blog</a></li></ul></div>
-        <div class="footer-column"><h3>Social Links</h3><ul><li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li><li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li><li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li></ul></div>
-      </div>
-      <div class="footer-middle"><h3 style="color:#FFB347">BrainBloom</h3><div class="footer-links"><a href="#">Privacy Policy</a><a href="#">Terms & Conditions</a></div></div>
-      <div class="footer-bottom"><div class="copyright">© 2026 BrainBloom Enrichment. All rights reserved.</div></div>
-    </div>
-  </footer>
+  <footer class="site-footer"><div class="footer-content"><div class="footer-top"><div class="footer-column"><a href="index.html" class="logo"><i class="fas fa-seedling"></i><span class="logo-text">BrainBloom</span></a><p style="margin-top:30px">Where minds expand and ideas flourish.</p></div><div class="footer-column"><h3>QuickLinks</h3><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="service.html">Service</a></li><li><a href="contact.html">Contact</a></li></ul></div><div class="footer-column"><h3>Resources</h3><ul><li><a href="#">Learning Hub</a></li><li><a href="#">Workshops</a></li><li><a href="#">Blog</a></li></ul></div><div class="footer-column"><h3>Social Links</h3><ul><li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li><li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li><li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li></ul></div></div><div class="footer-middle"><h3 style="color:#FFB347">BrainBloom</h3><div class="footer-links"><a href="#">Privacy Policy</a><a href="#">Terms</a></div></div><div class="footer-bottom"><div class="copyright">© 2026 BrainBloom Enrichment. All rights reserved.</div></div></div></footer>
 
   <script>
     (function() {
-      // Mobile Menu Elements
       const hamburger = document.getElementById('hamburger');
       const overlay = document.getElementById('mobileOverlay');
       const mobileMenu = document.getElementById('mobileNavMenu');
       const body = document.body;
-
-      if (!hamburger || !overlay || !mobileMenu) return;
-
       function toggleMobileMenu() {
         const isActive = mobileMenu.classList.contains('active');
         mobileMenu.classList.toggle('active');
         overlay.classList.toggle('active');
         body.style.overflow = isActive ? '' : 'hidden';
-        hamburger.innerHTML = isActive ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+        if (hamburger) hamburger.innerHTML = isActive ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
       }
-
-      hamburger.addEventListener('click', toggleMobileMenu);
-      overlay.addEventListener('click', toggleMobileMenu);
-
-      document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
-        link.addEventListener('click', function(e) {
-          if (!this.querySelector('.fa-caret-down')) {
-            toggleMobileMenu();
-          }
+      if (hamburger && overlay && mobileMenu) {
+        hamburger.addEventListener('click', toggleMobileMenu);
+        overlay.addEventListener('click', toggleMobileMenu);
+        document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
+          link.addEventListener('click', function(e) { if (!this.querySelector('.fa-caret-down')) toggleMobileMenu(); });
         });
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-          toggleMobileMenu();
-        }
-      });
-
-      window.addEventListener('resize', () => {
-        if (window.innerWidth > 1280 && mobileMenu.classList.contains('active')) {
-          toggleMobileMenu();
-        }
-      });
-
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && mobileMenu.classList.contains('active')) toggleMobileMenu(); });
+        window.addEventListener('resize', () => { if (window.innerWidth > 1280 && mobileMenu.classList.contains('active')) toggleMobileMenu(); });
+      }
       function toggleTheme() {
         document.body.classList.toggle('dark-mode');
         const isDark = document.body.classList.contains('dark-mode');
-        
-        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => {
-          if (el) el.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-        });
-        
+        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => { if (el) el.className = isDark ? 'fas fa-sun' : 'fas fa-moon'; });
         const mobileSpan = document.querySelector('#mobileThemeToggle span');
         if (mobileSpan) mobileSpan.textContent = isDark ? 'Light Mode' : 'Dark Mode';
-        
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
       }
-
       function toggleRTL() {
         const html = document.documentElement;
         const isRTL = html.getAttribute('dir') === 'rtl';
         html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
-        
         const mobileSpan = document.querySelector('#mobileRtlToggle span');
         if (mobileSpan) mobileSpan.textContent = isRTL ? 'RTL' : 'LTR';
-        
         localStorage.setItem('direction', isRTL ? 'ltr' : 'rtl');
       }
-
       document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
       document.getElementById('mobileThemeToggle')?.addEventListener('click', toggleTheme);
       document.getElementById('rtlToggle')?.addEventListener('click', toggleRTL);
       document.getElementById('mobileRtlToggle')?.addEventListener('click', toggleRTL);
-
       if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
-        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => {
-          if (el) el.className = 'fas fa-sun';
+        document.querySelectorAll('#themeToggle i, #mobileThemeToggle i').forEach(el => { if (el) el.className = 'fas fa-sun'; });
+        const span = document.querySelector('#mobileThemeToggle span');
+        if(span) span.textContent = 'Light Mode';
+      }
+      if (localStorage.getItem('direction') === 'rtl') document.documentElement.setAttribute('dir', 'rtl');
+      const timelineItems = document.querySelectorAll(".timeline-item");
+      window.addEventListener("scroll", () => {
+        timelineItems.forEach(item => {
+          if (item.getBoundingClientRect().top < window.innerHeight - 100) item.classList.add("active");
         });
-        const mobileSpan = document.querySelector('#mobileThemeToggle span');
-        if (mobileSpan) mobileSpan.textContent = 'Light Mode';
-      }
-
-      if (localStorage.getItem('direction') === 'rtl') {
-        document.documentElement.setAttribute('dir', 'rtl');
-        const mobileSpan = document.querySelector('#mobileRtlToggle span');
-        if (mobileSpan) mobileSpan.textContent = 'LTR';
-      }
+      });
+      const currentPage = window.location.pathname.split("/").pop();
+      document.querySelectorAll(".nav-links a").forEach(link => {
+        if (link.getAttribute("href") === currentPage) link.classList.add("active");
+      });
     })();
-
-    // Interactive spotlight effect for why cards
-    const cards = document.querySelectorAll(".why-card");
-    cards.forEach(card => {
-      card.addEventListener("mousemove", e => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        card.style.setProperty("--x", x + "px");
-        card.style.setProperty("--y", y + "px");
-      });
-    });
-
-    // Timeline scroll animation
-    const timelineItems = document.querySelectorAll(".timeline-item");
-    window.addEventListener("scroll", () => {
-      timelineItems.forEach(item => {
-        const top = item.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) {
-          item.classList.add("active");
-        }
-      });
-    });
-    // Highlight active link automatically
-const currentPage = window.location.pathname.split("/").pop();
-
-document.querySelectorAll(".nav-links a").forEach(link => {
-  const linkPage = link.getAttribute("href");
-
-  if (linkPage === currentPage) {
-    link.classList.add("active");
-  }
-});
   </script>
 </body>
 </html>

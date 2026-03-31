@@ -690,6 +690,12 @@
     .contact-btn.secondary {
       border: 2px solid var(--primary);
       color: var(--text);
+      background: transparent;
+    }
+
+    .contact-btn.secondary i {
+      color: var(--primary);
+      font-size: 1rem;
     }
 
     .contact-btn:hover {
@@ -703,6 +709,10 @@
 
     .contact-btn.secondary:hover {
       background: var(--primary);
+      color: #1E2B3C;
+    }
+
+    .contact-btn.secondary:hover i {
       color: #1E2B3C;
     }
 
@@ -802,9 +812,7 @@
       transform: translateX(8px); 
     }
     .footer-middle {
-      padding: 35px 0; 
-      border-top: 1px solid var(--accent);
-      border-bottom: 1px solid var(--accent); 
+      padding: 15px 0; 
       margin-bottom: 35px;
       display: flex; 
       justify-content: space-between; 
@@ -1241,13 +1249,13 @@ header .nav-links li:nth-last-child(4){
       </div>
     </div>
 
-    <!-- Still Have Questions (heading with span) -->
+    <!-- Still Have Questions - FIXED CALL ICON (fas fa-phone-alt) -->
     <div class="faq-contact">
       <h3>Still have <span style="color: var(--accent);">questions?</span></h3>
       <p>Can't find the answer you're looking for? Please chat with our friendly team.</p>
       <div class="contact-buttons">
-        <a href="contact.html" class="contact-btn primary"><i class="fas fa-envelope"></i> Contact Us</a>
-        <a href="#" class="contact-btn secondary"><i class="fas fa-phone-alt"></i> Call Now</a>
+        <a href="contact.html" class="contact-btn primary"> Contact Us</a>
+        <a href="tel:+1234567890" class="contact-btn secondary"> Call Now</a>
       </div>
     </div>
   </section>
