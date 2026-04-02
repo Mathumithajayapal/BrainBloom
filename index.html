@@ -193,7 +193,6 @@
       transform: scale(1.05); 
       background: rgba(255,180,71,0.1);
     }
-    /* RTL text button style - replacing icon with proper text */
     .rtl-text-btn {
       font-size: 0.85rem;
       font-weight: 600;
@@ -217,7 +216,6 @@
       align-items: center;
       justify-content: center;
     }
-    /* Only login button - signup removed */
     .nav-btn { 
       padding: 8px 22px !important; 
       border-radius: 50px !important; 
@@ -513,7 +511,7 @@
       font-size: 0.95rem;
     }
 
-    /* Programs modern */
+    /* ========== MODERN GLASS CARD PROGRAMS SECTION ========== */
     .programs-modern {
       padding: 5rem 4rem;
       max-width: 1400px;
@@ -522,93 +520,138 @@
     }
     .programs-modern .section-header {
       text-align: center;
-      margin-bottom: 50px;
+      margin-bottom: 60px;
     }
     .programs-modern .section-header h2 {
       font-size: 2.8rem;
       font-family: 'Playfair Display', serif;
+      margin-bottom: 12px;
     }
-    .programs-wrap {
+    .programs-modern .section-header p {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .glass-programs-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      gap: 30px;
     }
-    .program-item {
+    .glass-program-card {
       position: relative;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(12px);
+      border-radius: 32px;
       overflow: hidden;
-      border-radius: 20px;
-      height: 400px;
+      border: 1px solid rgba(255, 180, 71, 0.35);
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
-    .program-item img {
+    .dark-mode .glass-program-card {
+      background: rgba(20, 20, 30, 0.65);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 180, 71, 0.4);
+    }
+    .glass-program-card:hover {
+      transform: translateY(-12px) scale(1.02);
+      border-color: var(--accent);
+      box-shadow: 0 30px 45px -12px rgba(255, 140, 66, 0.35);
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .dark-mode .glass-program-card:hover {
+      background: rgba(35, 35, 45, 0.8);
+    }
+    .card-img-wrapper {
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+    }
+    .card-img-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: 0.5s;
+      transition: transform 0.6s ease;
+      display: block;
     }
-    .program-item:hover img {
-      transform: scale(1.1);
+    .glass-program-card:hover .card-img-wrapper img {
+      transform: scale(1.08);
     }
-    .program-item .overlay {
+    .glass-badge {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      padding: 25px;
-      background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.3), transparent);
-      color: #fff;
-      transform: translateY(40%);
-      transition: 0.4s;
+      top: 16px;
+      right: 16px;
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(8px);
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #FFB347;
+      letter-spacing: 0.5px;
+      border: 1px solid rgba(255,180,71,0.5);
+      z-index: 2;
     }
-    .program-item:hover .overlay {
-      transform: translateY(0);
+    .glass-content {
+      padding: 24px 22px 28px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
-    .overlay h3 {
-      margin-bottom: 8px;
-      color: white;
-    }
-    .overlay p {
-      font-size: 14px;
+    .glass-content h3 {
+      font-size: 1.6rem;
+      font-family: 'Playfair Display', serif;
       margin-bottom: 10px;
+      color: var(--text);
+      transition: color 0.2s;
     }
-
-    /* Journey section */
-    .journey-section {
-      padding: 5rem 4rem;
-      max-width: 1400px;
-      margin: 0 auto;
-      width: 100%;
+    .glass-content p {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 18px;
     }
-    .timeline {
-      position: relative;
-      margin-top: 50px;
-      padding-left: 40px;
+    .program-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px dashed rgba(255,180,71,0.3);
     }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 10px;
-      top: 0;
-      width: 3px;
-      height: 100%;
-      background: linear-gradient(var(--primary), var(--secondary));
+    .program-age {
+      font-size: 0.75rem;
+      background: rgba(255,180,71,0.15);
+      padding: 5px 12px;
+      border-radius: 50px;
+      font-weight: 600;
+      color: var(--accent);
     }
-    .timeline-item {
-      position: relative;
-      margin-bottom: 40px;
+    .program-link {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: 0.3s;
     }
-    .circle-dot {
-      position: absolute;
-      left: -2px;
-      width: 20px;
-      height: 20px;
-      background: var(--accent);
-      border-radius: 50%;
+    .program-link i {
+      transition: transform 0.2s;
     }
-    .timeline-content {
-      background: var(--bg-light);
-      padding: 20px;
-      border-radius: 15px;
-      border: 1px solid var(--border);
+    .program-link:hover i {
+      transform: translateX(5px);
+    }
+    @media (max-width: 1200px) {
+      .glass-programs-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .glass-programs-grid { grid-template-columns: 1fr; }
+      .programs-modern { padding: 3rem 1.5rem; }
     }
 
     /* Awards section */
@@ -826,8 +869,6 @@
     .copyright { color: var(--footer-text); font-size: 0.9rem; opacity: 0.8; }
 
     @media (max-width: 1200px) {
-      .programs-wrap { grid-template-columns: repeat(2, 1fr); }
-      .round-features-grid { grid-template-columns: repeat(2, 1fr); }
       .awards-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 900px) {
@@ -841,19 +882,10 @@
       .footer-content { padding: 0 2rem; }
     }
     @media (max-width: 768px) {
-      .programs-wrap { grid-template-columns: 1fr; }
-      .program-item { height: 300px; }
-      .round-features-section, .programs-modern, .journey-section, .awards-section, .about-split, .happy-stories {
+      .round-features-section, .programs-modern, .awards-section, .about-split, .happy-stories {
         padding: 3rem 1.5rem;
       }
       .round-feature-card { max-width: 280px; padding: 1.5rem; }
-      .round-feature-icon { width: 60px; height: 60px; font-size: 1.8rem; }
-      .round-feature-card h3 { font-size: 1.2rem; }
-    }
-    @media (max-width: 600px) {
-      .footer-top { grid-template-columns: 1fr; }
-      .navbar { padding: 0.5rem 1rem; }
-      .logo-text { font-size: 22px; }
     }
   </style>
 </head>
@@ -931,11 +963,7 @@
     <div class="hero-content">
       <div class="hero-left">
         <p class="subtitle">BrainBloom Enrichment</p>
-        <h1>
-          <span class="special-color">Embrace</span>
-          <span class="special-color1">Peaceful</span>
-          <span class="special-color">Learning</span>
-        </h1>
+        <h1><span class="special-color">Embrace</span> <span class="special-color1">Peaceful</span> <span class="special-color">Learning</span></h1>
         <a href="#" class="btn">Start Journey →</a>
       </div>
     </div>
@@ -951,23 +979,33 @@
     </div>
   </div>
 
+  <!-- MODERN GLASS CARD PROGRAMS SECTION -->
   <section class="programs-modern">
-    <div class="section-header"><h2>Explore <span>Programs</span></h2><p>Hands-on experiences designed to spark curiosity and creativity.</p></div>
-    <div class="programs-wrap">
-      <div class="program-item"><img src="images/pexels-august-de-richelieu-4261786.jpg" alt="Creative Studio" onerror="this.src='https://images.pexels.com/photos/4261786/pexels-photo-4261786.jpeg?auto=compress&cs=tinysrgb&w=600'"><div class="overlay"><h3>Creative Studio</h3><p>Painting and artistic expression for young minds.</p><span>8–12 yrs • Weekly</span></div></div>
-      <div class="program-item"><img src="images/pexels-yaroslav-shuraev-5608541.jpg" alt="Melody Makers" onerror="this.src='https://images.pexels.com/photos/5608541/pexels-photo-5608541.jpeg?auto=compress&cs=tinysrgb&w=600'"><div class="overlay"><h3>Melody Makers</h3><p>Music, rhythm, and vocal training for all levels.</p><span>6–15 yrs • Flexible</span></div></div>
-      <div class="program-item"><img src="images/pexels-soldiervip-1374509.jpg" alt="Future Innovators" onerror="this.src='https://images.pexels.com/photos/1374509/pexels-photo-1374509.jpeg?auto=compress&cs=tinysrgb&w=600'"><div class="overlay"><h3>Future Innovators</h3><p>Robotics, coding, and real-world problem solving.</p><span>10–16 yrs • Weekends</span></div></div>
-      <div class="program-item"><img src="images/pexels-vanessa-loring-7869442.jpg" alt="STEM Explorers" onerror="this.src='https://images.pexels.com/photos/7869442/pexels-photo-7869442.jpeg?auto=compress&cs=tinysrgb&w=600'"><div class="overlay"><h3>STEM Explorers</h3><p>Science experiments and hands-on discovery.</p><span>7–14 yrs • Weekly</span></div></div>
+    <div class="section-header">
+      <h2>Explore <span>Programs</span></h2>
+      <p>Hands-on experiences designed to spark curiosity and creativity.</p>
     </div>
-  </section>
-
-  <section class="journey-section">
-    <h2 class="section-title">Learning <span>Journey</span></h2>
-    <p class="section-subtitle">A structured path designed to nurture every child step by step.</p>
-    <div class="timeline">
-      <div class="timeline-item"><div class="circle-dot"></div><div class="timeline-content"><h3>Discover</h3><p>Children explore interests through fun activities.</p></div></div>
-      <div class="timeline-item"><div class="circle-dot"></div><div class="timeline-content"><h3>Develop</h3><p>Structured programs build skills and confidence.</p></div></div>
-      <div class="timeline-item"><div class="circle-dot"></div><div class="timeline-content"><h3>Master</h3><p>Advanced learning to unlock full potential.</p></div></div>
+    <div class="glass-programs-grid">
+      <div class="glass-program-card">
+        <div class="card-img-wrapper"><img src="images/pexels-august-de-richelieu-4261786.jpg" alt="Creative Studio" onerror="this.src='https://images.pexels.com/photos/4261786/pexels-photo-4261786.jpeg?auto=compress&cs=tinysrgb&w=600'"></div>
+        <div class="glass-badge">✦ Creative</div>
+        <div class="glass-content"><h3>Creative Studio</h3><p>Painting, sculpting & artistic expression for young visionaries. Build confidence through colors.</p><div class="program-meta"><span class="program-age">8–12 yrs • Weekly</span><a href="#" class="program-link">Discover <i class="fas fa-arrow-right"></i></a></div></div>
+      </div>
+      <div class="glass-program-card">
+        <div class="card-img-wrapper"><img src="images/pexels-yaroslav-shuraev-5608541.jpg" alt="Melody Makers" onerror="this.src='https://images.pexels.com/photos/5608541/pexels-photo-5608541.jpeg?auto=compress&cs=tinysrgb&w=600'"></div>
+        <div class="glass-badge">🎵 Harmonic</div>
+        <div class="glass-content"><h3>Melody Makers</h3><p>Rhythm, vocal training & music theory for all levels. Unleash the inner musician.</p><div class="program-meta"><span class="program-age">6–15 yrs • Flexible</span><a href="#" class="program-link">Explore <i class="fas fa-arrow-right"></i></a></div></div>
+      </div>
+      <div class="glass-program-card">
+        <div class="card-img-wrapper"><img src="images/pexels-soldiervip-1374509.jpg" alt="Future Innovators" onerror="this.src='https://images.pexels.com/photos/1374509/pexels-photo-1374509.jpeg?auto=compress&cs=tinysrgb&w=600'"></div>
+        <div class="glass-badge">🤖 Tech</div>
+        <div class="glass-content"><h3>Future Innovators</h3><p>Robotics, coding, AI & real-world problem solving. Shape tomorrow's creators.</p><div class="program-meta"><span class="program-age">10–16 yrs • Weekends</span><a href="#" class="program-link">Join <i class="fas fa-arrow-right"></i></a></div></div>
+      </div>
+      <div class="glass-program-card">
+        <div class="card-img-wrapper"><img src="images/pexels-vanessa-loring-7869442.jpg" alt="STEM Explorers" onerror="this.src='https://images.pexels.com/photos/7869442/pexels-photo-7869442.jpeg?auto=compress&cs=tinysrgb&w=600'"></div>
+        <div class="glass-badge">🔬 Science</div>
+        <div class="glass-content"><h3>STEM Explorers</h3><p>Hands-on experiments, chemistry, physics & discovery labs. Fuel curiosity.</p><div class="program-meta"><span class="program-age">7–14 yrs • Weekly</span><a href="#" class="program-link">Learn more <i class="fas fa-arrow-right"></i></a></div></div>
+      </div>
     </div>
   </section>
 
@@ -1054,17 +1092,10 @@
         const isRTL = html.getAttribute('dir') === 'rtl';
         const newDir = isRTL ? 'ltr' : 'rtl';
         html.setAttribute('dir', newDir);
-        
         const rtlButtonSpan = document.getElementById('rtlButtonText');
         const mobileRtlSpan = document.getElementById('mobileRtlButtonText');
-        
-        if (rtlButtonSpan) {
-          rtlButtonSpan.textContent = newDir === 'rtl' ? 'LTR' : 'RTL';
-        }
-        if (mobileRtlSpan) {
-          mobileRtlSpan.textContent = newDir === 'rtl' ? 'Switch to LTR' : 'Switch to RTL';
-        }
-        
+        if (rtlButtonSpan) rtlButtonSpan.textContent = newDir === 'rtl' ? 'LTR' : 'RTL';
+        if (mobileRtlSpan) mobileRtlSpan.textContent = newDir === 'rtl' ? 'Switch to LTR' : 'Switch to RTL';
         localStorage.setItem('direction', newDir);
       }
 
